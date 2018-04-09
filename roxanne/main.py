@@ -2,7 +2,7 @@
 from browser import document
 from _spy.vitollino.main import Cena, STYLE
 STYLE['width'] = 740
-document['pydiv']
+document['pydiv'].html = ""
 
 A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
