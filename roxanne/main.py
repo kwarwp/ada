@@ -1,10 +1,10 @@
 # ada.roxanne.main.py
 from browser import document
 from _spy.vitollino.main import Cena, STYLE
-STYLE[&#039;width&#039;] = 790
-document[&#039;pydiv&#039;]
+STYLE['width'] = 790
+document['pydiv']
 
-A_NORTE = &quot;https://i.imgur.com/aLEjWgB.png&quot;
+A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
 def main():
     a_norte = Cena(img=A_NORTE)
