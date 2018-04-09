@@ -6,8 +6,25 @@ document['pydiv'].html = ""
 
 A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
-def main():
+def _main():
     a_norte = Cena(img=A_NORTE)
     a_norte.vai()
+    
+# main()
+m6n="https://i.imgur.com/oThg1nq.jpg"
+m6n="https://i.imgur.com/oThg1nq.jpg"
+g6e="https://i.imgur.com/4vjrEEG.jpg"
+g6n="https://i.imgur.com/DcyUIgN.jpg"
+g6s="https://i.imgur.com/TbdLoXs.jpg"
+from _spy.vitollino.main import Cena
+
+def main():
+    cenae = Cena(g6e)
+    cenas = Cena(g6s)
+    cenan = Cena(g6n, direita=cenae)
+    cenae.direita = cenas
+    cenas.esquerda = cenae
+    cenae.esquerda = cenan
+    cenan.vai()
     
 main()
