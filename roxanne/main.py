@@ -25,6 +25,7 @@ def main():
     cenae.direita = cenas
     cenas.esquerda = cenae
     cenae.esquerda = cenan
+    cenan.esquerda = cenas
     cenan.vai()
     
 if __name__ == "__main__":
