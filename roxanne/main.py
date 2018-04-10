@@ -27,4 +27,5 @@ def main():
     cenae.esquerda = cenan
     cenan.vai()
     
-main()
+if __name__ == "__main__":
+	main()
