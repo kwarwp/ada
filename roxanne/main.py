@@ -2,11 +2,11 @@
 from browser import document
 from _spy.vitollino.main import Cena, STYLE
 STYLE['width'] = 740
-document['pydiv'].html = ""
 
 A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
 def _main():
+    document['pydiv'].html = ""
     a_norte = Cena(img=A_NORTE)
     a_norte.vai()
     
