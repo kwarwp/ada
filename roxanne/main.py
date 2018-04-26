@@ -1,5 +1,5 @@
 # ada.roxanne.main.py
-from browser import document, alert
+from browser import document, alert, html
 from _spy.vitollino.main import Cena, STYLE
 STYLE['width'] = 740
 #STYLE['height'] = "100%"
@@ -18,7 +18,7 @@ g6e="https://i.imgur.com/4vjrEEG.jpg"
 g6n="https://i.imgur.com/DcyUIgN.jpg"
 g6s="https://i.imgur.com/TbdLoXs.jpg"
 wpt="https://i.imgur.com/vc9RMEN.png"
-from _spy.vitollino.main import Cena, Elemento, Droppable
+from _spy.vitollino.main import Cena, Elemento, Droppable, Dragger
 
 
 class Planta(Cena, Droppable):
@@ -28,7 +28,13 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃª regou a planta")
+        alert("Você regou a planta")
+        
+class Regador(Elemento, Dragger):
+
+    def __init__(self, *a, **k):
+        Elemento.__init__(self, *a, **k)
+        Dragger.__init__(self, self.img)
 
 
 def main():
@@ -42,8 +48,100 @@ def main():
     cenas.direita = cenan
     #print(dir(cenas))
     cenan.vai()
-    rega = Elemento(wpt, style=dict(width=60, height=60, left=200, top=200), tit="regador")
+    rega = Regador(wpt, style=dict(width=60, height=60, left=200, top=200), tit="regador")
     rega.entra(cenan)
-    
+
+
+
+class Folha:
+    def __init__(self, texto, ht_ml, tela, left):
+        style = {'position': "absolute", 'width': 80, 'height': 80, 'left': left, 'top': 10, 'background': "yellow"}
+        fid = "folha%d" % left
+        self.folha = ht_ml.DIV(texto, Id=fid, style=style, draggable=True)
+        tela <= self.folha
+        self.folha.ondragstart = self.drag_start
+        self.folha.onmouseover = self.mouse_over
+
+    def mouse_over(self, ev):
+        ev.target.style.cursor = "pointer"
+
+    def drag_start(self, ev):
+        ev.data['text'] = ev.target.id
+        ev.data.effectAllowed = 'move'
+
+
+class Suporte:
+    def __init__(self, bloco, ht_ml, tela, left, certa):
+        style = {'position': "absolute", 'width': 80, 'height': 80, 'left': left, 'top': 100, 'background': "grey"}
+        self.folha = ht_ml.DIV("............ ............", style=style)
+        self.left = left
+        self.certa = certa
+        tela <= self.folha
+        self.folha.ondragover = self.drag_over
+        self.folha.ondrop = self.drop
+        self.bloco = bloco
+
+    def drag_over(self, ev):
+        ev.data.dropEffect = 'move'
+        ev.preventDefault()
+
+    def drop(self, ev):
+        ev.preventDefault()
+        src_id = ev.data['text']
+        elt = document[src_id]
+        elt.style.left = self.left
+        elt.style.top = 100
+        elt.draggable = False  # don't drag any more
+        elt.style.cursor = "auto"
+        certa = True
+        if src_id != self.certa:
+            elt.style.background = "red"
+            certa = False
+            self.bloco.conta_peça(certa)
+
+
+class Bloco:
+    def __init__(self):
+        self.monta = lambda *_: None
+        ordem = "10 410 310 210 110".split()
+        texto = "" \
+                "Era uma vez|" \
+                "de nós três|" \
+                "por cima|" \
+                "deu um salto|" \
+                "um gato pedrêz|" \
+                "".split("|")
+        tela = document["pydiv"]
+        tela.html = ""
+        self.pecas_colocadas = []
+        #print(list(enumerate(ordem)))
+        for pos, fl in enumerate(ordem):
+            Suporte(self, html, tela, pos * 100 + 10, "folha" + fl)
+        for pos, tx in enumerate(texto):
+            Folha(tx, html, tela, pos * 100 + 10)
+
+    def inicia_de_novo(self):
+        pass
+
+    def conta_pecas(self, valor_peca):
+        self.pecas_colocadas += valor_peca
+        if len(self.pecas_colocadas) == 4:
+            if all(self.pecas_colocadas):
+                input("O texto está certo.")
+            else:
+                vai = input("Tentar de novo?")
+                if vai == "s":
+                    self.inicia_de_novo()
+
+    def nao_monta(self):
+        pass
+
+    def vai(self):
+        self.monta()
+        self.monta = self.nao_monta
+        # self.centro.norte.vai()
+
+
 if __name__ == "__main__":
-	main()
+    #main()
+    Bloco()
