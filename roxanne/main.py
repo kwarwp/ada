@@ -1,8 +1,8 @@
 # ada.roxanne.main.py
-from browser import document
+from browser import document, alert
 from _spy.vitollino.main import Cena, STYLE
 STYLE['width'] = 740
-#STYLE['min-height'] = 740
+STYLE['min-height'] = 300
 
 A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
@@ -21,39 +21,28 @@ wpt="https://i.imgur.com/vc9RMEN.png"
 from _spy.vitollino.main import Cena, Elemento, Droppable
 
 
+class Planta(Cena, Droppable):
 
-"""
-class Regador(Cena, Droppable):
+    def __init__(self, *a, **k):
+        Cena.__init__(self, *a, **k)
+        Droppable.__init__(self, self.divesq, "regador", self.regou)
 
-    def __init__(self, img, esquerda):
-        self.pega = Cena(vai=self.pega_card)
-        Cena.__init__(self, img=img, esquerda=esquerda)
-        Droppable.__init__(self, self.divmeio, "card", self.passa_card)
+    def regou(self, *_):
+        alert("Você regou a planta")
 
-    def vai_meio(self, _=0):
-        if self.passou:
-            alert("Você precisa encostar o passe no leitor")
-        else:
-            alert("Você está sem o passe, volte para buscar")
-
-    def passa_card(self, _=0, __=0):
-        if Card.passou:
-            alert("Você segue para o seu destino")
-        else:
-            alert("Você está sem o passe, volte para buscar")
-"""
 
 def main():
     cenae = Cena(g6e)
     cenas = Cena(g6s)
-    cenan = Cena(g6n, direita=cenae)
+    cenan = Planta(g6n, direita=cenae)
     cenae.direita = cenas
     cenas.esquerda = cenae
     cenae.esquerda = cenan
     cenan.esquerda = cenas
     cenas.direita = cenan
+    #print(dir(cenas))
     cenan.vai()
-    rega = Elemento(wpt, style=dict(width=60, left=200, top=200))
+    rega = Elemento(wpt, style=dict(width=60, left=200, top=200), tit="regador")
     rega.entra(cenan)
     
 if __name__ == "__main__":
