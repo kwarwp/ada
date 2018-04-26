@@ -2,7 +2,7 @@
 from browser import document, alert
 from _spy.vitollino.main import Cena, STYLE
 STYLE['width'] = 740
-STYLE['min-height'] = 300
+#STYLE['height'] = "100%"
 
 A_NORTE = "https://i.imgur.com/aLEjWgB.png"
 
@@ -28,7 +28,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("Você regou a planta")
+        alert("VocÃª regou a planta")
 
 
 def main():
@@ -42,7 +42,7 @@ def main():
     cenas.direita = cenan
     #print(dir(cenas))
     cenan.vai()
-    rega = Elemento(wpt, style=dict(width=60, left=200, top=200), tit="regador")
+    rega = Elemento(wpt, style=dict(width=60, height=60, left=200, top=200), tit="regador")
     rega.entra(cenan)
     
 if __name__ == "__main__":
