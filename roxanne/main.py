@@ -54,10 +54,12 @@ def main():
 
 
 class Folha:
-    def __init__(self, texto, ht_ml, tela, left):
-        style = {'position': "absolute", 'width': 80, 'height': 80, 'left': left, 'top': 10, 'background': "yellow"}
-        fid = "folha%d" % left
-        self.folha = ht_ml.DIV(texto, Id=fid, style=style, draggable=True)
+    def __init__(self, size=dict(width="25%", height="25%"), pos={'left': 0, 'top': 0}):
+        style = {'position': "absolute"}
+        style.update(**size)
+        style.update(**pos)
+        fid = "folha%d" % (pos['left'])
+        self.folha = html.DIV(Id=fid, style=style, draggable=True)
         tela <= self.folha
         self.folha.ondragstart = self.drag_start
         self.folha.onmouseover = self.mouse_over
@@ -71,10 +73,11 @@ class Folha:
 
 
 class Suporte:
-    def __init__(self, bloco, ht_ml, tela, left, certa):
-        style = {'position': "absolute", 'width': 80, 'height': 80, 'left': left, 'top': 100, 'background': "grey"}
-        self.folha = ht_ml.DIV("............ ............", style=style)
-        self.left = left
+    def __init__(self, bloco, texto, certa,
+        size=dict(width="25%", height="25%"), pos={'left': 0, 'top': 0}):
+        style = {'position': "absolute"}
+        style.update(**size)
+        style.update(**pos)
         self.certa = certa
         tela <= self.folha
         self.folha.ondragover = self.drag_over
