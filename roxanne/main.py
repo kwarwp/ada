@@ -119,7 +119,7 @@ class Bloco:
     def __init__(self, img):
         self.img = img
         self.monta = lambda *_: None
-        ordem = ["%02d"%x for x in range(1)]
+        ordem = ["%02d"%x for x in range(16)]
         self.tela = document["pydiv"]
         self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height='%dpx'%400))
         self.folha = html.DIV(style=dict(position="absolute",
