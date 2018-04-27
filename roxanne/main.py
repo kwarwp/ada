@@ -56,15 +56,16 @@ def main():
 
 class Folha:
     def __init__(self, bloco, left=0, top=0,
-        size=dict(width="25%", height="25%")):
-        style = {'position': "absolute"}
-        image_style = {'position': "absolute"}
+        size=dict(width="23%", height="23%")):
+        style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
+        image_style = {'position': "absolute", 'width': '400%', 'height': '400%'}
         w, h = int(size['width'][:-1]), int(size['height'][:-1])
         style.update(size)
-        image_style.update(left="%d%%" % (-left*w), top="%d%%" % (-top*h))
+        style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
+        image_style.update(left="%d%%" % (-left*4*w), top="%d%%" % (-top*4*h))
         fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)
-        self.folha <= html.IMG(Id="img"+fid, style=image_style)
+        self.folha <= html.IMG(Id="img"+fid, src=bloco.img, style=image_style)
         
         bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
@@ -113,11 +114,12 @@ class Suporte:
 
 class Bloco:
     def __init__(self, img):
+        self.img = img
         self.monta = lambda *_: None
         ordem = "10 410 310 210 110".split()
         self.tela = document["pydiv"]
-        self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height=400))
-        self.folha = html.DIV(style=dict(position="absolute", left=410, top=20, width=400, height=400))
+        self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height='%dpx'%400))
+        self.folha = html.DIV(style=dict(position="absolute", left=410, top=20, width=400, height='%dpx'%400))
         self.tela.html = ""
         self.tela <= self.suporte
         self.tela <= self.folha
