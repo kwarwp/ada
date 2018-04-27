@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃª regou a planta")
+        alert("VocÃÂª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -56,13 +56,14 @@ def main():
 
 class Folha:
     def __init__(self, bloco, left=0, top=0,
-        size=dict(width="23%", height="23%")):
+        size=dict(width="100px", height="100px")):
+#        size=dict(width="25%", height="25%")):
         style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
-        image_style = {'position': "absolute", 'width': '400%', 'height': '400%'}
-        w, h = int(size['width'][:-1]), int(size['height'][:-1])
+        image_style = {'position': "absolute", 'width': '400px', 'height': '400px'}
+        w, h = int(size['width'][:-2])+10, int(size['height'][:-2])+10
         style.update(size)
-        style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
-        image_style.update(left="%d%%" % (-left*4*w), top="%d%%" % (-top*4*h))
+        style.update(left="%dpx" % (left*w), top="%dpx" % (top*h))
+        image_style.update(left="%dpx" % (-left*w), top="%dpx" % (-top*h))
         fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)
         self.folha <= html.IMG(Id="img"+fid, src=bloco.img, style=image_style)
@@ -82,7 +83,7 @@ class Folha:
 class Suporte:
     def __init__(self, bloco, certa, left=0, top=0,
         size=dict(width="25%", height="25%")):
-        style = {'position': "absolute"}
+        style = {'position': "absolute", 'overflow': 'hidden'}
         w, h = int(size['width'][:-1]), int(size['height'][:-1])
         style.update(size)
         style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
@@ -101,9 +102,10 @@ class Suporte:
         ev.preventDefault()
         src_id = ev.data['text']
         elt = document[src_id]
-        elt.style.left = self.left
-        elt.style.top = self.top
+        #elt.style.left = self.left
+        #elt.style.top = self.top
         # elt.draggable = False  # don't drag any more
+        self.folha <= elt
         elt.style.cursor = "auto"
         certa = True
         if src_id != self.certa:
@@ -137,7 +139,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto estÃ¡ certo.")
+                input("O texto estÃÂ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
