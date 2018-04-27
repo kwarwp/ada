@@ -18,6 +18,7 @@ g6e="https://i.imgur.com/4vjrEEG.jpg"
 g6n="https://i.imgur.com/DcyUIgN.jpg"
 g6s="https://i.imgur.com/TbdLoXs.jpg"
 wpt="https://i.imgur.com/vc9RMEN.png"
+oce = "https://i.imgur.com/oDqeaBp.jpg"
 from _spy.vitollino.main import Cena, Elemento, Droppable, Dragger
 
 
@@ -28,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("Você regou a planta")
+        alert("VocÃª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -54,13 +55,18 @@ def main():
 
 
 class Folha:
-    def __init__(self, size=dict(width="25%", height="25%"), pos={'left': 0, 'top': 0}):
+    def __init__(self, bloco, left=0, top=0,
+        size=dict(width="25%", height="25%")):
         style = {'position': "absolute"}
-        style.update(**size)
-        style.update(**pos)
-        fid = "folha%d" % (pos['left'])
+        image_style = {'position': "absolute"}
+        w, h = int(size['width'][:-1]), int(size['height'][:-1])
+        style.update(size)
+        image_style.update(left="%d%%" % (-left*w), top="%d%%" % (-top*h))
+        fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)
-        tela <= self.folha
+        self.folha <= html.IMG(Id="img"+fid, style=image_style)
+        
+        bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
         self.folha.onmouseover = self.mouse_over
 
@@ -73,13 +79,15 @@ class Folha:
 
 
 class Suporte:
-    def __init__(self, bloco, texto, certa,
-        size=dict(width="25%", height="25%"), pos={'left': 0, 'top': 0}):
+    def __init__(self, bloco, certa, left=0, top=0,
+        size=dict(width="25%", height="25%")):
         style = {'position': "absolute"}
-        style.update(**size)
-        style.update(**pos)
+        w, h = int(size['width'][:-1]), int(size['height'][:-1])
+        style.update(size)
+        style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
         self.certa = certa
-        tela <= self.folha
+        self.folha = html.DIV(style=style)
+        bloco.suporte <= self.folha
         self.folha.ondragover = self.drag_over
         self.folha.ondrop = self.drop
         self.bloco = bloco
@@ -93,35 +101,32 @@ class Suporte:
         src_id = ev.data['text']
         elt = document[src_id]
         elt.style.left = self.left
-        elt.style.top = 100
-        elt.draggable = False  # don't drag any more
+        elt.style.top = self.top
+        # elt.draggable = False  # don't drag any more
         elt.style.cursor = "auto"
         certa = True
         if src_id != self.certa:
             elt.style.background = "red"
             certa = False
-            self.bloco.conta_peça(certa)
+            self.bloco.conta_pecas(certa)
 
 
 class Bloco:
-    def __init__(self):
+    def __init__(self, img):
         self.monta = lambda *_: None
         ordem = "10 410 310 210 110".split()
-        texto = "" \
-                "Era uma vez|" \
-                "de nós três|" \
-                "por cima|" \
-                "deu um salto|" \
-                "um gato pedrêz|" \
-                "".split("|")
-        tela = document["pydiv"]
-        tela.html = ""
+        self.tela = document["pydiv"]
+        self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height=400))
+        self.folha = html.DIV(style=dict(position="absolute", left=410, top=20, width=400, height=400))
+        self.tela.html = ""
+        self.tela <= self.suporte
+        self.tela <= self.folha
         self.pecas_colocadas = []
         #print(list(enumerate(ordem)))
         for pos, fl in enumerate(ordem):
-            Suporte(self, html, tela, pos * 100 + 10, "folha" + fl)
-        for pos, tx in enumerate(texto):
-            Folha(tx, html, tela, pos * 100 + 10)
+            Suporte(self, "folha" + fl, pos//4, pos%4)
+        for pos, tx in enumerate(ordem):
+            Folha(self, pos//4, pos%4)
 
     def inicia_de_novo(self):
         pass
@@ -130,7 +135,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto está certo.")
+                input("O texto estÃ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
@@ -147,4 +152,4 @@ class Bloco:
 
 if __name__ == "__main__":
     #main()
-    Bloco()
+    Bloco(oce)
