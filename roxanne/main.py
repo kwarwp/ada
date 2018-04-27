@@ -55,15 +55,15 @@ def main():
 
 
 class Folha:
-    def __init__(self, bloco, left=0, top=0,
+    def __init__(self, bloco, left=0, top=0, ileft=0, itop=0,
         size=dict(width="100px", height="100px")):
 #        size=dict(width="25%", height="25%")):
         style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
-        image_style = {'position': "relative", 'width': '400px', 'height': '400px'}
+        image_style = {'position': "relative", 'min-width': '400px', 'height': '400px'}
         w, h = int(size['width'][:-2]), int(size['height'][:-2])
         style.update(size)
         style.update(left="%dpx" % (left*(w+10)), top="%dpx" % (top*(h+10)))
-        image_style.update(left="%dpx" % (-left*w), top="%dpx" % (-top*h))
+        image_style.update(left="%dpx" % (-ileft*w), top="%dpx" % (-itop*h))
         fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)
         self.folha <= html.IMG(Id="img"+fid, src=bloco.img, width=400, height=400, style=image_style)
@@ -113,6 +113,7 @@ class Suporte:
             elt.style.background = "red"
             certa = False
             self.bloco.conta_pecas(certa)
+        return False
 
 
 class Bloco:
@@ -120,6 +121,9 @@ class Bloco:
         self.img = img
         self.monta = lambda *_: None
         ordem = ["%02d"%x for x in range(16)]
+        desordem = ordem[:]
+        from random import shuffle
+        shuffle(desordem)
         self.tela = document["pydiv"]
         self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height='%dpx'%400))
         self.folha = html.DIV(style=dict(position="absolute",
@@ -131,8 +135,8 @@ class Bloco:
         #print(list(enumerate(ordem)))
         for pos, fl in enumerate(ordem):
             Suporte(self, "folha" + fl, pos//4, pos%4)
-        for pos, tx in enumerate(ordem):
-            Folha(self, pos//4, pos%4)
+        for pos, tx in enumerate(desordem):
+            Folha(self, pos//4, pos%4, int(tx)//4, int(tx)%4)
 
     def inicia_de_novo(self):
         pass
