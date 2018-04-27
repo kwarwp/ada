@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃÂÃÂª regou a planta")
+        alert("VocÃÂÃÂÃÂÃÂª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -59,7 +59,7 @@ class Folha:
         size=dict(width="100px", height="100px")):
 #        size=dict(width="25%", height="25%")):
         style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
-        image_style = {'position': "absolute", 'width': '400px', 'height': '400px'}
+        image_style = {'position': "relative", 'width': '400px', 'height': '400px'}
         w, h = int(size['width'][:-2])+10, int(size['height'][:-2])+10
         style.update(size)
         style.update(left="%dpx" % (left*w), top="%dpx" % (top*h))
@@ -140,7 +140,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto estÃÂÃÂ¡ certo.")
+                input("O texto estÃÂÃÂÃÂÃÂ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
