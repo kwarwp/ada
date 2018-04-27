@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃÂª regou a planta")
+        alert("VocÃÂÃÂª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -100,6 +100,7 @@ class Suporte:
 
     def drop(self, ev):
         ev.preventDefault()
+        ev.stopPropagation()
         src_id = ev.data['text']
         elt = document[src_id]
         #elt.style.left = self.left
@@ -139,7 +140,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto estÃÂ¡ certo.")
+                input("O texto estÃÂÃÂ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
