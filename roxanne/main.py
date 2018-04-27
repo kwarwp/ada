@@ -60,13 +60,13 @@ class Folha:
 #        size=dict(width="25%", height="25%")):
         style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
         image_style = {'position': "relative", 'width': '400px', 'height': '400px'}
-        w, h = int(size['width'][:-2])+10, int(size['height'][:-2])+10
+        w, h = int(size['width'][:-2]), int(size['height'][:-2])
         style.update(size)
-        style.update(left="%dpx" % (left*w), top="%dpx" % (top*h))
+        style.update(left="%dpx" % (left*(w+10)), top="%dpx" % (top*(h+10)))
         image_style.update(left="%dpx" % (-left*w), top="%dpx" % (-top*h))
         fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)
-        self.folha <= html.IMG(Id="img"+fid, src=bloco.img, style=image_style)
+        self.folha <= html.IMG(Id="img"+fid, src=bloco.img, width=400, height=400, style=image_style)
         
         bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
@@ -141,7 +141,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto estÃÂÃÂÃÂÃÂ¡ certo.")
+                input("O texto esta certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
