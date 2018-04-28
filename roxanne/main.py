@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃÂÃÂª regou a planta")
+        alert("VocÃª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -49,7 +49,8 @@ def main():
     cenas.direita = cenan
     #print(dir(cenas))
     cenan.vai()
-    rega = Regador(wpt, style=dict(width=60, height=60, left=200, top=200), tit="regador")
+    rega = Regador(wpt, style=dict(width=60, height=60, left=200, top=200),
+                   tit="regador")
     rega.entra(cenan)
 
 
@@ -106,7 +107,7 @@ class Suporte:
                  size=dict(width="25%", height="25%")):
         self.ladrilho = None
         style = {'position': "absolute", 'overflow': 'hidden',
-                 'border':'1px solid white'}
+                 'border':'1px solid MidnightBlue'}
         w, h = int(size['width'][:-1]), int(size['height'][:-1])
         style.update(size)
         style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
@@ -118,7 +119,12 @@ class Suporte:
         self.bloco = bloco
 
     def recebe(self, folha, suporte):
-        self.folha <= folha.folha
+        if folha:
+            self.folha <= folha.folha
+            self.folha.style.border=0
+        else:
+            self.folha.style.border='1px solid MidnightBlue'
+
         suporte.recebe(self.ladrilho, None) if suporte else None
         self.ladrilho = folha
 
@@ -154,7 +160,7 @@ class Bloco:
         self.tela = document["pydiv"]
         self.suporte = html.DIV(style=dict(position="absolute",
         left=10, top=20, width=400, height='%dpx'%400, border=1,
-        borderColor="white"))
+        borderColor="slategrey"))
         self.folha = html.DIV(style=dict(position="absolute",
         left=410, top=20, width=450, height='%dpx'%450))
         self.tela.html = ""
