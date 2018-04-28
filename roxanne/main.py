@@ -56,13 +56,14 @@ def main():
 
 class Folha:
     def __init__(self, bloco, left=0, top=0, ileft=0, itop=0,
-        size=dict(width="100px", height="100px")):
+                 size=dict(width="100px", height="100px")):
+        self.suporte = None
         w, h = int(size['width'][:-2]), int(size['height'][:-2])
         ileft, itop = "%dpx" % (ileft*w), "%dpx" % (itop*h)
         style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%',
-        'background-image': 'url({})'.format(bloco.img),
-        'background-position': '{} {}'.format(ileft, itop),
-        'background-size': '{}px {}px'.format(400, 400),
+                'background-image': 'url({})'.format(bloco.img),
+                'background-position': '{} {}'.format(ileft, itop),
+                'background-size': '{}px {}px'.format(400, 400),
         }
         image_style = {'position': "relative", 'min-width': '400px',
         'height': '400px'}  # , 'pointer-events': 'none'}
@@ -74,6 +75,7 @@ class Folha:
         bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
         self.folha.onmouseover = self.mouse_over
+        bloco.folhas[fid]=self
         #self.fo_img.ondragstart = self.img_drag_start
 
     def mouse_over(self, ev):
@@ -91,12 +93,20 @@ class Folha:
         ev.data.effectAllowed = 'move'
         return False
 
+    def troca(self, suporte):
+        self.folha.style.left = 0
+        self.folha.style.top = 0
+        suporte.recebe(self, self.suporte)
+        self.suporte = suporte
+        self.folha.style.cursor = "auto"
+
 
 class Suporte:
     def __init__(self, bloco, certa, left=0, top=0,
-        size=dict(width="25%", height="25%")):
+                 size=dict(width="25%", height="25%")):
+        self.ladrilho = None
         style = {'position': "absolute", 'overflow': 'hidden',
-        'border':'1px solid white'}
+                 'border':'1px solid white'}
         w, h = int(size['width'][:-1]), int(size['height'][:-1])
         style.update(size)
         style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
@@ -107,6 +117,11 @@ class Suporte:
         self.folha.ondrop = self.drop
         self.bloco = bloco
 
+    def recebe(self, folha, suporte):
+        self.folha <= folha.folha
+        suporte.recebe(self.ladrilho, None) if suporte else None
+        self.ladrilho = folha
+
     def drag_over(self, ev):
         ev.data.dropEffect = 'move'
         ev.preventDefault()
@@ -116,12 +131,7 @@ class Suporte:
         ev.preventDefault()
         ev.stopPropagation()
         src_id = ev.data['text']
-        elt = document[src_id]
-        elt.style.left = 0
-        elt.style.top = 0
-        # elt.draggable = False  # don't drag any more
-        self.folha <= elt
-        elt.style.cursor = "auto"
+        self.bloco.folhas[src_id].troca(self) 
         """
         certa = True
         if src_id != self.certa:
@@ -135,6 +145,7 @@ class Suporte:
 class Bloco:
     def __init__(self, img):
         self.img = img
+        self.folhas = {}
         self.monta = lambda *_: None
         ordem = ["%02d"%x for x in range(16)]
         desordem = ordem[:]
