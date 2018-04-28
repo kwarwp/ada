@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃÂÃÂÃÂÃÂª regou a planta")
+        alert("VocÃª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -49,34 +49,31 @@ def main():
     cenas.direita = cenan
     #print(dir(cenas))
     cenan.vai()
-    rega = Regador(wpt, style=dict(width=60, height=60, left=200, top=200), tit="regador")
+    rega = Regador(wpt, style=dict(width=60, height=60, left=200, top=200),
+                   tit="regador")
     rega.entra(cenan)
 
 
 
 class Folha:
     def __init__(self, bloco, left=0, top=0, ileft=0, itop=0,
-                 size=dict(width="100px", height="100px")):
+                 size=dict(width=100, height=100)):
         self.suporte = None
-        w, h = int(size['width'][:-2]), int(size['height'][:-2])
+        w, h = (80, 80)  # size.values()
         ileft, itop = "%dpx" % (ileft*w), "%dpx" % (itop*h)
-        style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%',
+        style = {'position': 'absolute', 'overflow': 'hidden',
                 'background-image': 'url({})'.format(bloco.img),
                 'background-position': '{} {}'.format(ileft, itop),
                 'background-size': '{}px {}px'.format(400, 400),
         }
-        image_style = {'position': "relative", 'min-width': '400px',
-        'height': '400px'}  # , 'pointer-events': 'none'}
-        style.update(size)
+        style.update({k:'{}px'.format(v) for k, v in size.items() })
         style.update(left="%dpx" % (left*(w+10)), top="%dpx" % (top*(h+10)))
-        #image_style.update(left="%dpx" % (-ileft*w), top="%dpx" % (-itop*h))
         fid = "folha%d" % (10*top+left)
         self.folha = html.DIV(Id=fid, style=style, draggable=True)        
         bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
         self.folha.onmouseover = self.mouse_over
         bloco.folhas[fid]=self
-        #self.fo_img.ondragstart = self.img_drag_start
 
     def mouse_over(self, ev):
         ev.target.style.cursor = "pointer"
@@ -106,8 +103,8 @@ class Suporte:
                  size=dict(width="25%", height="25%")):
         self.ladrilho = None
         style = {'position': "absolute", 'overflow': 'hidden',
-                 'border':'1px solid white'}
-        w, h = int(size['width'][:-1]), int(size['height'][:-1])
+                 'border':'1px solid MidnightBlue'}
+        w, h = float(size['width'][:-1]), float(size['height'][:-1])
         style.update(size)
         style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
         self.certa = certa
@@ -118,7 +115,12 @@ class Suporte:
         self.bloco = bloco
 
     def recebe(self, folha, suporte):
-        self.folha <= folha.folha
+        if folha:
+            self.folha <= folha.folha
+            self.folha.style.border=0
+        else:
+            self.folha.style.border='1px solid MidnightBlue'
+
         suporte.recebe(self.ladrilho, None) if suporte else None
         self.ladrilho = folha
 
@@ -143,29 +145,33 @@ class Suporte:
 
 
 class Bloco:
-    def __init__(self, img):
+    def __init__(self, img, nx=4, ny=4, w=400, h=400):
         self.img = img
         self.folhas = {}
         self.monta = lambda *_: None
-        ordem = ["%02d"%x for x in range(16)]
+        # ordem = ["%02d"%x for x in range(nx*ny)]
+        ordem = list(range(nx*ny))
         desordem = ordem[:]
         from random import shuffle
         shuffle(desordem)
         self.tela = document["pydiv"]
         self.suporte = html.DIV(style=dict(position="absolute",
-        left=10, top=20, width=400, height='%dpx'%400, border=1,
-        borderColor="white"))
+        left=10, top=20, width=w, height='%dpx'%h, border=1,
+        borderColor="slategrey"))
         self.folha = html.DIV(style=dict(position="absolute",
-        left=410, top=20, width=450, height='%dpx'%450))
+        left=w+10, top=20, width=450, height='%dpx'%450))
         self.tela.html = ""
         self.tela <= self.suporte
         self.tela <= self.folha
         self.pecas_colocadas = []
         #print(list(enumerate(ordem)))
         for pos, fl in enumerate(ordem):
-            Suporte(self, "folha" + fl, pos//4, pos%4)
+            Suporte(self, "folha%02d" % fl, pos//nx, pos%nx,
+                    size=dict(width='{}%'.format(100/nx),
+                    height='{}%'.format(100/ny)))
         for pos, tx in enumerate(desordem):
-            Folha(self, pos//4, pos%4, int(tx)//4, int(tx)%4)
+            Folha(self, pos//nx, pos%nx, int(tx)//nx, int(tx)%nx,
+                    size=dict(width=w//nx, height=h/ny))
 
     def inicia_de_novo(self):
         pass
@@ -191,4 +197,4 @@ class Bloco:
 
 if __name__ == "__main__":
     #main()
-    Bloco(oce)
+    Bloco(oce, 5, 5)
