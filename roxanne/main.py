@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("Você regou a planta")
+        alert("VocÃª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -57,33 +57,46 @@ def main():
 class Folha:
     def __init__(self, bloco, left=0, top=0, ileft=0, itop=0,
         size=dict(width="100px", height="100px")):
-#        size=dict(width="25%", height="25%")):
-        style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%'}
-        image_style = {'position': "relative", 'min-width': '400px', 'height': '400px'}
         w, h = int(size['width'][:-2]), int(size['height'][:-2])
+        ileft, itop = "%dpx" % (ileft*w), "%dpx" % (itop*h)
+        style = {'position': 'absolute', 'overflow': 'hidden', 'margin':'1%',
+        'background-image': 'url({})'.format(bloco.img),
+        'background-position': '{} {}'.format(ileft, itop),
+        'background-size': '{}px {}px'.format(400, 400),
+        }
+        image_style = {'position': "relative", 'min-width': '400px',
+        'height': '400px'}  # , 'pointer-events': 'none'}
         style.update(size)
         style.update(left="%dpx" % (left*(w+10)), top="%dpx" % (top*(h+10)))
-        image_style.update(left="%dpx" % (-ileft*w), top="%dpx" % (-itop*h))
+        #image_style.update(left="%dpx" % (-ileft*w), top="%dpx" % (-itop*h))
         fid = "folha%d" % (10*top+left)
-        self.folha = html.DIV(Id=fid, style=style, draggable=True)
-        self.folha <= html.IMG(Id="img"+fid, src=bloco.img, width=400, height=400, style=image_style)
-        
+        self.folha = html.DIV(Id=fid, style=style, draggable=True)        
         bloco.folha <= self.folha
         self.folha.ondragstart = self.drag_start
         self.folha.onmouseover = self.mouse_over
+        #self.fo_img.ondragstart = self.img_drag_start
 
     def mouse_over(self, ev):
         ev.target.style.cursor = "pointer"
+        return False
+
+    def img_drag_start(self, ev):
+        ev.preventDefault()
+        ev.stopPropagation()
+        return False
 
     def drag_start(self, ev):
+        ev.stopPropagation()
         ev.data['text'] = ev.target.id
         ev.data.effectAllowed = 'move'
+        return False
 
 
 class Suporte:
     def __init__(self, bloco, certa, left=0, top=0,
         size=dict(width="25%", height="25%")):
-        style = {'position': "absolute", 'overflow': 'hidden'}
+        style = {'position': "absolute", 'overflow': 'hidden',
+        'border':'1px solid white'}
         w, h = int(size['width'][:-1]), int(size['height'][:-1])
         style.update(size)
         style.update(left="%d%%" % (left*w), top="%d%%" % (top*h))
@@ -97,23 +110,26 @@ class Suporte:
     def drag_over(self, ev):
         ev.data.dropEffect = 'move'
         ev.preventDefault()
+        return False
 
     def drop(self, ev):
         ev.preventDefault()
         ev.stopPropagation()
         src_id = ev.data['text']
         elt = document[src_id]
-        #elt.style.left = self.left
-        #elt.style.top = self.top
+        elt.style.left = 0
+        elt.style.top = 0
         # elt.draggable = False  # don't drag any more
         self.folha <= elt
         elt.style.cursor = "auto"
+        """
         certa = True
         if src_id != self.certa:
             elt.style.background = "red"
             certa = False
             self.bloco.conta_pecas(certa)
-        return False
+        """
+        #return False
 
 
 class Bloco:
@@ -125,7 +141,9 @@ class Bloco:
         from random import shuffle
         shuffle(desordem)
         self.tela = document["pydiv"]
-        self.suporte = html.DIV(style=dict(position="absolute", left=10, top=20, width=400, height='%dpx'%400))
+        self.suporte = html.DIV(style=dict(position="absolute",
+        left=10, top=20, width=400, height='%dpx'%400, border=1,
+        borderColor="white"))
         self.folha = html.DIV(style=dict(position="absolute",
         left=410, top=20, width=450, height='%dpx'%450))
         self.tela.html = ""
