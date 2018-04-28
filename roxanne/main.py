@@ -59,12 +59,12 @@ class Folha:
     def __init__(self, bloco, left=0, top=0, ileft=0, itop=0,
                  size=dict(width=100, height=100)):
         self.suporte = None
-        w, h = (80, 80)  # size.values()
+        w, h = size.values()
         ileft, itop = "%dpx" % (ileft*w), "%dpx" % (itop*h)
         style = {'position': 'absolute', 'overflow': 'hidden',
                 'background-image': 'url({})'.format(bloco.img),
                 'background-position': '{} {}'.format(ileft, itop),
-                'background-size': '{}px {}px'.format(400, 400),
+                'background-size': '{}px {}px'.format(*bloco.size),
         }
         style.update({k:'{}px'.format(v) for k, v in size.items() })
         style.update(left="%dpx" % (left*(w+10)), top="%dpx" % (top*(h+10)))
@@ -147,6 +147,7 @@ class Suporte:
 class Bloco:
     def __init__(self, img, nx=4, ny=4, w=400, h=400):
         self.img = img
+        *self.size = w, h
         self.folhas = {}
         self.monta = lambda *_: None
         # ordem = ["%02d"%x for x in range(nx*ny)]
@@ -159,7 +160,7 @@ class Bloco:
         left=10, top=20, width=w, height='%dpx'%h, border=1,
         borderColor="slategrey"))
         self.folha = html.DIV(style=dict(position="absolute",
-        left=w+10, top=20, width=450, height='%dpx'%450))
+        left=w+20, top=20, width=w+nx*10, height='%dpx'%(h+ny*10)))
         self.tela.html = ""
         self.tela <= self.suporte
         self.tela <= self.folha
@@ -197,4 +198,4 @@ class Bloco:
 
 if __name__ == "__main__":
     #main()
-    Bloco(oce, 5, 5)
+    Bloco(oce, 6, 6)
