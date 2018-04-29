@@ -1,0 +1,1 @@
+XXXX - executa_acao if error else lambda self.error - XXXX
