@@ -31,3 +31,10 @@ SyntaxError: invalid syntax
                                                   ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Apr 29 2018 09:37:33.484 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 195
+  self.monta = self..nao_monta
+                     ^
+SyntaxError: invalid syntax
+'''},
