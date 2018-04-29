@@ -3,3 +3,4 @@ XXXX - executa_acao if error else lambda self.error - XXXX
   oce = "https://i.imgur.com/oDqeaBp.jpg
                                         ^
 SyntaxError: EOL while scanning string literal
+XXXX - executa_acao if error else lambda self.error - XXXX
