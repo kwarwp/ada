@@ -9,3 +9,10 @@ XXXX - executa_acao if error else lambda self.error - XXXXSun Apr 29 2018 08:59:
   class Planta(Cena, Droppable)
                                 ^
 SyntaxError: invalid syntax
+
+Sun Apr 29 2018 09:03:17 GMT-0300 (-03) -X- SuPyGirls -X-
+
+ module <string> line 41
+  def main(:
+            ^
+SyntaxError: invalid syntax
