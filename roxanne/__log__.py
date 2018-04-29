@@ -24,3 +24,10 @@ SyntaxError: invalid syntax
                     ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Apr 29 2018 09:29:28 GMT-0300 (-03) ms: 380 -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 4
+  STYLE['width' = 740
+                                                  ^
+SyntaxError: invalid syntax
+'''},
