@@ -1,9 +1,11 @@
-# ada.grace.main.by 
-# https://s1-ssl.https://s1-ssl.dmcdn.net/nnmXK/526x297-a7T.jpg
-def main():
-  a = 67 
-  b = 29
-  multiplicacao = a * b 
-  print ("A multiplicaçao de", a, "*", b,"eh igual a",multiplicacao)
+from _spy.vitollino.main import cena, elemento, texto
 
-main()
+linkcena = "https://tse1.mm.bing.net/th?id=OIP.gq6rYCRLClsXkh8VyDBOIwHaEK&pid=15.1&P=0&w=326&h=184"
+
+def historiaEmocao ():
+  cena1 = cena(img=linkcena)
+  personagem = elemento()
+  textoPersonagens = texto()
+  cena1.vai()
+
+historiaEmocao()
