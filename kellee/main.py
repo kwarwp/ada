@@ -1,2 +1,2 @@
 # ada.kellee.main.py
-texto = &quot;Vovô viu a maçã ubiqüa&quot;
+texto = &quot;VovÃ´ viu a maÃ§Ã£ ubiqÃ¼a&quot;
