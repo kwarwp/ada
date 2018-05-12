@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃª regou a planta")
+        alert("VocÃÂª regou a planta")
         
 class Regador(Elemento, Dragger):
 
