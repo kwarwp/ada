@@ -1,7 +1,8 @@
 # ada.kellee.main.py
-texto = "VovÃ´ viu a maÃ§Ã£ ubiqÃ¼a"
+texto = "VovÃÂ´ viu a maÃÂ§ÃÂ£ ubiqÃÂ¼a"
 from _spy.vitollino.main import Cena,Elemento,Texto,STYLE,Dragger, Droppable, INVENTARIO
 STYLE["width"] = 800
+STYLE["height"] = "600px"
 children = "https://i.imgur.com/4fTrn8X.jpg"
 toy = "https://i.imgur.com/57cOaZ9.jpg"
 sckoolhouse = "https://i.imgur.com/oXsdN2c.jpg"
@@ -37,12 +38,16 @@ def trigonometria():
     s_trig.direita, e_trig.direita = o_trig, s_trig
     chistyle = dict(left = 610, top = 90, width = 80, maxHeight = "80px")
     globstyle = dict(left = 310, top = 90, width = 80, maxHeight = "80px")
+    volcstyle = dict(left = 30, top = 500, width = 100, maxHeight = "120px")
     #chistyle.update({"max-height" = 200})
     vdgball = EleDG(ball, tit = "earth globe", drag=True,
     style=chistyle, cena=e_trig, vai=Text(e_trig,"please, help me",
         foi=lambda: INVENTARIO.bota(vdgball)).vai)
-    eglobe = EleDG(globe, tit = "volcano", drag=True, drop="earth globe",
-    style=globstyle, cena=o_trig, vai=Text(e_trig,"please, help me",
+    eglobe = EleDG(globe, tit = "volcano", drag=True,
+    style=globstyle, cena=o_trig, vai=Text(o_trig,"please, help me",
+        foi=lambda: INVENTARIO.bota(eglobe)).vai)
+    volc = EleDG(volcano, tit = "glow ball", drop="volcano",
+    style=volcstyle, cena=o_trig, vai=Text(o_trig,"please, help me",
         foi=lambda: INVENTARIO.bota(eglobe)).vai)
     txtchildren = Texto(n_trig,"please, help me")
     e_trig.vai()
