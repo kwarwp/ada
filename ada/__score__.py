@@ -6,3 +6,5 @@
     {'doc_id': '75cc5862', 'carta': 'carta', 'casa': 'casa', 'move': 'START', 'ponto': 0, 'valor': 1, '_level': 2, 'tempo': 1527290209090},
     {'doc_id': 'e026a688', 'carta': 'carta', 'casa': 'casa', 'move': 'START', 'ponto': 0, 'valor': 1, '_level': 2, 'tempo': 1527290585272},
     {'doc_id': '5a6a9f59', 'carta': 'carta', 'casa': 'casa', 'move': 'START', 'ponto': 0, 'valor': 1, '_level': 2, 'tempo': 1527290870252},
+],
+"d4fa7c91": {"author_nick": "carlo", "author_name": "carlo emmanoel", "author_email": "carlo@ufrj.br", "author_org": "LABASE", "author_site": "labase.selfip.org", "author_public": "on"},[
