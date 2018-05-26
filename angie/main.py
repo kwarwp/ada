@@ -1,5 +1,5 @@
 # ada.angie.main.py
-x = 'é'
-def y():
-    return(1)
-print(1)
+OCEANO = "https://i.imgur.com/NRi5i6d.jpg"
+
+from _spy.vitollino.main import Cena
+Cena(OCEANO).vai()
