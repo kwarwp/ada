@@ -13,3 +13,5 @@
 ],
 "97e0f85f": {"author_nick": "carlo", "author_name": "carlo emmanoel", "author_email": "carlo@ufrj.br", "author_org": "LABASE", "author_site": "labase.selfip.org", "author_public": "on"},[
     {'doc_id': '3853e1bb', 'carta': 'carta', 'casa': 'casa', 'move': 'START', 'ponto': 0, 'valor': 1, '_level': 2, 'tempo': 1527295007702},
+],
+"e48e095d": {"author_nick": "carlo", "author_name": "carlo emmanoel", "author_email": "carlo@ufrj.br", "author_org": "LABASE", "author_site": "labase.selfip.org", "author_public": "on"},[
