@@ -13,3 +13,10 @@ SyntaxError: invalid syntax
      ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat May 26 2018 10:25:36.569 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 2
+  print(1
+       ^
+SyntaxError: Unbalanced bracket (
+'''},
