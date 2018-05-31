@@ -47,3 +47,9 @@ NameError: name 'Glow' is not defined
     _gs=Glow('pydiv')
 NameError: name 'Glow' is not defined
 '''},
+{'date': 'Thu May 31 2018 13:37:19.866 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+Exception: Cannot read property '__class__' of null
+  module '$exec_466' line 2
+from vpython.main import *
+'''},
