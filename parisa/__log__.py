@@ -125,3 +125,21 @@ ImportError: cannot import name 'Glow'
     raise error. HTTPError('file not found')
 HTTPError: file not found
 '''},
+{'date': 'Thu May 31 2018 14:06:19.294 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 188
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 360
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 332
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 349
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 4
+    from _spy.vpython.main import *
+  module _spy.vpython.main line 34
+    color = window.glowscript.color
+AttributeError: no attribute glowscript for [object Window]
+'''},
