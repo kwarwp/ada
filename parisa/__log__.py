@@ -103,3 +103,25 @@ AttributeError: no attribute glowscript for [object Window]
     from _spy.vpython.main import Glow, canvas, box
 ImportError: cannot import name 'Glow'
 '''},
+{'date': 'Thu May 31 2018 13:56:50.237 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 188
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 360
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 332
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 349
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 4
+    from _spy.vpython.main import *
+  module _spy.vpython.main line 12
+    create_script_tag('/js/glow.2.7.min.js')
+  module _spy.vpython.utils line 7
+    _fp = urllib.request.urlopen(src)
+  module urllib.request line 37
+    raise error. HTTPError('file not found')
+HTTPError: file not found
+'''},
