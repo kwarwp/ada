@@ -143,3 +143,9 @@ HTTPError: file not found
     color = window.glowscript.color
 AttributeError: no attribute glowscript for [object Window]
 '''},
+{'date': 'Thu May 31 2018 14:34:36.409 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+Exception: Cannot read property '__class__' of null
+  module '$exec_615' line 4
+from _spy.vpython.main import *
+'''},
