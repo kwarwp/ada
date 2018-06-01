@@ -563,3 +563,7 @@ HTTPError: file not found
     rate(10)
 TypeError: rate() missing 1 positional argument: ['func']
 '''},
+{'date': 'Fri Jun 01 2018 09:02:18.332 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: cb is not a function>
+'''},
