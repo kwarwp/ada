@@ -167,3 +167,21 @@ from _spy.vpython.main import *
     color = window.glowscript.color
 AttributeError: no attribute glowscript for [object Window]
 '''},
+{'date': 'Fri Jun 01 2018 05:32:25.943 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 171
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 188
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 360
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 332
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 349
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 5
+    _gs=Glow('pydev')
+  module _spy.vpython.main line 17
+    self._id = document.get(id=container)[0]
+IndexError: list index out of range
+'''},
