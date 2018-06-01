@@ -34,9 +34,8 @@ php = [sphere(pos=(x/2+2.2, 0.15, -0.9), size=(0.3,0.3,0.3), **silv) for x in ra
 pts = [h1, h2, aft, fr, body, caft, cfor, cbody]+per+php+phs
 sup = compound(pts, pos=(-1,0,0))
 
+def sail():
+    rate(0.5, sail)
+    sup.pos += vec(-1,0,0)
 
-def sail(x):
-    sup.pos = vec(-1+x,0,0)
-    
-for x in range(10):
-    rate(0.1, lambda *_: sail(x))
+sail()
