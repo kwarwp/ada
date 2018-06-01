@@ -29,7 +29,7 @@ ptub=cylinder(pos=(5.0, 2, 0), size=(0.2,0.4,0.4), **hull)
 pbody=cylinder(pos=(5, 0, 0), axis=(0,1,0), size=(2,0.4,0.4) , **hull)
 per = [paft, pfor, ptub, pbody]
 # --- portholes ---
-phs = [sphere(pos=(x/2+2.5, 0.15, 0.9), size=(0.3,0.3,0.3), **silv) for x in range(4)]
-php = [sphere(pos=(x/2+2.5, 0.15, -0.9), size=(0.3,0.3,0.3), **silv) for x in range(4)]
+phs = [sphere(pos=(x/2+2.2, 0.15, 0.9), size=(0.3,0.3,0.3), **silv) for x in range(5)]
+php = [sphere(pos=(x/2+2.2, 0.15, -0.9), size=(0.3,0.3,0.3), **silv) for x in range(5)]
 pts = [h1, h2, aft, fr, body, caft, cfor, cbody]+per+php+phs
 sup = compound(pts, pos=(-1,0,0))
