@@ -37,5 +37,7 @@ sup = compound(pts, pos=(-1,0,0))
 def sail():
     rate(2, sail)
     sup.pos += vec(0.2,0,0)
+    sup.rotate(angle=0.02,
+           axis=vec(0,1,0))
 
 sail()
