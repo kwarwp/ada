@@ -35,7 +35,7 @@ pts = [h1, h2, aft, fr, body, caft, cfor, cbody]+per+php+phs
 sup = compound(pts, pos=(-1,0,0))
 
 def sail():
-    rate(0.5, sail)
-    sup.pos += vec(-1,0,0)
+    rate(2, sail)
+    sup.pos += vec(0.2,0,0)
 
 sail()
