@@ -397,3 +397,25 @@ TypeError: __init__() got an unexpected keyword argument 'pos'
     self._id = document.get(id=container)[0]
 IndexError: list index out of range
 '''},
+{'date': 'Fri Jun 01 2018 07:44:42.811 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 4
+    from _spy.vpython.main import *
+  module _spy.vpython.main line 12
+    create_script_tag(project_stdlib + 'glow.2.7.min.js')
+  module _spy.vpython.utils line 7
+    _fp = urllib.request.urlopen(src)
+  module urllib.request line 37
+    raise error. HTTPError('file not found')
+HTTPError: file not found
+'''},
