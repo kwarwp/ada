@@ -567,3 +567,7 @@ TypeError: rate() missing 1 positional argument: ['func']
 'error': '''
 Exception: <TypeError: cb is not a function>
 '''},
+{'date': 'Fri Jun 01 2018 09:48:25.258 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+Exception: <SyntaxError: missing ) in parenthetical>
+'''},
