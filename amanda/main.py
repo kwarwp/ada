@@ -23,7 +23,7 @@ class CenaTutorialInterativo():
     self.cena_t.direita = self.cena_d
     self.cena_t.esquerda = self.cena_e
     
-    self.cena_t.meio = Cena(vai=self.vai_importar)
+    self.cena_t.meio = Cena(vai=self.cena_o)
     self.cena_t.vai()
     
     
