@@ -15,7 +15,20 @@ cretaceo_o = "https://i.imgur.com/QFLlccY.jpg"
 cretaceo_n = "https://i.imgur.com/k1LChZw.jpg"
 
 class CenaTutorialInterativo():
-    def __init__(self):
+    CENA_TUTORIAL = None
+    def vai(self):
+        cti = CenaTutorialInterativo.CENA_TUTORIAL
+        if cti is None:
+            cti =  CenaTutorialInterativo.CENA_TUTORIAL = CenaTutorialInterativo().__cria()
+        cti.cena_t.vai()
+        return cti
+    def __cria(self):
+        def _vai_tutorial():
+            try:
+                cti().vai()
+            except:
+                from meredith.main import CenaTutorialInterativo as cti
+                cti().vai()
     
         self.cena_t = Cena(img = TutorialInterativo)
 
@@ -29,11 +42,11 @@ class CenaTutorialInterativo():
         self.cena_t.direita = self.cena_d
         self.cena_t.esquerda = self.cena_e
 
-        self.cena_t.meio = Cena()  #vai=self.cena_o)
-        self.cena_t.vai()
+        self.cena_t.meio = Cena(vai=_vai_tutorial)
+        return self
     
 if __name__ == "__main__":
-    CenaTutorialInterativo()
+    CenaTutorialInterativo().vai()
 
 """
   def vai(self, *_):
