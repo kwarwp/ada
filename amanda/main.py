@@ -41,7 +41,7 @@ if __name__ == "__main__":
     
     
 class CenaCretaceo():
-  def __init__(self):
+  def (self):
     self.cena_n = Cena(img = cretaceo_n)
     self.cena_o = Cena(cretaceo_o, direita=self.cena_n)
     self.cena_s  = Cena(cretaceo_s, direita=self.cena_o)
