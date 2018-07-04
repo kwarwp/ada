@@ -9,10 +9,10 @@ Cena_direita = "https://i.imgur.com/yWH5AGZ.png"
 Cena_esquerda = "https://i.imgur.com/AegnKJL.png"
 comousarelemento = "https://i.imgur.com/amn4taQ.png"
 
-#cretaceo_l = "https://i.imgur.com/O3o9Oqx.jpg"
-#cretaceo_s = "https://i.imgur.com/c9lK8Vm.jpg"
-#cretaceo_o = "https://i.imgur.com/QFLlccY.jpg"
-#cretaceo_n = "https://i.imgur.com/k1LChZw.jpg"
+cretaceo_l = "https://i.imgur.com/O3o9Oqx.jpg"
+cretaceo_s = "https://i.imgur.com/c9lK8Vm.jpg"
+cretaceo_o = "https://i.imgur.com/QFLlccY.jpg"
+cretaceo_n = "https://i.imgur.com/k1LChZw.jpg"
 
 class CenaTutorialInterativo():
     def __init__(self):
