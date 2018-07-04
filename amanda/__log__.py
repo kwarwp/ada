@@ -55,3 +55,9 @@ AttributeError: 'CenaTutorialInterativo' object has no attribute 'cena_t'
     cti.vai()
 UnboundLocalError: local variable 'cti' referenced before assignment
 '''},
+{'date': 'Wed Jul 04 2018 13:03:43.918 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+RuntimeError: too much recursion
+  module '$exec_1761' line 23
+        cti.vai()
+'''},
