@@ -34,7 +34,8 @@ class CenaTutorialInterativo():
     
 if __name__ == "__main__":
     CenaTutorialInterativo()
-    
+
+"""
   def vai(self, *_):
     self.cena_t.vai()
     
@@ -68,3 +69,4 @@ def go_cretaceo():
 
 if __name__ == "__main__":
 	go_cretaceo()
+"""
