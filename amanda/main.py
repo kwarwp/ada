@@ -15,23 +15,25 @@ comousarelemento = "https://i.imgur.com/amn4taQ.png"
 #cretaceo_n = "https://i.imgur.com/k1LChZw.jpg"
 
 class CenaTutorialInterativo():
-  def __init__(self):
+    def __init__(self):
     
-    self.cena_t = Cena(img = TutorialInterativo)
-    
-    self.cena_d = Cena(Cena_direita, esquerda=self.cena_t)
+        self.cena_t = Cena(img = TutorialInterativo)
 
-    self.cena_e  = Cena(Cena_esquerda, direita=self.cena_t)
+        self.cena_d = Cena(Cena_direita, esquerda=self.cena_t)
 
+        self.cena_e  = Cena(Cena_esquerda, direita=self.cena_t)
+
+
+        #self.cena_t = Cena(img = TutorialInterativo)
+
+        self.cena_t.direita = self.cena_d
+        self.cena_t.esquerda = self.cena_e
+
+        self.cena_t.meio = Cena()  #vai=self.cena_o)
+        self.cena_t.vai()
     
-    #self.cena_t = Cena(img = TutorialInterativo)
-    
-    self.cena_t.direita = self.cena_d
-    self.cena_t.esquerda = self.cena_e
-    
-    self.cena_t.meio = Cena(vai=self.cena_o)
-    self.cena_t.vai()
-    
+if __name__ == "__main__":
+    CenaTutorialInterativo()
     
 #  def vai(self, *_):
 #    self.cena_t.vai()
