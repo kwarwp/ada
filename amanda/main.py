@@ -13,6 +13,7 @@ comousarelemento = "https://i.imgur.com/amn4taQ.png"
 #cretaceo_s = "https://i.imgur.com/c9lK8Vm.jpg"
 #cretaceo_o = "https://i.imgur.com/QFLlccY.jpg"
 #cretaceo_n = "https://i.imgur.com/k1LChZw.jpg"
+
 class CenaTutorialInterativo():
   def __init__(self):
     
