@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("Você regou a planta")
+        alert("VocÃª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -181,7 +181,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto está certo.")
+                input("O texto estÃ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
