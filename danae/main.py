@@ -1,4 +1,4 @@
-from _spy.vitollino.main import Cena, Texto, Elemento, STYLE
+from _spy.vitollino.main import Cena, Texto, Elemento, STYLE, Codigo
 
 STYLE['width'] = 1000
 STYLE['height'] = "600px"
@@ -10,7 +10,7 @@ portao = "https://activufrj.nce.ufrj.br/file/pedropeclat/1528988110963.png?disp=
 def qualquernome():
 
     cena1 = Cena(img = entrada)
-    elemento1 = Elemento(img = pixacao, style = dict(left=0, top=95,height= '505px', width= 250,bottom=20,))
+    elemento1 = Codigo(img = pixacao, style = dict(left=0, top=95,height= '505px', width= 250,bottom=20,))
     elemento2 = Elemento(img = portao, style = dict(left= 215, top=0,height= '600px', width= 575,bottom=0))
     lago = Cena(img = lagodastartarugas)
     elemento1.entra(cena1)
