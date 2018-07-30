@@ -19,3 +19,10 @@
     def rp(cod, keys=PKEYS[:], mark='<span class="hljs-keyword">{}</span>'):
 NameError: name 'PKEYS' is not defined
 '''},
+{'date': 'Mon Jul 30 2018 12:51:52.955 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 20
+  cena1 = Cena(img = entrada, cena2)
+                                   ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
