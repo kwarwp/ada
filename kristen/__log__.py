@@ -1840,3 +1840,10 @@ SyntaxError: invalid syntax
                                                                                                                                                                                                                                                                                                                                                                                                                                ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 20:25:20.465 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 248
+  MENSAGENS=[[fundo ,"primeiramente para usar a função labirinto do vitollino precisa ter definido as salas," 
+                                                                                                                                                                                                                                                                                                                                                                                                                ^
+SyntaxError: invalid syntax
+'''},
