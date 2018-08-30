@@ -1854,3 +1854,10 @@ SyntaxError: invalid syntax
                                                                                        ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 20:28:00.551 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 248
+  MENSAGENS=[[fundo,"Aprendendo o arrasta-solta!","""def teste():
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+SyntaxError: invalid syntax
+'''},
