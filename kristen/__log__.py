@@ -877,3 +877,10 @@ AttributeError: 'Elemento' object has no attribute '_auto_score'
   ^
 IndentationError: expected an indented block
 '''},
+{'date': 'Thu Aug 30 2018 14:53:46.672 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 56
+  _score = None
+  ^
+IndentationError: unexpected indent
+'''},
