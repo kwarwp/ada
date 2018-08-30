@@ -1358,3 +1358,10 @@ AttributeError: 'Elemento' object has no attribute 'nome'
     self.scorer.update(valor=cena.nome, move=self.xy,
 AttributeError: 'Elemento' object has no attribute 'scorer'
 '''},
+{'date': 'Thu Aug 30 2018 15:53:28.650 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 113
+  casa=(styler["left"], styler["top"] if "top" in styler else 0))
+  ^
+IndentationError: unexpected indent
+'''},
