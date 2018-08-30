@@ -1365,3 +1365,10 @@ AttributeError: 'Elemento' object has no attribute 'scorer'
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 15:53:43.196 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 113
+  casa=(styler["left"], styler["top"] if "top" in styler else 0))
+                                                                ^
+SyntaxError: invalid syntax
+'''},
