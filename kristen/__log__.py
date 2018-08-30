@@ -1748,3 +1748,10 @@ IndentationError: unexpected indent
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 20:13:17.308 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 249
+  Museu.CUR = self
+  ^
+IndentationError: unexpected indent
+'''},
