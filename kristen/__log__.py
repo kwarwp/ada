@@ -1699,3 +1699,10 @@ IndentationError: unexpected indent
     cena <= self
 TypeError: '<=' not supported between instances of 'Elemento' and 'Elemento'
 '''},
+{'date': 'Thu Aug 30 2018 16:33:47.391 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 228
+  backg = Elemento(BACKG, tit = "estático", drag= False, x=100, y=100
+                                                                               ^
+SyntaxError: invalid syntax
+'''},
