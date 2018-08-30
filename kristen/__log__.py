@@ -1727,3 +1727,10 @@ SyntaxError: invalid syntax
                                                                               ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 16:39:35.190 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 199
+  return False
+  ^
+IndentationError: unexpected indent
+'''},
