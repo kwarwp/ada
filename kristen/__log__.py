@@ -1720,3 +1720,10 @@ SyntaxError: invalid syntax
                                                              ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 16:35:03.563 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 228
+  backg = Elemento(BACKG,tit = "estatico", drag= False, x=100, y=100
+                                                                              ^
+SyntaxError: invalid syntax
+'''},
