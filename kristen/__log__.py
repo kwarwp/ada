@@ -1706,3 +1706,10 @@ TypeError: '<=' not supported between instances of 'Elemento' and 'Elemento'
                                                                                ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 16:33:54.714 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 228
+  backg = Elemento(BACKG, tit = "estatico", drag= False, x=100, y=100
+                                                                               ^
+SyntaxError: invalid syntax
+'''},
