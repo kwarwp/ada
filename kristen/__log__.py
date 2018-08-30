@@ -948,3 +948,10 @@ IndentationError: unexpected indent
     figura = Elemento(ABELHA, x=150, y=50, w=100, h=100, cena = fundo)
 TypeError: object() takes no parameters
 '''},
+{'date': 'Thu Aug 30 2018 15:07:21.605 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 16
+  class NoEv:
+  ^
+IndentationError: expected an indented block
+'''},
