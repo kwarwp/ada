@@ -44,10 +44,12 @@ class Elemento():
         self._auto_score = self.score if score else self._auto_score
         self.img, self.title, self.real, self.alt = img, tit, drop, alt
         self._drag = self._over = self._drop = self._dover = self.vai = lambda *_: None
+        self.nome = "_NO_NAME_"
         self.cena = cena
         self.opacity = 0
         self.texto = texto
         self.vai = Texto(cena, texto, foi=self.foi).vai if texto else vai if vai else self.vai
+        
         # height = style["height"] if "height" in style else style["maxHeight"] if "maxHeigth" in style else 100
         # height = height[:-2] if isinstance(height, str) and "px" in height else height
         self.style = dict(**PSTYLE)
@@ -84,6 +86,7 @@ class Elemento():
         if tit not in FIX_SCORE:
             FIX_SCORE[tit] = int(Elemento._score.score_.html) + 1
             Elemento._score.score_.html = FIX_SCORE[tit]
+            
     @classmethod
     def _scorer_(cls):
         Elemento._scorer_ = lambda *_ : None
@@ -92,7 +95,12 @@ class Elemento():
         scr.elt <= scr.score_
         scr.entra(INVENTARIO)
         
-    
+    def move(x,y):
+        self.elt.style.top = x
+        self.elt.style.left = y
+        
+        
+        
     def _click(self, ev=NoEv()):
         self.xy = (ev.x, ev.y)
         ev.stopPropagation()
@@ -106,7 +114,8 @@ class Elemento():
         self.scorer.update(valor=cena.nome, move=self.xy,
                            casa=(styler["left"], styler["top"] if "top" in styler else 0))
         self._auto_score(**self.scorer)
-        cena <= self
+        cena.elt <= self.elt
+        
     def _auto_score(self, **kwargs):
          pass
 
@@ -185,11 +194,11 @@ class Elemento():
         ev.stopPropagation()
         src_id = ev.data['text']
         tit = doc[src_id].title
-        if tit != self.real:
-            Texto(self.cena, "Hey, this is not my name: {}.".format(tit)).vai()
-            return False
+        #if tit != self.real:
+           # Texto(self.cena, "Hey, this is not my name: {}.".format(tit)).vai()
+            #return False
         self.tit = tit
-        Texto(self.cena, "Finally, my correct name: {}.".format(self.tit)).vai()
+        #Texto(self.cena, "Finally, my correct name: {}.".format(self.tit)).vai()
         doc[src_id].remove()
         self.do_score(tit)
         self.do_drag(False)
@@ -198,30 +207,46 @@ class Elemento():
         self.vai = Texto(self.cena, _texto, foi=self.foi).vai
         #self._do_foi = lambda *_: None
         
+    def doit_drop(src_id, x, y):
+        self.tit = tit
+        Texto(self.cena, "Finally, my correct name: {}.".format(self.tit)).vai()
+        doc[src_id].remove()
+        self.do_score(tit)
+        self.do_drag(False)
+        # Texto(self.cena, "Finally,got my correct name: {}".format(self.tit)).vai()
+        _texto = self.texto if self.tit == self.title else CORRECT.format(self.tit)
+        self.vai = Texto(self.cena, _texto, foi=self.foi).vai
+
+        
+    @classmethod
+    def c(cls, **kwargs):
+        return [setattr(cls, nome, Elemento(**img) if isinstance(img, dict) else Elemento(img=img))
+        for nome, img in kwargs.items()]
+        
 FUNDO = "https://imagens.simplo7.net/static/2497/sku/thumb_tricoline-100-algodao-lisa-tricoline-100-algodao-lisa-branca-1474467553683.jpg"
-BACKG = "https://imgur.com/a/UdDTlZW"
-Q1 = "https://imgur.com/a/t1XM4vJ"
-Q2 = "https://imgur.com/a/kMgC4FZ"
-Q3 = "https://imgur.com/a/3FPynY3"
-Q4 = "https://imgur.com/a/g4NqoHD"
-Q5 = "https://imgur.com/a/4mwAKzS"
+BACKG = "https://i.imgur.com/5QRsbVs.jpg"
+SETA = "https://trabalhodigitalinfo.files.wordpress.com/2016/01/seta-vermelha-2png.png"
 
-COLMEIA = 'https://i.ytimg.com/vi/TUlH5-1qs8I/hqdefault.jpg'
-ABELHA = 'http://www.baldoni.com.br/images/abelha.png'
 
-def natureza():
-    fundo = Cena(COLMEIA)
-    figura = Elemento(Q1, tit = "arraste quadro", drag= True,
-        x = 10, y = 40, w = 200 , h = 300, drop= "q1",
+
+
+def teste():
+    fundo = Cena(FUNDO)
+    backg = Elemento(BACKG,tit = "estatico", drag= False, x=0, y=0,
+        w = 800 , h = 600, drop= "fundo",
         cena= fundo)
-    def reposiciona_quadros(sid, x, y):
+    def reposiciona_figura(sid, x, y):
         sid.style.left = x
         sid.style.top = y
         
-    figura.doit_drop = reposiciona_quadros
+    seta = Elemento(SETA, tit = "Mova-me", drag=True,
+        x = 50, y = 50, w = 300, h = 300, drop="backg",
+        cena=fundo)
+        
+    backg.doit_drop = reposiciona_figura
     fundo.vai()
 
-natureza()    
+teste()    
 
         
         
