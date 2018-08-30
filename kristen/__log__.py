@@ -1638,3 +1638,10 @@ AttributeError: 'Elemento' object has no attribute 'nome'
     cena <= self
 TypeError: '<=' not supported between instances of 'Elemento' and 'Elemento'
 '''},
+{'date': 'Thu Aug 30 2018 16:17:32.10 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 52
+  _ = self.entra(cena) if cena and (cena != INVENTARIO) else None
+  ^
+IndentationError: unexpected indent
+'''},
