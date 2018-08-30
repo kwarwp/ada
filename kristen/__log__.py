@@ -891,3 +891,10 @@ IndentationError: unexpected indent
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 14:54:19.810 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 101
+  def do_score(self, tit):
+  ^
+IndentationError: unexpected indent
+'''},
