@@ -1812,3 +1812,10 @@ NameError: name 'topo' is not defined
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 20:22:47.249 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 248
+  MENSAGENS=[
+  ^
+IndentationError: unexpected indent
+'''},
