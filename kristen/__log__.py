@@ -1741,3 +1741,10 @@ IndentationError: unexpected indent
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 20:13:05.439 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 248
+  self.cod = Codigo(cena=fundo, topo=topo, codigo=CODE_0, style=dict(width=400, height="250px", left=500, top=100))
+  ^
+IndentationError: unexpected indent
+'''},
