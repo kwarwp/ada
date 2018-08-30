@@ -870,3 +870,10 @@ NameError: name 'NOSC' is not defined
     self._auto_score(**self.scorer)
 AttributeError: 'Elemento' object has no attribute '_auto_score'
 '''},
+{'date': 'Thu Aug 30 2018 14:53:34.782 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 35
+  """
+  ^
+IndentationError: expected an indented block
+'''},
