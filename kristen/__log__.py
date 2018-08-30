@@ -1734,3 +1734,10 @@ SyntaxError: invalid syntax
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 20:12:52.502 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 235
+  fundo = Cena(FUNDO)
+  ^
+IndentationError: unexpected indent
+'''},
