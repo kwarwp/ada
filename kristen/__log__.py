@@ -955,3 +955,10 @@ TypeError: object() takes no parameters
   ^
 IndentationError: expected an indented block
 '''},
+{'date': 'Thu Aug 30 2018 15:08:22.410 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 34
+  NDCT = {}
+  ^
+IndentationError: expected an indented block
+'''},
