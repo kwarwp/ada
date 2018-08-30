@@ -1826,3 +1826,10 @@ IndentationError: unexpected indent
                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 30 2018 20:23:08.110 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 248
+  MENSAGENS=[
+                                                                                                                                                                                                                                                                                                                                                                                                                               ^
+SyntaxError: invalid syntax
+'''},
