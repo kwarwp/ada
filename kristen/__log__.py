@@ -884,3 +884,10 @@ IndentationError: expected an indented block
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Thu Aug 30 2018 14:54:05.850 GMt-0300 (-03) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 59
+  def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
+  ^
+IndentationError: unexpected indent
+'''},
