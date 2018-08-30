@@ -1,16 +1,19 @@
-from _spy.vitollino.main import Cena,  Texto, STYLE, PSTYLE,LSTYLE, EIMGSTY, NOSC
+from _spy.vitollino.main import Cena,  Texto, STYLE, PSTYLE,LSTYLE, EIMGSTY, NOSC, NoEv
 from _spy.vitollino.main import INVENTARIO
 from browser import html, doc
 
-COLMEIA = 'https://i.ytimg.com/vi/TUlH5-1qs8I/hqdefault.jpg'
-ABELHA = 'http://www.baldoni.com.br/images/abelha.png'
+
+STYLE["width"] = 800
+STYLE["height"] = "600px"
 
 NDCT = {}
-FIX_COUNT = {}
+FIX_COUNT = {}        
 
-
-        
 class Elemento():
+
+    NDCT = {}
+    FIX_COUNT = {}
+
     """
         Um objeto de interação que é representado por uma imagem em uma cena.
 
@@ -31,28 +34,6 @@ class Elemento():
         :param kwargs: lista de parametros nome=URL que geram elementos com este nome e a dada imagem
 
         """
-        
-class NoEv:
-    """ Representa um evento vazio.
-    .. doctest::
-        >>> print(ev.x, ev.y)
-        -100 -100
-    """
-    x = -100
-    y = -100
-
-    def __repr__(self):
-        return "<NoEvent>"
-
-    def __init__(self):
-        self.x = -100
-        self.y = -100
-
-    def stopPropagation(self):
-        pass
-
-
-class Elemento():
 
     _score = None
     limbo = html.DIV(style=LSTYLE)
@@ -217,11 +198,31 @@ class Elemento():
         self.vai = Texto(self.cena, _texto, foi=self.foi).vai
         #self._do_foi = lambda *_: None
         
-        
-def teste():
+FUNDO = "https://imagens.simplo7.net/static/2497/sku/thumb_tricoline-100-algodao-lisa-tricoline-100-algodao-lisa-branca-1474467553683.jpg"
+BACKG = "https://imgur.com/a/UdDTlZW"
+Q1 = "https://imgur.com/a/t1XM4vJ"
+Q2 = "https://imgur.com/a/kMgC4FZ"
+Q3 = "https://imgur.com/a/3FPynY3"
+Q4 = "https://imgur.com/a/g4NqoHD"
+Q5 = "https://imgur.com/a/4mwAKzS"
 
+COLMEIA = 'https://i.ytimg.com/vi/TUlH5-1qs8I/hqdefault.jpg'
+ABELHA = 'http://www.baldoni.com.br/images/abelha.png'
+
+def natureza():
     fundo = Cena(COLMEIA)
-    figura = Elemento(ABELHA, x=150, y=50, w=100, h=100, cena = fundo)
+    figura = Elemento(Q1, tit = "arraste quadro", drag= True,
+        x = 10, y = 40, w = 200 , h = 300, drop= "q1",
+        cena= fundo)
+    def reposiciona_quadros(sid, x, y):
+        sid.style.left = x
+        sid.style.top = y
+        
+    figura.doit_drop = reposiciona_quadros
     fundo.vai()
-    
-teste()
+
+natureza()    
+
+        
+        
+
