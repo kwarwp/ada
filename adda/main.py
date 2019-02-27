@@ -5,6 +5,6 @@ STYLE ["height"] = "600px"
 wall = "https://i.imgur.com/y2Cmt0D.png"
 floor = "https://i.imgur.com/hQGOZGZ.png"
 cena = Cena(wall)
-elemento = Elemento(floor,style=dict(width="920px"))
+elemento = Elemento(floor,style=dict(width="960px",height="500px"))
 elemento.entra(cena)
 cena.vai()
