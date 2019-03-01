@@ -110,9 +110,9 @@ class Peixe():
         self.corpo = self.desenha_o_corpo(self.cor_do_corpo,l=t)
         self.cauda_superior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*1/PHI4))
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
-        return [self.corpo, self.cauda_superior, self.cauda_inferior]
         self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
         self.cauda_inferior.rotate(angle=-GRAUS_30, axis=EIXO_Z)
+        return [self.corpo, self.cauda_superior, self.cauda_inferior]
         self.labio_superior= self.desenha_o_labio(eixo= EIXO_NE)
         self.labio_inferior= self.desenha_o_labio(eixo= EIXO_SE)
         self.olho_esquerdo = self.desenha_o_olho(l=t,d=(-t*0.7/PHI,t*1/PHI4,t*1.2/PHI4))
