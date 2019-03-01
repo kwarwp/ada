@@ -55,7 +55,7 @@ Marujos Pe e Xis
 :Status: This is a "work in progress"
 :Revision: $Revision: 1.00 $
 :Home: `LABASE <http://labase.nce.ufrj.br/>`__
-:Copyright: ÂÂ©2009, `GPL <http://is.gd/3Udt>`__
+:Copyright: ÂÂÂ©2009, `GPL <http://is.gd/3Udt>`__
 """
 '''
 Os marujos Pe e Xis são dois peixes que querem ser grandes empresários e montar  um grande centro de divertimento para criaturas do mar. No momento são apenas peixes comuns e atrapalhados que precisam de muita ajuda para seguir em frente. Eles vão ser desafiados pelas mais simples circunstâncias de seu ambiente natural a cada passo do seu caminho. A obtenção de suas metas vai ser um grande aprendizado para todos nós.
@@ -75,7 +75,7 @@ PHI2= PHI**2
 PHI3= PHI**3
 PHI4= PHI**4
 GRAUS_30= pi/6.0
-EIXO_Z= (0,0,1)
+EIXO_Z= vec(0,0,1)
 EIXO_NE= (1,1,0)
 EIXO_SE= (1,-1,0)
 EIXO_SSE= (2,-1,1)
