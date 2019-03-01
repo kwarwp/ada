@@ -76,10 +76,10 @@ PHI3= PHI**3
 PHI4= PHI**4
 GRAUS_30= pi/6.0
 EIXO_Z= vec(0,0,1)
-EIXO_NE= (1,1,0)
-EIXO_SE= (1,-1,0)
-EIXO_SSE= (2,-1,1)
-EIXO_SSO= (2,-1,-1)
+EIXO_NE= vec(1,1,0)
+EIXO_SE= vec(1,-1,0)
+EIXO_SSE= vec(2,-1,1)
+EIXO_SSO= vec(2,-1,-1)
 
 
 class Cenario:
@@ -112,7 +112,6 @@ class Peixe():
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
         self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
         self.cauda_inferior.rotate(angle=-GRAUS_30, axis=EIXO_Z)
-        return [self.corpo, self.cauda_superior, self.cauda_inferior]
         self.labio_superior= self.desenha_o_labio(eixo= EIXO_NE)
         self.labio_inferior= self.desenha_o_labio(eixo= EIXO_SE)
         self.olho_esquerdo = self.desenha_o_olho(l=t,d=(-t*0.7/PHI,t*1/PHI4,t*1.2/PHI4))
@@ -120,21 +119,25 @@ class Peixe():
         self.barbatana_dorsal= self.desenha_a_barbatana(l=t,d=(-t*0.1/PHI,t*1/PHI4),eixo= EIXO_NE)
         self.nadadeira_direita= self.desenha_a_nadadeira(l=t,d=(-t*0.2/PHI,-t*0.1/PHI4),eixo= EIXO_SSE)
         self.nadadeira_esquerda= self.desenha_a_nadadeira(l=t,d=(-t*0.2/PHI,-t*0.1/PHI4),eixo= EIXO_SSO)
+        return [self.corpo, self.cauda_superior, self.cauda_inferior,
+        self.labio_superior, self.labio_inferior,
+        self.olho_esquerdo, self.olho_direito, self.barbatana_dorsal,
+        self.nadadeira_direita ,self.nadadeira_esquerda ]
 
     def desenha_a_barbatana(self,l=1,eixo=(0,0),d=(0,0)):
         return pyramid(
-           frame=self.esqueleto,size=(l,l/PHI,l/PHI4),pos=d,color=self.cor_cauda, axis=eixo
+           pos=d,color=self.cor_cauda, axis=eixo
         )
 
     def desenha_a_nadadeira(self,l=1,eixo=(0,0),d=(0,0)):
         return pyramid(
-           frame=self.esqueleto,size=(l,l/PHI4,l/PHI),pos=d,color=self.cor_cauda, axis=eixo
+           pos=d,color=self.cor_cauda, axis=eixo
         )
 
     def desenha_o_labio(self,eixo):
         t = self.tamanho
         return ring(
-            frame=self.esqueleto,pos=(t*-1.1/PHI,0), axis=eixo,
+            pos=(t*-1.1/PHI,0), axis=eixo,
             radius=t*0.15, thickness=t*0.07,color = self.cor_cauda
         )
 
@@ -146,7 +149,7 @@ class Peixe():
     def desenha_o_olho(self,l=1,d=(0,0)):
         globo = l/PHI3
         return ellipsoid(
-                frame=self.esqueleto,size=(globo,globo,globo),pos=d,color=color.blue
+                size=(globo,globo,globo),pos=d,color=color.blue
             )
 
 if __name__ == "__main__":
