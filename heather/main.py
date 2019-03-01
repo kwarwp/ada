@@ -107,7 +107,7 @@ class Peixe():
         self.tamanho = t = 4
         self.cor_do_corpo=color.cyan
         self.cor_cauda = cor_cauda = color.red
-        self.corpo = self.desenha_o_corpo(self.cor_do_corpo,l=t)
+        #self.corpo = self.desenha_o_corpo(self.cor_do_corpo,l=t)
         self.cauda_superior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*1/PHI4))
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
         self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
@@ -119,7 +119,7 @@ class Peixe():
         self.barbatana_dorsal= self.desenha_a_barbatana(l=t,d=(-t*0.1/PHI,t*1/PHI4),eixo= EIXO_NE)
         self.nadadeira_direita= self.desenha_a_nadadeira(l=t,d=(-t*0.2/PHI,-t*0.1/PHI4),eixo= EIXO_SSE)
         self.nadadeira_esquerda= self.desenha_a_nadadeira(l=t,d=(-t*0.2/PHI,-t*0.1/PHI4),eixo= EIXO_SSO)
-        return [self.corpo, self.cauda_superior, self.cauda_inferior,
+        return [self.cauda_superior, self.cauda_inferior, #self.corpo, 
         self.labio_superior, self.labio_inferior,
         self.olho_esquerdo, self.olho_direito, self.barbatana_dorsal,
         self.nadadeira_direita ,self.nadadeira_esquerda ]
@@ -157,4 +157,8 @@ if __name__ == "__main__":
     cenario.principal()
     t = 4.0
     #pyramid(pos=(-t*0.2/PHI,-t*0.1/PHI4),size=(l,l/PHI,l/PHI4), axis=EIXO_NE)
+    ring(
+            pos=(t*-1.1/PHI,0), axis=EIXO_NE,
+            radius=t*0.15, thickness=t*0.07,color = color.red
+        )
 
