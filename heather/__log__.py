@@ -125,3 +125,10 @@ NameError: name 't' is not defined
   ^
 SyntaxError: non-keyword arg after keyword arg
 '''},
+{'date': 'Fri Mar 01 2019 20:40:15.356 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 139
+  return ring(
+                                                                                                                                                            ^
+SyntaxError: invalid syntax
+'''},
