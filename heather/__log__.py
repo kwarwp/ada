@@ -86,3 +86,19 @@ AttributeError: 'tuple' object has no attribute '_vec'
     kwargs['axis'] = kwargs['axis']._vec
 AttributeError: 'list' object has no attribute '_vec'
 '''},
+{'date': 'Fri Mar 01 2019 18:43:39.205 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 78
+    EIXO_Z= vector(0,0,1)
+NameError: name 'vector' is not defined
+'''},
