@@ -126,12 +126,12 @@ class Peixe():
 
     def desenha_a_barbatana(self,l=1,eixo=(0,0),d=(0,0)):
         return pyramid(
-           pos=d,color=self.cor_cauda, axis=eixo
+           size=(l,l/PHI,l/PHI4),pos=d,color=self.cor_cauda, axis=eixo
         )
 
     def desenha_a_nadadeira(self,l=1,eixo=(0,0),d=(0,0)):
         return pyramid(
-           pos=d,color=self.cor_cauda, axis=eixo
+           size=(l,l/PHI4,l/PHI),pos=d,color=self.cor_cauda, axis=eixo
         )
 
     def desenha_o_labio(self,eixo):
@@ -154,7 +154,7 @@ class Peixe():
 
 if __name__ == "__main__":
     cenario= Cenario()
-    #cenario.principal()
+    cenario.principal()
     t = 4.0
-    pyramid(pos=(-t*0.2/PHI,-t*0.1/PHI4), axis=EIXO_NE)
+    #pyramid(pos=(-t*0.2/PHI,-t*0.1/PHI4),size=(l,l/PHI,l/PHI4), axis=EIXO_NE)
 
