@@ -118,3 +118,10 @@ NameError: name 'vector' is not defined
     pyramid(pos=(-t*0.2/PHI,-t*0.1/PHI4))
 NameError: name 't' is not defined
 '''},
+{'date': 'Fri Mar 01 2019 20:29:36.161 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 164
+  )
+  ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
