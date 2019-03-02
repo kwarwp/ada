@@ -21,6 +21,7 @@ class Canvas(Elemento):
         d  = self.pixd
         alert(d[0],d[1],d[2], d[3])
         self.ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")"
+        self.ctx.fillStyle = f"rgba({r},{g},{b},{a/255})"
         self.ctx.fillRect( x, y, 1, 1 );
         return
         d[0]   = r
