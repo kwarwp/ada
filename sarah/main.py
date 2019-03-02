@@ -9,16 +9,26 @@ class Canvas(Elemento):
         canvas.id     = "CursorLayer";
         canvas.width  = 800;
         canvas.height = 600;
-        #canvas.style.zIndex   = 8;
+        canvas.style.zIndex   = 8;
         canvas.style.position = "absolute";
         canvas.style.border   = "1px solid";
         self.elt <= canvas
+        self.ctx = canvas.getContext('2d')
+        self.pix = self.ctx.createImageData(1,1)
+        self.pixd = self.pix.data
+        
+    def paint(self, x, y, r, g, b, a=255);
+        d  = self.pixd                        
+        d[0]   = r
+        d[1]   = g
+        d[2]   = b
+        d[3]   = a
+        self.ctx.putImageData( self.pix, x, y );     
     
 
 class Batalha:
     def __init__(self):
         STYLE["width"] = 900
-        STYLE["height"] = 600
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
         cena.vai()
