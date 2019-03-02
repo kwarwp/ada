@@ -52,7 +52,7 @@ class Agro:
         return [((i+x) % W, (j+y) % H) for i, j in self.VIZ]
 
     def procria(self):
-        size = min(4,sum(loc.match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
+        size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
         self.dpr()
         if size < 0 :
             del self.colonia[self.lugar]
