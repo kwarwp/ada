@@ -51,7 +51,15 @@ class Agro:
         viz = shuffle(list(self.VIZ))[:size]
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
-    
+
+class AgroBatalha:
+    arena = None
+
+    def create(self, loc, color=None):
+        if len(self.colonia) > 100:
+            return
+        self.arena.pinta(loc, color)
+        return AgroBatalha(loc, color or self.color)
 
 class Batalha:
     def __init__(self):
@@ -60,9 +68,14 @@ class Batalha:
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
         cena.vai()
-        canvas = Canvas()
+        self.canvas = canvas = Canvas()
         canvas.entra(cena)
         canvas.paint(10, 10, 200, 50, 50)
+        a0 = AgroBatalha([20, 20],[200, 50, 50])
+        
+    def pinta(self,loc, color):
+        loc.extend(color)
+        self.canvas.paint(*loc)
 
 
 if __name__ == "__main__":
