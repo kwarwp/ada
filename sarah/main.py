@@ -38,10 +38,10 @@ class Agro:
 
     def dpr(self, l=3, color=[10, 500, 10]):
         self.dp += 1
-        self.arena.paint((l, self.dp), color)
+        self.arena.pinta((self.dp, l), color)
 
     def create(self, loc, color=None):
-        self.arena.paint
+        self.dpr(6)
         return Agro(loc, color or self.color)
             
     def match(self, other):
@@ -53,11 +53,11 @@ class Agro:
 
     def procria(self):
         size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
-        self.dpr()
         if size < 0 :
             del self.colonia[self.lugar]
             return
         viz = shuffle(list(self.VIZ))[:size]
+        self.dpr()
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
 
