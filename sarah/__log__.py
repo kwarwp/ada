@@ -28,3 +28,10 @@ SyntaxError: invalid syntax
     divesq.style.width = width // 3  # 100
 TypeError: unsupported operand type(s) for //: 'str' and 'int'
 '''},
+{'date': 'Sat Mar 02 2019 13:35:34.325 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 20
+  def paint(self, x, y, r, g, b, a=255);
+                                       ^
+SyntaxError: invalid syntax
+'''},
