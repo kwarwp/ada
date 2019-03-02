@@ -9,7 +9,7 @@ class Canvas(Elemento):
         canvas.id     = "CursorLayer";
         canvas.width  = 800;
         canvas.height = 600;
-        canvas.style.zIndex   = 8;
+        #canvas.style.zIndex   = 8;
         canvas.style.position = "absolute";
         canvas.style.border   = "1px solid";
         self.elt <= canvas
