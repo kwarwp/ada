@@ -9,7 +9,7 @@ class Canvas(Elemento):
         canvas.id     = "CursorLayer";
         canvas.width  = 800;
         canvas.height = 600;
-        canvas.style.zIndex   = 8;
+        #canvas.style.zIndex   = 8;
         canvas.style.position = "absolute";
         canvas.style.border   = "1px solid";
         self.elt <= canvas
@@ -18,6 +18,7 @@ class Canvas(Elemento):
 class Batalha:
     def __init__(self):
         STYLE["width"] = 900
+        STYLE["height"] = 600
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
         cena.vai()
