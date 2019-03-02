@@ -1,10 +1,10 @@
 # ada.sarah.main.py
 from _spy.vitollino.main import Cena, Elemento, STYLE
-from browser import html, alert
+from browser import html, alert, timer
 from random import choice, shuffle
 W, H = 800, 600
 class Canvas(Elemento):
-    PIX = 2
+    PIX = 4
     def __init__(self):
         super().__init__(style=dict(left=0, top=0, width=900, height="600px"))
         canvas = html.CANVAS()
@@ -34,7 +34,8 @@ class Agro:
         self.lugar = loc
         if self.lugar not in self.colonia:
             self.colonia[self.lugar] = self
-            self.procria()
+            timer.set_timeout(self.procria, 2)
+            #self.procria()
 
     def dpr(self, x=0, y=3, color=[10, 500, 10]):
         self.dp += 1
@@ -53,21 +54,21 @@ class Agro:
         return [((i+x) % W, (j+y) % H) for i, j in self.VIZ]
 
     def procria(self):
-        size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 3
+        size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 2
         if size < 0 :
             self.colonia.pop(self.lugar, None)
             return
         viz = list(self.vizinhos())
         shuffle(viz)
         viz = viz[:size]
-        [self.dpr(x, y) for x, y in viz]
-        self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
+        #[self.dpr(x, y) for x, y in viz]
+        self.colonia.update({loc: self.create(loc, self.color) for loc in viz if loc not in self.colonia})
         
 
 class AgroBatalha(Agro):
 
     def create(self, loc, color=[0, 0, 0]):
-        if len(self.colonia) > 600:
+        if len(self.colonia) > 1600:
             return
         color = color or self.color
         loc = loc[0] % W, loc[1] % H
