@@ -41,7 +41,6 @@ class Agro:
         self.arena.paint((l, self.dp), color)
 
     def create(self, loc, color=None):
-        self.dpr()
         self.arena.paint
         return Agro(loc, color or self.color)
             
@@ -54,6 +53,7 @@ class Agro:
 
     def procria(self):
         size = min(4,sum(loc.match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
+        self.dpr()
         if size < 0 :
             del self.colonia[self.lugar]
             return
