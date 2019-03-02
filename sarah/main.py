@@ -53,13 +53,13 @@ class Agro:
         return [((i+x) % W, (j+y) % H) for i, j in self.VIZ]
 
     def procria(self):
-        size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
+        size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 3
         if size < 0 :
             self.colonia.pop(self.lugar, None)
             return
         viz = list(self.vizinhos())
         shuffle(viz)
-        #viz = viz[:size]
+        viz = viz[:size]
         [self.dpr(x, y) for x, y in viz]
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
@@ -67,9 +67,10 @@ class Agro:
 class AgroBatalha(Agro):
 
     def create(self, loc, color=[0, 0, 0]):
-        if len(self.colonia) > 100:
+        if len(self.colonia) > 600:
             return
         color = color or self.color
+        loc = loc[0] % W, loc[1] % H
         self.arena.pinta(loc, color)
         return AgroBatalha(loc, color)
 
