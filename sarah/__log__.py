@@ -204,3 +204,7 @@ AttributeError: 'Batalha' object has no attribute 'paint'
 'error': '''
 Exception: <TypeError: obj is undefined>
 '''},
+{'date': 'Sat Mar 02 2019 16:38:29.951 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
