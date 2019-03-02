@@ -148,3 +148,7 @@ TypeError: object() takes no parameters
     if self.lugar not in self.colonia:
 TypeError: unhashable type: 'list'
 '''},
+{'date': 'Sat Mar 02 2019 16:27:45.370 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
