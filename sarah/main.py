@@ -25,6 +25,8 @@ class Canvas(Elemento):
     
 
 class Agro:
+    arena = None
+    dp = 10
     colonia = {}
     VIZ = [(i, j) for i in (-1,0,1) for j in (-1,0,1) if (i or j) !=0]
     def __init__(self, loc, color):
@@ -33,7 +35,13 @@ class Agro:
         if self.lugar not in self.colonia:
             self.colonia[self.lugar] = self
 
+    def dpr(self, l=3, color=[10, 500, 10]):
+        self.dp += 1
+        self.arena.paint((l, self.dp), color)
+
     def create(self, loc, color=None):
+        self.dpr()
+        self.arena.paint
         return Agro(loc, color or self.color)
             
     def match(self, other):
@@ -53,7 +61,6 @@ class Agro:
         
 
 class AgroBatalha(Agro):
-    arena = None
 
     def create(self, loc, color=None):
         if len(self.colonia) > 100:
