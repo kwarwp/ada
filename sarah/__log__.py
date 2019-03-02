@@ -212,3 +212,29 @@ Exception: <TypeError: obj is undefined>
 'error': '''
 Exception: <TypeError: obj is undefined>
 '''},
+{'date': 'Sat Mar 02 2019 16:44:38.513 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 94
+    _ = Batalha()
+  module <module> line 85
+    a0 = AgroBatalha((20, 20),[200, 50, 50])
+  module <module> line 37
+    self.procria()
+  module <module> line 63
+    self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
+  module <module> line 71
+    self.arena.pinta(loc, color)
+  module <module> line 89
+    args.extend(color)
+TypeError: 'NoneType' object is not iterable
+'''},
