@@ -71,11 +71,12 @@ class Batalha:
         self.canvas = canvas = Canvas()
         canvas.entra(cena)
         canvas.paint(10, 10, 200, 50, 50)
-        a0 = AgroBatalha([20, 20],[200, 50, 50])
+        a0 = AgroBatalha((20, 20),[200, 50, 50])
         
     def pinta(self,loc, color):
-        loc.extend(color)
-        self.canvas.paint(*loc)
+        args = list(loc)
+        args.extend(color)
+        self.canvas.paint(*args)
 
 
 if __name__ == "__main__":
