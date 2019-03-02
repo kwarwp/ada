@@ -52,7 +52,7 @@ class Agro:
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
 
-class AgroBatalha:
+class AgroBatalha(Agro):
     arena = None
 
     def create(self, loc, color=None):
