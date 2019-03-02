@@ -19,7 +19,7 @@ class Canvas(Elemento):
         
     def paint(self, x, y, r, g, b, a=255):
         d  = self.pixd
-        alert(d, d[0])
+        alert(d[0],d[1],d[2], d[3], d[4])
         return
         d[0]   = r
         d[1]   = g
