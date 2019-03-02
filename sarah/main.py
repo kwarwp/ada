@@ -36,9 +36,10 @@ class Agro:
             self.colonia[self.lugar] = self
             self.procria()
 
-    def dpr(self, l=3, color=[10, 500, 10]):
+    def dpr(self, x=0, y=3, color=[10, 500, 10]):
         self.dp += 1
-        self.arena.pinta((self.dp, l), color)
+        x = x or self.dp
+        self.arena.pinta((x, y), color)
 
     def create(self, loc, color=None):
         self.dpr(6, [10, 10, 500])
@@ -58,8 +59,8 @@ class Agro:
             return
         viz = list(self.vizinhos())
         shuffle(viz)
-        viz = viz[:size]
-        self.dpr()
+        #viz = viz[:size]
+        [self.dpr(x, y) for x, y in viz]
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
 
