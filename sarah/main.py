@@ -1,8 +1,10 @@
 # ada.sarah.main.py
 from _spy.vitollino.main import Cena, Elemento, STYLE
 from browser import html, alert
+from random import choice, shuffle
 
 class Canvas(Elemento):
+    PIX = 2
     def __init__(self):
         super().__init__(style=dict(left=0, top=0, width=900, height="600px"))
         canvas = html.CANVAS()
@@ -18,23 +20,32 @@ class Canvas(Elemento):
         self.pixd = self.pix.data
         
     def paint(self, x, y, r, g, b, a=255):
-        d  = self.pixd
-        alert(d[0],d[1],d[2], d[3])
-        self.ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")"
         self.ctx.fillStyle = f"rgba({r},{g},{b},{a/255})"
-        self.ctx.fillRect( x, y, 1, 1 );
-        return
-        d[0]   = r
-        d[1]   = g
-        d[2]   = b
-        d[3]   = a
-        self.ctx.putImageData(self.pix, x, y)     
+        self.ctx.fillRect( x*self.PIX, y*self.PIX, self.PIX, self.PIX );
+    
+
+class Agro:
+    VIZ = [(i, j) for i in (-1,0,1) for j in (-1,0,1) if (i or j) !=0]
+    def __init__(self, x, y, colonia=None):
+        self.colonia = colonia or {}
+        self.lugar = (x, y)
+        if self.lugar not in self.colonia:
+            self.colonia[self.lugar] = self
+            
+    def vizinhos(self):
+        x, y = self.lugar
+        return [(i+x, j+y) for i, j in self.VIZ]
+
+    def procria(self):
+        size = sum(1 for loc in self.VIZ if loc in self.colonia
+        viz = shuffle(list(self.VIZ)
+        
     
 
 class Batalha:
     def __init__(self):
-        STYLE["width"] = 900
-        STYLE["height"] = 600
+        STYLE["width"] = 800
+        STYLE["height"] = "600px"
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
         cena.vai()
