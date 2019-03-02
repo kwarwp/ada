@@ -34,6 +34,7 @@ class Agro:
         self.lugar = loc
         if self.lugar not in self.colonia:
             self.colonia[self.lugar] = self
+            self.procria()
 
     def dpr(self, l=3, color=[10, 500, 10]):
         self.dp += 1
