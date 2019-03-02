@@ -54,9 +54,10 @@ class Agro:
     def procria(self):
         size = min(4,sum(self.colonia[loc].match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
         if size < 0 :
-            del self.colonia[self.lugar]
+            self.colonia.pop(self.lugar, None)
             return
-        viz = shuffle(list(self.VIZ))[:size]
+        viz = shuffle(list(self.VIZ))
+        viz = viz[:size]
         self.dpr()
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
