@@ -35,3 +35,10 @@ TypeError: unsupported operand type(s) for //: 'str' and 'int'
                                        ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Mar 02 2019 13:37:50.14 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 20
+  def paint(self, x, y, r, g, a=255);
+                                    ^
+SyntaxError: invalid syntax
+'''},
