@@ -56,7 +56,8 @@ class Agro:
         if size < 0 :
             self.colonia.pop(self.lugar, None)
             return
-        viz = shuffle(list(self.VIZ))
+        viz = list(self.VIZ)
+        shuffle(viz)
         viz = viz[:size]
         self.dpr()
         self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
