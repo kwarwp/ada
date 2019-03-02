@@ -2,7 +2,7 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE
 from browser import html, alert
 from random import choice, shuffle
-
+W, H = 800, 600
 class Canvas(Elemento):
     PIX = 2
     def __init__(self):
@@ -25,20 +25,31 @@ class Canvas(Elemento):
     
 
 class Agro:
+    colonia = {}
     VIZ = [(i, j) for i in (-1,0,1) for j in (-1,0,1) if (i or j) !=0]
-    def __init__(self, x, y, colonia=None):
-        self.colonia = colonia or {}
-        self.lugar = (x, y)
+    def __init__(self, loc, color):
+        self.color = color
+        self.lugar = loc
         if self.lugar not in self.colonia:
             self.colonia[self.lugar] = self
+
+    def create(self, loc, color=None):
+        return Agro(loc, color or self.color)
+            
+    def match(self, other):
+        return 1 if self.color == other.color else -1
             
     def vizinhos(self):
         x, y = self.lugar
-        return [(i+x, j+y) for i, j in self.VIZ]
+        return [((i+x) % W, (j+y) % H) for i, j in self.VIZ]
 
     def procria(self):
-        size = sum(1 for loc in self.VIZ if loc in self.colonia
-        viz = shuffle(list(self.VIZ)
+        size = min(4,sum(loc.match(self) for loc in self.vizinhos() if loc in self.colonia)) + 1
+        if size < 0 :
+            del self.colonia[self.lugar]
+            return
+        viz = shuffle(list(self.VIZ))[:size]
+        self.colonia.update({loc: self.create(loc) for loc in viz if loc not in self.colonia})
         
     
 
