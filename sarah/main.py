@@ -17,7 +17,7 @@ class Canvas(Elemento):
         self.pix = self.ctx.createImageData(1,1)
         self.pixd = self.pix.data
         
-    def paint(self, x, y, r, g, b, a=255);
+    def paint(self, x, y, r, g, b, a=255):
         d  = self.pixd                        
         d[0]   = r
         d[1]   = g
@@ -34,6 +34,7 @@ class Batalha:
         cena.vai()
         canvas = Canvas()
         canvas.entra(cena)
+        canvas.paint(10, 10, 200, 50, 50)
 
 
 if __name__ == "__main__":
