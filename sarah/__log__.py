@@ -200,3 +200,7 @@ AttributeError: 'Batalha' object has no attribute 'paint'
     self.arena.paint((l, self.dp), color)
 AttributeError: 'Batalha' object has no attribute 'paint'
 '''},
+{'date': 'Sat Mar 02 2019 16:34:19.476 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
