@@ -1,6 +1,6 @@
 # ada.sarah.main.py
 from _spy.vitollino.main import Cena, Elemento, STYLE
-from browser import html
+from browser import html, alert
 
 class Canvas(Elemento):
     def __init__(self):
@@ -18,7 +18,9 @@ class Canvas(Elemento):
         self.pixd = self.pix.data
         
     def paint(self, x, y, r, g, b, a=255):
-        d  = self.pixd                        
+        d  = self.pixd
+        alert(d, d[0])
+        return
         d[0]   = r
         d[1]   = g
         d[2]   = b
