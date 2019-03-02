@@ -65,11 +65,12 @@ class Agro:
 
 class AgroBatalha(Agro):
 
-    def create(self, loc, color=None):
+    def create(self, loc, color=[0, 0, 0]):
         if len(self.colonia) > 100:
             return
+        color = color or self.color
         self.arena.pinta(loc, color)
-        return AgroBatalha(loc, color or self.color)
+        return AgroBatalha(loc, color)
 
 class Batalha:
     def __init__(self):
