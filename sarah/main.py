@@ -23,12 +23,13 @@ class Canvas(Elemento):
         d[1]   = g
         d[2]   = b
         d[3]   = a
-        self.ctx.putImageData( self.pix, x, y );     
+        self.ctx.putImageData(self.pix, x, y)     
     
 
 class Batalha:
     def __init__(self):
         STYLE["width"] = 900
+        STYLE["height"] = 600
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
         cena.vai()
