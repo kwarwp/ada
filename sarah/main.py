@@ -41,7 +41,7 @@ class Agro:
         self.arena.pinta((self.dp, l), color)
 
     def create(self, loc, color=None):
-        self.dpr(6)
+        self.dpr(6, [10, 10, 500])
         return Agro(loc, color or self.color)
             
     def match(self, other):
@@ -56,7 +56,7 @@ class Agro:
         if size < 0 :
             self.colonia.pop(self.lugar, None)
             return
-        viz = list(self.VIZ)
+        viz = list(self.vizinhos())
         shuffle(viz)
         viz = viz[:size]
         self.dpr()
