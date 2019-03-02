@@ -46,3 +46,7 @@ SyntaxError: invalid syntax
 'error': '''
 Exception: <TypeError: attr.substr is not a function>
 '''},
+{'date': 'Sat Mar 02 2019 14:12:34.757 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: attr.substr is not a function>
+'''},
