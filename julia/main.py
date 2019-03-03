@@ -21,7 +21,8 @@ class Button(Sprite):
         self.grav, self.ele= 10, 10
         timer.set_timeout(self.move, 10)
     def move(self):
-        self.img.style.left, self.img.style.top = self.x+ randint(-10,10), self.y+ randint(-10,10)
+        self.x, self.y = self.x+ randint(-10,10), self.y+ randint(-10,10)
+        self.img.style.left, self.img.style.top = self.x, self.y
         if 0< self.x < 800 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def _move(self):
