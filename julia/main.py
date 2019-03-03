@@ -53,7 +53,7 @@ class Button(Sprite):
         self.fit, deltafit = fit, self.fit - fit
         Button.SHOW._code.text = f"self.fitt:{self.fit}, the fit::{fit}, deltafiti:{deltafit}"
         if abs(deltafit) > 0.0001:
-            self.heat = self.heat * 0.85 if deltafit < 0 else self.heat * 0.999
+            self.heat = self.heat * 0.78 if deltafit < 0 else self.heat * 1.2
             Button.SHOW._code.text = f"self.heat = {self.heat} fited:{fit}, deltafitd:{deltafit}"
             timer.set_timeout(self.anneal, 1000)
             
