@@ -119,3 +119,10 @@ TypeError: randint missing 1 positional argument: 'b'
                     ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Mar 03 2019 11:11:19.804 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 35
+  return -dx * pull, -dy * pull
+                    ^
+SyntaxError: invalid syntax
+'''},
