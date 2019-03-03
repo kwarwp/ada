@@ -15,6 +15,7 @@ class Sprite(Elemento):
 
 class Button(Sprite):
     BUTTONS = []
+    SHOW = Codigo("oi", style=dict(left=0, top=560, width=600))
     def __init__(self, x, y, image, cena, index=0):
         super().__init__(x, y, image, cena, index)
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
@@ -26,19 +27,20 @@ class Button(Sprite):
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def move(self):
-        forces = zip(*[b.force(self.x) for b in Button.BUTTONS] if b != self)
+        forces = zip(*[b.force(self.x) for b in Button.BUTTONS if b != self])
         dx, dy = sum(forces[0]), sum(forces[1])
         self.x += int(dx)
         self.y += int(dy)
+        Button.SHOW._code.text = f"{dx} {dy} {self.x} {self.y}"
         self.elt.style.left, self.elt.style.top = self.x, self.y
-        if dx > 1 or dy > 1:
-            timer.set_timeout(self.move, 10)
+        if abs(dx) > 1 or abs(dy) > 1:
+            timer.set_timeout(self.move, 1000)
             
     def force(self, x, y):
         dx, dy = x - self.x, y - self.y
         distance = sqrt(dx*dx + dy*dy)
-        pull = 100.0 / min(0.1, distance) if distance > 90 else 0.0
-        push = 100.0 / min(0.1, distance) if distance < 90 else 0.0
+        pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
+        push = 0.001 / min(0.1, distance) if distance < 90 else 0.0
         return (-dx * pull + dx * push, -dy * pull + dy * push)
         
         
