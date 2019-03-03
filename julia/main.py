@@ -93,7 +93,7 @@ class Button(Sprite):
             dx, dy = a.x - b.x, a.y - b.y
             return sqrt(dx*dx + dy*dy)
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
-        Button.DISTANCES = {(a, b): lambda: distance(a, b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
+        # Button.DISTANCES = {(a, b): lambda: distance(a, b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
         for a in self.BUTTONS:
             for b in self.BUTTONS:
                 if a != b and (b, a) not in Button.DISTANCES:
