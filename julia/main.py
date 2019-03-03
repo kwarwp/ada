@@ -2,10 +2,9 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE, Codigo
 from math import sqrt
 from random import randint
-from statistics import average
 from browser import timer
 IMGSIZE = "240px"
-W, H = 800, 600
+W, H = 800, 540
 class Sprite(Elemento):
     def __init__(self, x, y, image, cena, index=0):
         super().__init__(image, cena=cena, style=dict(left=x,top=x,width="80px",height="80px",overflow="hidden"))
@@ -22,8 +21,8 @@ class Button(Sprite):
         super().__init__(x, y, image, cena, index)
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
         self.grav, self.ele= 10, 10
-        self.heat = H//2
-        self.fit = 100**10
+        self.heat = H//8
+        self.fit = 10000000
         #timer.set_timeout(self.move, 10)
         #timer.set_timeout(self.anneal, 10)
     def _move(self):
@@ -32,9 +31,10 @@ class Button(Sprite):
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def do_move(self, dx, dy):
-        self.x += int(dx)%W
-        self.y += int(dy)%H
+        self.x = (self.x+int(dx))%W
+        self.y = (self.y+int(dy))%H
         self.elt.style.left, self.elt.style.top = self.x, self.y
+        return self.x, self.y
     def move(self):
         forces = zip(*[b.force(self.x, self.y, self) for b in Button.BUTTONS if b != self])
         dx, dy = [sum(force) for force in forces]
@@ -45,20 +45,29 @@ class Button(Sprite):
         if abs(dx) > 1 or abs(dy) > 1:
             timer.set_timeout(self.move, 2)
     def anneal(self):
-        [b.do_move(randit(-self.heat, self.heat),randit(-self.heat, self.heat)) for b in self.BUTTONS]
+        Button.SHOW._code.text = "anneal"
+        heat = int(self.heat)
+        moves = [b.do_move(randint(-heat, heat),randint(-heat, heat)) for b in self.BUTTONS]
+        Button.SHOW._code.text = f"b.do_move {moves}"
         fit = self.fitness()
         self.fit, deltafit = fit, self.fit - fit
-        if deltafit > 0.1:
-            self.heat /= 2
+        Button.SHOW._code.text = f"self.fit:{self.fit}, the fit::{fit}, deltafit:{deltafit}"
+        if abs(deltafit) > 0.01:
+            self.heat = self.heat * 0.99 if deltafit < 0 else self.heat
+            Button.SHOW._code.text = f"self.heat = {self.heat} self.fitin:{self.fit}, fited:{fit}, deltafit:{deltafit}"
             timer.set_timeout(self.anneal, 1000)
             
-    def fitness(self, x, y):
+    def fitness(self):
+        def mean(values):
+            values = list(values)
+            return sum(values)/len(values)
         distances = self.distances()
-        Button.SHOW._code.text = str(list(distances))
-        push = average(distance for distance in distances if  distance < 90)
-        pull = average(distance for distance in distances if  distance > 90)
-        upull = average(distances)
-        return push/pull
+        Button.SHOW._code.text = f"fit: {mean(list(distances))}"
+        push = mean([distance for distance in distances if  distance < 90])
+        pull = mean([distance for distance in distances if  distance > 90])
+        #upull = average(distances)
+        Button.SHOW._code.text = f"push:{push},pull:{pull}fit: {list(distances)}"
+        return push * pull
         '''
         ux, uy = x-W/4, y-H/2
         distance = sqrt(dx*dx + dy*dy)
