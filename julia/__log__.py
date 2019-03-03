@@ -257,3 +257,10 @@ SyntaxError: invalid syntax
     [Buttons.DISTANCES.pop((a, b)) for a in Buttons.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
 AttributeError: 'str' object has no attribute 'DISTANCES'
 '''},
+{'date': 'Sun Mar 03 2019 14:50:51.855 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 51
+  if deltafit > 0.1
+                    ^
+SyntaxError: invalid syntax
+'''},
