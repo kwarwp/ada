@@ -80,7 +80,11 @@ class Button(Sprite):
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
     def distances(self):
-        return [value() for key, value in Button.DISTANCES.items()]
+        def distance(a, b):
+            dx, dy = a.x - b.x, a.y - b.y
+            return sqrt(dx*dx + dy*dy)
+        #return [value() for key, value in Button.DISTANCES.items()]
+        return [distance(a, b) for a, b in Button.DISTANCES.keys()]
         #return {key: value() for key, value in Button.DISTANCES.items()} 
         
     def create(self):
@@ -90,7 +94,7 @@ class Button(Sprite):
             return sqrt(dx*dx + dy*dy)
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
         Button.DISTANCES = {(a, b): lambda: distance(a, b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
-        [Button.DISTANCES.pop((a, b)) for a in Button.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
+        #[Button.DISTANCES.pop((b, a)) for a, b in Button.DISTANCES.keys() if (b, a) in self.DISTANCES]
         Button.SHOW._code.text = str(list(self.distances()))
         timer.set_timeout(self.anneal, 1000)
         return Button.BUTTONS
