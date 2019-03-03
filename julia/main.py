@@ -48,7 +48,7 @@ class Button(Sprite):
         [b.do_move(randit(-self.heat, self.heat),randit(-self.heat, self.heat)) for b in self.BUTTONS]
         fit = self.fitness()
         self.fit, deltafit = fit, self.fit - fit
-        if deltafit > 0.1
+        if deltafit > 0.1:
             self.heat /= 2
             timer.set_timeout(self.anneal, 1000)
             
