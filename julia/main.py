@@ -38,16 +38,16 @@ class Button(Sprite):
         Button.SHOW._code.text = f"{dx} {dy} {self.x} {self.y}"
         self.elt.style.left, self.elt.style.top = self.x, self.y
         if abs(dx) > 1 or abs(dy) > 1:
-            timer.set_timeout(self.move, 1000)
+            timer.set_timeout(self.move, 500)
             
     def fitness(self, x, y):
         dx, dy = x - self.x, y - self.y
-        ux, uy = x-W/2, y-H/2
+        ux, uy = x-W/4, y-H/2
         distance = sqrt(dx*dx + dy*dy)
         univer = sqrt(ux*ux + uy*uy )
         pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
         push = min(100, 0.1 / min(0.1, distance)) if distance < 90 else 0.0
-        upull = min(0.005, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
+        upull = min(0.05, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
         return (-dx * pull + dx * push -ux * upull, -dy * pull + dy * push -uy * upull)
             
     def force(self, x, y, other):
