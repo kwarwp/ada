@@ -85,6 +85,7 @@ class Button(Sprite):
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
         Button.DISTANCES = {(a, b): lambda: sqrt(a*a + b*b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
         [Button.DISTANCES.pop((a, b)) for a in Button.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
+        imer.set_timeout(self.anneal, 1000)
         return Button.BUTTONS
 
 class Project:
