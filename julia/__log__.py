@@ -223,3 +223,10 @@ UnboundLocalError: local variable 'b0' referenced before assignment
     SHOW = Codigo("oi", style=dict(left=0, top=560, width=600))
 NameError: name 'Codigo' is not defined
 '''},
+{'date': 'Sun Mar 03 2019 13:03:51.874 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 57
+  other.x, other.y = + dx * push,  + dy * push
+                                 ^
+SyntaxError: invalid syntax
+'''},
