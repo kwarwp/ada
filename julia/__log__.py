@@ -230,3 +230,10 @@ NameError: name 'Codigo' is not defined
                                  ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Mar 03 2019 14:10:18.937 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 67
+  return {key: value() for key, value in self.DISTANCES.items()}: 
+                                                                 ^
+SyntaxError: invalid syntax
+'''},
