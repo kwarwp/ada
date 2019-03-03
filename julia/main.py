@@ -4,7 +4,7 @@ from math import sqrt
 from random import randint
 from browser import timer
 IMGSIZE = "240px"
-
+W, H = 800, 600
 class Sprite(Elemento):
     def __init__(self, x, y, image, cena, index=0):
         super().__init__(image, cena=cena, style=dict(left=x,top=x,width="80px",height="80px",overflow="hidden"))
@@ -15,7 +15,7 @@ class Sprite(Elemento):
 
 class Button(Sprite):
     BUTTONS = []
-    SHOW = Codigo("oi", style=dict(left=0, top=560, width=600))
+    SHOW = Codigo("oi", style=dict(left=0, top=560, width=W))
     def __init__(self, x, y, image, cena, index=0):
         super().__init__(x, y, image, cena, index)
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
