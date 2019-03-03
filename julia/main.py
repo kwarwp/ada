@@ -31,8 +31,8 @@ class Button(Sprite):
     def force(self, x, y):
         dx, dy = x - self.x, y - self.y
         distance = sqrt(dx*dx + dy*dy)
-        pull = 10 / min(0.1, distance)
-        pull = 10 / min(0.1, distance)
+        pull = 10 / min(0.1, distance) if distance > 90 else 0
+        return -dx * pull, -dy * pull
         
         
         
