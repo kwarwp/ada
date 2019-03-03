@@ -54,7 +54,8 @@ class Button(Sprite):
         pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
         push = min(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
         upull = min(0.0005, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
-        other.x, other.y = + dx * push,  + dy * push
+        other.x += dx * push
+        other.y += dy * push
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
         
