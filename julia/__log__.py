@@ -112,3 +112,10 @@ TypeError: __init__() got multiple values for argument 'cena'
     Button.BUTTONS = [Button(randint(800), randint(800), self.image, self.cena, index) for index in range(9)]
 TypeError: randint missing 1 positional argument: 'b'
 '''},
+{'date': 'Sun Mar 03 2019 11:08:41.184 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 35
+  return -dx * pull, -dy * pull
+                    ^
+SyntaxError: invalid syntax
+'''},
