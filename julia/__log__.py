@@ -126,3 +126,10 @@ SyntaxError: invalid syntax
                     ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Mar 03 2019 11:47:14.579 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 17
+  CODE = Codigo("", style=dict(left=0, top=650)
+                                                     ^
+SyntaxError: invalid syntax
+'''},
