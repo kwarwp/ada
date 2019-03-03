@@ -1,5 +1,5 @@
 # ada.julia.main.py
-from _spy.vitollino.main import Cena, Elemento, STYLE
+from _spy.vitollino.main import Cena, Elemento, STYLE, Codigo
 from math import sqrt
 from random import randint
 from browser import timer
@@ -28,7 +28,7 @@ class Button(Sprite):
             timer.set_timeout(self.move, 10)
     def move(self):
         forces = zip(*[b.force(self.x) for b in Button.BUTTONS if b != self])
-        dx, dy = sum(forces[0]), sum(forces[1])
+        dx, dy = [sum(force) for force in forces]
         self.x += int(dx)
         self.y += int(dy)
         Button.SHOW._code.text = f"{dx} {dy} {self.x} {self.y}"
@@ -56,6 +56,7 @@ class Project:
         Buttons = "https://i.imgur.com/v6JS64Y.png"
         ARENA = "https://i.imgur.com/nS8Tas9.jpg"
         cena = Cena(ARENA)
+        Button.SHOW.entra(cena)
         b0 = Button(10, 10, Buttons, cena, 0).create()
         #b0.entra(cena)
         cena.vai()
