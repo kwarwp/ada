@@ -94,8 +94,13 @@ class Button(Sprite):
             return sqrt(dx*dx + dy*dy)
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
         Button.DISTANCES = {(a, b): lambda: distance(a, b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
+        for a in self.BUTTONS:
+            for b in self.BUTTONS:
+                if a != b and (b, a) not in Button.DISTANCES:
+                    Button.DISTANCES[(a,b)] = lambda: distance(a, b)
+        #Button.DISTANCES = {(a, b): lambda: distance(a, b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
         #[Button.DISTANCES.pop((b, a)) for a, b in Button.DISTANCES.keys() if (b, a) in self.DISTANCES]
-        Button.SHOW._code.text = str(list(self.distances()))
+        Button.SHOW._code.text = str(len(self.distances()))
         timer.set_timeout(self.anneal, 1000)
         return Button.BUTTONS
 
