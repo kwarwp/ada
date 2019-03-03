@@ -306,3 +306,10 @@ NameError: name 'imer' is not defined
     return [value() for key, value in Button.DISTANCES.items()]
 TypeError: unsupported operand types for *: 'Button' and 'Button'
 '''},
+{'date': 'Sun Mar 03 2019 16:23:48.459 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 58
+  Button.SHOW._code.text = f"fit: {list(distances))}"
+                            ^
+SyntaxError: Error: f-string: expected '}'
+'''},
