@@ -20,17 +20,17 @@ class Button(Sprite):
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
         self.grav, self.ele= 10, 10
         timer.set_timeout(self.move, 10)
-    def move(self):
-        self.x, self.y = self.x+ randint(-10,10), self.y+ randint(-10,10)
-        self.img.style.left, self.img.style.top = self.x, self.y
-        if 0< self.x < 800 and 0< self.y < 500:
-            timer.set_timeout(self.move, 10)
     def _move(self):
+        self.x, self.y = self.x+ randint(-10,10), self.y+ randint(-10,10)
+        self.elt.style.left, self.elt.style.top = self.x, self.y
+        if 0< self.x < 700 and 0< self.y < 500:
+            timer.set_timeout(self.move, 10)
+    def move(self):
         forces = zip(*[b.force(self.x) for b in Button.BUTTONS] if b != self)
         dx, dy = sum(forces[0]), sum(forces[1])
         self.x += int(dx)
         self.y += int(dy)
-        self.img.style.left, self.img.style.top = self.x, self.y
+        self.elt.style.left, self.elt.style.top = self.x, self.y
         if dx > 1 or dy > 1:
             timer.set_timeout(self.move, 10)
             
