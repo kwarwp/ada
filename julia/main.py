@@ -15,6 +15,7 @@ class Sprite(Elemento):
 
 class Button(Sprite):
     BUTTONS = []
+    DISTANCES = {}
     SHOW = Codigo("oi", style=dict(left=0, top=560, width=W))
     def __init__(self, x, y, image, cena, index=0):
         super().__init__(x, y, image, cena, index)
@@ -62,10 +63,13 @@ class Button(Sprite):
         other.do_move(dx * push, dy * push)
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
-        
+    def distances(self):
+        return {key: value() for key, value in self.DISTANCES.items()}: 
         
     def create(self):
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
+        Buttons.DISTANCES = {(a, b): lambda: sqrt(a*a + b*b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
+        [Buttons.DISTANCES.pop((a, b)) for a in self.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
         return Button.BUTTONS
 
 class Project:
