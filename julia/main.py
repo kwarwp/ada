@@ -53,11 +53,11 @@ class Button(Sprite):
             
     def force(self, x, y, other):
         dx, dy = x - self.x, y - self.y
-        ux, uy = x-W/4, y-H/2
+        ux, uy = x-W/3, y-H/2
         distance = sqrt(dx*dx + dy*dy)
         univer = sqrt(ux*ux + uy*uy )
         pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
-        push = min(100, 0.05 / min(0.1, distance)) if distance < 90 else 0.0
+        push = min(100, 0.02 / min(0.1, distance)) if distance < 90 else 0.0
         upull = min(0.05, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
         other.do_move(dx * push, dy * push)
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
