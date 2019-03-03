@@ -64,12 +64,12 @@ class Button(Sprite):
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
     def distances(self):
-        return {key: value() for key, value in self.DISTANCES.items()}: 
+        return {key: value() for key, value in Button.DISTANCES.items()} 
         
     def create(self):
         Button.BUTTONS = [Button(randint(0, 800), randint(0, 300), self.image, self.cena, index) for index in range(9)]
-        Buttons.DISTANCES = {(a, b): lambda: sqrt(a*a + b*b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
-        [Buttons.DISTANCES.pop((a, b)) for a in self.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
+        Button.DISTANCES = {(a, b): lambda: sqrt(a*a + b*b) for a in self.BUTTONS for b in self.BUTTONS if a != b}
+        [Button.DISTANCES.pop((a, b)) for a in Button.DISTANCES for b in self.BUTTONS if (b, a) in self.DISTANCES]
         return Button.BUTTONS
 
 class Project:
