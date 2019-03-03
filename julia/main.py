@@ -21,7 +21,7 @@ class Button(Sprite):
         super().__init__(x, y, image, cena, index)
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
         self.grav, self.ele= 10, 10
-        self.heat = H//8
+        self.heat = H//2
         self.fit = 10000000
         #timer.set_timeout(self.move, 10)
         #timer.set_timeout(self.anneal, 10)
@@ -51,23 +51,23 @@ class Button(Sprite):
         Button.SHOW._code.text = f"b.do_move {moves}"
         fit = self.fitness()
         self.fit, deltafit = fit, self.fit - fit
-        Button.SHOW._code.text = f"self.fit:{self.fit}, the fit::{fit}, deltafit:{deltafit}"
-        if abs(deltafit) > 0.01:
-            self.heat = self.heat * 0.99 if deltafit < 0 else self.heat
-            Button.SHOW._code.text = f"self.heat = {self.heat} self.fitin:{self.fit}, fited:{fit}, deltafit:{deltafit}"
+        Button.SHOW._code.text = f"self.fitt:{self.fit}, the fit::{fit}, deltafiti:{deltafit}"
+        if abs(deltafit) > 0.0001:
+            self.heat = self.heat * 0.85 if deltafit < 0 else self.heat * 0.999
+            Button.SHOW._code.text = f"self.heat = {self.heat} fited:{fit}, deltafitd:{deltafit}"
             timer.set_timeout(self.anneal, 1000)
             
     def fitness(self):
         def mean(values):
             values = list(values)
-            return sum(values)/len(values)
+            return sum(values)/(len(values) if values else 1)
         distances = self.distances()
-        Button.SHOW._code.text = f"fit: {mean(list(distances))}"
-        push = mean([distance for distance in distances if  distance < 90])
-        pull = mean([distance for distance in distances if  distance > 90])
-        #upull = average(distances)
+        Button.SHOW._code.text = f"fitness: {mean(list(distances))}"
+        push = mean([distance for distance in distances if  distance < 90])+1
+        pull = [distance for distance in distances if  distance > 90]
+        upull = mean(distances)
         Button.SHOW._code.text = f"push:{push},pull:{pull}fit: {list(distances)}"
-        return push * pull
+        return push * (mean(pull)+1) * upull * (sum(pull)+1)
         '''
         ux, uy = x-W/4, y-H/2
         distance = sqrt(dx*dx + dy*dy)
