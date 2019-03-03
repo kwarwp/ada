@@ -49,3 +49,10 @@ Exception: <TypeError: bases[i].$dict is undefined>
     STYLE["width"] = 800
 NameError: name 'STYLE' is not defined
 '''},
+{'date': 'Sun Mar 03 2019 09:52:37.928 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 8
+  style = dict(position="relative",left=f"-{index*80}px", width=IMGSIZE, height="IMGSIZE)
+                                                                                         ^
+SyntaxError: EOL while scanning string literal
+'''},
