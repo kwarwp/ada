@@ -40,7 +40,7 @@ class Button(Sprite):
         dx, dy = x - self.x, y - self.y
         distance = sqrt(dx*dx + dy*dy)
         pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
-        push = max(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
+        push = min(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
         return (-dx * pull + dx * push, -dy * pull + dy * push)
         
         
