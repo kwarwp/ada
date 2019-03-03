@@ -26,6 +26,10 @@ class Button(Sprite):
         self.elt.style.left, self.elt.style.top = self.x, self.y
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
+    def do_move(self, dx, dy):
+        self.x += int(dx)
+        self.y += int(dy)
+        self.elt.style.left, self.elt.style.top = self.x, self.y
     def move(self):
         forces = zip(*[b.force(self.x, self.y, self) for b in Button.BUTTONS if b != self])
         dx, dy = [sum(force) for force in forces]
@@ -54,8 +58,7 @@ class Button(Sprite):
         pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
         push = min(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
         upull = min(0.0005, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
-        other.x += dx * push
-        other.y += dy * push
+        other.do_move(dx * push, dy * push)
         return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
         
