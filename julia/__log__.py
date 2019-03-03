@@ -92,3 +92,23 @@ TypeError: __init__() got an unexpected keyword argument 'cena'
     b0 = Sprite(10, 10, Buttons, 7, cena = cena)
 TypeError: __init__() got multiple values for argument 'cena'
 '''},
+{'date': 'Sun Mar 03 2019 10:19:57.315 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 39
+    _ = Project()
+  module <module> line 33
+    b0 = Button(10, 10, Buttons, cena, 0).create()
+  module <module> line 23
+    Button.BUTTONS = [Button(randint(800), randint(800), self.image, self.cena, index) for index in range(9)]
+TypeError: randint missing 1 positional argument: 'b'
+'''},
