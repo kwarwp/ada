@@ -2,6 +2,7 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE, Codigo
 from math import sqrt
 from random import randint
+from statistics import average
 from browser import timer
 IMGSIZE = "240px"
 W, H = 800, 600
@@ -21,15 +22,18 @@ class Button(Sprite):
         super().__init__(x, y, image, cena, index)
         self.x, self.y, self.image, self.cena, self.index = x, y, image, cena, index
         self.grav, self.ele= 10, 10
-        timer.set_timeout(self.move, 10)
+        self.heat = H//2
+        self.fit = 100**10
+        #timer.set_timeout(self.move, 10)
+        timer.set_timeout(self.anneal, 10)
     def _move(self):
         self.x, self.y = self.x+ randint(-10,10), self.y+ randint(-10,10)
         self.elt.style.left, self.elt.style.top = self.x, self.y
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def do_move(self, dx, dy):
-        self.x += int(dx)
-        self.y += int(dy)
+        self.x += int(dx)%W
+        self.y += int(dy)%H
         self.elt.style.left, self.elt.style.top = self.x, self.y
     def move(self):
         forces = zip(*[b.force(self.x, self.y, self) for b in Button.BUTTONS if b != self])
@@ -40,9 +44,20 @@ class Button(Sprite):
         self.elt.style.left, self.elt.style.top = self.x, self.y
         if abs(dx) > 1 or abs(dy) > 1:
             timer.set_timeout(self.move, 2)
+    def anneal(self):
+        [b.do_move(randit(-self.heat, self.heat),randit(-self.heat, self.heat)) for b in self.BUTTONS]
+        fit = self.fitness()
+        self.fit, deltafit = fit, self.fit - fit
+        if deltafit > 0.1
+            self.heat /= 2
+            timer.set_timeout(self.anneal, 1000)
             
     def fitness(self, x, y):
-        dx, dy = x - self.x, y - self.y
+        distances = self.distances()
+        push = average(distance for distance in distances if  distance < 90)
+        pull = average(distance for distance in distances if  distance > 90)
+        upull = average(distances)
+        return push/pull
         '''
         ux, uy = x-W/4, y-H/2
         distance = sqrt(dx*dx + dy*dy)
