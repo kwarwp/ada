@@ -284,3 +284,25 @@ SyntaxError: invalid syntax
     imer.set_timeout(self.anneal, 1000)
 NameError: name 'imer' is not defined
 '''},
+{'date': 'Sun Mar 03 2019 14:59:20.9 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 108
+    _ = Project()
+  module <module> line 102
+    b0 = Button(10, 10, Buttons, cena, 0).create()
+  module <module> line 90
+    Button.SHOW._code.text = str(list(self.distances()))
+  module <module> line 83
+    return [value() for key, value in Button.DISTANCES.items()]
+TypeError: unsupported operand types for *: 'Button' and 'Button'
+'''},
