@@ -27,7 +27,7 @@ class Button(Sprite):
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def move(self):
-        forces = zip(*[b.force(self.x) for b in Button.BUTTONS if b != self])
+        forces = zip(*[b.force(self.x, self.y) for b in Button.BUTTONS if b != self])
         dx, dy = [sum(force) for force in forces]
         self.x += int(dx)
         self.y += int(dy)
