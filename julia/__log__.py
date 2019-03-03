@@ -205,3 +205,21 @@ TypeError: 'str' object is not callable
     b0[0].CODE.entra(cena)
 UnboundLocalError: local variable 'b0' referenced before assignment
 '''},
+{'date': 'Sun Mar 03 2019 12:16:54.330 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 16
+    class Button(Sprite):
+  module <module> line 18
+    SHOW = Codigo("oi", style=dict(left=0, top=560, width=600))
+NameError: name 'Codigo' is not defined
+'''},
