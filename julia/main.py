@@ -27,7 +27,7 @@ class Button(Sprite):
         if 0< self.x < 700 and 0< self.y < 500:
             timer.set_timeout(self.move, 10)
     def move(self):
-        forces = zip(*[b.force(self.x, self.y) for b in Button.BUTTONS if b != self])
+        forces = zip(*[b.force(self.x, self.y, self) for b in Button.BUTTONS if b != self])
         dx, dy = [sum(force) for force in forces]
         self.x += int(dx)
         self.y += int(dy)
@@ -36,7 +36,7 @@ class Button(Sprite):
         if abs(dx) > 1 or abs(dy) > 1:
             timer.set_timeout(self.move, 1000)
             
-    def force(self, x, y):
+    def fitness(self, x, y):
         dx, dy = x - self.x, y - self.y
         ux, uy = x-W/2, y-H/2
         distance = sqrt(dx*dx + dy*dy)
@@ -45,6 +45,17 @@ class Button(Sprite):
         push = min(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
         upull = min(0.0005, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
         return (-dx * pull + dx * push -ux * upull, -dy * pull + dy * push -uy * upull)
+            
+    def force(self, x, y, other):
+        dx, dy = x - self.x, y - self.y
+        ux, uy = x-W/2, y-H/2
+        distance = sqrt(dx*dx + dy*dy)
+        univer = sqrt(ux*ux + uy*uy )
+        pull = 0.001 / min(0.1, distance) if distance > 90 else 0.0
+        push = min(100, 0.01 / min(0.1, distance)) if distance < 90 else 0.0
+        upull = min(0.0005, 0.01 / min(0.1, univer)) if univer > 160 else 0.0
+        other.x, other.y = + dx * push,  + dy * push
+        return (-dx * pull -ux * upull, -dy * pull -uy * upull)
         
         
         
