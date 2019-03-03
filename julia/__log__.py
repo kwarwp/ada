@@ -27,3 +27,7 @@ SyntaxError: missing parenthesis in call to 'print'
         ^
 SyntaxError: missing parenthesis in call to 'print'
 '''},
+{'date': 'Sun Mar 03 2019 09:34:22.609 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: bases[i].$dict is undefined>
+'''},
