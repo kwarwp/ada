@@ -70,3 +70,10 @@ NameError: name 'floor' is not defined
     dark.entra(cena)
 NameError: name 'dark' is not defined
 '''},
+{'date': 'Thu Mar 28 2019 11:23:25.519 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 5
+  STYLE ["width"] = 1200px
+                         ^
+SyntaxError: invalid syntax
+'''},
