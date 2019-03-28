@@ -97,3 +97,10 @@ SyntaxError: invalid syntax
     divesq.style.width = width // 3  # 100
 TypeError: unsupported operand type(s) for //: 'str' and 'int'
 '''},
+{'date': 'Thu Mar 28 2019 11:55:19.337 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 19
+  fire1 = 
+           ^
+SyntaxError: invalid syntax
+'''},
