@@ -2,8 +2,8 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE
 from random import choice
 from browser import timer
-STYLE ["width"] = 1200
-STYLE ["height"] = "620px" 
+STYLE ["width"] = 1157
+STYLE ["height"] = "600px" 
 wall = "https://i.imgur.com/OclGL7S.png"
 window_= "https://i.imgur.com/O1pEa77.png"
 window_2 = "https://i.imgur.com/mHVwSU8.png"
