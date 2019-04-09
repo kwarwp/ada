@@ -235,3 +235,10 @@ SyntaxError: invalid syntax
                                                                                         ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Apr 09 2019 16:22:08.531 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 37
+  fire1 = Elemento(firei,stylr=dict((left=900,top=-103,width="600px",height="300px"))
+                                                                                    ^
+SyntaxError: invalid syntax
+'''},
