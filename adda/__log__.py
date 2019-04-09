@@ -228,3 +228,10 @@ AttributeError: 'str' object has no attribute 'entra'
                                                                                           ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Apr 09 2019 16:20:32.58 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 36
+  fire1 = Elemento(fire1,style=dict(left=left=180,top=-103,width="600px",height="300px"))
+                                                                                        ^
+SyntaxError: invalid syntax
+'''},
