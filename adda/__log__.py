@@ -136,3 +136,10 @@ AttributeError: 'str' object has no attribute 'entra'
     fire1.entra(cena)
 AttributeError: 'str' object has no attribute 'entra'
 '''},
+{'date': 'Tue Apr 09 2019 15:08:23.470 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  fire2 = Elemento(fire1,style
+                                                                                                                               ^
+SyntaxError: invalid syntax
+'''},
