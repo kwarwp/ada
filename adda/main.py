@@ -91,14 +91,14 @@ def troca_fire(ev=0):
     global o_fire
     fire1.img.src= choice(os_fire) #os_glows[o_glow]
     fire_1.img.src= choice(os_fire) #os_glows[o_glow]
-    fire2.img.src= choice(os_fire)
+    '''fire2.img.src= choice(os_fire)
     fire_2.img.src= choice(os_fire)
     fire3.img.src= choice(os_fire)
     fire_3.img.src= choice(os_fire)
     fire4.img.src= choice(os_fire)
     fire_4.img.src= choice(os_fire)
     fire5.img.src= choice(os_fire)
-    fire_5.img.src= choice(os_fire)
+    fire_5.img.src= choice(os_fire)'''
     o_fire += 1
     if o_fire > 4:
         o_fire = 0
