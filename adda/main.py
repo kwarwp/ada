@@ -62,7 +62,7 @@ fire_1 = Elemento(fire_1,style=dict(left=900,top=-103,width="600px",height="300p
 #fire5 = Elemento(fire5,style=dict(left=430,top=-103,width="600px",height="300px"))
 #fire_5 = Elemento(fire_5,style=dict(left=-280,top=-103,width="600px",height="300px"))
 os_fire1 = Elemento(os_fire,style=dict(left=180,top=-103,width="600px",height="300px"))
-os_fire2 = Elemento(get_fire(fire1),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire2 = Elemento(get_fire(fire5),style=dict(left=180,top=-103,width="600px",height="300px"))
 os_fire3 = Elemento(get_fire(fire2),style=dict(left=180,top=-103,width="600px",height="300px"))
 os_fire4 = Elemento(get_fire(fire3),style=dict(left=180,top=-103,width="600px",height="300px"))
 os_fire5 = Elemento(get_fire(fire4),style=dict(left=180,top=-103,width="600px",height="300px"))
