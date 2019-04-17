@@ -4,8 +4,15 @@ from random import choice
 from browser import timer
 STYLE ["width"] = 1345 #img de fundo
 STYLE ["height"] = "600px" #img de fundo
+def get_fire(ix): 
+    r1,r2 = fire_offset [ix], fire_offset [thefire1] + 100
+    rect1 = {"clip": f"rect({r1}px,0px,{r2}px,100px)"}
+    fire1.img.src= ix #os_glows[o_glow]
+    fire1.img.style = rect1
+    return ix
 
-wall = "https://i.imgur.com/OclGL7S.png" #adc imagem
+#adc imagem
+wall = "https://i.imgur.com/OclGL7S.png" 
 window_= "https://i.imgur.com/O1pEa77.png"
 window_2 = "https://i.imgur.com/mHVwSU8.png"
 torch_= "https://i.imgur.com/GYdWkb0.png"
@@ -28,8 +35,8 @@ fire_4 = "https://i.imgur.com/tANP62N.png"
 fire5 = "https://i.imgur.com/TCG2mkF.png"
 fire_5 = "https://i.imgur.com/TCG2mkF.png"
 
-
-os_fire = [fire1,fire2,fire3,fire4,fire5] #list para gif
+#list para gif
+os_fire = [fire1,fire2,fire3,fire4,fire5] 
 os_glows = [glow1,glow2,glow3,glow4,glow5]
 fire_offset = {fire1:100,fire_1:200,fire2:300,fire_2:500,fire3:600,fire_3:700,fire4:800,fire_4:900,fire5:400, fire_5:450}
 cena = Cena(wall)
@@ -55,9 +62,14 @@ fire_1 = Elemento(fire_1,style=dict(left=900,top=-103,width="600px",height="300p
 #fire5 = Elemento(fire5,style=dict(left=430,top=-103,width="600px",height="300px"))
 #fire_5 = Elemento(fire_5,style=dict(left=-280,top=-103,width="600px",height="300px"))
 os_fire1 = Elemento(os_fire,style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire2 = Elemento(get_fire(fire1),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire3 = Elemento(get_fire(fire2),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire4 = Elemento(get_fire(fire3),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire5 = Elemento(get_fire(fire4),style=dict(left=180,top=-103,width="600px",height="300px"))
 #dark= Elemento("",style=dict(width="960px",height="600px",backgroundColor="black",opacity=0.5))
 
-window.entra(cena)#como fazer a imagem aparecer na tela
+#como fazer a imagem aparecer na tela
+window.entra(cena)
 window2.entra(cena)
 torch.entra(cena)
 torch_2.entra(cena)
@@ -66,14 +78,11 @@ glow_1.entra(cena)
 door.entra(cena)
 fire1.entra(cena)
 fire_1.entra(cena)
-#fire2.entra(cena)
-#fire_2.entra(cena)
-#fire3.entra(cena)
-#fire_3.entra(cena)
-#fire4.entra(cena)
-#fire_4.entra(cena)
-#fire5.entra(cena)
-#fire_5.entra(cena)
+os_fire1.entra(cena)
+os_fire2.entra(cena)
+os_fire3.entra(cena)
+os_fire4.entra(cena)
+os_fire5.entra(cena)
 #dark.entra(cena)
 cena.vai()
 
@@ -108,5 +117,5 @@ def troca_fire(ev=0):
     o_fire += 1
     if o_fire > 4:
         o_fire = 0
-troca_fire()
-timer.set_interval(troca_fire,100)
+#troca_fire()
+#timer.set_interval(troca_fire,100)
