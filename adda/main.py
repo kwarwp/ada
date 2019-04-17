@@ -93,7 +93,7 @@ def troca_fire(ev=0):
     global o_fire
     thefire1 = coice(os_fire)
     r1,r2 = rect [thefire1], rect [thefire1] + 100
-    rect1 = {clip: f"rect({r1}px,0px,{r2}px,100px)"}
+    rect1 = {"clip": f"rect({r1}px,0px,{r2}px,100px)"}
     fire1.img.src= choice(os_fire) #os_glows[o_glow]
     fire1.img.style = rect1
     fire_1.img.src= choice(os_fire) #os_glows[o_glow]
