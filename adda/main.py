@@ -28,8 +28,10 @@ fire_4 = "https://i.imgur.com/tANP62N.png"
 fire5 = "https://i.imgur.com/TCG2mkF.png"
 fire_5 = "https://i.imgur.com/TCG2mkF.png"
 
+
 os_fire = [fire1,fire2,fire3,fire4,fire5] #list para gif
 os_glows = [glow1,glow2,glow3,glow4,glow5]
+fire_offset = {fire1:100,fire_1:200,fire2:300,fire_2:500,fire3:600,fire_3:700,fire4:800,fire_4:900}
 cena = Cena(wall)
 
 #abaixo como dimensionar o objeto
@@ -89,7 +91,11 @@ timer.set_interval(troca_glow,200)
 o_fire = 0 #efeito gif fire
 def troca_fire(ev=0): 
     global o_fire
+    thefire1 = coice(os_fire)
+    r1,r2 = rect [thefire1], rect [thefire1] + 100
+    rect1 = {clip: f"rect({r1}px,0px,{r2}px,100px)"}
     fire1.img.src= choice(os_fire) #os_glows[o_glow]
+    fire1.img.style = rect1
     fire_1.img.src= choice(os_fire) #os_glows[o_glow]
     '''fire2.img.src= choice(os_fire)
     fire_2.img.src= choice(os_fire)
