@@ -31,7 +31,7 @@ fire_5 = "https://i.imgur.com/TCG2mkF.png"
 
 os_fire = [fire1,fire2,fire3,fire4,fire5] #list para gif
 os_glows = [glow1,glow2,glow3,glow4,glow5]
-fire_offset = {fire1:100,fire_1:200,fire2:300,fire_2:500,fire3:600,fire_3:700,fire4:800,fire_4:900}
+fire_offset = {fire1:100,fire_1:200,fire2:300,fire_2:500,fire3:600,fire_3:700,fire4:800,fire_4:900,fire5:400, fire_5:450}
 cena = Cena(wall)
 
 #abaixo como dimensionar o objeto
