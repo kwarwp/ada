@@ -5,7 +5,7 @@ from browser import timer
 STYLE ["width"] = 1345 #img de fundo
 STYLE ["height"] = "600px" #img de fundo
 def get_fire(ix): 
-    r1,r2 = fire_offset [ix], fire_offset [thefire1] + 100
+    r1,r2 = fire_offset [ix], fire_offset [ix] + 100
     rect1 = {"clip": f"rect({r1}px,0px,{r2}px,100px)"}
     fire1.img.src= ix #os_glows[o_glow]
     fire1.img.style = rect1
