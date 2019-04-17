@@ -41,7 +41,7 @@ window2 = Elemento(window_2,style=dict(left=925,top=-45,width="420px",height="60
 window2.img.style=dict(position="relative",right="-230px")
 torch = Elemento(torch_,style=dict(left=-40,top=-5,width="600px",height="400px"))
 torch_2 = Elemento(torch_2,style=dict(left=800,top=-4,width="600px",height="400px"))
-glow1 = Elemento(glow1,style=dict(left=-15,top=0,width="500px",height="400px",opacity=0.7))
+glow1 = Elemento(glow1,style=dict(left=-30,top=0,width="500px",height="400px",opacity=0.7))
 glow_1= Elemento(glow_1,style=dict(left=700,top=0,width="500px",height="400px",opacity=0.7))
 door = Elemento(door,style=dict(left=-20,top=7,width="1200px",height="612px"))
 fire1 = Elemento(fire1,style=dict(left=180,top=-103,width="600px",height="300px"))
