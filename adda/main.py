@@ -91,7 +91,7 @@ timer.set_interval(troca_glow,200)
 o_fire = 0 #efeito gif fire
 def troca_fire(ev=0): 
     global o_fire
-    thefire1 = coice(os_fire)
+    thefire1 = choice(os_fire)
     r1,r2 = fire_offset [thefire1], fire_offset [thefire1] + 100
     rect1 = {"clip": f"rect({r1}px,0px,{r2}px,100px)"}
     fire1.img.src= choice(os_fire) #os_glows[o_glow]
