@@ -1804,3 +1804,21 @@ KeyError: https://i.imgur.com/TCG2mkF.png
     r1,r2 = fire_offset [ix], fire_offset [thefire1] + 100
 KeyError: <_spy.vitollino.main.Elemento object>
 '''},
+{'date': 'Wed Apr 17 2019 18:41:33.985 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 65
+    os_fire2 = Elemento(get_fire(fire1),style=dict(left=180,top=-103,width="600px",height="300px"))
+  module <module> line 8
+    r1,r2 = fire_offset [ix], fire_offset [ix] + 100
+KeyError: <_spy.vitollino.main.Elemento object>
+'''},
