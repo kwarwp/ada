@@ -4,11 +4,11 @@ from random import choice
 from browser import timer
 STYLE ["width"] = 1345 #img de fundo
 STYLE ["height"] = "600px" #img de fundo
-def get_fire(ix): 
+def get_fire(ix,fire1_): 
     r1,r2 = fire_offset [ix], fire_offset [ix] + 100
     rect1 = {"clip": f"rect({r1}px,0px,{r2}px,100px)"}
-    fire1.img.src= ix #os_glows[o_glow]
-    fire1.img.style = rect1
+    fire1_.img.src= ix #os_glows[o_glow]
+    fire1_.img.style = rect1
     return ix
 
 #adc imagem
@@ -38,7 +38,7 @@ fire_5 = "https://i.imgur.com/TCG2mkF.png"
 #list para gif
 os_fire = [fire1,fire2,fire3,fire4,fire5] 
 os_glows = [glow1,glow2,glow3,glow4,glow5]
-fire_offset = {fire1:100,fire_1:200,fire2:300,fire_2:500,fire3:600,fire_3:700,fire4:800,fire_4:900,fire5:400, fire_5:450}
+fire_offset = {fire1:100,fire_1:200,fire2:400,fire_2:500,fire3:700,fire_3:700,fire4:900,fire_4:900,fire5:400, fire_5:450}
 cena = Cena(wall)
 
 #abaixo como dimensionar o objeto
@@ -62,10 +62,16 @@ fire_1 = Elemento(fire_1,style=dict(left=900,top=-103,width="600px",height="300p
 #fire5 = Elemento(fire5,style=dict(left=430,top=-103,width="600px",height="300px"))
 #fire_5 = Elemento(fire_5,style=dict(left=-280,top=-103,width="600px",height="300px"))
 os_fire1 = Elemento(os_fire,style=dict(left=180,top=-103,width="600px",height="300px"))
-os_fire2 = Elemento(get_fire(fire5),style=dict(left=180,top=-103,width="600px",height="300px"))
-os_fire3 = Elemento(get_fire(fire2),style=dict(left=180,top=-103,width="600px",height="300px"))
-os_fire4 = Elemento(get_fire(fire3),style=dict(left=180,top=-103,width="600px",height="300px"))
-os_fire5 = Elemento(get_fire(fire4),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire2 = Elemento((fire5),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire3 = Elemento((fire2),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire4 = Elemento((fire3),style=dict(left=180,top=-103,width="600px",height="300px"))
+os_fire5 = Elemento((fire4),style=dict(left=180,top=-103,width="600px",height="300px"))
+
+get_fire(fire4,os_fire5)
+get_fire(fire5,os_fire2)
+get_fire(fire2,os_fire3)
+get_fire(fire3,os_fire4)
+get_fire(fire4,os_fire5)
 #dark= Elemento("",style=dict(width="960px",height="600px",backgroundColor="black",opacity=0.5))
 
 #como fazer a imagem aparecer na tela
