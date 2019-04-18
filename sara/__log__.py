@@ -35,3 +35,10 @@ AttributeError: 'Kamui' object has no attribute 'issun'
     timer.setinterval(300,pula_issun)
 AttributeError: 'module' object has no attribute 'setinterval'
 '''},
+{'date': 'Thu Apr 18 2019 12:39:42.575 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 17
+  _issun, cena=self.kamui, style=dict(left=135, top=400, width=20, height="20px"))
+        ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
