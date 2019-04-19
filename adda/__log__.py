@@ -1894,3 +1894,23 @@ KeyError: <_spy.vitollino.main.Elemento object>
     style.update({})
 AttributeError: 'CSSProperty' object has no attribute 'update'
 '''},
+{'date': 'Fri Apr 19 2019 15:06:36.808 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 81
+    get_fire(fire1,os_fire1)
+  module <module> line 18
+    fire1_.elt.style.backgroundPosition = f"-{ix-50}px 50px"
+  module <module> line 1
+    (ix-50)
+TypeError: unsupported operand type(s) for -: 'str' and 'int'
+'''},
