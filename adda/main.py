@@ -68,7 +68,7 @@ os_fire3 = Elemento((fire2),style=dict(left=FIRE_L,top=-103,width="600px",height
 os_fire4 = Elemento((fire3),style=dict(left=FIRE_L,top=-103,width="600px",height="300px"))
 os_fire5 = Elemento((fire4),style=dict(left=FIRE_L,top=-103,width="600px",height="300px"))
 
-#dark= Elemento("",style=dict(width="960px",height="600px",backgroundColor="black",opacity=0.5))
+dark= Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.5))
 
 #como fazer a imagem aparecer na tela
 window.entra(cena)
@@ -80,7 +80,7 @@ glow_1.entra(cena)
 door.entra(cena)
 os_fire1.entra(cena)
 os_fire2.entra(cena)
-#dark.entra(cena)
+dark.entra(cena)
 cena.vai()
 
 o_glow = 0 #efeito gif glow
