@@ -11,7 +11,7 @@ FIRE_R = 200+850
 def _get_fire(ix,fire1_): 
     r1,r2 = fire_offset [ix], fire_offset [ix] + 400
     rect1 = {"clip": f"rect(0px,{r2}px,600px,{r1}px)", "position": "absolute"}
-    fire1_.img.src= ix #os_glows[o_glow]
+    fire1_.img.src= ix 
     fire1_.img.style = rect1
     return ix
 
