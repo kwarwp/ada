@@ -1,4 +1,4 @@
-# ada.adda.main.py
+#ada.adda.main.py
 from _spy.vitollino.main import Cena, Elemento, STYLE
 from random import choice
 from browser import timer
