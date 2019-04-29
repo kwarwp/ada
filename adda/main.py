@@ -72,7 +72,7 @@ Play = Elemento(Play,style=dict(left=300,top=200,width="300px",height="150px"))
 limbo = Cena()
 dark= Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.5))
 def vai_limbo(ev):
-    #dark.entra(limbo)
+    dark.entra(limbo)
     Play.entra(limbo)
     
 Play.vai=vai_limbo
