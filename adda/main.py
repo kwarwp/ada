@@ -38,6 +38,7 @@ fire4 = "https://i.imgur.com/tANP62N.png"
 fire_4 = "https://i.imgur.com/tANP62N.png"
 fire5 = "https://i.imgur.com/TCG2mkF.png"
 fire_5 = "https://i.imgur.com/TCG2mkF.png"
+Play = "https://i.imgur.com/nWVH9nU.png"
 
 #list para gif
 os_fire = [fire1,fire2,fire3,fire4,fire5] 
@@ -67,8 +68,15 @@ os_fire2 = Elemento(None,style=dict(left=FIRE_R,top=-103,width="600px",height="3
 os_fire3 = Elemento((fire2),style=dict(left=FIRE_L,top=-103,width="600px",height="300px"))
 os_fire4 = Elemento((fire3),style=dict(left=FIRE_L,top=-103,width="600px",height="300px"))
 os_fire5 = Elemento((fire4),style=dict(left=FIRE_L,top=-103,width="600px",height="300px"))
-
+Play = Elemento(Play,style=dict(left=300,top=200,width="300px",height="150px"))
+limbo = Cena()
 dark= Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.5))
+def vai_limbo(ev):
+    #dark.entra(limbo)
+    Play.entra(limbo)
+    
+Play.vai=vai_limbo
+#dark.vai=vai_limbo
 
 #como fazer a imagem aparecer na tela
 window.entra(cena)
@@ -81,6 +89,7 @@ door.entra(cena)
 os_fire1.entra(cena)
 os_fire2.entra(cena)
 dark.entra(cena)
+Play.entra(cena)
 cena.vai()
 
 o_glow = 0 #efeito gif glow
