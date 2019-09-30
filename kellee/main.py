@@ -1,5 +1,5 @@
 # ada.kellee.main.py
-texto = "VovÃÂÃÂ´ viu a maÃÂÃÂ§ÃÂÃÂ£ ubiqÃÂÃÂ¼a"
+texto = "VovÃÂÂÂÃÂÂÂ´ viu a maÃÂÂÂÃÂÂÂ§ÃÂÂÂÃÂÂÂ£ ubiqÃÂÂÂÃÂÂÂ¼a"
 from _spy.vitollino.main import Cena,Elemento,Texto,STYLE,Dragger, Droppable, INVENTARIO
 STYLE["width"] = 800
 STYLE["height"] = "600px"
@@ -39,4 +39,7 @@ def trigonometria():
     e_trig.vai()
     
     
-trigonometria()
+#trigonometria()
+from roxanne.main import test
+
+test()
