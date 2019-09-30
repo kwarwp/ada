@@ -197,7 +197,7 @@ class Bloco:
 import unittest
 
 
-class Testing(unittest.TestCase):
+class Testing(unittest.case.TestCase):
     def test_string(self):
         a = 'some'
         b = 'some'
