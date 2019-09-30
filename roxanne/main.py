@@ -29,7 +29,7 @@ class Planta(Cena, Droppable):
         Droppable.__init__(self, self.divesq, "regador", self.regou)
 
     def regou(self, *_):
-        alert("VocÃÂª regou a planta")
+        alert("VocÃÂÂÂª regou a planta")
         
 class Regador(Elemento, Dragger):
 
@@ -181,7 +181,7 @@ class Bloco:
         self.pecas_colocadas += valor_peca
         if len(self.pecas_colocadas) == 4:
             if all(self.pecas_colocadas):
-                input("O texto estÃÂ¡ certo.")
+                input("O texto estÃÂÂÂ¡ certo.")
             else:
                 vai = input("Tentar de novo?")
                 if vai == "s":
@@ -194,6 +194,24 @@ class Bloco:
         self.monta()
         self.monta = self.nao_monta
         # self.centro.norte.vai()
+import unittest
+
+
+class Testing(unittest.TestCase):
+    def test_string(self):
+        a = 'some'
+        b = 'some'
+        self.assertEqual(a, b)
+
+    def test_boolean(self):
+        a = True
+        b = True
+        self.assertEqual(a, b)
+
+
+def test():
+    unittest.main()
+
 
 
 if __name__ == "__main__":
