@@ -4,7 +4,6 @@ from random import choice
 from browser import timer
 
 __autor__= "Marilia_Campos_Galvao"
-
 #imgem de fundo
 STYLE ["width"] = 1345 
 STYLE ["height"] = "600px" 
@@ -104,7 +103,7 @@ def troca_glow(ev=0):
     if o_glow > 4:
         o_glow = 0
 troca_glow()
-timer.set_interval(troca_glow,200)
+timer.set_interval(troca_glow,80)
 
 #Efeito gif para o fogo
 o_fire = 0 
