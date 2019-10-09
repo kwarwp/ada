@@ -2,11 +2,11 @@ from random import randint
 from time import sleep
 itens = ('Pedra', 'Papel', 'Tesoura')
 comp = randint(0,2)
-jog = int(input('''\033[;32;mSuas opÃ§Ãµes:
+jog = int(input('''\033[;32;mSuas opções:
 \033[;36;m[ 0 ] PEDRA
 [ 1 ] PAPEL
 [ 2 ] TESOURA
-\033[;32;mQual Ã© a sua jogada? '''))
+\033[;32;mQual e a sua jogada? '''))
 print('\033[;31;mJO')
 sleep(1)
 print('\033[;31;mKEN')
