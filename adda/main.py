@@ -94,7 +94,8 @@ dark.entra(cena)
 Play.entra(cena)
 cena.vai()
 
-o_glow = 0 #efeito gif glow
+#Efeito gif para o brilho do fogo(mudança de imagem constante)
+o_glow = 0 
 def troca_glow(ev=0): 
     global o_glow
     glow1.img.src= choice(os_glows)#efeito aleatorio #os_glows[o_glow] #efeito sincronizado
@@ -105,7 +106,8 @@ def troca_glow(ev=0):
 troca_glow()
 timer.set_interval(troca_glow,200)
 
-o_fire = 0 #efeito gif fire
+#Efeito gif para o fogo
+o_fire = 0 
 def troca_fire(ev=0): 
     global o_fire
     thefire1 = choice(os_fire)
