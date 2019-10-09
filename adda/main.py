@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, Elemento, STYLE
 from random import choice
 from browser import timer
 
-__autor__Marilia_Campos_Galvao__2019
+__autor__= "Marilia_Campos_Galvao"
 
 #img de fundo
 STYLE ["width"] = 1345 
