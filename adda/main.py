@@ -5,7 +5,7 @@ from browser import timer
 
 __autor__= "Marilia_Campos_Galvao"
 
-#img de fundo
+#imgem de fundo
 STYLE ["width"] = 1345 
 STYLE ["height"] = "600px" 
 FIRE_L = 215
@@ -17,7 +17,7 @@ def _get_fire(ix,fire1_):
     fire1_.img.style = rect1
     return ix
 
-#adc imagem
+#imagens adicionadas
 wall = "https://i.imgur.com/OclGL7S.png" 
 window_= "https://i.imgur.com/O1pEa77.png"
 window_2 = "https://i.imgur.com/mHVwSU8.png"
@@ -55,7 +55,7 @@ def get_fire(ix,fire1_):
     fire1_.elt.style.backgroundPositionY = "10px"
     return ix
 
-#abaixo como dimensionar o objeto
+#abaixo pode-se observar como dimensionar o objeto na página
 window = Elemento(window_,style=dict(left=0,top=-50,width="420px",height="600px",overflow="hidden"))
 window.img.style=dict(position="relative",left="-200px")
 window2 = Elemento(window_2,style=dict(left=925,top=-45,width="420px",height="600px",overflow="hidden"))
@@ -76,9 +76,9 @@ dark= Elemento("",style=dict(width="1345px",height="600px",backgroundColor="blac
 def vai_limbo(ev):
     dark.entra(limbo)
     Play.entra(limbo)
-    
+
+#abaixo como enviar a imagem para o limbo(a imagem desaparece da tela)
 Play.vai=vai_limbo
-#dark.vai=vai_limbo
 
 #como fazer a imagem aparecer na tela
 window.entra(cena)
