@@ -7,4 +7,5 @@ class sempai():
     cdd= Cena(img=CDD)
     flash= Elemento(img=FLASH)
     flash.entra(cdd)
+    cdd.vai()
 sempai()
