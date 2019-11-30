@@ -1,6 +1,8 @@
 # ada.elevador.main.py
 from _spy.vitollino.main import Cena, INVENTARIO, STYLE, Musica, NS, NOSC, Elemento as Elemento_
-from texto.main import Texto
+# from texto.main import Texto
+from collections import namedtuple
+Pos = namedtuple("Pos", "x, y")
 STYLE.update(width=900, height=650)
 PREDIO= "https://i.imgur.com/K7xS3Oa.jpg"
 CESTA = "https://i.imgur.com/ouziL1K.png"
@@ -12,6 +14,7 @@ class Elemento(Elemento_):
                  score=NOSC, drag=False, drop='', **kwargs):
         super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
                          score=score, drag=drag, drop=drop, **kwargs)
+        self.nome = tit
                          
     @property
     def x(self):
@@ -70,6 +73,7 @@ class Passageiro(Item):
     def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
         super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.veiculo, self.cena = veiculo, cena
+        self.off = Pos(0, 0)
         
     def entra(self, cena):
         self.elt.entra(cena)
@@ -83,9 +87,10 @@ class Passageiro(Item):
         
     def _volta(self, *_):
         self._movimenta = self._vai
+        self.off = Pos(**self.veiculo.posicao_final)
         self.entra(self.cena)
-        self.elt.x -= self.posicao_final["x"]
-        self.elt.y -= self.posicao_final["y"]
+        self.elt.x -= self.posicao_final["x"] + self.off.x
+        self.elt.y -= self.posicao_final["y"] + self.off.y
 
 
 
@@ -95,7 +100,7 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
-        self.doggie = Passageiro(Doggie, dict(x=-150, y=0), veiculo=self.cesta, cena=predio, x=440, y=60)
+        self.doggie = Passageiro(Doggie, dict(x=-420, y=0), veiculo=self.cesta, cena=predio, x=440, y=60)
 
 
 class Elevador_:
