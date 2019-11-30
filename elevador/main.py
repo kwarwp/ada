@@ -15,19 +15,23 @@ class Elemento(Elemento_):
                          
     @property
     def x(self):
-        self.elt.style.getPropertyValue("left")
+        # return self.elt.style.getPropertyValue("left")
+        return self.elt.style.left
                          
     @x.setter
     def x(self, value):
-        self.elt.style.setPropertyValue("left", value)
+        # self.elt.style.setPropertyValue("left", value)
+        self.elt.style.left = value
                          
     @property
     def y(self):
-        self.elt.style.getPropertyValue("top")
+        # return self.elt.style.getPropertyValue("top")
+        return self.elt.style.top
                          
     @y.setter
     def y(self, value):
-        self.elt.style.setPropertyValue("top", value)
+        # self.elt.style.setPropertyValue("top", value)
+        self.elt.style.top = value
 
 class Item:
     def __init__(self, imagem, posicao_final, **kwargs):
