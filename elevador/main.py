@@ -33,9 +33,11 @@ class Elemento(Elemento_):
         # self.elt.style.setPropertyValue("top", value)
         self.elt.style.top = value
 
-    def entra(self, item):
-        # self.elt.style.setPropertyValue("top", value)
-        self.elt <= item.elt
+    def __le__(self, other):
+        if hasattr(other, 'elt'):
+            self.elt <= other.elt
+        else:
+            self.elt <= other
 
 class Item:
     def __init__(self, imagem, posicao_final, **kwargs):
@@ -64,7 +66,7 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta = Item(CESTA, dict(x=0, y=300), cena=predio, x=300, y=100,w=180,h=180)
-        # self.doggie = Item(Doggie, dict(x=90, y=0), cena=predio, x=390, y=80)
+        self.doggie = Item(Doggie, dict(x=90, y=0), cena=predio, x=390, y=80)
 
 
 class Elevador_:
