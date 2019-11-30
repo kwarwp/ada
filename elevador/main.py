@@ -53,7 +53,7 @@ class Item:
         
     def movimenta(self, *_):
         self._movimenta()
-        self.movimetar = True if self.vai() else False
+        self.movimetar = self.vai() if self.movimentar else False
         return False
         
     def _vai(self, *_):
