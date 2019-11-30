@@ -126,3 +126,23 @@ NameError: name 'posicao_inicial' is not defined
     super().__init__(imagem, posicao_final, cena=cena, **kwargs)
 TypeError: object() takes no parameters
 '''},
+{'date': 'Sat Nov 30 2019 16:34:31.849 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 170
+    Elevador()
+  module <module> line 109
+    self.cesta = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
+  module <module> line 48
+    self.posicao = dict(x=elt.x, y=elt.y)
+NameError: name 'elt' is not defined
+'''},
