@@ -32,7 +32,7 @@ class Elemento(Elemento_):
 
 class Item:
     def __init__(self, imagem, posicao_final, **kwargs):
-        self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
+        self.posicao_final = posicao_final
         self._movimenta = self._vai
         self.imagem = Elemento(imagem, vai=self.movimenta, **kwargs)
         
@@ -41,14 +41,14 @@ class Item:
         
     def _vai(self, *_):
         self._movimenta = self._volta
-        self.imagem.x += posicao_final["x"]
-        self.imagem.y += posicao_final["y"]
+        self.imagem.x += self.posicao_final["x"]
+        self.imagem.y += self.posicao_final["y"]
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        self.imagem.x -= posicao_final["x"]
-        self.imagem.y -= posicao_final["y"]
+        self.imagem.x -= self.posicao_final["x"]
+        self.imagem.y -= self.posicao_final["y"]
 
 
 class Elevador:
