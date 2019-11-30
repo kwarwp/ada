@@ -16,7 +16,7 @@ class Elemento(Elemento_):
     @property
     def x(self):
         # return self.elt.style.getPropertyValue("left")
-        return self.elt.style.left
+        return int(self.elt.style.left[:-2])
                          
     @x.setter
     def x(self, value):
@@ -26,7 +26,7 @@ class Elemento(Elemento_):
     @property
     def y(self):
         # return self.elt.style.getPropertyValue("top")
-        return self.elt.style.top
+        return int(self.elt.style.top[:-2])
                          
     @y.setter
     def y(self, value):
