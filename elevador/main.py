@@ -45,7 +45,7 @@ class Elemento(Elemento_):
 class Item:
     def __init__(self, imagem, posicao_final, **kwargs):
         self.posicao_final = posicao_final
-        self.posicao = dict(x=elt.x, y=elt.y)
+        self.posicao = dict(x=self.elt.x, y=self.elt.y)
         self._movimenta = self._vai
         self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
         
