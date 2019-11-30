@@ -33,12 +33,21 @@ class Item:
     def __init__(self, imagem, posicao_inicial, posicao_final):
         self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
         self._movimenta = self._vai
-        self._entra_sai = self._entra
-        self._doggie_sobe_desce = lambda *_:None
-        self._doggie_desce = lambda *_:None
-        self._doggie_sobe = lambda *_:None
-        self.na_cesta = "nada"
         self.imagem = Elemento(imagem, vai=self.movimenta, **posicao)
+        
+    def movimenta(self, *_):
+        self._movimenta()
+        
+    def _vai(self, *_):
+        self._movimenta = self._volta
+        self.imagem.x += posicao_final["x"]
+        self.imagem.y += posicao_final["y"]
+        # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
+        
+    def _volta(self, *_):
+        self._movimenta = self._vai
+        self.imagem.x -= posicao_final["x"]
+        self.imagem.y -= posicao_final["y"]
 
 
 class Elevador:
@@ -52,6 +61,7 @@ class Elevador:
         self._doggie_desce = lambda *_:None
         self._doggie_sobe = lambda *_:None
         self.na_cesta = "nada"
+        # self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
         self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
         self.doggie = Elemento(Doggie, x=350, y=80, cena=predio, vai=self.entra_sai)
         INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=0)
