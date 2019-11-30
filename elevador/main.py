@@ -31,10 +31,10 @@ class Elemento(Elemento_):
         self.elt.style.setPropertyValue("top", value)
 
 class Item:
-    def __init__(self, imagem, posicao_inicial, posicao_final):
+    def __init__(self, imagem, posicao_final, **kwargs):
         self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
         self._movimenta = self._vai
-        self.imagem = Elemento(imagem, vai=self.movimenta, **posicao)
+        self.imagem = Elemento(imagem, vai=self.movimenta, **kwargs)
         
     def movimenta(self, *_):
         self._movimenta()
@@ -56,6 +56,14 @@ class Elevador:
         predio = Cena(PREDIO)
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
+        self.cesta = Item(CESTA, dict(x=0, y=300), cena=predio, x=300, y=100,w=180,h=180)
+
+
+class Elevador_:
+    def __init__(self):
+        predio = Cena(PREDIO)
+        predio.vai()
+        # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self._sobe_desce = self._desce
         self._entra_sai = self._entra
         self._doggie_sobe_desce = lambda *_:None
@@ -65,7 +73,7 @@ class Elevador:
         # self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
         self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
         self.doggie = Elemento(Doggie, x=350, y=80, cena=predio, vai=self.entra_sai)
-        INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=0)
+        # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=0)
         a = Texto(predio, "oi", foi=lambda op="YY": Texto(predio, f"escolheu {op}").vai(), A="ee", B="uu")
         a.vai()
         #b = 
