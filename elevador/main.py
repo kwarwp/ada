@@ -52,11 +52,15 @@ class Item:
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
         
     def movimenta(self, *_):
-        self._movimenta()
         self.vai()
-        return False
+        self._movimenta()
+        self._ir = self.__ir
         
     def _ir(self, *_):
+        self._ir = lambda *_: None
+        self.movimenta()
+        
+    def __ir(self, *_):
         self._ir = lambda *_: None
         self.movimenta()
         
