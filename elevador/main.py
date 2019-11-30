@@ -53,8 +53,15 @@ class Item:
         
     def movimenta(self, *_):
         self._movimenta()
-        self.movimetar = self.vai() if self.movimentar else False
+        self.vai()
         return False
+        
+    def _ir(self, *_):
+        self._ir = lambda *_: None
+        self.vai()
+        
+    def ir(self, *_):
+        self._ir()
         
     def _vai(self, *_):
         self._movimenta = self._volta
@@ -112,8 +119,8 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
-        self.cesta1 = Item(CESTA, dict(x=0, y=300), vai=self.cesta0.movimenta, cena=predio, x=550, y=350,w=180,h=180)
-        self.cesta0.vai = self.cesta1.movimenta
+        self.cesta1 = Item(CESTA, dict(x=0, y=300), vai=self.cesta0.ir, cena=predio, x=550, y=350,w=180,h=180)
+        self.cesta0.vai = self.cesta1.ir
         self._cesta = self.cesta0
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=predio, x=440, y=60)
                          
