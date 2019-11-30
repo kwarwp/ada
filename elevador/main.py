@@ -9,9 +9,10 @@ Doggie = "https://i.imgur.com/1YbsNfD.png"
 
 class Elemento(Elemento_):
     def __init__(self, img="", vai=None, style=NS, tit="", alt="", cena=INVENTARIO,
-                 score=NOSC, drag=False, drop='', **kwargs):        self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
+                 score=NOSC, drag=False, drop='', **kwargs):
         super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
                          score=score, drag=drag, drop=drop, **kwargs)
+        self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
                          
     @property
     def x(self):
