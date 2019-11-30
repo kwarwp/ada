@@ -57,7 +57,7 @@ class Item:
         self.posicao = self.posicao_final
         self.elt.x += self.posicao_final["x"]
         self.elt.y += self.posicao_final["y"]
-        self.posicao = dict(x=elt.x, y=elt.y)
+        self.posicao = dict(x=self.elt.x, y=self.elt.y)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
@@ -65,7 +65,7 @@ class Item:
         self.posicao = dict(x=0, y=0)
         self.elt.x -= self.posicao_final["x"]
         self.elt.y -= self.posicao_final["y"]
-        self.posicao = dict(x=elt.x, y=elt.y)
+        self.posicao = dict(x=self.elt.x, y=self.elt.y)
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
