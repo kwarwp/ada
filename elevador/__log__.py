@@ -146,3 +146,10 @@ TypeError: object() takes no parameters
     self.posicao = dict(x=elt.x, y=elt.y)
 NameError: name 'elt' is not defined
 '''},
+{'date': 'Sat Nov 30 2019 16:36:35.8 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 60
+  self.posicao = dict(self.x=elt.x, y=self.elt.y)
+                            ^
+SyntaxError: keyword can't be an expression
+'''},
