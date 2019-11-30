@@ -153,3 +153,10 @@ NameError: name 'elt' is not defined
                             ^
 SyntaxError: keyword can't be an expression
 '''},
+{'date': 'Sat Nov 30 2019 16:36:55.567 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 60
+  self.posicao = dict(self.x=self.elt.x, y=self.elt.y)
+                            ^
+SyntaxError: keyword can't be an expression
+'''},
