@@ -17,3 +17,10 @@
     a = Texto(predio, "oi", foi=lambda op="YY": Texto(predio, f"escolheu {op}").vai(), A="ee", B="uu")
 TypeError: 'module' object is not callable
 '''},
+{'date': 'Sat Nov 30 2019 11:23:33.428 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 13
+  super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
+  ^
+IndentationError: unexpected indent
+'''},
