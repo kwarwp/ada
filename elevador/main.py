@@ -78,7 +78,8 @@ class Passageiro(Item):
     def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
         super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.veiculo, self.cena = veiculo, cena
-        self.posicao = Pos(self.veiculo.x - self.elt.x, self.veiculo.y - self.elt.y)
+        self.posicao = Pos(self.elt.x - self.veiculo.elt.x - posicao_final["x"],
+                           self.elt.y - self.veiculo.elt.y - posicao_final["y"])
         
     def entra(self, cena):
         self.elt.entra(cena)
@@ -87,8 +88,8 @@ class Passageiro(Item):
         self._movimenta = self._volta
         self.off = Pos(**self.veiculo.posicao)
         self.entra(self.veiculo.elt)
-        self.elt.x = 0
-        self.elt.y = 0
+        self.elt.x = self.posicao_final["x"]
+        self.elt.y = self.posicao_final["y"]
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
@@ -107,7 +108,7 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
-        self.doggie = Passageiro(Doggie, dict(x=-420, y=0), veiculo=self.cesta, cena=predio, x=440, y=60)
+        self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=predio, x=440, y=60)
 
 
 class Elevador_:
