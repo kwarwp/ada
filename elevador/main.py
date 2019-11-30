@@ -89,8 +89,8 @@ class Passageiro(Item):
         self._movimenta = self._vai
         self.off = Pos(**self.veiculo.posicao_final)
         self.entra(self.cena)
-        self.elt.x -= self.posicao_final["x"] + self.off.x
-        self.elt.y -= self.posicao_final["y"] + self.off.y
+        self.elt.x -= self.posicao_final["x"] - self.off.x
+        self.elt.y -= self.posicao_final["y"] - self.off.y
 
 
 
