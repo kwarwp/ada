@@ -43,14 +43,18 @@ class Elemento(Elemento_):
             self.elt <= other
 
 class Item:
-    def __init__(self, imagem, posicao_final, **kwargs):
+    def __init__(self, imagem, posicao_final, vai=None, **kwargs):
         self.posicao_final = posicao_final
         self._movimenta = self._vai
+        self.movimentar = True
+        self.vai = vai or lambda *_: None
         self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
         
     def movimenta(self, *_):
         self._movimenta()
+        self.movimetar = True if self.vai() else False
+        return False
         
     def _vai(self, *_):
         self._movimenta = self._volta
@@ -108,8 +112,15 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
-        self.cesta1 = Item(CESTA, dict(x=0, y=300), cena=predio, x=550, y=350,w=180,h=180)
+        self.cesta1 = Item(CESTA, dict(x=0, y=300), vai=self.cesta0.movimenta, cena=predio, x=550, y=350,w=180,h=180)
+        self.cesta0.vai = self.cesta1.movimenta
+        self._cesta = self.cesta0
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=predio, x=440, y=60)
+                         
+    @property
+    def cesta(self):
+        # return self.elt.style.getPropertyValue("left")
+        return self._cesta
 
 
 class Elevador_:
