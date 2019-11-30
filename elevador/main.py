@@ -45,6 +45,7 @@ class Elemento(Elemento_):
 class Item:
     def __init__(self, imagem, posicao_final, **kwargs):
         self.posicao_final = posicao_final
+        self.posicao = dict(x=elt.x, y=elt.y)
         self._movimenta = self._vai
         self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
         
@@ -53,14 +54,18 @@ class Item:
         
     def _vai(self, *_):
         self._movimenta = self._volta
+        self.posicao = self.posicao_final
         self.elt.x += self.posicao_final["x"]
         self.elt.y += self.posicao_final["y"]
+        self.posicao = dict(x=elt.x, y=elt.y)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
+        self.posicao = dict(x=0, y=0)
         self.elt.x -= self.posicao_final["x"]
         self.elt.y -= self.posicao_final["y"]
+        self.posicao = dict(x=elt.x, y=elt.y)
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
@@ -73,25 +78,26 @@ class Passageiro(Item):
     def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
         super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.veiculo, self.cena = veiculo, cena
-        self.off = Pos(0, 0)
+        self.posicao = Pos(self.veiculo.x - self.elt.x, self.veiculo.y - self.elt.y)
         
     def entra(self, cena):
         self.elt.entra(cena)
         
     def _vai(self, *_):
         self._movimenta = self._volta
+        self.off = Pos(**self.veiculo.posicao)
         self.entra(self.veiculo.elt)
-        self.elt.x += self.posicao_final["x"]
-        self.elt.y += self.posicao_final["y"]
+        self.elt.x = 0
+        self.elt.y = 0
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        self.off = Pos(**self.veiculo.posicao_final)
-        self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
+        self.off = Pos(**self.veiculo.posicao)
+        # self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
         self.entra(self.cena)
-        self.elt.x -= self.posicao_final["x"] - self.off.x
-        self.elt.y -= self.posicao_final["y"] - self.off.y
+        self.elt.x = self.posicao.x + self.off.x
+        self.elt.y = self.posicao.y + self.off.y
 
 
 
