@@ -88,6 +88,7 @@ class Passageiro(Item):
     def _volta(self, *_):
         self._movimenta = self._vai
         self.off = Pos(**self.veiculo.posicao_final)
+        self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
         self.entra(self.cena)
         self.elt.x -= self.posicao_final["x"] - self.off.x
         self.elt.y -= self.posicao_final["y"] - self.off.y
