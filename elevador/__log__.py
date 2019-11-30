@@ -106,3 +106,23 @@ NameError: name 'posicao_inicial' is not defined
     self.posicao_inicial, self.posicao_final = posicao_inicial, posicao_final
 NameError: name 'posicao_inicial' is not defined
 '''},
+{'date': 'Sat Nov 30 2019 12:18:52.812 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 158
+    Elevador()
+  module <module> line 98
+    self.doggie = Passageiro(Doggie, dict(x=-150, y=0), veiculo=self.cesta, cena=predio, x=440, y=60)
+  module <module> line 71
+    super().__init__(imagem, posicao_final, cena=cena, **kwargs)
+TypeError: object() takes no parameters
+'''},
