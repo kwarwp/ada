@@ -334,3 +334,9 @@ Elevador()
     self.scorer = dict(ponto=1, valor=cena.nome, carta=tit or img, casa=self.xy, move=None)
 AttributeError: 'Plataforma' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 01 2019 08:06:45.700 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_445' line 221
+Elevador()
+'''},
