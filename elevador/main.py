@@ -149,10 +149,10 @@ class Elevador:
         predio = Cena(PREDIO)
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
-        self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=150, y=50,w=180,h=180)
-        self.cesta1 = Item(CESTA, dict(x=0, y=-300), cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.plataforma0 = p0 = Plataforma(cena=predio, x=320, y=50,w=250,h=180)
         self.plataforma1 = p1 = Plataforma(cena=predio, x=320, y=390,w=250,h=180)
+        self.cesta0 = Item(CESTA, dict(x=0, y=300),[p0, p1], cena=predio, x=150, y=50,w=180,h=180)
+        self.cesta1 = Item(CESTA, dict(x=0, y=-300),[p1, p0],  cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.cesta0.vai = self.cesta1.ir
         self._cesta = self.cesta0
         self.__cesta = self.cesta1
