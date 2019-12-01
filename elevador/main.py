@@ -89,19 +89,38 @@ class Item:
             self.elt <= other
 
 
+class Plataforma():
+    def __init__(self, imagem=CESTA, **kwargs):
+        # super().__init__(imagem, posicao_final, cena=cena, **kwargs)
+        self.elt = Elemento(imagem, style=dict(opacity=0.4), **kwargs)
+
+    def __le__(self, other):
+        other.veiculo = self.veiculo
+        if hasattr(other, 'elt'):
+            self.elt <= other.elt
+        else:
+            self.elt <= other
+            
+    def entra(self, veiculo):
+        self.doca = veiculo
+            
+    def veiculo(self):
+        return self.doca
+
+
 class Passageiro(Item):
     def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
         super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.veiculo, self.cena = veiculo, cena
-        self.posicao = Pos(self.elt.x - self.veiculo.elt.x - posicao_final["x"],
-                           self.elt.y - self.veiculo.elt.y - posicao_final["y"])
+        self.posicao = Pos(self.elt.x - self.veiculo().elt.x - posicao_final["x"],
+                           self.elt.y - self.veiculo().elt.y - posicao_final["y"])
         
     def entra(self, cena):
         self.elt.entra(cena)
         
     def _vai(self, *_):
         self._movimenta = self._volta
-        veiculo = self.veiculo()
+        self._veiculo = veiculo = self.veiculo()
         self.off = Pos(**veiculo.posicao)
         self.entra(veiculo.elt)
         self.elt.x = self.posicao_final["x"]
@@ -110,7 +129,7 @@ class Passageiro(Item):
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        veiculo = self.veiculo()
+        veiculo = self._veiculo
         self.off = Pos(**veiculo.posicao)
         # self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
         self.entra(self.cena)
@@ -124,13 +143,15 @@ class Elevador:
         predio = Cena(PREDIO)
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
-        self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=250, y=50,w=180,h=180)
+        self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=150, y=50,w=180,h=180)
         self.cesta1 = Item(CESTA, dict(x=0, y=-300), vai=self.cesta0.ir, cena=predio, x=550, y=350,w=180,h=180)
+        self.plataforma0 = p0 = Plataforma(cena=predio, x=320, y=50,w=250,h=180)
+        self.plataforma1 = Plataforma(cena=predio, x=320, y=390,w=250,h=180)
         self.cesta0.vai = self.cesta1.ir
         self._cesta = self.cesta0
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
-        self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=predio, x=440, y=60)
+        self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=p0, x=10, y=10)
                          
     def cesta(self):
         return self._cesta
@@ -151,8 +172,8 @@ class Elevador_:
         self._doggie_sobe = lambda *_:None
         self.na_cesta = "nada"
         # self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
-        self.cesta = Elemento(CESTA, x=300, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
-        self.doggie = Elemento(Doggie, x=350, y=80, cena=predio, vai=self.entra_sai)
+        self.cesta = Elemento(CESTA, x=320, y=100,w=180,h=180, cena=predio, vai=self.sobe_desce)
+        self.doggie = Elemento(Doggie, x=320, y=80, cena=predio, vai=self.entra_sai)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=0)
         a = Texto(predio, "oi", foi=lambda op="YY": Texto(predio, f"escolheu {op}").vai(), A="ee", B="uu")
         a.vai()
