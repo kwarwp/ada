@@ -474,3 +474,9 @@ Exception: $B.get_class(...) is undefined
   module '$exec_3811' line 180
 Elevador()
 '''},
+{'date': 'Sun Dec 01 2019 13:31:56.932 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+RuntimeError: too much recursion
+  module '$exec_2074' line 183
+        self.doggie.entra(p0)
+'''},
