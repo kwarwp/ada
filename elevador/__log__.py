@@ -468,3 +468,9 @@ AttributeError: 'NoneType' object has no attribute '__getitem__'
     self.doca = self.plataforma[0]
 AttributeError: 'NoneType' object has no attribute '__getitem__'
 '''},
+{'date': 'Sun Dec 01 2019 13:15:01.385 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_3811' line 180
+Elevador()
+'''},
