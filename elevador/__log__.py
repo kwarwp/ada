@@ -424,3 +424,25 @@ SyntaxError: invalid syntax
     other.veiculo = self.veiculo
 AttributeError: 'NoneType' object has no attribute 'veiculo'
 '''},
+{'date': 'Sun Dec 01 2019 12:05:16.150 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 240
+    Elevador()
+  module <module> line 172
+    self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=self.cesta, x=10, y=10)
+  module <module> line 130
+    super().__init__(imagem, posicao_final, cena=cena, **kwargs)
+  module <module> line 50
+    self.platataforma_atual = self.plataforma[0]
+AttributeError: 'NoneType' object has no attribute '__getitem__'
+'''},
