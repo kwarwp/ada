@@ -7,6 +7,7 @@ STYLE.update(width=900, height=650)
 PREDIO= "https://i.imgur.com/K7xS3Oa.jpg"
 CESTA = "https://i.imgur.com/ouziL1K.png"
 Doggie = "https://i.imgur.com/1YbsNfD.png"
+PLATO = "http://archive.xaraxone.com/webxealot/workbook85/index_html_files/154.png"
 
 
 class Elemento(Elemento_):
@@ -43,8 +44,9 @@ class Elemento(Elemento_):
             self.elt <= other
 
 class Item:
-    def __init__(self, imagem, posicao_final, vai=None, **kwargs):
+    def __init__(self, imagem, posicao_final, plato, vai=None, **kwargs):
         self.posicao_final = posicao_final
+        self.platform = plato[:] if plato isinstance(list) else [0, 0]
         self._movimenta = self._vai
         self.movimentar = True
         self.item = lambda *_: None
@@ -72,6 +74,7 @@ class Item:
         self.elt.x += self.posicao_final["x"]
         self.elt.y += self.posicao_final["y"]
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        self.plataforma[0].aporta(self)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
@@ -81,6 +84,7 @@ class Item:
         self.elt.y -= self.posicao_final["y"]
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
         self.item()
+        self.plataforma[1].aporta(self)
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
@@ -90,17 +94,18 @@ class Item:
 
 
 class Plataforma():
-    def __init__(self, imagem=CESTA, **kwargs):
+    def __init__(self, imagem=PLATO, **kwargs):
         # super().__init__(imagem, posicao_final, cena=cena, **kwargs)
-        self.elt = Elemento(imagem, style=dict(opacity=0.4), **kwargs)
+        self.elt = Elemento(imagem, style=dict(opacity=1), **kwargs)
         self.nome = "plataforma"
 
     def __le__(self, other):
         other.veiculo = self.veiculo
-        if hasattr(other, 'elt'):
+        self.elt.elt <= other.elt.elt
+        '''if hasattr(other, 'elt'):
             self.elt <= other.elt
         else:
-            self.elt <= other
+            self.elt <= other'''
             
     def aporta(self, veiculo):
         self.doca = veiculo
@@ -145,15 +150,15 @@ class Elevador:
         predio.vai()
         # Musica("https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3")
         self.cesta0 = Item(CESTA, dict(x=0, y=300), cena=predio, x=150, y=50,w=180,h=180)
-        self.cesta1 = Item(CESTA, dict(x=0, y=-300), vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
+        self.cesta1 = Item(CESTA, dict(x=0, y=-300), cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.plataforma0 = p0 = Plataforma(cena=predio, x=320, y=50,w=250,h=180)
-        self.plataforma1 = Plataforma(cena=predio, x=320, y=390,w=250,h=180)
+        self.plataforma1 = p1 = Plataforma(cena=predio, x=320, y=390,w=250,h=180)
         self.cesta0.vai = self.cesta1.ir
         self._cesta = self.cesta0
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=self.cesta, x=10, y=10)
-        self.doggie.entra(p0)
+        self.doggie.entra(p0.elt)
                          
     def cesta(self):
         return self._cesta
