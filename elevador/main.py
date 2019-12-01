@@ -48,13 +48,14 @@ class Item:
         self.posicao_final = posicao_final
         self.plataforma = plato or [0, 0]
         self.doca = self.plataforma[0]
+        self.doca.aporta(self) if self.doca else None
         self._movimenta = self._vai
-        self.movimentar = True
-        self.item = lambda *_: None
+        # self.movimentar = True
+        # self.item = lambda *_: None
         self.vai = vai or lambda *_: None
         self._ir = self.__ir
         self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
-        self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        # self.posicao = dict(x=self.elt.x, y=self.elt.y)
         
     def movimenta(self, *_):
         self._ir = lambda *_: None
@@ -71,29 +72,29 @@ class Item:
         
     def _vai(self, *_):
         self._movimenta = self._volta
-        self.posicao = self.posicao_final
+        # self.posicao = self.posicao_final
         self.elt.x += self.posicao_final["x"]
         self.elt.y += self.posicao_final["y"]
-        self.posicao = dict(x=self.elt.x, y=self.elt.y)
-        self.doca = self.plataforma[0]
-        self.plataforma[0].aporta(self)
+        # self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        self.doca = self.plataforma[1]
+        self.doca.aporta(self)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        self.posicao = dict(x=0, y=0)
+        # self.posicao = dict(x=0, y=0)
         self.elt.x -= self.posicao_final["x"]
         self.elt.y -= self.posicao_final["y"]
-        self.posicao = dict(x=self.elt.x, y=self.elt.y)
-        self.item()
-        self.doca = self.plataforma[1]
-        self.plataforma[1].aporta(self)
+        # self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        # self.item()
+        self.doca = self.plataforma[0]
+        self.doca.aporta(self)
 
     def embarca(self, passageiro):
-        passageiro.entra(self.elt.elt)
+        passageiro.entra(self.elt)
             
     def desembarca(self, passageiro):
-        passageiro.entra(self.doca.elt.elt)
+        passageiro.entra(self.doca.elt)
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
@@ -111,10 +112,6 @@ class Plataforma():
     def __le__(self, other):
         other.veiculo = self.veiculo
         self.elt.elt <= other.elt.elt
-        '''if hasattr(other, 'elt'):
-            self.elt <= other.elt
-        else:
-            self.elt <= other'''
             
     def aporta(self, veiculo):
         self.doca = veiculo
@@ -133,8 +130,6 @@ class Passageiro(Item):
     def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
         super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.veiculo, self.cena = veiculo, cena
-        self.posicao = Pos(self.elt.x - self.veiculo().elt.x - posicao_final["x"],
-                           self.elt.y - self.veiculo().elt.y - posicao_final["y"])
         
     def entra(self, cena):
         self.elt.entra(cena)
@@ -142,22 +137,13 @@ class Passageiro(Item):
     def _vai(self, *_):
         self._movimenta = self._volta
         self._veiculo = veiculo = self.veiculo()
-        self.off = Pos(**veiculo.posicao)
-        # self.entra(veiculo.elt)
         veiculo.embarca(self)
-        self.elt.x = self.posicao_final["x"]
-        self.elt.y = self.posicao_final["y"]
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
         veiculo = self._veiculo
-        self.off = Pos(**veiculo.posicao)
-        # self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
-        # self.entra(self.cena)
         veiculo.desembarca(self)
-        self.elt.x = self.posicao.x + self.off.x
-        self.elt.y = self.posicao.y + self.off.y
 
 
 
