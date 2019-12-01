@@ -7,6 +7,7 @@ STYLE.update(width=900, height=650)
 PREDIO= "https://i.imgur.com/K7xS3Oa.jpg"
 CESTA = "https://i.imgur.com/ouziL1K.png"
 Doggie = "https://i.imgur.com/1YbsNfD.png"
+GURIA  = "https://101clipart.com/wp-content/uploads/10/Girl%20Clipart%20Png%2016.png"
 PLATO = "http://archive.xaraxone.com/webxealot/workbook85/index_html_files/154.png"
 
 
@@ -43,7 +44,7 @@ class Elemento(Elemento_):
             pass
 
 class Item:
-    def __init__(self, imagem, posicao_final, plato=None, vai=None, **kwargs):
+    def __init__(self, imagem, posicao_final=None, plato=None, vai=None, **kwargs):
         self.nome = "veiculo"
         self.posicao_final = posicao_final
         self.plataforma = plato or [0, 0]
@@ -118,9 +119,10 @@ class Plataforma():
 
 
 class Passageiro(Item):
-    def __init__(self, imagem, posicao_final, veiculo, cena, **kwargs):
-        super().__init__(imagem, posicao_final, cena=cena, **kwargs)
-        self.veiculo, self.cena = veiculo, cena
+    def __init__(self, imagem, veiculo, **kwargs):
+        super().__init__(imagem, **kwargs)
+        self.veiculo = veiculo
+        self.entra(veiculo)
         
     def entra(self, cena):
         cena <= self
@@ -146,7 +148,9 @@ class Elevador:
         self.cesta0 = Item(CESTA, dict(x=0, y=300),[p0, p1], cena=predio, x=150, y=50,w=180,h=180)
         self.cesta1 = Item(CESTA, dict(x=0, y=-300),[p1, p0],  cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.cesta0.vai = self.cesta1.ir
-        self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=p0, x=10, y=10)
-        self.doggie.entra(p0)
+        self.doggie = Passageiro(Doggie, veiculo=p0, x=10, y=10)
+        self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
+        #self.doggie.entra(p0)
+        #self.guria.entra(p0)
         
 Elevador()
