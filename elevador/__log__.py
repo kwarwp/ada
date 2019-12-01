@@ -276,3 +276,29 @@ NameError: name 'kwargs' is not defined
     self.posicao = Pos(self.elt.x - self.veiculo.elt.x - posicao_final["x"],
 AttributeError: 'method' object has no attribute 'elt'
 '''},
+{'date': 'Sun Dec 01 2019 07:58:10.985 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 220
+    Elevador()
+  module <module> line 154
+    self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=p0, x=10, y=10)
+  module <module> line 113
+    super().__init__(imagem, posicao_final, cena=cena, **kwargs)
+  module <module> line 53
+    self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
+  module <module> line 15
+    super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
+  module _spy.vitollino.main line 539
+    self.scorer = dict(ponto=1, valor=cena.nome, carta=tit or img, casa=self.xy, move=None)
+AttributeError: 'Plataforma' object has no attribute 'nome'
+'''},
