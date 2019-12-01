@@ -97,11 +97,11 @@ class Plataforma():
     def __le__(self, other):
         other.veiculo = self.veiculo
         if hasattr(other, 'elt'):
-            self.elt <= other.elt
+            self.elt <= other.elt.elt
         else:
             self.elt <= other
             
-    def entra(self, veiculo):
+    def aporta(self, veiculo):
         self.doca = veiculo
             
     def veiculo(self):
