@@ -46,7 +46,8 @@ class Elemento(Elemento_):
 class Item:
     def __init__(self, imagem, posicao_final, plato=None, vai=None, **kwargs):
         self.posicao_final = posicao_final
-        self.platform = plato
+        self.plataforma = plato
+        self.doca = self.plataforma[0]
         self._movimenta = self._vai
         self.movimentar = True
         self.item = lambda *_: None
@@ -74,6 +75,7 @@ class Item:
         self.elt.x += self.posicao_final["x"]
         self.elt.y += self.posicao_final["y"]
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        self.doca = self.plataforma[0]
         self.plataforma[0].aporta(self)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
@@ -84,7 +86,14 @@ class Item:
         self.elt.y -= self.posicao_final["y"]
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
         self.item()
+        self.doca = self.plataforma[1]
         self.plataforma[1].aporta(self)
+
+    def embarca(self, passageiro):
+        passageiro.entra(self.elt.elt)
+            
+    def desembarca(self, passageiro):
+        passageiro.entra(self.doca.elt.elt)
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
@@ -112,6 +121,12 @@ class Plataforma():
             
     def veiculo(self):
         return self.doca
+            
+    def embarca(self, veiculo):
+        veiculo.entra(self.elt.elt)
+            
+    def desembarca(self, veiculo):
+        veiculo.entra(self.doca.elt.elt)
 
 
 class Passageiro(Item):
@@ -128,7 +143,8 @@ class Passageiro(Item):
         self._movimenta = self._volta
         self._veiculo = veiculo = self.veiculo()
         self.off = Pos(**veiculo.posicao)
-        self.entra(veiculo.elt)
+        # self.entra(veiculo.elt)
+        veiculo.embarca(self)
         self.elt.x = self.posicao_final["x"]
         self.elt.y = self.posicao_final["y"]
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
@@ -138,7 +154,8 @@ class Passageiro(Item):
         veiculo = self._veiculo
         self.off = Pos(**veiculo.posicao)
         # self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
-        self.entra(self.cena)
+        # self.entra(self.cena)
+        veiculo.desembarca(self)
         self.elt.x = self.posicao.x + self.off.x
         self.elt.y = self.posicao.y + self.off.y
 
@@ -158,7 +175,7 @@ class Elevador:
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=self.cesta, x=10, y=10)
-        p0 <= self.doggie.entra(p0.elt)
+        p0 <= self.doggie
         # self.doggie.entra(p0.elt)
                          
     def cesta(self):
