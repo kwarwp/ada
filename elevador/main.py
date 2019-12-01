@@ -98,7 +98,7 @@ class Plataforma():
     def __le__(self, other):
         other.veiculo = self.veiculo
         if hasattr(other, 'elt'):
-            self.elt <= other.elt.elt
+            self.elt <= other.elt
         else:
             self.elt <= other
             
@@ -152,7 +152,8 @@ class Elevador:
         self._cesta = self.cesta0
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
-        self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=p0, x=10, y=10)
+        self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, x=10, y=10)
+        self.doggie.entra(p0)
                          
     def cesta(self):
         return self._cesta
