@@ -44,9 +44,9 @@ class Elemento(Elemento_):
             self.elt <= other
 
 class Item:
-    def __init__(self, imagem, posicao_final, plato, vai=None, **kwargs):
+    def __init__(self, imagem, posicao_final, plato=None, vai=None, **kwargs):
         self.posicao_final = posicao_final
-        self.platform = plato[:] if plato isinstance(list) else [0, 0]
+        self.platform = plato
         self._movimenta = self._vai
         self.movimentar = True
         self.item = lambda *_: None
