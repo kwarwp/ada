@@ -158,7 +158,8 @@ class Elevador:
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=self.cesta, x=10, y=10)
-        self.doggie.entra(p0.elt)
+        p0 <= self.doggie.entra(p0.elt)
+        # self.doggie.entra(p0.elt)
                          
     def cesta(self):
         return self._cesta
