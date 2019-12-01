@@ -93,6 +93,7 @@ class Plataforma():
     def __init__(self, imagem=CESTA, **kwargs):
         # super().__init__(imagem, posicao_final, cena=cena, **kwargs)
         self.elt = Elemento(imagem, style=dict(opacity=0.4), **kwargs)
+        self.nome = "plataforma"
 
     def __le__(self, other):
         other.veiculo = self.veiculo
