@@ -146,8 +146,7 @@ class Elevador:
         self.cesta0 = Item(CESTA, dict(x=0, y=300),[p0, p1], cena=predio, x=150, y=50,w=180,h=180)
         self.cesta1 = Item(CESTA, dict(x=0, y=-300),[p1, p0],  cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.cesta0.vai = self.cesta1.ir
-        self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=p0, veiculo=p0, x=10, y=10)
-        # p0 <= self.doggie
-        #self.doggie.entra(p0)
+        self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=p0, x=10, y=10)
+        self.doggie.entra(p0)
         
 Elevador()
