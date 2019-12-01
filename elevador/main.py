@@ -125,9 +125,9 @@ class Plataforma():
         self.nome = "plataforma"
 
     def __le__(self, other):
+        assert isinstance(other, Passageiro), other
         other.veiculo = self  # .veiculo
-        assert isinstance(other,Elemento), other
-        self.elt.elt <= other.elt # .elt
+        self.elt.elt <= other.elt.elt
             
     def aporta(self, veiculo):
         self.doca = veiculo
@@ -148,7 +148,7 @@ class Passageiro(Item):
         self.veiculo, self.cena = veiculo, cena
         
     def entra(self, cena):
-        self.entra(cena)
+        cena <= self
         
     def _vai(self, *_):
         self._movimenta = self._volta
