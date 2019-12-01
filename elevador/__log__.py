@@ -340,3 +340,9 @@ Exception: $B.get_class(...) is undefined
   module '$exec_445' line 221
 Elevador()
 '''},
+{'date': 'Sun Dec 01 2019 08:10:05.803 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_445' line 221
+Elevador()
+'''},
