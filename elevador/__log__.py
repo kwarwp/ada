@@ -397,3 +397,10 @@ SyntaxError: invalid syntax
     super().__init__(imagem, posicao_final, cena=cena, **kwargs)
 TypeError: __init__ missing 1 positional argument: 'plato'
 '''},
+{'date': 'Sun Dec 01 2019 08:41:50.933 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 49
+  self.platform = plato[:] if plato isinstance(list) else [0, 0]
+                                     ^
+SyntaxError: invalid syntax
+'''},
