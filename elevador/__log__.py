@@ -502,3 +502,33 @@ RuntimeError: too much recursion
     assert isinstance(other,Elemento), other
 AssertionError: <__main__.Passageiro object>
 '''},
+{'date': 'Sun Dec 01 2019 13:45:55.80 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 153
+    Elevador()
+  module <module> line 149
+    self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=p0, veiculo=p0, x=10, y=10)
+  module <module> line 122
+    super().__init__(imagem, posicao_final, cena=cena, **kwargs)
+  module <module> line 55
+    self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)        
+  module <module> line 16
+    super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
+  module _spy.vitollino.main line 549
+    _ = self.entra(cena) if cena and (cena != INVENTARIO) else None
+  module <module> line 21
+    cena <= self
+  module <module> line 103
+    assert isinstance(other, Passageiro), other
+AssertionError: <__main__.Elemento object>
+'''},
