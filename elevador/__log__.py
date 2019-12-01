@@ -364,3 +364,9 @@ Elevador()
     self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, x=10, y=10)
 TypeError: __init__ missing 1 positional argument: 'cena'
 '''},
+{'date': 'Sun Dec 01 2019 08:15:26.404 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_445' line 222
+Elevador()
+'''},
