@@ -46,7 +46,7 @@ class Elemento(Elemento_):
 class Item:
     def __init__(self, imagem, posicao_final, plato=None, vai=None, **kwargs):
         self.posicao_final = posicao_final
-        self.plataforma = plato
+        self.plataforma = plato or [0, 0]
         self.doca = self.plataforma[0]
         self._movimenta = self._vai
         self.movimentar = True
