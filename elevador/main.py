@@ -16,6 +16,9 @@ class Elemento(Elemento_):
         super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
                          score=score, drag=drag, drop=drop, **kwargs)
         self.nome = tit
+
+    def entra(self, cena, style=NOSC):
+        cena <= self
                          
     @property
     def x(self):
@@ -98,12 +101,13 @@ class Item:
         self.doca.aporta(self)
 
     def _embarca(self, passageiro):
-        passageiro.entra(self.elt)
+        passageiro.entra(self)  # .elt)
             
     def _desembarca(self, passageiro):
         passageiro.entra(self.doca.elt)
 
     def __le__(self, other):
+        assert isinstance(other, Passageiro), other
         other.veiculo = self
         self.elt.elt <= other.elt.elt
         '''
@@ -122,7 +126,8 @@ class Plataforma():
 
     def __le__(self, other):
         other.veiculo = self  # .veiculo
-        self.elt.elt <= other.elt.elt
+        assert isinstance(other,Elemento), other
+        self.elt.elt <= other.elt # .elt
             
     def aporta(self, veiculo):
         self.doca = veiculo
@@ -143,7 +148,7 @@ class Passageiro(Item):
         self.veiculo, self.cena = veiculo, cena
         
     def entra(self, cena):
-        self.elt.entra(cena)
+        self.entra(cena)
         
     def _vai(self, *_):
         self._movimenta = self._volta
