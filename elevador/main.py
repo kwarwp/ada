@@ -47,18 +47,17 @@ class Item:
         self.posicao_final = posicao_final
         self._movimenta = self._vai
         self.movimentar = True
+        self.item = lambda *_: None
         self.vai = vai or lambda *_: None
+        self._ir = self.__ir
         self.elt = Elemento(imagem, vai=self.movimenta, **kwargs)
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
         
     def movimenta(self, *_):
+        self._ir = lambda *_: None
         self.vai()
         self._movimenta()
         self._ir = self.__ir
-        
-    def _ir(self, *_):
-        self._ir = lambda *_: None
-        self.movimenta()
         
     def __ir(self, *_):
         self._ir = lambda *_: None
@@ -81,6 +80,7 @@ class Item:
         self.elt.x -= self.posicao_final["x"]
         self.elt.y -= self.posicao_final["y"]
         self.posicao = dict(x=self.elt.x, y=self.elt.y)
+        self.item()
 
     def __le__(self, other):
         if hasattr(other, 'elt'):
@@ -101,15 +101,17 @@ class Passageiro(Item):
         
     def _vai(self, *_):
         self._movimenta = self._volta
-        self.off = Pos(**self.veiculo.posicao)
-        self.entra(self.veiculo.elt)
+        veiculo = self.veiculo()
+        self.off = Pos(**veiculo.posicao)
+        self.entra(veiculo.elt)
         self.elt.x = self.posicao_final["x"]
         self.elt.y = self.posicao_final["y"]
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        self.off = Pos(**self.veiculo.posicao)
+        veiculo = self.veiculo()
+        self.off = Pos(**veiculo.posicao)
         # self.off = Pos(self.veiculo.elt.x, self.veiculo.elt.y)
         self.entra(self.cena)
         self.elt.x = self.posicao.x + self.off.x
@@ -126,12 +128,15 @@ class Elevador:
         self.cesta1 = Item(CESTA, dict(x=0, y=-300), vai=self.cesta0.ir, cena=predio, x=550, y=350,w=180,h=180)
         self.cesta0.vai = self.cesta1.ir
         self._cesta = self.cesta0
+        self.__cesta = self.cesta1
+        self.cesta0.item = self.item
         self.doggie = Passageiro(Doggie, dict(x=20, y=40), veiculo=self.cesta, cena=predio, x=440, y=60)
                          
-    @property
     def cesta(self):
-        # return self.elt.style.getPropertyValue("left")
         return self._cesta
+
+    def item(self):
+        self._cesta, self.__cesta = self.__cesta, self._cesta
 
 
 class Elevador_:
