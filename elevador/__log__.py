@@ -370,3 +370,10 @@ Exception: $B.get_class(...) is undefined
   module '$exec_445' line 222
 Elevador()
 '''},
+{'date': 'Sun Dec 01 2019 08:40:01.127 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 49
+  self.platform = plato[:] if plato isinstance(list) else [0, 0]
+                                     ^
+SyntaxError: invalid syntax
+'''},
