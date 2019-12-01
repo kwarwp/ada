@@ -90,10 +90,10 @@ class Item:
         self.doca = self.plataforma[0]
         self.doca.aporta(self)
 
-    def embarca(self, passageiro):
+    def _embarca(self, passageiro):
         passageiro.entra(self.elt)
             
-    def desembarca(self, passageiro):
+    def _desembarca(self, passageiro):
         passageiro.entra(self.doca.elt)
 
     def __le__(self, other):
@@ -110,7 +110,7 @@ class Plataforma():
         self.nome = "plataforma"
 
     def __le__(self, other):
-        other.veiculo = self.veiculo
+        other.veiculo = self  # .veiculo
         self.elt.elt <= other.elt.elt
             
     def aporta(self, veiculo):
@@ -119,11 +119,11 @@ class Plataforma():
     def veiculo(self):
         return self.doca
             
-    def embarca(self, veiculo):
-        veiculo.entra(self.elt.elt)
-            
     def desembarca(self, veiculo):
-        veiculo.entra(self.doca.elt.elt)
+        veiculo.entra(self.elt)  # .elt)
+            
+    def embarca(self, veiculo):
+        veiculo.entra(self.doca.elt)  # .elt)
 
 
 class Passageiro(Item):
@@ -136,14 +136,14 @@ class Passageiro(Item):
         
     def _vai(self, *_):
         self._movimenta = self._volta
-        self._veiculo = veiculo = self.veiculo()
-        veiculo.embarca(self)
+        # self._veiculo = veiculo = self.veiculo()
+        self.veiculo.embarca(self)
         # INVENTARIO.score(casa="elevador", carta=self.na_cesta, move="desce", ponto=0, valor=0, _level=1)
         
     def _volta(self, *_):
         self._movimenta = self._vai
-        veiculo = self._veiculo
-        veiculo.desembarca(self)
+        # veiculo = self._veiculo
+        self.veiculo.desembarca(self)
 
 
 
@@ -157,19 +157,17 @@ class Elevador:
         self.cesta0 = Item(CESTA, dict(x=0, y=300),[p0, p1], cena=predio, x=150, y=50,w=180,h=180)
         self.cesta1 = Item(CESTA, dict(x=0, y=-300),[p1, p0],  cena=predio, vai=self.cesta0.ir, x=550, y=350,w=180,h=180)
         self.cesta0.vai = self.cesta1.ir
+        '''
         self._cesta = self.cesta0
         self.__cesta = self.cesta1
         self.cesta0.item = self.item
-        self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=self.cesta, x=10, y=10)
+        '''
+        self.doggie = Passageiro(Doggie, dict(x=20, y=40), cena=predio, veiculo=p0, x=10, y=10)
         p0 <= self.doggie
         # self.doggie.entra(p0.elt)
                          
     def cesta(self):
         return self._cesta
-
-    def item(self):
-        self._cesta, self.__cesta = self.__cesta, self._cesta
-
 
 class Elevador_:
     def __init__(self):
