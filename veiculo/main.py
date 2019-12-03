@@ -46,11 +46,11 @@ class Veiculo(Item):
         self._move()
         
     def _vai(self, *_):
-        self.x self.y = self.baseb.x, self.baseb.y
+        self.x, self.y = self.baseb.x, self.baseb.y
         self._move = self._volta
         
     def _volta(self, *_):
-        self.x self.y = self.basea.x, self.basea.y
+        self.x, self.y = self.basea.x, self.basea.y
         self._move = self._vai
     
     
