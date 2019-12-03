@@ -9,6 +9,7 @@ from _spy.vitollino.main import Cena,Elemento,Texto, STYLE, INVENTARIO
 STYLE["width"]=900
 STYLE["height"]= "600px"
 CART = "https://i.imgur.com/m2k5sv6.png"
+CAT = "https://i.imgur.com/ek8oINR.png"
 
 BASE = "https://i.imgur.com/DAUyvBP.jpg"
 CENA = "https://i.imgur.com/nkwZCrR.jpg"
@@ -36,9 +37,12 @@ class Jogo:
             cart.x = 200
         cena = Cena(CENA)
         cena.vai()
-        base = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
+        entrada = Base(BASE, x=600, y=300, w=200, h=200, cena=cena)
+        saida = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
         cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
+        cat = Base(CAT, x=600, y=300, w=200, h=200, cena=cena, vai=vai)
         cart.elt.style.transition = "left 1s"
+        cat.elt.style.transition = "left 1s"
         
         
 Jogo()
