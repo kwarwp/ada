@@ -117,3 +117,10 @@ AttributeError: 'module' object has no attribute '__setitem__'
     self.scorer.update(valor=cena.nome, move=self.xy,
 AttributeError: 'Base' object has no attribute 'nome'
 '''},
+{'date': 'Tue Dec 03 2019 16:39:14.454 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 43
+  self.x self.y = self.basea.x, self.basea.y
+          ^
+SyntaxError: invalid syntax
+'''},
