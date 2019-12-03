@@ -1,0 +1,38 @@
+# ada.veiculo.main.py
+# Este jogo é um software livre com licensa GPL3 `GPL <http://is.gd/3Udt>`__.
+"""
+Demonstração de elementos para jogo de transporte
+"""
+__author__ = "Carlo Oliveira"
+__version__ = "19.12.03"
+from _spy.violino.main import Cena,Elemento,Texto, STYLE
+STYLE["width"]=900
+STYLE["heigth"]= "600px"
+
+BASE = "https://i.imgur.com/DAUyvBP.jpg"
+CENA = "https://i.imgur.com/nkwZCrR.jpg"
+class Item(Elemento):
+    """ Item básico que implementa funções gerais """
+    def __init__(self, img="", vai=None, tit="", alt="",
+                 x=0, y=0, w=100, h=100, o=1, texto='', cena=INVENTARIO):
+        super().__init__(img=img, vai=vai, tit=tit, alt=alt,
+                     x=,x y=y, w=w, h=h, o=o, cena=cena):
+        pass
+                     
+
+class Base(Item):
+    """ Item básico que implementa funções gerais """
+    def __init__(self, img="", vai=None, tit="", alt="",
+                 x=0, y=0, w=100, h=100, o=1, texto='', cena=INVENTARIO):
+        super().__init__(img=img, vai=vai, tit=tit, alt=alt,
+                     x=,x y=y, w=w, h=h, o=o, cena=cena):
+        pass
+    
+    
+class Jogo:
+    def __init__(self):
+        cena = Cena(CENA)
+        base = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
+        
+        
+Jogo()
