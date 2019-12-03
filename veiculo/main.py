@@ -36,21 +36,30 @@ class Jogo:
         def vai(*_):
             cart.x = 200
         def anda(*_):
-            cat.x = 400
-            cat.y = 200
+            cat.x = 420
+            cat.y = 300
         def entra(*_):
+            cat.entra(cart)
             cat.x = 10
             cat.y = 20
-            cat.entra(cart)
+            cat.vai = vai
+        def sai(*_):
+            cat.entra(cena)
+            cat.x = cart.x-100
+            cat.y = cart.y+100
+            cat.vai = lambda *_: None
+        def chegou(*_):
+            cat.vai = sai
         cena = Cena(CENA)
         cena.vai()
-        entrada = Base(BASE, x=600, y=300, w=200, h=200, cena=cena)
-        saida = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
+        entrada = Base(BASE, x=650, y=300, w=200, h=200, cena=cena)
+        saida = Base(BASE, x=50, y=300, w=200, h=200, cena=cena)
         cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
-        cat = Base(CAT, x=600, y=300, w=200, h=200, cena=cena, vai=anda)
-        cat.entra(cart)
+        cat = Item(CAT, x=650, y=400, w=100, h=100, cena=cena, vai=anda)
         cart.elt.style.transition = "left 1s"
         cat.elt.style.transition = "all 1s"
+        cat.elt.ontransitionend = entra
+        cart.elt.ontransitionend = chegou
         
         
 Jogo()
