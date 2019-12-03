@@ -28,7 +28,7 @@ class Base(Item):
                  x=0, y=0, w=100, h=100, o=1, texto='', cena=INVENTARIO):
         super().__init__(img=img, vai=vai, tit=tit, alt=alt,
                      x=x, y=y, w=w, h=h, o=o, cena=cena)
-        pass
+        self.nome = "base"
     
     
 class Jogo:
