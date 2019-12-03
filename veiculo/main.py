@@ -35,22 +35,52 @@ class Base(Item):
 class Veiculo(Item):
     """ Veículo que transporta itens entre duas bases """
     def __init__(self, img="", basea, baseb, cena=INVENTARIO):
-        super().__init__(img=img, w=200, h=200, cena=cena)
-        self.nome = "base"
+        super().__init__(img=img, w=200, h=200, cena=cena, vai= self.ir)
+        self.nome = "veiculo"
         self.basea, self.baseb = basea, baseb
         self._move = self._vai
+        self.elt.style.transition = "left 1s"
         self.elt.ontransitionend = self.chega
-        self.x, self.y = self.basea.x, self.basea.y
+        self.x, self.y = self.basea.x-150, self.basea.y
         
-    def vai(self, *_):
+    def ir(self, *_):
         self._move()
         
+    def chega(self, *_):
+        pass
+        
     def _vai(self, *_):
-        self.x, self.y = self.baseb.x, self.baseb.y
+        self.x, self.y = self.baseb.x+150, self.baseb.y
         self._move = self._volta
         
     def _volta(self, *_):
-        self.x, self.y = self.basea.x, self.basea.y
+        self.x, self.y = self.basea.x-150, self.basea.y
+        self._move = self._vai
+                     
+
+class Passageiro(Item):
+    """ Item que se transporta em um veículo """
+    def __init__(self, img="", basea, baseb, cena=INVENTARIO):
+        super().__init__(img=img, w=200, h=200, cena=cena, vai= self.ir)
+        self.nome = "passageiro"
+        self.basea, self.baseb = basea, baseb
+        self._move = self._vai
+        self.elt.style.transition = "all 1s"
+        self.elt.ontransitionend = self.chega
+        self.x, self.y = self.basea.x-150, self.basea.y
+        
+    def ir(self, *_):
+        self._move()
+        
+    def chega(self, *_):
+        pass
+        
+    def _vai(self, *_):
+        self.x, self.y = self.baseb.x+150, self.baseb.y
+        self._move = self._volta
+        
+    def _volta(self, *_):
+        self.x, self.y = self.basea.x-150, self.basea.y
         self._move = self._vai
     
     
@@ -87,11 +117,7 @@ class Jogo:
         saida = Base(BASE, x=50, y=300, w=200, h=200, cena=cena)
         # cart = Veiculo(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
         cart = Veiculo(CART, entrada, saida, cena=cena)
-        cat = Item(CAT, x=650, y=400, w=100, h=100, cena=cena, vai=anda)
-        cart.elt.style.transition = "left 1s"
-        cat.elt.style.transition = "all 1s"
-        cat.elt.ontransitionend = entra
-        cart.elt.ontransitionend = chegou
+        cat = Passageiro(CAT, entrada, cart, cena=cena)
         
         
 Jogo()
