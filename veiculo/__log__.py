@@ -124,3 +124,10 @@ AttributeError: 'Base' object has no attribute 'nome'
           ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Dec 03 2019 16:42:09.708 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 45
+  def.vai(self, *_):
+      ^
+SyntaxError: invalid syntax
+'''},
