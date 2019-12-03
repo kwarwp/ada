@@ -61,26 +61,40 @@ class Veiculo(Item):
 class Passageiro(Item):
     """ Item que se transporta em um veículo """
     def __init__(self, img="", basea, baseb, cena=INVENTARIO):
-        super().__init__(img=img, w=200, h=200, cena=cena, vai= self.ir)
+        super().__init__(img=img, w=100, h=100, cena=cena, vai= self.ir)
         self.nome = "passageiro"
-        self.basea, self.baseb = basea, baseb
+        self.basea, self.baseb, self.cena = basea, baseb, cena
         self._move = self._vai
-        self.elt.style.transition = "all 1s"
+        self._chega = self.chegaa
+        self.elt.style.transition = "left 1s, top 1s"
         self.elt.ontransitionend = self.chega
-        self.x, self.y = self.basea.x-150, self.basea.y
+        self.x, self.y = self.basea.x+30, self.basea.y+30
         
     def ir(self, *_):
         self._move()
         
     def chega(self, *_):
-        pass
+        self._chega()
+        
+    def chegaa(self, *_):
+        #self.baseb, self.basea = self.basea, self.baseb
+        self.entra(self.baseb)
+        
+    def chegab(self, *_):
+        #self.baseb, self.basea = self.basea, self.baseb
+        self.entra(self.cena)
+        #self.x, self.y = self.baseb.x+30, self.baseb.y+30
+        self.x, self.y = 30, 30
         
     def _vai(self, *_):
-        self.x, self.y = self.baseb.x+150, self.baseb.y
+        self._chega = self.chegaa
+        self.x, self.y = self.baseb.x+10, self.baseb.y
         self._move = self._volta
         
     def _volta(self, *_):
-        self.x, self.y = self.basea.x-150, self.basea.y
+        self._chega = self.chegab
+        self.entra(self.cena)
+        self.x, self.y = self.basea.x-self.baseb.x+30, self.basea.y-self.baseb.y+30
         self._move = self._vai
     
     
