@@ -131,3 +131,10 @@ SyntaxError: invalid syntax
       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Dec 03 2019 16:43:18.537 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 49
+  self.x self.y = self.baseb.x, self.baseb.y
+          ^
+SyntaxError: invalid syntax
+'''},
