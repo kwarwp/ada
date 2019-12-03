@@ -32,9 +32,12 @@ class Base(Item):
     
 class Jogo:
     def __init__(self):
+        def vai(*_):
+            cart.x = 200
         cena = Cena(CENA)
         base = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
-        cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena)
+        cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
+        cart.elt.style.transition = "left 1s"
         
         
 Jogo()
