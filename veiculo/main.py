@@ -35,6 +35,9 @@ class Jogo:
     def __init__(self):
         def vai(*_):
             cart.x = 200
+        def anda(*_):
+            cat.x = 400
+            cat.y = 200
         cena = Cena(CENA)
         cena.vai()
         entrada = Base(BASE, x=600, y=300, w=200, h=200, cena=cena)
@@ -42,7 +45,7 @@ class Jogo:
         cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
         cat = Base(CAT, x=600, y=300, w=200, h=200, cena=cena, vai=vai)
         cart.elt.style.transition = "left 1s"
-        cat.elt.style.transition = "left 1s"
+        cat.elt.style.transition = "all 1s"
         
         
 Jogo()
