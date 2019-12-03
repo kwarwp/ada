@@ -67,3 +67,10 @@ NameError: name 'INVENTARIO' is not defined
     Cena(BASE)
 NameError: name 'Cena' is not defined
 '''},
+{'date': 'Tue Dec 03 2019 14:47:17.938 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 19
+  super().__init__(img=img, vai=vai, tit=tit, alt=alt,
+                                                                               ^
+SyntaxError: invalid syntax
+'''},
