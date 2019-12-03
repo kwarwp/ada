@@ -38,12 +38,17 @@ class Jogo:
         def anda(*_):
             cat.x = 400
             cat.y = 200
+        def entra(*_):
+            cat.x = 10
+            cat.y = 20
+            cat.entra(cart)
         cena = Cena(CENA)
         cena.vai()
         entrada = Base(BASE, x=600, y=300, w=200, h=200, cena=cena)
         saida = Base(BASE, x=200, y=300, w=200, h=200, cena=cena)
         cart = Base(CART, x=400, y=300, w=200, h=200, cena=cena, vai=vai)
-        cat = Base(CAT, x=600, y=300, w=200, h=200, cena=cena, vai=vai)
+        cat = Base(CAT, x=600, y=300, w=200, h=200, cena=cena, vai=anda)
+        cat.entra(cart)
         cart.elt.style.transition = "left 1s"
         cat.elt.style.transition = "all 1s"
         
