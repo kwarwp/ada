@@ -30,6 +30,14 @@ class Elemento(Elemento_):
         self.elt.style.left = value
                          
     @property
+    def img(self):
+        return self.elt.style.backgroundImage
+                         
+    @img.setter
+    def img(self, value):
+        self.elt.style.backgroundImage = f"url({value})"
+                         
+    @property
     def y(self):
         return int(self.elt.style.top[:-2])
                          
