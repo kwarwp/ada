@@ -24,6 +24,7 @@ class Elemento(Elemento_):
         self._w, self._h = int(self.elt.style.width[:-2]), int(self.elt.style.height[:-2])
         self.nome = tit
         self.s = s
+        self.p(0)
 
     def entra(self, cena, style=NOSC):
         cena <= self
