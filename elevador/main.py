@@ -30,12 +30,14 @@ class Elemento(Elemento_):
                          
     @property
     def p(self):
-        return self._s
+        return self._p
                          
     @p.setter
-    def p(self, value):
+    def p(self, *value):
         self._p = value
-        self.elt.style.backgroundSize = "{}% {}%".format(xy[0]*100, xy[1]*100)
+        x, y = value if len(value) > 1 else (value % self._s[0], value // self._s[0])
+        dx, dy = int(self.elt.style.width[:-2]), int(self.elt.style.height[:-2])
+        self.elt.style.backgroundPosition = "-{}px -{}px".format(x*dx, y*dy)
                          
     @property
     def s(self):
@@ -185,6 +187,7 @@ class Elevador:
         self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
         self.guria.elt.i = KWARWP
         self.guria.elt.s = (3, 4)
+        self.guria.elt.p(1, 1)
         #self.doggie.entra(p0)
         #self.guria.entra(p0)
         
