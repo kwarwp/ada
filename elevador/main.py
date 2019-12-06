@@ -20,9 +20,9 @@ class Elemento(Elemento_):
                  score=NOSC, s=(1, 1), drag=False, drop='', **kwargs):
         super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
                          score=score, drag=drag, drop=drop, **kwargs)
+        self._x, self._y, self._w, self._h, self._o, self._texto =  x, y, w, h, o, texto
         self.nome = tit
         self.s = s
-        self._x, self._y, self._w, self._h, self._o, self._texto =  x, y, w, h, o, texto
 
     def entra(self, cena, style=NOSC):
         cena <= self
