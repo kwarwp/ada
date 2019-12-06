@@ -161,7 +161,7 @@ class Elevador:
         self.cesta0.vai = self.cesta1.ir
         self.doggie = Passageiro(Doggie, veiculo=p0, x=10, y=10)
         self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
-        self.guria.i = KWARWP
+        self.guria.elt.i = KWARWP
         #self.doggie.entra(p0)
         #self.guria.entra(p0)
         
