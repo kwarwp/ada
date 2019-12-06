@@ -29,14 +29,22 @@ class Elemento(Elemento_):
         cena <= self
                          
     @property
+    def p(self):
+        return self._s
+                         
+    @p.setter
+    def p(self, value):
+        self._p = value
+        self.elt.style.backgroundSize = "{}% {}%".format(xy[0]*100, xy[1]*100)
+                         
+    @property
     def s(self):
         return self._s
                          
     @s.setter
     def s(self, xy):
-        self._s = (x, y)
-        self.elt.width = self._w // xy[0]
-        self.elt.height = self._h // xy[1]
+        self._s = xy
+        self.elt.style.backgroundSize = "{}% {}%".format(xy[0]*100, xy[1]*100)
                          
     @property
     def x(self):
@@ -176,6 +184,7 @@ class Elevador:
         self.doggie = Passageiro(Doggie, veiculo=p0, x=10, y=10)
         self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
         self.guria.elt.i = KWARWP
+        self.guria.elt.s = (3, 4)
         #self.doggie.entra(p0)
         #self.guria.entra(p0)
         
