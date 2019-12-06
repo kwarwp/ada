@@ -10,6 +10,8 @@ Doggie = "https://i.imgur.com/1YbsNfD.png"
 GURIA  = "https://101clipart.com/wp-content/uploads/10/Girl%20Clipart%20Png%2016.png"
 PLATO = "http://archive.xaraxone.com/webxealot/workbook85/index_html_files/154.png"
 GURI = "https://i.imgur.com/DPQcVxS.png"
+KWARWP = "https://i.imgur.com/fDy5q9U.png"
+KW = "http://psce.pw/LF3U3"
 
 
 class Elemento(Elemento_):
@@ -31,12 +33,12 @@ class Elemento(Elemento_):
         self.elt.style.left = value
                          
     @property
-    def image(self):
+    def i(self):
         return self.elt.style.backgroundImage
                          
-    @img.setter
-    def image(self, value):
-        self.elt.style.backgroundImage = f"url({value})"
+    @i.setter
+    def i(self, value):
+        self.elt.style.backgroundImage = f"url('{value}')"
                          
     @property
     def y(self):
@@ -159,7 +161,7 @@ class Elevador:
         self.cesta0.vai = self.cesta1.ir
         self.doggie = Passageiro(Doggie, veiculo=p0, x=10, y=10)
         self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
-        self.guria.image = Doggie
+        self.guria.i = KWARWP
         #self.doggie.entra(p0)
         #self.guria.entra(p0)
         
