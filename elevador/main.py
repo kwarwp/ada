@@ -16,11 +16,12 @@ KW = "http://psce.pw/LF3U3"
 
 class Elemento(Elemento_):
     def __init__(self, img="", vai=None, style=NS, tit="", alt="", cena=INVENTARIO,
-                     x=0, y=0, w=100, h=100, o=1, texto='',
+                         #x=0, y=0, w=100, h=100, o=1, texto='',
                  score=NOSC, s=(1, 1), drag=False, drop='', **kwargs):
         super().__init__(img=img, vai=vai, style=style, tit=tit, alt=alt, cena=cena,
                          score=score, drag=drag, drop=drop, **kwargs)
-        self._x, self._y, self._w, self._h, self._o, self._texto =  x, y, w, h, o, texto
+        #self._x, self._y, self._w, self._h, self._o, self._texto =  x, y, w, h, o, texto
+        self._w, self._h = int(self.elt.style.width[:-2]), int(self.elt.style.height[:-2])
         self.nome = tit
         self.s = s
 
@@ -32,10 +33,10 @@ class Elemento(Elemento_):
         return self._s
                          
     @s.setter
-    def s(self, x=1, y=1):
+    def s(self, xy):
         self._s = (x, y)
-        self.elt.width = self._w // x
-        self.elt.height = self._h // y
+        self.elt.width = self._w // xy[0]
+        self.elt.height = self._h // xy[1]
                          
     @property
     def x(self):
