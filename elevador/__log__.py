@@ -842,3 +842,23 @@ TypeError: 'int' object is not callable
     self.guria.elt.p(1, 1)
 TypeError: 'int' object is not callable
 '''},
+{'date': 'Sat Dec 07 2019 05:38:33.132 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 195
+    Elevador()
+  module <module> line 191
+    self.guria.elt.p = 5
+  module <module> line 39
+    x, y = value if len(value) > 1 else (value % self._s[0], value // self._s[0])
+TypeError: unsupported operand type(s) for %: 'list' and 'int'
+'''},
