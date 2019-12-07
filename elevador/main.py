@@ -25,7 +25,6 @@ class Elemento(Elemento_):
         self._p = 0
         self.nome = tit
         self.s = s
-        self.p(0)
 
     def entra(self, cena, style=NOSC):
         cena <= self
