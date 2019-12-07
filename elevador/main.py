@@ -36,7 +36,7 @@ class Elemento(Elemento_):
     @p.setter
     def p(self, *value):
         self._p = value
-        x, y = value if len(value) > 1 else (value % self._s[0], value // self._s[0])
+        x, y = value if len(value) > 1 else (value[0] % self._s[0], value[0] // self._s[0])
         dx, dy = int(self.elt.style.width[:-2]), int(self.elt.style.height[:-2])
         self.elt.style.backgroundPosition = "-{}px -{}px".format(x*dx, y*dy)
                          
