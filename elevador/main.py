@@ -22,6 +22,7 @@ class Elemento(Elemento_):
                          score=score, drag=drag, drop=drop, **kwargs)
         #self._x, self._y, self._w, self._h, self._o, self._texto =  x, y, w, h, o, texto
         self._w, self._h = int(self.elt.style.width[:-2]), int(self.elt.style.height[:-2])
+        self._p = 0
         self.nome = tit
         self.s = s
         self.p(0)
