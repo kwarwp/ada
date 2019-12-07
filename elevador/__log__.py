@@ -778,3 +778,27 @@ AttributeError: 'Elemento' object has no attribute '_p'
     self.guria.elt.p(1, 1)
 TypeError: 'int' object is not callable
 '''},
+{'date': 'Sat Dec 07 2019 05:29:44.417 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 195
+    Elevador()
+  module <module> line 182
+    self.plataforma0 = p0 = Plataforma(cena=predio, x=320, y=50,w=250,h=180)
+  module <module> line 136
+    self.elt = Elemento(imagem, style=dict(opacity=1), **kwargs)
+  module <module> line 27
+    self.p(0)
+  module <module> line 34
+    return self._p
+AttributeError: 'Elemento' object has no attribute '_p'
+'''},
