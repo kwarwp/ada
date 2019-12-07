@@ -188,7 +188,7 @@ class Elevador:
         self.guria = Passageiro(GURIA, veiculo=p0, x=90, y=10)
         self.guria.elt.i = KWARWP
         self.guria.elt.s = (3, 4)
-        self.guria.elt.p(1, 1)
+        self.guria.elt.p = 5
         #self.doggie.entra(p0)
         #self.guria.entra(p0)
         
