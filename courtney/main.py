@@ -29,21 +29,26 @@ class Plataforma(Elemento): #retangulo tranparente
         destino.move(self.destino)
 
 
-class Personagem(Elemento): #dog
-    def __init__(self, imagem, destino, cena,tit, x, y, w, h):
+class Personagem(Elemento):
+    def __init__(self,  imagem, controlador, destino, cena,tit, x, y, w, h):
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
+        self.controlador = controlador
         self.vai = self.move
         self.entra(cena)
         
+        
     def move(self, evento=None):
+        self.destino = self.controlador.cesta_topo
+        input(self,destino.x)
         self.destino.entra_na_cesta(self)
         
 
 class Cesta(Elemento): #cesta da esquerda
-    def __init__(self, imagem, destino, cena, x=0, y=10):
+    def __init__(self, imagem, controlador, destino, cena, x=0, y=10):
         self.nome = "veiculo"
         self.i = 0
+        self.controlador = controlador
         self.integrantes = []
         super().__init__(imagem, cena=cena, w= 170, x=x, y=y)
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
@@ -58,6 +63,7 @@ class Cesta(Elemento): #cesta da esquerda
         if self.i > 0:
             self.do_move()
             self.outro.do_move()
+            self.inverte_topo_base(self);
         self.i+=1
     
     def do_move(self, evento=None):
@@ -79,10 +85,12 @@ class Cesta(Elemento): #cesta da esquerda
         for p in self.integrantes:
             p.x=x
             x+=20
-    def inverte_topa_base(self):
-        aux = self.controlador.cesta_topo
-        self.controlador.cesta_topo = self.controlador.cesta_base
-        self.controlador.cesta_base = aux
+            
+    def inverte_topo_base(self):
+        topo = self.controlador.cesta_topo
+        base = self.controlador.cesta_base
+        self.controlador.cesta_topo = base
+        self.controlador.cesta_base = topo
         
 class Controlador:
     def __init__(self):
@@ -94,15 +102,15 @@ class Controlador:
         self.base_topo = Plataforma(BASE, y=440, cena=cena)
         self.base.destino, self.base_topo.destino = self.base_topo, self.base
         
-        self.cesta_esquerda = Cesta(CEST, destino=self.base_topo, cena=self.base)
-        self.cesta_direita = Cesta(CEST, destino= self.base, cena= self.base_topo, x=300)
+        self.cesta_esquerda = Cesta(CEST, controlador = self, destino=self.base_topo, cena=self.base, x=1)
+        self.cesta_direita = Cesta(CEST, controlador = self, destino= self.base, cena= self.base_topo, x=300)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
-        self.doggie = Personagem(DOG, controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
-        self.menina = Personagem(GIRL,controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
+        self.doggie = Personagem(DOG, controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
+        self.menina = Personagem(GIRL,controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
+        self.menino = Personagem(BOY, controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
 
         cena.vai()
         
