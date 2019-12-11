@@ -35,12 +35,12 @@ class Personagem(Elemento):
         self.destino = destino
         self.controlador = controlador
         self.vai = self.move
-        self.entra(cena)
+        self.entra(destino)
         
         
     def move(self, evento=None):
-        self.destino = self.controlador.cesta_topo
         input(self,destino.x)
+        self.destino = self.controlador.cesta_topo
         self.destino.entra_na_cesta(self)
         
 
@@ -108,9 +108,9 @@ class Controlador:
         
         self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
-        self.doggie = Personagem(DOG, controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
-        self.menina = Personagem(GIRL,controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, controlador=self, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
+        self.doggie = Personagem(DOG, controlador=self, destino=self.cena, cena=cena, tit = "10kg", x=0, y=0, w=80,h=50)
+        self.menina = Personagem(GIRL,controlador=self, destino=self.base, cena=cena, tit = "20kg", x=50, y=120, w=60,h=80)
+        self.menino = Personagem(BOY, controlador=self, destino=self.base.destino, cena=cena, tit = "40kg", x=100, y=100, w=60,h=100)
 
         cena.vai()
         
