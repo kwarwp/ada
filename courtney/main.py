@@ -34,12 +34,7 @@ class Personagem(Elemento): #dog
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
         self.vai = self.destino.entra_na_cesta(self)
-        self.entra(self.destino.fundo)
-        print(self.x)
-        print(self.y)
-        print(self)
-        #self.x=0
-        #self.y=0
+        self.entra(cena)
         
     def move(self, evento=None):
         #input(isinstance(self.destino,Veiculo))
@@ -121,9 +116,9 @@ class Basico:
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         
-        self.doggie = Personagem(DOG, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=150, w=80,h=50)
+        self.doggie = Personagem(DOG, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
         self.menina = Personagem(GIRL,destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=700, y=100, w=60,h=100)
+        self.menino = Personagem(BOY, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
 
         cena.vai()
         
