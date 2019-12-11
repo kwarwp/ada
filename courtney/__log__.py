@@ -193,3 +193,10 @@ TypeError: entra_na_cesta() got an unexpected keyword argument 'evento'
     self.vai = self.destino.entra_na_cesta(self, evento=None)#self.move
 TypeError: entra_na_cesta() got multiple values for argument 'evento'
 '''},
+{'date': 'Wed Dec 11 2019 12:33:12.99 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 36
+  self.vai = self.destino.entra_na_cesta(evento=None,self)#self.move
+                                                         ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
