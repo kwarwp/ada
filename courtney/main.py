@@ -30,17 +30,15 @@ class Plataforma(Elemento): #retangulo tranparente
 
 
 class Personagem(Elemento):
-    def __init__(self,  imagem, controlador, destino, cena,tit, x, y, w, h):
+    def __init__(self,  imagem, controlador, cena,tit, x, y, w, h):
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
-        self.destino = destino
         self.controlador = controlador
+        self.entra(cena)
         self.vai = self.move
-        self.entra(destino)
-        
         
     def move(self, evento=None):
-        input(self,destino.x)
         self.destino = self.controlador.cesta_topo
+        input(self,destino.x)
         self.destino.entra_na_cesta(self)
         
 
@@ -108,9 +106,9 @@ class Controlador:
         
         self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
-        self.doggie = Personagem(DOG, controlador=self, destino=self.cena, cena=cena, tit = "10kg", x=0, y=0, w=80,h=50)
-        self.menina = Personagem(GIRL,controlador=self, destino=self.base, cena=cena, tit = "20kg", x=50, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, controlador=self, destino=self.base.destino, cena=cena, tit = "40kg", x=100, y=100, w=60,h=100)
+        self.doggie = Personagem(DOG, controlador=self, cena=cena, tit = "10kg", x=0, y=0, w=80,h=50)
+        self.menina = Personagem(GIRL,controlador=self, cena=cena, tit = "20kg", x=0, y=0, w=60,h=80)
+        self.menino = Personagem(BOY, controlador=self, cena=cena, tit = "40kg", x=0, y=0, w=60,h=100)
 
         cena.vai()
         
