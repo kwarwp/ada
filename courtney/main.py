@@ -34,10 +34,10 @@ class Personagem(Elemento): #dog
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
         self.vai = self.destino.entra_na_cesta(self)
+        self.entra(self.destino.fundo)
         print(self.x)
         print(self.y)
         print(self)
-        #self.entra(self.destino.fundo)
         #self.x=0
         #self.y=0
         
