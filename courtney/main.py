@@ -30,16 +30,16 @@ class Plataforma(Elemento): #retangulo tranparente
 
 
 class Personagem(Elemento): #dog
-    def __init__(self, imagem, destino, cena,tit, x, y, h):
-        super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=80, h=h)
+    def __init__(self, imagem, destino, cena,tit, x, y, w, h):
+        super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
         self.vai = self.move
         
     def move(self, evento=None):
         #input(isinstance(self.destino,Veiculo))
         self.entra(self.destino)
-        self.x=15
-        self.y=13
+        self._x=15
+        self._y=13
         self.destino = Cena(img =CENA)#cao tá saindo mas some no espaço
         
 
@@ -102,14 +102,14 @@ class Basico:
         self.base1 = Plataforma(BASE, y=440, cena=cena)
         self.base0.destino, self.base1.destino = self.base1, self.base0 
         
-        self.cesta = Veiculo(CEST, destino=self.base1, cena=self.base0)
-        self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
-        self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
+        self.cesta_esquerda = Veiculo(CEST, destino=self.base1, cena=self.base0)
+        self.cesta_direita = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
+        self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         
-        self.doggie = Personagem(DOG, destino=self.cesta.fundo, cena=cena, tit = "10kg", x=540, y=150, h=50)
-        self.menina = Personagem(GIRL,destino=self.cesta.fundo, cena=cena, tit = "20kg", x=620, y=120, h=80)
-        self.menino = Personagem(BOY, destino=self.cesta.fundo, cena=cena, tit = "40kg",  x=710, y=100, h=100)
+        self.doggie = Personagem(DOG, destino=self.cesta_esquerda.fundo, cena=cena, tit = "10kg", x=540, y=150, w=80,h=50)
+        self.menina = Personagem(GIRL,destino=self.cesta_esquerda.fundo, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
+        self.menino = Personagem(BOY, destino=self.cesta_esquerda.fundo, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
 
         cena.vai()
         
