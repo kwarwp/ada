@@ -33,39 +33,12 @@ class Personagem(Elemento): #dog
     def __init__(self, imagem, destino, cena,tit, x, y, w, h):
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
-        self.vai = self.destino.entra_na_cesta(self)
+        self.vai = self.move
         self.entra(cena)
         
     def move(self, evento=None):
-        #input(isinstance(self.destino,Veiculo))
-        self.entra(self.destino.fundo)
-        self.x=80 #15
-        self.y=0 #13
-        #self.destino.fundo = Cena(img =CENA)#cao tá saindo mas some no espaço
+        self.destino.entra_na_cesta(self)
         
-
-class Personagem2(Elemento): #Irma no predio
-    def __init__(self, imagem, destino, cena, x=620, y=120):
-        super().__init__(imagem, cena=cena,  tit = "20kg", x=x, y=y, w=60, h=80)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=50
-        self.y=0
-
-class Personagem3(Elemento): #garoto no predio
-    def __init__(self, imagem, destino, cena, x=710, y=100):
-        super().__init__(imagem, tit = "40kg", cena=cena, x=x, y=y, w=60, h=100)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=80
-        self.y=0
-
 
 class Cesta(Elemento): #cesta da esquerda
     def __init__(self, imagem, destino, cena, x=0, y=10):
@@ -96,23 +69,25 @@ class Cesta(Elemento): #cesta da esquerda
     def entra_na_cesta(self, personagem):
         self.integrantes.append(personagem)
         personagem.entra(self.fundo)
-        x = 10
+        personagem.y=0
+        x = 25
+        #personagem.x = x
         for p in self.integrantes:
-            p.x1 = x
-            x+=30
-
-class Basico:
+            p.x=x
+            x+=20
+        
+class Controlador:
     def __init__(self):
         self.cena = cena = Cena(CENA)
         self.casa = Predio(PRED, cena=cena)
         self.casa.entra(self.cena)
         
-        self.base0 = Plataforma(BASE, y=200, cena=cena)
-        self.base1 = Plataforma(BASE, y=440, cena=cena)
-        self.base0.destino, self.base1.destino = self.base1, self.base0 
+        self.base = Plataforma(BASE, y=200, cena=cena)
+        self.base_topo = Plataforma(BASE, y=440, cena=cena)
+        self.base.destino, self.base_topo.destino = self.base_topo, self.base
         
-        self.cesta_esquerda = Cesta(CEST, destino=self.base1, cena=self.base0)
-        self.cesta_direita = Cesta(CEST, destino= self.base0, cena= self.base1, x=300)
+        self.cesta_esquerda = Cesta(CEST, destino=self.base_topo, cena=self.base)
+        self.cesta_direita = Cesta(CEST, destino= self.base, cena= self.base_topo, x=300)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         
@@ -124,4 +99,4 @@ class Basico:
         
         
 if __name__ == "__main__":
-    Basico()
+    Controlador()
