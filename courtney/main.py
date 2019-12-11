@@ -42,7 +42,8 @@ class Personagem(Elemento): #dog
 
 class Cesta(Elemento): #cesta da esquerda
     def __init__(self, imagem, destino, cena, x=0, y=10):
-        self.nome = "veiculo" 
+        self.nome = "veiculo"
+        self.i = 0
         self.integrantes = []
         super().__init__(imagem, cena=cena, w= 170, x=x, y=y)
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
@@ -51,10 +52,13 @@ class Cesta(Elemento): #cesta da esquerda
         self.outro = self
         self.vai = self.mover
         frente.vai =self.mover
+        self.fundo.vai = self.mover
                
     def mover(self, evento=None):
-        self.do_move()
-        self.outro.do_move()
+        if self.i > 0:
+            self.do_move()
+            self.outro.do_move()
+        self.i+=1
     
     def do_move(self, evento=None):
         self.destino.movimenta(self)
@@ -75,6 +79,10 @@ class Cesta(Elemento): #cesta da esquerda
         for p in self.integrantes:
             p.x=x
             x+=20
+    def inverte_topa_base(self):
+        aux = self.controlador.cesta_topo
+        self.controlador.cesta_topo = self.controlador.cesta_base
+        self.controlador.cesta_base = aux
         
 class Controlador:
     def __init__(self):
@@ -90,10 +98,11 @@ class Controlador:
         self.cesta_direita = Cesta(CEST, destino= self.base, cena= self.base_topo, x=300)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
+        self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
-        self.doggie = Personagem(DOG, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
-        self.menina = Personagem(GIRL,destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
+        self.doggie = Personagem(DOG, controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=145, w=80,h=50)
+        self.menina = Personagem(GIRL,controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
+        self.menino = Personagem(BOY, controlador= self, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
 
         cena.vai()
         
