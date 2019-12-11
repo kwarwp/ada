@@ -33,7 +33,13 @@ class Personagem(Elemento): #dog
     def __init__(self, imagem, destino, cena,tit, x, y, w, h):
         super().__init__(imagem, cena=cena, tit=tit, x=x, y=y, w=w, h=h)
         self.destino = destino
-        self.vai = self.destino.enta_na_cesta(self)
+        self.vai = self.destino.entra_na_cesta(self)
+        print(self.x)
+        print(self.y)
+        print(self)
+        #self.entra(self.destino.fundo)
+        #self.x=0
+        #self.y=0
         
     def move(self, evento=None):
         #input(isinstance(self.destino,Veiculo))
@@ -96,8 +102,8 @@ class Cesta(Elemento): #cesta da esquerda
         self.integrantes.append(personagem)
         personagem.entra(self.fundo)
         x = 10
-        for p in personagens:
-            p.x = x
+        for p in self.integrantes:
+            p.x1 = x
             x+=30
 
 class Basico:
@@ -117,7 +123,7 @@ class Basico:
         
         self.doggie = Personagem(DOG, destino=self.cesta_esquerda, cena=cena, tit = "10kg", x=540, y=150, w=80,h=50)
         self.menina = Personagem(GIRL,destino=self.cesta_esquerda, cena=cena, tit = "20kg", x=620, y=120, w=60,h=80)
-        self.menino = Personagem(BOY, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=710, y=100, w=60,h=100)
+        self.menino = Personagem(BOY, destino=self.cesta_esquerda, cena=cena, tit = "40kg", x=700, y=100, w=60,h=100)
 
         cena.vai()
         
