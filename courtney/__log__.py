@@ -254,3 +254,10 @@ TypeError: __init__() got an unexpected keyword argument 'destino'
     self.cesta_esquerda = Cesta(CEST, destino=self.base_topo, cena=self.base)
 TypeError: __init__() got an unexpected keyword argument 'destino'
 '''},
+{'date': 'Wed Dec 11 2019 12:53:21.138 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 80
+  def inverte_topo_base_controlador:
+                                    ^
+SyntaxError: invalid syntax
+'''},
