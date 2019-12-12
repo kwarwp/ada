@@ -40,7 +40,7 @@ class Personagem(Elemento): #dog
         
     def move_cesta_topo(self, evento=None):
         destinho = self.controlador.pegar_cesta_topo()
-        self.entra(destinho)
+        self.entra(destinho.fundo)
         self.x=15
         self.y=13       
 
@@ -61,13 +61,7 @@ class Cesta(Elemento):
     def mover(self, evento=None):
         self.do_move()
         self.outro.do_move()
-        print("mover -> "+ self.nome)
-        if len(self.nome) > 0:
-            topo = self.controlador.cesta_topo
-            base = self.controlador.cesta_base
-            self.controlador.cesta_topo = base
-            self.controlador.cesta_base = topo
-            print("entrou")
+        self.controlador.inverte_cesta_topo_base()
     
     def do_move(self, evento=None):
         self.destino.movimenta(self)
@@ -87,6 +81,14 @@ class Controlador:
         print( self.cesta_esquerda.y)
         print( self.cesta_esquerda.x)
         return self.cesta_topo
+        
+    def inverte_cesta_topo_base(self):
+        topo = self.cesta_topo
+        base = self.cesta_base
+        self.cesta_topo = base
+        self.cesta_base = topo
+        print
+
         
     def __init__(self):
         controlador = self
