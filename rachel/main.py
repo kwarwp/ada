@@ -31,10 +31,10 @@ class Plataforma(Elemento): #retangulo tranparente
 
 
 class Personagem(Elemento): #dog
-    def __init__(self, imagem, controlador,destino, cena, x=0, y=0):
-        super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
-        self.entra(controlador.casa)
-        self.destino = destino
+    def __init__(self, imagem, controlador, cena, x=0, y=0, tit):
+        super().__init__(imagem, cena=cena,  tit = tit, x=x, y=y, w=80, h=50)
+        self.entra(controlador.base_telhado)
+        self.destino = controlador.cesta.fundo
         self.controlador = controlador
         self.vai = self.move
         
@@ -105,14 +105,14 @@ class Controlador:
         self.base1 = Plataforma(BASE, y=440, cena=cena)
         self.base0.destino, self.base1.destino = self.base1, self.base0 
         
-        self.base_telhado = Plataforma(BASE, y=440, cena=cena)
+        self.base_telhado = Plataforma(BASE, x=540, y=150, cena=cena)
         
         self.cesta = Veiculo(CEST, destino=self.base1, cena=self.base0)
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
         
-        self.doggie = Personagem(DOG, controlador=self, destino=self.cesta.fundo, cena=cena)
+        self.doggie = Personagem(DOG, controlador=self, cena=cena, tit="10kg")
         self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
         self.menino = Personagem3(BOY, destino=self.cesta.fundo, cena=cena)
 
