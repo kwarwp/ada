@@ -205,3 +205,10 @@ TypeError: __init__ missing 1 positional argument: 'destino'
     self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
 AttributeError: 'Controlador' object has no attribute 'cesta'
 '''},
+{'date': 'Thu Dec 12 2019 10:43:26.301 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 108
+  self.base_telhado = Plataforma(BASE, x=640, y=150, h=400cena=cena)
+                                                           ^
+SyntaxError: invalid syntax
+'''},
