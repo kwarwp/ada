@@ -307,3 +307,10 @@ AttributeError: 'Controlador' object has no attribute 'cesta_topo'
                  ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Dec 12 2019 12:24:10.658 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 65
+  if self.nome,lenght() > 0:
+               ^
+SyntaxError: invalid syntax
+'''},
