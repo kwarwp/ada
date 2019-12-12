@@ -24,6 +24,7 @@ class Plataforma(Elemento): #retangulo tranparente
     def __init__(self, imagem, cena, x=430, y=0, h=200):
         super().__init__(imagem, cena=cena, w=500,h=200, x=x, y=y)
         self.destino = self
+        self.fundo = self
         self.nome = "base"
         
     def movimenta(self, destino):
@@ -32,50 +33,28 @@ class Plataforma(Elemento): #retangulo tranparente
 
 class Personagem(Elemento): #dog
     def __init__(self, imagem, controlador, cena, h, x=0, y=0, w=60, tit):
-        super().__init__(imagem, cena=cena,  tit = tit, x=h*3, y=h/2, w=w, h=h)
-        self.entra(controlador.base_telhado)
-        self.destino = controlador.cesta_esquerda.fundo
+        super().__init__(imagem, cena=cena, tit = tit, x=h*3, y=h/2, w=w, h=h)
+        self.entra(controlador.base_telhado.fundo)
         self.controlador = controlador 
-        self.vai = self.move
+        #self.destino = destino
+        self.vai = self.move_cesta_topo
         
-    def move(self, evento=None):
-        #input(isinstance(self.destino,Veiculo))
-        self.entra(self.destino)
+    def move_cesta_topo(self, evento=None):
+        input(self.controlador.pegar_cesta_topo().nome)
+        input(evento)
+        self.entra(self.controlador.pegar_cesta_topo().fundo)
         self.x=15
-        self.y=13
-        self.destino = Cena(img =CENA)#cao tá saindo mas some no espaço
-        
-
-class Personagem2(Elemento): #Irma no predio
-    def __init__(self, imagem, destino, cena, x=620, y=120):
-        super().__init__(imagem, cena=cena,  tit = "20kg", x=x, y=y, w=60, h=80)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=50
-        self.y=0
-
-class Personagem3(Elemento): #garoto no predio
-    def __init__(self, imagem, destino, cena, x=710, y=100):
-        super().__init__(imagem, tit = "40kg", cena=cena, x=x, y=y, w=60, h=100)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=80
-        self.y=0
+        self.y=13       
 
 
-class Veiculo(Elemento): #cesta da esquerda
-    def __init__(self, imagem, destino, cena, x=0, y=10):
+class Cesta(Elemento):
+    def __init__(self, imagem, destino, cena, x=0, y=10, nome=""):
         self.nome = "veiculo" 
         super().__init__(imagem, cena=cena, w= 170, x=x, y=y)
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
         self.destino = destino
+        self.nome = nome
         self.outro = self
         self.vai = self.mover
         frente.vai =self.mover
@@ -107,17 +86,28 @@ class Controlador:
         
         self.base_telhado = Plataforma(BASE, x=400, y=0,cena=cena)
         
-        self.cesta_esquerda = Veiculo(CEST, destino=self.base1, cena=self.base0)
-        self.cesta_direita = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
+        self.cesta_esquerda = Cesta(CEST, destino=self.base1, cena=self.base0, x=0, nome="esquerda")
+        self.cesta_direita = Cesta(CEST, destino= self.base0, cena= self.base1, x=300, nome="direita")
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
+        self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
-        self.doggie = Personagem(DOG, controlador=self, cena=cena, tit="10kg", h=50, w=80)
-        self.menina = Personagem(GIRL,controlador=self, cena=cena, tit="20kg", h=80)
-        self.menino = Personagem(BOY, controlador=self, cena=cena, tit="40kg", h=100, y=0)
+        
+        controlador = self
+        
+        self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
+        self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
+        self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
 
         cena.vai()
         
+    def pegar_cesta_topo(self):
+        cesta = 0
+        if self.cesta_esquerda == 300:
+            cesta = self.cesta_esquerda
+        else:
+            cesta = self.cesta_direita
+        return cesta
         
 if __name__ == "__main__":
     Controlador()
