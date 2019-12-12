@@ -62,7 +62,7 @@ class Cesta(Elemento):
     def mover(self, evento=None):
         self.do_move()
         self.outro.do_move()
-        if self.nome,lenght() > 0:
+        if len(self.nome) > 0:
             topo = self.controlador.cesta_topo
             base = self.controlador.cesta_base
             self.controlador.cesta_topo = base
