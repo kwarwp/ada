@@ -69,19 +69,11 @@ class Cesta(Elemento):
     def move(self, destino):
         self.entra(destino)
         self.destino = destino
-        print("move -> "+ self.nome)
         
     def movimenta(self, destino):
         destino.move(self)
-        print("movimenta -> "+ self.nome)
-
-
-class Controlador:
-    def pegar_cesta_topo(self):
-        print( self.cesta_esquerda.y)
-        print( self.cesta_esquerda.x)
-        return self.cesta_topo
         
+class Controlador:
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
         self.cesta_topo = self.cesta_base
