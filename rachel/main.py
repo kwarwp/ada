@@ -21,7 +21,7 @@ class Predio(Elemento): #predio que  inicia bom e no fim fica queimado
 
 #Lado esquerdo
 class Plataforma(Elemento): #retangulo tranparente
-    def __init__(self, imagem, cena, x=430, y=0):
+    def __init__(self, imagem, cena, x=430, y=0, h=200):
         super().__init__(imagem, cena=cena, w=500,h=200, x=x, y=y)
         self.destino = self
         self.nome = "base"
@@ -31,11 +31,11 @@ class Plataforma(Elemento): #retangulo tranparente
 
 
 class Personagem(Elemento): #dog
-    def __init__(self, imagem, controlador, cena, x=0, y=0, tit):
-        super().__init__(imagem, cena=cena,  tit = tit, x=x, y=y, w=80, h=50)
+    def __init__(self, imagem, controlador, cena, h, x=0, y=0, w=60, tit):
+        super().__init__(imagem, cena=cena,  tit = tit, x=h*3, y=h/2, w=w, h=h)
         self.entra(controlador.base_telhado)
-        self.destino = controlador.cesta.fundo
-        self.controlador = controlador
+        self.destino = controlador.cesta_esquerda.fundo
+        self.controlador = controlador 
         self.vai = self.move
         
     def move(self, evento=None):
@@ -105,16 +105,16 @@ class Controlador:
         self.base1 = Plataforma(BASE, y=440, cena=cena)
         self.base0.destino, self.base1.destino = self.base1, self.base0 
         
-        self.base_telhado = Plataforma(BASE, x=540, y=150, cena=cena)
+        self.base_telhado = Plataforma(BASE, x=400, y=0,cena=cena)
         
-        self.cesta = Veiculo(CEST, destino=self.base1, cena=self.base0)
-        self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
-        self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
+        self.cesta_esquerda = Veiculo(CEST, destino=self.base1, cena=self.base0)
+        self.cesta_direita = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
+        self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         
-        self.doggie = Personagem(DOG, controlador=self, cena=cena, tit="10kg")
-        self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
-        self.menino = Personagem3(BOY, destino=self.cesta.fundo, cena=cena)
+        self.doggie = Personagem(DOG, controlador=self, cena=cena, tit="10kg", h=50, w=80)
+        self.menina = Personagem(GIRL,controlador=self, cena=cena, tit="20kg", h=80)
+        self.menino = Personagem(BOY, controlador=self, cena=cena, tit="40kg", h=100, y=0)
 
         cena.vai()
         
