@@ -40,8 +40,8 @@ class Personagem(Elemento): #dog
         self.vai = self.move_cesta_topo
         
     def move_cesta_topo(self, evento=None):
+        self = self
         input(self.controlador.pegar_cesta_topo().nome)
-        input(evento)
         self.entra(self.controlador.pegar_cesta_topo().fundo)
         self.x=15
         self.y=13       
@@ -75,6 +75,14 @@ class Cesta(Elemento):
 
 
 class Controlador:
+    def pegar_cesta_topo(self):
+        cesta = self.cesta_direita
+        input(self.cesta_esquerda.x)
+        help(self.cesta_esquerda)
+        if self.cesta_esquerda.x == 300:
+            cesta = self.cesta_esquerda
+        return cesta
+        
     def __init__(self):
         self.cena = cena = Cena(CENA)
         self.casa = Predio(PRED, cena=cena)
@@ -91,7 +99,7 @@ class Controlador:
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita.outro, self.cesta_esquerda.outro
         
         self.cesta_base = self.cesta_esquerda, self.cesta_direita
-        
+        self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
         controlador = self
         
@@ -101,13 +109,7 @@ class Controlador:
 
         cena.vai()
         
-    def pegar_cesta_topo(self):
-        cesta = 0
-        if self.cesta_esquerda == 300:
-            cesta = self.cesta_esquerda
-        else:
-            cesta = self.cesta_direita
-        return cesta
+    
         
 if __name__ == "__main__":
     Controlador()
