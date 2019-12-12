@@ -250,3 +250,10 @@ AttributeError: 'Controlador' object has no attribute 'cesta_topo'
     self.cesta_topo,
 AttributeError: 'Controlador' object has no attribute 'cesta_topo'
 '''},
+{'date': 'Thu Dec 12 2019 11:28:29.790 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 96
+  self.cesta_top = *-
+                     ^
+SyntaxError: invalid syntax
+'''},
