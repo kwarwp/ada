@@ -275,3 +275,10 @@ SyntaxError: invalid syntax
     self.doggie = Personagem(DOG, controlador=self, destino=self.cesta_topo, cena=cena, tit="10kg", h=50, w=80)
 AttributeError: 'Controlador' object has no attribute 'cesta_topo'
 '''},
+{'date': 'Thu Dec 12 2019 11:35:26.83 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 104
+  else
+       ^
+SyntaxError: invalid syntax
+'''},
