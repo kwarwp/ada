@@ -54,7 +54,7 @@ class Cesta(Elemento):
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
         self.destino = destino
         self.nome = nome
-        self.vai = self.mover
+        #self.vai = self.mover
         frente.vai =self.mover
         #self.fundo.vai = self.mover
         
@@ -78,7 +78,6 @@ class Controlador:
         aux = self.cesta_topo
         self.cesta_topo = self.cesta_base
         self.cesta_base = aux
-        print
 
         
     def __init__(self):
