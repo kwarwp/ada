@@ -54,7 +54,24 @@ class Personagem(Elemento): #dog
         self.vai = self.move_topo_cesta
         self.x= self.h*3
         self.y= 200 - self.h
-
+        
+    def move_cesta_base(self, evento=None):
+        destino = self.controlador.base
+        self.entra(destino)
+        self.controlador.cesta_base.remove_personagem(self)
+        self.vai = self.move_base_cesta
+        self.x= self.h*3
+        self.y= 200 - self.h
+        
+    def move_base_cesta(self, evento=None):
+        print
+    
+    def seta_vai_topo(self):
+        self.vai = self.move_cesta_topo
+    
+    def seta_vai_base(self):
+        self.vai = self.move_cesta_base
+        
 
 class Cesta(Elemento):
     def __init__(self, imagem, destino, cena, x=0, y=10, nome="", controlador):
@@ -90,14 +107,20 @@ class Cesta(Elemento):
         
     def remove_personagem(self, personagem):
         self.integrantes.remove(personagem)
-        
-        
+                
 class Controlador:
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
         self.cesta_topo = self.cesta_base
         self.cesta_base = aux
+        self.atualiza_vai()
 
+    def atualiza_vai(self):
+        for p in self.cesta_base.integrantes:
+            p.seta_vai_base()
+        for p in self.cesta_topo.integrantes:
+            p.seta_vai_topo()
+            
         
     def __init__(self):
         controlador = self
@@ -110,6 +133,7 @@ class Controlador:
         self.base0.destino, self.base1.destino = self.base1, self.base0 
         
         self.base_telhado = Plataforma(BASE, x=400, y=0,cena=cena)
+        self.base = Plataforma(BASE, x=460, y=350,cena=cena)
         
         self.cesta_esquerda = Cesta(CEST, destino=self.base0, cena=self.base0, x=0, nome="esquerda", controlador=controlador)
         self.cesta_direita = Cesta(CEST, destino= self.base1, cena=self.base1, x=300, nome="direita", controlador=controlador)
