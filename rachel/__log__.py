@@ -392,3 +392,10 @@ SyntaxError: invalid syntax
   ^
 IndentationError: expected an indented block
 '''},
+{'date': 'Fri Dec 13 2019 17:46:42.907 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 23
+  def __init__(self, imagem, cena, x=390, y=0, h=200, w=570, h=200):
+                                                             ^
+SyntaxError: duplicate argument 'h' in function definition
+'''},
