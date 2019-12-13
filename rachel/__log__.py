@@ -399,3 +399,10 @@ IndentationError: expected an indented block
                                                              ^
 SyntaxError: duplicate argument 'h' in function definition
 '''},
+{'date': 'Fri Dec 13 2019 18:08:01.662 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 150
+  self.base_solo = Plataforma(BASE, x=460, y=350,, w=250,cena=cena)
+                                                  ^
+SyntaxError: invalid syntax
+'''},
