@@ -35,6 +35,7 @@ class Personagem(Elemento): #dog
     def __init__(self, imagem, controlador, cena, h, x=0, y=0, w=60, tit):
         super().__init__(imagem, cena=cena, tit = tit, x=h*3, y=h/2, w=w, h=h)
         self.h = h
+        self.w = w
         self.entra(controlador.base_telhado.fundo)
         self.controlador = controlador 
         self.vai = self.move_topo_cesta
@@ -59,9 +60,11 @@ class Personagem(Elemento): #dog
         self.entra(destino)
         self.controlador.cesta_base.remove_personagem(self)
         self.vai = self.move_base_cesta
-        self.x= 9+self.h/2
+        self.x= self.h*2 - 50#30 + self.h - self.w
         self.y= 200 - self.h
+        print(self.w)
         
+                
     def move_base_cesta(self, evento=None):
         destino = self.controlador.cesta_base
         self.entra(destino.fundo)
@@ -112,7 +115,6 @@ class Cesta(Elemento):
     def arrumar_cesta(self):
         x=25
         for p in self.integrantes:
-            print("vvv")
             p.y=0
             p.x=x
             x+=30
@@ -147,7 +149,7 @@ class Controlador:
         self.cesta_direita = Cesta(CEST, destino= self.base1, cena=self.base1, x=410, nome="direita", controlador=controlador)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita, self.cesta_esquerda
         
-        self.base_solo = Plataforma(BASE, x=430, y=350, w=250,cena=cena)
+        self.base_solo = Plataforma(BASE, x=550, y=350, w=260,cena=cena)
         
         self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
