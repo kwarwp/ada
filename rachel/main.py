@@ -42,6 +42,7 @@ class Personagem(Elemento): #dog
     def move_topo_cesta(self, evento=None):
         destinho = self.controlador.cesta_topo
         self.entra(destinho.fundo)
+        self.controlador.cesta_topo.adiciona_personagem(self)
         self.vai = self.move_cesta_topo
         self.x=15
         self.y=13 
@@ -49,6 +50,7 @@ class Personagem(Elemento): #dog
     def move_cesta_topo(self, evento=None):
         destinho = self.controlador.base_telhado
         self.entra(destinho)
+        self.controlador.cesta_topo.remove_personagem(self)
         self.vai = self.move_topo_cesta
         self.x= self.h*3
         self.y= 200 - self.h
@@ -57,7 +59,8 @@ class Personagem(Elemento): #dog
 class Cesta(Elemento):
     def __init__(self, imagem, destino, cena, x=0, y=10, nome="", controlador):
         super().__init__(imagem, cena=cena, w= 170, x=x, y=y)
-        self.nome = nome 
+        self.nome = nome
+        self.integrantes = []
         self.controlador = controlador
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
@@ -81,6 +84,13 @@ class Cesta(Elemento):
         
     def movimenta(self, destino):
         destino.move(self)
+        
+    def adiciona_personagem(self, personagem):
+        self.integrantes.append(personagem)
+        
+    def remove_personagem(self, personagem):
+        self.integrantes.remove(personagem)
+        
         
 class Controlador:
     def inverte_cesta_topo_base(self):
