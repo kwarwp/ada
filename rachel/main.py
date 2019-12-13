@@ -34,15 +34,24 @@ class Plataforma(Elemento): #retangulo tranparente
 class Personagem(Elemento): #dog
     def __init__(self, imagem, controlador, cena, h, x=0, y=0, w=60, tit):
         super().__init__(imagem, cena=cena, tit = tit, x=h*3, y=h/2, w=w, h=h)
+        self.h = h
         self.entra(controlador.base_telhado.fundo)
         self.controlador = controlador 
-        self.vai = self.move_cesta_topo
+        self.vai = self.move_topo_cesta
         
-    def move_cesta_topo(self, evento=None):
+    def move_topo_cesta(self, evento=None):
         destinho = self.controlador.cesta_topo
         self.entra(destinho.fundo)
+        self.vai = self.move_cesta_topo
         self.x=15
-        self.y=13       
+        self.y=13 
+    
+    def move_cesta_topo(self, evento=None):
+        destinho = self.controlador.base_telhado
+        self.entra(destinho)
+        self.vai = self.move_topo_cesta
+        self.x= self.h*3
+        self.y= 200 - self.h
 
 
 class Cesta(Elemento):
