@@ -385,3 +385,10 @@ AttributeError: 'Cesta' object has no attribute 'fundo'
                                             ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Dec 13 2019 16:29:40.215 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 117
+  class Controlador:
+  ^
+IndentationError: expected an indented block
+'''},
