@@ -7,7 +7,6 @@ __designer__ = "Marília Campos Galvão"
 __version__ = "05.12.2019"
 from _spy.vitollino.main import Cena, Texto, Elemento, INVENTARIO, STYLE, Musica
 
-STYLE ["width"] = 1320
 STYLE ["height"] = "600px"
 IGR = "https://i.imgur.com/"
 CEST, DOG, BASE, CENA, PRED = f"{IGR}qtw6IoO.png", f"{IGR}ek5NQYw.png", f"{IGR}7Wh2Px0.png", f"{IGR}zRGdYRp.gif", f"{IGR}vL9kR9Y.png"
@@ -44,7 +43,7 @@ class Personagem(Elemento): #dog
         self.entra(destinho.fundo)
         self.controlador.cesta_topo.adiciona_personagem(self)
         self.vai = self.move_cesta_topo
-        self.x=15
+        self.x=2
         self.y=13 
     
     def move_cesta_topo(self, evento=None):
@@ -56,7 +55,7 @@ class Personagem(Elemento): #dog
         self.y= 200 - self.h
         
     def move_cesta_base(self, evento=None):
-        destino = self.controlador.base
+        destino = self.controlador.base_solo
         self.entra(destino)
         self.controlador.cesta_base.remove_personagem(self)
         self.vai = self.move_base_cesta
@@ -64,7 +63,12 @@ class Personagem(Elemento): #dog
         self.y= 200 - self.h
         
     def move_base_cesta(self, evento=None):
-        print
+        destinho = self.controlador.cesta_base
+        self.entra(destinho.fundo)
+        self.controlador.cesta_base.adiciona_personagem(self)
+        self.vai = self.move_cesta_base
+        self.x=2
+        self.y=13 
     
     def seta_vai_topo(self):
         self.vai = self.move_cesta_topo
@@ -83,9 +87,7 @@ class Cesta(Elemento):
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
         self.destino = destino
         self.nome = nome
-        #self.vai = self.mover
         frente.vai =self.mover
-        #self.fundo.vai = self.mover
         
     def mover(self, evento=None):
         self.do_move()
@@ -133,11 +135,12 @@ class Controlador:
         self.base0.destino, self.base1.destino = self.base1, self.base0 
         
         self.base_telhado = Plataforma(BASE, x=400, y=0,cena=cena)
-        self.base = Plataforma(BASE, x=460, y=350,cena=cena)
-        
+               
         self.cesta_esquerda = Cesta(CEST, destino=self.base0, cena=self.base0, x=0, nome="esquerda", controlador=controlador)
         self.cesta_direita = Cesta(CEST, destino= self.base1, cena=self.base1, x=300, nome="direita", controlador=controlador)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita, self.cesta_esquerda
+        
+        self.base_solo = Plataforma(BASE, x=460, y=350,cena=cena)
         
         self.cesta_topo, self.cesta_base = self.cesta_esquerda, self.cesta_direita
         
