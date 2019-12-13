@@ -39,12 +39,11 @@ class Personagem(Elemento): #dog
         self.vai = self.move_topo_cesta
         
     def move_topo_cesta(self, evento=None):
-        destinho = self.controlador.cesta_topo
-        self.entra(destinho.fundo)
+        destino = self.controlador.cesta_topo
+        self.entra(destino.fundo)
         self.controlador.cesta_topo.adiciona_personagem(self)
         self.vai = self.move_cesta_topo
-        self.x=2
-        self.y=13 
+        destino.arrumar_cesta()
     
     def move_cesta_topo(self, evento=None):
         destinho = self.controlador.base_telhado
@@ -59,16 +58,15 @@ class Personagem(Elemento): #dog
         self.entra(destino)
         self.controlador.cesta_base.remove_personagem(self)
         self.vai = self.move_base_cesta
-        self.x= self.h*3
+        self.x= 9+self.h/2
         self.y= 200 - self.h
         
     def move_base_cesta(self, evento=None):
-        destinho = self.controlador.cesta_base
-        self.entra(destinho.fundo)
+        destino = self.controlador.cesta_base
+        self.entra(destino.fundo)
         self.controlador.cesta_base.adiciona_personagem(self)
         self.vai = self.move_cesta_base
-        self.x=2
-        self.y=13 
+        destino.arrumar_cesta()
     
     def seta_vai_topo(self):
         self.vai = self.move_cesta_topo
@@ -109,7 +107,15 @@ class Cesta(Elemento):
         
     def remove_personagem(self, personagem):
         self.integrantes.remove(personagem)
-                
+        
+    def arrumar_cesta(self):
+        x=25
+        for p in self.integrantes:
+            print("vvv")
+            p.y=0
+            p.x=x
+            x+=30
+                        
 class Controlador:
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
