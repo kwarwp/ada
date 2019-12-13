@@ -378,3 +378,10 @@ AttributeError: 'Cesta' object has no attribute 'outro'
     self.fundo.vai = self.mover
 AttributeError: 'Cesta' object has no attribute 'fundo'
 '''},
+{'date': 'Fri Dec 13 2019 14:38:00.728 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 129
+  self.base1 = Plataforma(BASE, y=440,x=10 cena=cena)
+                                            ^
+SyntaxError: invalid syntax
+'''},
