@@ -20,8 +20,8 @@ class Predio(Elemento): #predio que  inicia bom e no fim fica queimado
 
 #Lado esquerdo
 class Plataforma(Elemento): #retangulo tranparente
-    def __init__(self, imagem, cena, x=430, y=0, h=200):
-        super().__init__(imagem, cena=cena, w=500,h=200, x=x, y=y)
+    def __init__(self, imagem, cena, x=390, y=0, h=200):
+        super().__init__(imagem, cena=cena, w=570,h=200, x=x, y=y)
         self.destino = self
         self.fundo = self
         self.nome = "base"
@@ -137,7 +137,7 @@ class Controlador:
         self.base_telhado = Plataforma(BASE, x=400, y=0,cena=cena)
                
         self.cesta_esquerda = Cesta(CEST, destino=self.base0, cena=self.base0, x=0, nome="esquerda", controlador=controlador)
-        self.cesta_direita = Cesta(CEST, destino= self.base1, cena=self.base1, x=300, nome="direita", controlador=controlador)
+        self.cesta_direita = Cesta(CEST, destino= self.base1, cena=self.base1, x=410, nome="direita", controlador=controlador)
         self.cesta_esquerda.outro, self.cesta_direita.outro = self.cesta_direita, self.cesta_esquerda
         
         self.base_solo = Plataforma(BASE, x=460, y=350,cena=cena)
