@@ -19,14 +19,8 @@ IRMASAD = "https://i.imgur.com/Iv9gWTD.png"
 PLAY = "https://i.imgur.com/Jcnz4vj.png"
 SAIR = "https://i.imgur.com/PISMKLy.png"
 FUNDODIA = "https://i.imgur.com/zRGdYRp.gif"
-FUNDONOITE = "https://i.imgur.com/2Vff3L0.png"
-FOGOLARGO = "https://i.imgur.com/S1AyGFi.png"
-FOGOESTREITO = "https://i.imgur.com/N93X5s1.png"
-ROLDANA = "https://i.imgur.com/FvD7tcb.png"
-CONFETES = "https://i.imgur.com/SIV1CTm.png"
-CORDA="https://i.imgur.com/cUf3qAv.png"
-CORDANO= "https://i.imgur.com/qyAtbdK.png"
 BILHETE = "https://i.imgur.com/p9SteRs.png"
+FOGO= "https://i.imgur.com/v0hHNyO.gif"
 LOGO = "https://i.imgur.com/JflnamW.png"
 BOTAO = "https://i.imgur.com/kTocYiF.png"
 STYLE ["width"] = 1320
@@ -73,6 +67,8 @@ class gameInicio:
         self.girl = Elemento(IRMAHAPPY, x=450, y=420,w=240,h=150, cena=todos, vai=self.sobe_desce)
         self.boy = Elemento(MENINOHAPPY, x=600, y=400,w=260,h=160, cena=todos, vai=self.sobe_desce) 
         self.dog = Elemento(DOG, x=600, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
+        self.foguinho = Elemento(FOGO, x=600, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
+        
     def sobe_desce(self, *_):#*_ serve para criar estados para poder detrminar quando está dentro, fora, sobe, desce
         pass
         #self._sobe_desce()
