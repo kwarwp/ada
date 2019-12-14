@@ -208,3 +208,10 @@ SyntaxError: invalid syntax
                                                                                                                                                                       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Dec 14 2019 15:10:27.112 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 72
+  self.predio = Elemento(PREDIOQ, x=350, y=180,w=600,h=300, vai = cena=todos)
+                                                                             ^
+SyntaxError: invalid syntax
+'''},
