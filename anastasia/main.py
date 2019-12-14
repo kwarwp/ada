@@ -11,6 +11,7 @@ TRACK = "https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creative
 FUNDODIA = "https://i.imgur.com/zRGdYRp.gif"
 BILHETE = "https://i.imgur.com/p9SteRs.png"
 FOGO= "https://i.imgur.com/v0hHNyO.gif"
+FOGUI= "https://i.imgur.com/jcJ0beK.gif"
 LOGO = "https://i.imgur.com/JflnamW.png"
 BOTAO = "https://i.imgur.com/kTocYiF.png"
 STYLE ["width"] = 1320
@@ -55,6 +56,7 @@ class gameInicio:
         
         self.predio = Elemento(PREDIOQ, x=440, y=150,w=450,h=350, tit ="Que maravilha, você salvou as crianças!!!", cena =todos, vai = self.sobe_desce)
         self.foguinho = Elemento(FOGO, x=440, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
+        self.foguim = Elemento(FOGUI, x=550, y=250,w=50,h=50, cena=todos, vai=self.sobe_desce)        
         self.girl = Elemento(IRMAHAPPY, x=450, y=420,w=240,h=150, cena=todos, vai=self.sobe_desce)
         self.boy = Elemento(MENINOHAPPY, x=600, y=400,w=260,h=160, cena=todos, vai=self.sobe_desce) 
         self.dog = Elemento(DOG, x=600, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
