@@ -201,3 +201,10 @@ AttributeError: 'Cena' object has no attribute 'entra'
                                                                                                                                                                       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Dec 14 2019 14:28:53.613 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 14
+  casaqu = Elemento(img = CASAQ, 
+                                                                                                                                                                      ^
+SyntaxError: invalid syntax
+'''},
