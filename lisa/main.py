@@ -29,6 +29,9 @@ class Personagem(Elemento):
     def __init__(self, imagem, destino, cena,tit, x=0, y=0, w=0,h=0):
         super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=w, h=h)
         self.destino = destino
+        self.vai=self.move
+    def move(self,evento=None)
+        self.entra
 
 class Veiculo(Elemento): #cesta da esquerda
     def __init__(self, imagem, destino, cena, x=0, y=10):
