@@ -68,7 +68,7 @@ class Basico:
         
         self.cesta = Veiculo(CEST, destino=self.base1, cena=self.base0)
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
-        self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
+        #self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
         self.dogie = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=570,y=150, w=80, h=50)
         self.menina = Personagem(GIRL, destino=self.cesta.fundo, cena=cena, tit = "20kg", x=650, y=120, w=60, h=80)
