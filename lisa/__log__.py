@@ -48,3 +48,10 @@ SyntaxError: non-keyword arg after keyword arg
                                                 ^
 SyntaxError: non-keyword arg after keyword arg
 '''},
+{'date': 'Sat Dec 14 2019 16:04:28.800 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 30
+  super().__init__(imagem, cena=cena, tit="10kg", x, y, w=80, h=50)
+                                                   ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
