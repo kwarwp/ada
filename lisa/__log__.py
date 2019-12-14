@@ -95,3 +95,10 @@ NameError: name 'x' is not defined
     super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
 NameError: name 'x' is not defined
 '''},
+{'date': 'Sat Dec 14 2019 16:06:19.690 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 30
+  super().__init__(iamgem, cena=cena, tit = tit, x, y, w=80, h=50)
+                                                  ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
