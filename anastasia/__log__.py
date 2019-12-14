@@ -222,3 +222,10 @@ SyntaxError: invalid syntax
                                  ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Dec 14 2019 15:59:24.440 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 11
+  FUNDODIA = "https://i.imgur.com/
+                                  ^
+SyntaxError: EOL while scanning string literal
+'''},
