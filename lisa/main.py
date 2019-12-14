@@ -1,6 +1,6 @@
-# ada.lisa.main.py
-__autor__ = "Garnica"
+__autor__ = "Isabel Hortencia Garnica"
 __designer__ = "Marília Campos Galvão"
+__version__ = "05.12.2019"
 from _spy.vitollino.main import Cena, Texto, Elemento, INVENTARIO, STYLE, Musica
 
 STYLE ["width"] = 1320
@@ -25,17 +25,17 @@ class Plataforma(Elemento): #retangulo tranparente
     def movimenta(self, destino):
         destino.move(self.destino)
 
-class Personagem(Elemento): #teste
-    def __init__(self, imagem, destino, cena,tit, x = 0 ,y=0):
-        super().__init__(iamgem, cena=cena, tit = tit, x, y, w=80, h=50)
-        self.destino = dentino
-        
-class Personagem1(Elemento): #dog
+class Char(Elemento):
+    def __init__(self, imagem, destino, cena, x=600, y=150):
+        super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
+        self.destino = destino
+
+class Personagem(Elemento): #dog
     def __init__(self, imagem, destino, cena, x=540, y=150):
         super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
         self.destino = destino
         self.vai = self.move
-        #list=[self.destino, ]
+        list=[self.destino, ]
     def move(self, evento=None):
         #input(isinstance(self.destino,Veiculo))
         self.entra(self.destino)
@@ -107,8 +107,8 @@ class Basico:
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
-        self.teste = Personagem(DOG, destino=self.certa.fundo, cena=cena, tit="10kg", x=600, y=150)
-        self.doggie = Personagem1(DOG, destino=self.cesta.fundo, cena=cena)
+        self.bicho = Char(DOG, destino=self.cesta.fundo, cena=cena)
+        self.doggie = Personagem(DOG, destino=self.cesta.fundo, cena=cena)
         self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
         self.menino = Personagem3(BOY, destino=self.cesta.fundo, cena=cena)
 
