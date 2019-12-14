@@ -25,47 +25,10 @@ class Plataforma(Elemento): #retangulo tranparente
     def movimenta(self, destino):
         destino.move(self.destino)
 
-class Char(Elemento):
+class Personagem(Elemento):
     def __init__(self, imagem, destino, cena,tit, x=0, y=0, w=0,h=0):
-        super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
+        super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=w, h=h)
         self.destino = destino
-
-class Personagem(Elemento): #dog
-    def __init__(self, imagem, destino, cena, x=540, y=150):
-        super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
-        self.destino = destino
-        self.vai = self.move
-        list=[self.destino, ]
-    def move(self, evento=None):
-        #input(isinstance(self.destino,Veiculo))
-        self.entra(self.destino)
-        self.x=15
-        self.y=13
-        #self.destino = Cena(IMG = Cena)#cao tá saindo mas some no espaço
-        
-
-class Personagem2(Elemento): #Irma no predio
-    def __init__(self, imagem, destino, cena, x=620, y=120):
-        super().__init__(imagem, cena=cena,  tit = "20kg", x=x, y=y, w=60, h=80)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=50
-        self.y=0
-
-class Personagem3(Elemento): #garoto no predio
-    def __init__(self, imagem, destino, cena, x=710, y=100):
-        super().__init__(imagem, tit = "40kg", cena=cena, x=x, y=y, w=60, h=100)
-        self.destino = destino
-        self.vai = self.move
-
-    def move(self, evento=None):
-        self.entra(self.destino)
-        self.x=80
-        self.y=0
-
 
 class Veiculo(Elemento): #cesta da esquerda
     def __init__(self, imagem, destino, cena, x=0, y=10):
@@ -107,10 +70,9 @@ class Basico:
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
-        self.bicho = Char(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=600,y=150, w=80, h=50)
-        self.doggie = Personagem(DOG, destino=self.cesta.fundo, cena=cena)
-        self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
-        self.menino = Personagem3(BOY, destino=self.cesta.fundo, cena=cena)
+        self.bicho = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=600,y=150, w=80, h=50)
+        self.menina = Personagem(GIRL, destino=self.cesta.fundo, cena=cena, tit = "20kg", x=620, y=120, w=60, h=80)
+        self.menino = Personagem(BOY, destino=self.cesta.fundo, cena=cena, tit = "40kg", x=710, y=100, w=60, h=100)
 
         cena.vai()
         
