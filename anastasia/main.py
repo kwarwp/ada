@@ -10,7 +10,7 @@ SOMB = "https://i.imgur.com/Hysq98H.png"
 CENAINICIO = "https://i.imgur.com/3qdowNm.jpg"
 PREDIO= "https://i.imgur.com/vL9kR9Y.png"
 PREDIOQ = "https://i.imgur.com/qFTCSE7.png"
-CESTA = "https://i.imgur.com/qtw6IoO.png"
+#CESTA = "https://i.imgur.com/qtw6IoO.png"
 DOG = "https://i.imgur.com/ZQ9SSMz.png"
 MENINOHAPPY = "https://i.imgur.com/LsinOyd.png"
 MENINOSAD = "https://i.imgur.com/x3JZ93M.png"
@@ -69,10 +69,10 @@ class gameInicio:
         self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=todos, vai=self.toca)
         self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=todos, vai=self.pause)
         
-        self.predio = Elemento(PREDIOQ, x=350, y=180,w=600,h=300, vai = self.sobe_desce)
-        self.girl = Elemento(IRMASAD, x=550, y=80,w=200,h=130, cena=todos, vai=self.sobe_desce)
-        self.boy = Elemento(MENINOSAD, x=600, y=60,w=250,h=150, cena=todos, vai=self.sobe_desce)
-        
+        self.predio = Elemento(PREDIOQ, x=400, y=180,w=500,h=350, cena =todos, vai = self.sobe_desce)
+        self.girl = Elemento(IRMAHAPPY, x=450, y=420,w=240,h=150, cena=todos, vai=self.sobe_desce)
+        self.boy = Elemento(MENINOHAPPY, x=600, y=400,w=260,h=160, cena=todos, vai=self.sobe_desce) 
+        self.dog = Elemento(DOG, x=600, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
     def sobe_desce(self, *_):#*_ serve para criar estados para poder detrminar quando está dentro, fora, sobe, desce
         pass
         #self._sobe_desce()
