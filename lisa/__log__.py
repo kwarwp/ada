@@ -102,3 +102,10 @@ NameError: name 'x' is not defined
                                                   ^
 SyntaxError: non-keyword arg after keyword arg
 '''},
+{'date': 'Sat Dec 14 2019 16:15:43.731 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 110
+  self.bicho = Char(DOG, destino=self.cesta.fundo, cena=cena,0,0, "10kg")
+                                                              ^
+SyntaxError: non-keyword arg after keyword arg
+'''},
