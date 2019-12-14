@@ -26,7 +26,7 @@ class Plataforma(Elemento): #retangulo tranparente
         destino.move(self.destino)
 
 class Char(Elemento):
-    def __init__(self, imagem, destino, cena, x=0, y=0, tit):
+    def __init__(self, imagem, destino, cena,tit, x=0, y=0, w=0,h=0):
         super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
         self.destino = destino
 
@@ -107,7 +107,7 @@ class Basico:
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
-        self.bicho = Char(DOG, destino=self.cesta.fundo, cena=cena,x=0,y=0, tit = "10kg")
+        self.bicho = Char(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=600,y=150, w=80, h=50)
         self.doggie = Personagem(DOG, destino=self.cesta.fundo, cena=cena)
         self.menina = Personagem2(GIRL, destino=self.cesta.fundo, cena=cena)
         self.menino = Personagem3(BOY, destino=self.cesta.fundo, cena=cena)
