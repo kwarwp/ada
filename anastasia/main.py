@@ -69,7 +69,7 @@ class gameInicio:
         self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=todos, vai=self.toca)
         self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=todos, vai=self.pause)
         
-        self.predio = Elemento(PREDIOQ, x=400, y=180,w=500,h=350, cena =todos, vai = self.sobe_desce)
+        self.predio = Elemento(PREDIOQ, x=440, y=150,w=450,h=350, tit ="Que maravilha, você salvou as crianças!!!", cena =todos, vai = self.sobe_desce)
         self.girl = Elemento(IRMAHAPPY, x=450, y=420,w=240,h=150, cena=todos, vai=self.sobe_desce)
         self.boy = Elemento(MENINOHAPPY, x=600, y=400,w=260,h=160, cena=todos, vai=self.sobe_desce) 
         self.dog = Elemento(DOG, x=600, y=450,w=150,h=100, cena=todos, vai=self.sobe_desce)
