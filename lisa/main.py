@@ -37,7 +37,7 @@ class Veiculo(Elemento): #cesta da esquerda
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
         self.destino = destino
-        #self.outro = self
+        self.outro = self
         self.vai = self.mover
         frente.vai =self.mover
                
