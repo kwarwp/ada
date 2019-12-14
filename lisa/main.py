@@ -37,7 +37,7 @@ class Veiculo(Elemento): #cesta da esquerda
         self.fundo = Elemento(img = imagem,cena=self, x=0, y=0, w=170)
         frente = Elemento(img = CESTF, cena=self, x=15, y=45, w=140, h =56)
         self.destino = destino
-        self.outro = self
+        #self.outro = self
         self.vai = self.mover
         frente.vai =self.mover
                
@@ -70,7 +70,7 @@ class Basico:
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
-        self.bicho = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=570,y=150, w=80, h=50)
+        self.dogie = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=570,y=150, w=80, h=50)
         self.menina = Personagem(GIRL, destino=self.cesta.fundo, cena=cena, tit = "20kg", x=650, y=120, w=60, h=80)
         self.menino = Personagem(BOY, destino=self.cesta.fundo, cena=cena, tit = "40kg", x=710, y=100, w=60, h=100)
 
