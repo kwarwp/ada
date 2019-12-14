@@ -70,8 +70,8 @@ class Basico:
         self.cesta2 = Veiculo(CEST, destino= self.base0, cena= self.base1, x=300)
         self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
         
-        self.bicho = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=540,y=150, w=80, h=50)
-        self.menina = Personagem(GIRL, destino=self.cesta.fundo, cena=cena, tit = "20kg", x=620, y=120, w=60, h=80)
+        self.bicho = Personagem(DOG, destino=self.cesta.fundo, cena=cena,tit = "10kg" ,x=570,y=150, w=80, h=50)
+        self.menina = Personagem(GIRL, destino=self.cesta.fundo, cena=cena, tit = "20kg", x=650, y=120, w=60, h=80)
         self.menino = Personagem(BOY, destino=self.cesta.fundo, cena=cena, tit = "40kg", x=710, y=100, w=60, h=100)
 
         cena.vai()
