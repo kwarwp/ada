@@ -215,3 +215,10 @@ SyntaxError: invalid syntax
                                                                              ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Dec 14 2019 15:58:01.663 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 8
+  FUNDODIA, BILHETE, FOGO, LOGO BOTAO = f"{IGR}zRGdYRp.gif", f"{IGR}p9SteRs.png", f"{IGR}v0hHNyO.gif", f"{IGR}JflnamW.png", f"{IGR}kTocYiF.png"
+                                 ^
+SyntaxError: invalid syntax
+'''},
