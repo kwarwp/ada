@@ -26,7 +26,7 @@ class Plataforma(Elemento): #retangulo tranparente
         destino.move(self.destino)
 
 class Char(Elemento):
-    def __init__(self, imagem, destino, cena, x=600, y=150):
+    def __init__(self, imagem, destino, cena, x=0, y=0):
         super().__init__(imagem, cena=cena,  tit = "10kg", x=x, y=y, w=80, h=50)
         self.destino = destino
 
