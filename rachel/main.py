@@ -148,7 +148,7 @@ class Controlador:
         self.corda_esquerda.elt.style.transform = "rotate(90deg)"
         self.roldana_esquerda = Elemento(ROLDANA, x=320, y=37,w=380,h=180, cena=cena)
         #Roldana, corda e cesta        
-        self.corda_direita = Elemento(CORDA, x=620, y=195,w=410,h=130, cena=cena)
+        self.corda_direita = Elemento(CORDA, x=620, y=215,w=410,h=158, cena=cena)
         self.corda_direita.elt.style.transform = "rotate(90deg)"
         self.roldana_direita = Elemento(ROLDANA, x=605, y=37,w=380,h=180, cena=cena)
         
