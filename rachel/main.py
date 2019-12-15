@@ -184,8 +184,6 @@ class Controlador:
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
 
         cena.vai()
-        
-    
-        
+
 if __name__ == "__main__":
     Controlador()
