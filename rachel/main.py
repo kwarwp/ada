@@ -65,7 +65,6 @@ class Personagem(Elemento): #dog
         self.vai = self.move_base_cesta
         self.x= self.h*2 - 50#30 + self.h - self.w
         self.y= 200 - self.h
-        print(self.w)
         
                 
     def move_base_cesta(self, evento=None):
@@ -128,7 +127,13 @@ class Controlador:
         self.cesta_topo = self.cesta_base
         self.cesta_base = aux
         self.atualiza_vai()
-
+        self.inverte_corda()
+    
+    def inverte_corda(self):
+        aux = self.corda_esquerda_maior.elt.style.opacity
+        self.corda_esquerda_maior.elt.style.opacity = self.corda_direita_maior.elt.style.opacity
+        self.corda_direita_maior.elt.style.opacity = aux
+        
     def atualiza_vai(self):
         for p in self.cesta_base.integrantes:
             p.seta_vai_base()
@@ -142,18 +147,24 @@ class Controlador:
         self.casa = Predio(PRED, cena=cena)
         self.casa.entra(self.cena)
         
-        self.corda_telhado = Elemento(CORDA, x=520, y=-3,w=270,h=130, cena=cena)
+        self.corda_telhado = Elemento(CORDA, x=520, y=10,w=270,h=115, cena=cena)
         #Roldana, corda     
-        self.corda_esquerda = Elemento(CORDA, x=420, y=90,w=150,h=115, cena=cena)
-        self.corda_esquerda.elt.style.transform = "rotate(90deg)"
+        self.corda_esquerda_menor = Elemento(CORDA, x=420, y=90,w=150,h=115, cena=cena)
+        self.corda_esquerda_menor.elt.style.transform = "rotate(90deg)"
+        
+        self.corda_esquerda_maior = Elemento(CORDA, x=312, y=215,w=365,h=115, cena=cena)
+        self.corda_esquerda_maior.elt.style.transform = "rotate(90deg)"
+        self.opacity_esquerda = self.corda_esquerda_maior.elt.style.opacity = 0
         self.roldana_esquerda = Elemento(ROLDANA, x=320, y=37,w=380,h=180, cena=cena)
-        #Roldana, corda e cesta        
-        self.corda_direita = Elemento(CORDA, x=620, y=215,w=410,h=158, cena=cena)
-        self.corda_direita.elt.style.transform = "rotate(90deg)"
-        self.roldana_direita = Elemento(ROLDANA, x=605, y=37,w=380,h=180, cena=cena)
+        #Roldana, corda e cesta
+        self.corda_direita_menor = Elemento(CORDA, x=740, y=115,w=180,h=115, cena=cena)
+        self.corda_direita_menor.elt.style.transform = "rotate(90deg)"
         
-        
-        
+        self.corda_direita_maior = Elemento(CORDA, x=630, y=245,w=400,h=115, cena=cena)
+        self.corda_direita_maior.elt.style.transform = "rotate(90deg)"
+        self.opacity_direita = self.corda_direita_maior.elt.style.opacity = 1
+        self.roldana_direita = Elemento(ROLDANA, x=605, y=37,w=380,h=190, cena=cena)
+                
         self.base0 = Plataforma(BASE, y=200, cena=cena)
         self.base1 = Plataforma(BASE, y=440, cena=cena)
         self.base0.destino, self.base1.destino = self.base1, self.base0 
