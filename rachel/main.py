@@ -13,10 +13,13 @@ IGR = "https://i.imgur.com/"
 CEST, DOG, BASE, CENA, PRED = f"{IGR}qtw6IoO.png", f"{IGR}ek5NQYw.png", f"{IGR}7Wh2Px0.png", f"{IGR}zRGdYRp.gif", f"{IGR}vL9kR9Y.png"
 BOY, GIRL = f"{IGR}MXiGMEc.png", f"{IGR}GDK3tcT.png"
 CESTF = f"{IGR}am71B72.png"
+ROLDANA = f"{IGR}FvD7tcb.png"
+CORDA= f"{IGR}cUf3qAv.png"
+
 
 class Predio(Elemento): #predio que  inicia bom e no fim fica queimado
      def __init__(self, imagem, cena):
-        super().__init__(imagem, x= 350, y=180, w=650, h=350)
+        super().__init__(imagem, x= 300, y=180, w=700, h=350)
         self.nome = "casa"
 
 #Lado esquerdo
@@ -138,6 +141,18 @@ class Controlador:
         self.cena = cena = Cena(CENA)
         self.casa = Predio(PRED, cena=cena)
         self.casa.entra(self.cena)
+        
+        self.corda_telhado = Elemento(CORDA, x=520, y=-3,w=270,h=130, cena=cena)
+        #Roldana, corda     
+        self.corda_esquerda = Elemento(CORDA, x=420, y=90,w=150,h=115, cena=cena)
+        self.corda_esquerda.elt.style.transform = "rotate(90deg)"
+        self.roldana_esquerda = Elemento(ROLDANA, x=320, y=37,w=380,h=180, cena=cena)
+        #Roldana, corda e cesta        
+        self.corda_direita = Elemento(CORDA, x=620, y=195,w=410,h=130, cena=cena)
+        self.corda_direita.elt.style.transform = "rotate(90deg)"
+        self.roldana_direita = Elemento(ROLDANA, x=605, y=37,w=380,h=180, cena=cena)
+        
+        
         
         self.base0 = Plataforma(BASE, y=200, cena=cena)
         self.base1 = Plataforma(BASE, y=440, cena=cena)
