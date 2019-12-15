@@ -460,3 +460,10 @@ AttributeError: 'Controlador' object has no attribute 'sobe_desce'
     self.corda_direita = Elemento(CORDA, x=660, y=130,w=280,h=180, cena=todos, vai=self.sobe_desce)
 NameError: name 'todos' is not defined
 '''},
+{'date': 'Sun Dec 15 2019 00:00:47.223 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 147
+  eh = 
+        ^
+SyntaxError: invalid syntax
+'''},
