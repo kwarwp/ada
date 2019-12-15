@@ -406,3 +406,21 @@ SyntaxError: duplicate argument 'h' in function definition
                                                   ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sat Dec 14 2019 22:58:46.544 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 183
+    Controlador()
+  module <module> line 150
+    self.corda_telhado = Elemento(CORDA, x=520, y=-12,w=270,h=150, cena=todos, vai=self.sobe_desce)
+NameError: name 'todos' is not defined
+'''},
