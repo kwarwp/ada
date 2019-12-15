@@ -503,3 +503,10 @@ AttributeError: 'Controlador' object has no attribute 'corda_direita'
     self.corda_direita_maior.elt.style.opacity = 0
 AttributeError: 'Controlador' object has no attribute 'corda_direita_maior'
 '''},
+{'date': 'Sun Dec 15 2019 00:55:52.95 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 132
+  def inverte_corda(self):
+  ^
+IndentationError: unexpected indent
+'''},
