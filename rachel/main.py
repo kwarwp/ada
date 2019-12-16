@@ -35,7 +35,6 @@ class gameInicio:
         self.logotipo = Elemento(LOGO, x=370, y=30,w=650,h=400, cena=gameInicio)
         self.play = Elemento(PLAY, x=570, y=470,w=180,h=120, cena=gameInicio, vai = self.mostradia)
         
-    # método que controla o background
     def mostradia(self,ev=0):
         fake = Cena()
         fake.vai = self.elevador
