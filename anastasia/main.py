@@ -3,7 +3,7 @@
 from _spy.vitollino.main import Cena, Elemento, INVENTARIO, STYLE, Musica
 from texto.main import Texto
 IGR = "https://i.imgur.com/"
-SOMA, SOMB, CENAINICIO, PREDIO, PREDIOQ = f"{IGR}Rpo5MDy.png", f"{IGR}Hysq98H.png", f"{IGR}3qdowNm.jpg", f"{IGR}vL9kR9Y.png", f"{IGR}qFTCSE7.png"
+SOMA, SOMB, CENAINICIO, PREDIO, PREDIOQ = f"{IGR}Rpo5MDy.png", f"{IGR}Hysq98H.png", f"{IGR}3qdowNm.jpg", f"{IGR}vL9kR9Y.png", f"{IGR}ElCYvUO.png"
 DOG, MENINOHAPPY, IRMAHAPPY, PLAY, SAIR = f"{IGR}ZQ9SSMz.png", f"{IGR}LsinOyd.png", f"{IGR}XZJuxnZ.png", f"{IGR}Jcnz4vj.png", f"{IGR}PISMKLy.png"
 #FUNDODIA, BILHETE, FOGO, LOGO BOTAO = f"{IGR}am71B72.png"
 TRACK = "https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3"
