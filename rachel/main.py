@@ -15,14 +15,60 @@ BOY, GIRL = f"{IGR}MXiGMEc.png", f"{IGR}GDK3tcT.png"
 CESTF = f"{IGR}am71B72.png"
 ROLDANA = f"{IGR}FvD7tcb.png"
 CORDA= f"{IGR}cUf3qAv.png"
+CENAINICIO = "https://i.imgur.com/3qdowNm.jpg"
+PLAY = "https://i.imgur.com/Jcnz4vj.png"
+SAIR = "https://i.imgur.com/PISMKLy.png"
+FUNDODIA = "https://i.imgur.com/zRGdYRp.gif"
+BILHETE = "https://i.imgur.com/p9SteRs.png"
+LOGO = "https://i.imgur.com/JflnamW.png"
+BOTAO = "https://i.imgur.com/kTocYiF.png"
+SOMA = "https://i.imgur.com/Rpo5MDy.png"
+SOMB = "https://i.imgur.com/Hysq98H.png"
 
+#parte inicial
+class gameInicio:
 
-class Predio(Elemento): #predio que  inicia bom e no fim fica queimado
+    def __init__(self):
+        gameInicio = Cena(CENAINICIO)
+        gameInicio.vai()
+        dark = Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.7),cena=gameInicio)
+        self.logotipo = Elemento(LOGO, x=370, y=30,w=650,h=400, cena=gameInicio)
+        self.play = Elemento(PLAY, x=570, y=470,w=180,h=120, cena=gameInicio, vai = self.mostradia)
+        
+    # método que controla o background
+    def mostradia(self,ev=0):
+        fake = Cena()
+        fake.vai = self.elevador
+        dia = Cena(FUNDODIA, direita=fake )
+        dia.vai()
+        self.bil = Elemento(BILHETE, x=200, y=20,w=900,h=600, cena=dia, vai = self.elevador)
+        self.boton = Elemento(BOTAO, x=820, y=470,w=70,h=70, cena=dia, vai = self.elevador)
+    
+    def toca(self, ev=0):
+        self.musica.sound.play()
+        self.musA.x = -1200
+        self.musB.x = 1200
+    
+    def pause(self, ev=0):
+        self.musica.sound.pause()
+        self.musA.x = 1200
+        self.musB.x = -1200
+    
+    def elevador(self, ev=0):
+        todos = Controlador()
+        todos.vai()
+        self.musica = Musica(TRACK)
+        self.musica.sound.pause()
+        self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=todos, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=todos, vai=self.pause)
+        
+# fim da parte inicial     
+class Predio(Elemento): #predio
      def __init__(self, imagem, cena):
         super().__init__(imagem, x= 300, y=180, w=700, h=350)
         self.nome = "casa"
 
-#Lado esquerdo
+
 class Plataforma(Elemento): #retangulo tranparente
     def __init__(self, imagem, cena, x=390, y=0, h=200, w=570):
         super().__init__(imagem, cena=cena, w=w,h=h, x=x, y=y)
@@ -81,7 +127,7 @@ class Personagem(Elemento): #dog
         self.vai = self.move_cesta_base
         
 
-class Cesta(Elemento):
+class Cesta(Elemento): #cestas
     def __init__(self, imagem, destino, cena, x=0, y=10, nome="", controlador):
         super().__init__(imagem, cena=cena, w= 170, x=x, y=y)
         self.nome = nome
@@ -122,6 +168,7 @@ class Cesta(Elemento):
             x+=30
                         
 class Controlador:
+
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
         self.cesta_topo = self.cesta_base
@@ -185,5 +232,7 @@ class Controlador:
 
         cena.vai()
 
+
 if __name__ == "__main__":
     Controlador()
+    gameInicio()
