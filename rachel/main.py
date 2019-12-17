@@ -228,6 +228,8 @@ class Controlador:
         self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
+        
+        self.sair = Elemento(SAIR, x=970, y=490,w=140,h=80, cena=cena)
 
         cena.vai()
 
