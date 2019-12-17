@@ -11,7 +11,7 @@ STYLE ["width"] = 1320
 STYLE ["height"] = "600px"
 IGR = "https://i.imgur.com/"
 CEST, DOG, BASE, CENA, PRED = f"{IGR}qtw6IoO.png", f"{IGR}ek5NQYw.png", f"{IGR}7Wh2Px0.png", f"{IGR}zRGdYRp.gif", f"{IGR}vL9kR9Y.png"
-BOY, GIRL = f"{IGR}MXiGMEc.png", f"{IGR}GDK3tcT.png"
+BOY, GIRL, PREDIOQ = f"{IGR}MXiGMEc.png", f"{IGR}GDK3tcT.png", f"{IGR}ElCYvUO.png"
 CESTF = f"{IGR}am71B72.png"
 ROLDANA = f"{IGR}FvD7tcb.png"
 CORDA= f"{IGR}cUf3qAv.png"
@@ -24,6 +24,9 @@ LOGO = "https://i.imgur.com/JflnamW.png"
 BOTAO = "https://i.imgur.com/kTocYiF.png"
 SOMA = "https://i.imgur.com/Rpo5MDy.png"
 SOMB = "https://i.imgur.com/Hysq98H.png"
+FOGO= "https://i.imgur.com/v0hHNyO.gif"
+FOGUI= "https://i.imgur.com/jcJ0beK.gif"
+
 
 #parte inicial
 class gameInicio:
@@ -188,7 +191,15 @@ class Controlador:
             
     def concluir_jogo(self, evento=None):
         print("dddd")
-        self.casa.elt.style.background-image=CEST
+        self.casa.elt.style.opacity = 0
+        cena = self.cena
+        self.predio = Elemento(PREDIOQ, cena)
+        self.foguinho1 = Elemento(FOGO, x=440, y=450,w=150,h=100, cena=cena)
+        self.foguinho2 = Elemento(FOGO, x=700, y=450,w=150,h=100, cena=cena)
+        
+        self.foguim1 = Elemento(FOGUI, x=550, y=250,w=50,h=50, cena=cena)        
+        self.foguim2 = Elemento(FOGUI, x=750, y=280,w=50,h=50, cena=cena) 
+        self.foguim3 = Elemento(FOGUI, x=600, y=280,w=50,h=50, cena=cena) 
         
     def __init__(self):
         controlador = self
