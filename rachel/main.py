@@ -188,10 +188,20 @@ class Controlador:
             p.seta_vai_base()
         for p in self.cesta_topo.integrantes:
             p.seta_vai_topo()
-            
+    
+               
     def concluir_jogo(self, evento=None):
-        print("dddd")
+        self.corda_esquerda_menor.elt.style.opacity = 0
+        self.corda_esquerda_maior.elt.style.opacity = 0
+        self.corda_direita_menor.elt.style.opacity = 0
+        self.corda_direita_maior.elt.style.opacity = 0
+        self.corda_telhado.elt.style.opacity = 0
+        self.roldana_esquerda.elt.style.opacity = 0
+        self.roldana_direita.elt.style.opacity = 0
         self.casa.elt.style.opacity = 0
+        self.cesta_esquerda.elt.style.opacity = 0
+        self.cesta_direita.elt.style.opacity = 0
+        
         cena = self.cena
         self.predioq = Predio(PREDIOQ, cena=cena, x= 470, y=183, w=350, h=350)
         
