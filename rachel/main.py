@@ -186,6 +186,9 @@ class Controlador:
         for p in self.cesta_topo.integrantes:
             p.seta_vai_topo()
             
+    def concluir_jogo(self, evento=None):
+        print("dddd")
+        self.casa.elt.style.background-image=CEST
         
     def __init__(self):
         controlador = self
@@ -229,7 +232,7 @@ class Controlador:
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
         
-        self.sair = Elemento(SAIR, x=970, y=490,w=140,h=80, cena=cena)
+        self.sair = Elemento(SAIR, x=1050, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
 
         cena.vai()
 
