@@ -66,8 +66,8 @@ class gameInicio:
         
 # fim da parte inicial     
 class Predio(Elemento): #predio
-     def __init__(self, imagem, cena):
-        super().__init__(imagem, x= 300, y=180, w=700, h=350)
+     def __init__(self, imagem, cena, x= 300, y=180, w=700, h=350):
+        super().__init__(imagem, x=x, y=y, w=w, h=h)
         self.nome = "casa"
 
 
@@ -193,7 +193,7 @@ class Controlador:
         print("dddd")
         self.casa.elt.style.opacity = 0
         cena = self.cena
-        self.predio = Elemento(PREDIOQ, cena)
+        self.predioq = Predio(PREDIOQ, cena=cena, x=440, y=150,w=450,h=350)
         self.foguinho1 = Elemento(FOGO, x=440, y=450,w=150,h=100, cena=cena)
         self.foguinho2 = Elemento(FOGO, x=700, y=450,w=150,h=100, cena=cena)
         
