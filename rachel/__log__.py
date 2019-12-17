@@ -546,3 +546,10 @@ TypeError: 'int' object is not iterable
     self.sair = Elemento(SAIR, x=570, y=470,w=180,h=120, cena=cena, vai = self.mostradia)
 AttributeError: 'Controlador' object has no attribute 'mostradia'
 '''},
+{'date': 'Tue Dec 17 2019 12:07:48.828 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 197
+  self.predioq2 = Elemento(PREDIOQ, x=440, y=150,w=450,h=350, cena =cena)
+  ^
+IndentationError: unexpected indent
+'''},
