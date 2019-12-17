@@ -191,15 +191,16 @@ class Controlador:
             
     def concluir_jogo(self, evento=None):
         print("dddd")
-        self.casa.elt.style.opacity = 0
+        self.casa.elt.style.opacity = 0.5
         cena = self.cena
-        self.predioq = Predio(PREDIOQ, cena=cena, x=440, y=150,w=450,h=350)
-        self.foguinho1 = Elemento(FOGO, x=440, y=450,w=150,h=100, cena=cena)
-        self.foguinho2 = Elemento(FOGO, x=700, y=450,w=150,h=100, cena=cena)
+        self.predioq = Predio(PREDIOQ, cena=cena)
+        self.predioq2 = Elemento(PREDIOQ, x=440, y=150,w=450,h=350, cena =cena)
         
-        self.foguim1 = Elemento(FOGUI, x=550, y=250,w=50,h=50, cena=cena)        
-        self.foguim2 = Elemento(FOGUI, x=750, y=280,w=50,h=50, cena=cena) 
-        self.foguim3 = Elemento(FOGUI, x=600, y=280,w=50,h=50, cena=cena) 
+        #self.foguinho1 = Elemento(FOGO, x=440, y=450,w=150,h=100, cena=cena)
+        #self.foguinho2 = Elemento(FOGO, x=700, y=450,w=150,h=100, cena=cena)
+        #self.foguim1 = Elemento(FOGUI, x=550, y=250,w=50,h=50, cena=cena)        
+        #self.foguim2 = Elemento(FOGUI, x=750, y=280,w=50,h=50, cena=cena) 
+        #self.foguim3 = Elemento(FOGUI, x=600, y=280,w=50,h=50, cena=cena) 
         
     def __init__(self):
         controlador = self
