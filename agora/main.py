@@ -15,8 +15,8 @@ IGR = "https://i.imgur.com/"
 CENA, RECT, SLATE, FACES = f"{IGR}kH1aOtS.jpg", f"{IGR}92GKogg.png", f"{IGR}pT6cuym.jpg", f"{IGR}utEu3Ib.png"
 NOME = """Adriana Ana Maria Sandra Juliana Antônio Carlos Francisco João José Bruna Camila Jéssica
 Letícia Amanda Lucas Luiz Mateus Guilherme Pedro""".split()
-COR = """#E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #A29574
-#85A8BA #96B6C5 #ADC4CE #EEE0C9 #B3C8C8 #6CB2D1 #4F9EC4 #769ECB #9DBAD5 #8FC1A9""".split()
+COR = """#E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #929574
+#85A8BA #96B6C5 #ADC4CE #9E70C9 #B3C8C8 #4CB2A1 #4F9EC4 #769ECB #9DBAD5 #8FC1A9""".split()
 NOMECOR = {nome: cor for nome, cor in zip(NOME, COR)}
 
 
