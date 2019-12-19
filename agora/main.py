@@ -16,7 +16,8 @@ CENA, RECT, SLATE = f"{IGR}kH1aOtS.jpg", f"{IGR}92GKogg.png", f"{IGR}pT6cuym.jpg
 
 class Application:
     def __init__(self):
-        self.contents = document.querySelector("div.container")
+        # self.contents = document.querySelector("div.container")
+        self.contents = document["pydiv"]
         cena = Cena(CENA)
         cena.vai()
         slate = Elemento(SLATE, cena=cena)
