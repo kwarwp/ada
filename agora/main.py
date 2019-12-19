@@ -15,6 +15,9 @@ IGR = "https://i.imgur.com/"
 CENA, RECT, SLATE, FACES = f"{IGR}kH1aOtS.jpg", f"{IGR}92GKogg.png", f"{IGR}pT6cuym.jpg", f"{IGR}utEu3Ib.png"
 NOME = """Adriana Ana Maria Sandra Juliana Antônio Carlos Francisco João José Bruna Camila Jéssica
 Letícia Amanda Lucas Luiz Mateus Guilherme Pedro""".split()
+COR = """#E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #A29574
+#85A8BA #96B6C5 #ADC4CE #EEE0C9 #B3C8C8 #6CB2D1 #4F9EC4 #769ECB #9DBAD5 #8FC1A9""".split()
+NOMECOR = {nome: cor for nome, cor in zip(NOME, COR)}
 
 
 class Application:
@@ -29,12 +32,16 @@ class Application:
     def calendar(self):
         ihour = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
         
+        def button(hora, nome):
+            _button = html.BUTTON(f"{hora} - {nome}", Class="tile is-child is-dark is-outlined is-inverted")
+            _button.style.backgroundColor = NOMECOR[nome]
+            return _button
+        
         def tiler(wd, tile):
             nomes = NOME[:]
             shuffle(nomes)
             tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
-            [tile <= html.BUTTON(f"{hora} - {nome}", Class="tile is-child is-dark is-outlined is-inverted")
-            for hora, nome in zip(ihour, nomes)]
+            [tile <= button(hora, nome) for hora, nome in zip(ihour, nomes)]
         self.contents.html = ""
         self.calendar = html.DIV(Class="tile is-ancestor")
         weekdays = "seg ter qua qui sex".split()
