@@ -25,6 +25,9 @@ class Application:
         
     def calendar(self):
         self.contents.html = ""
+        self.calendar = html.DIV(Class="tile is-ancestor")
+        self.tiles = [html.DIV(Class="tile is-ancestor" Id=f"weekday-{wd}") for wd in "seg ter qua qui sex".split()]
+        [self.calendar <= tile for tile in self.tiles]
         
 
 
