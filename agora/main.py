@@ -8,6 +8,7 @@ __version__ = "19.12.18"
 from _spy.vitollino.main import Cena,Elemento,Texto, STYLE, INVENTARIO
 from browser import document, html
 from random import choice, shuffle
+from pprint import pprint
 
 STYLE["width"]=1350
 STYLE["height"]= "600px"
@@ -58,11 +59,14 @@ class Item:
     def adiciona(self, item):
         self.lista.append(Item)
         
+    def atualiza(self, item):
+        self.detalhe.append(Item)
+        
 class Pessoa(Item):
     LISTA = []
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
-        self.turmas = turmas
+        self.detalhe = self.turmas = turmas or list()
         
     @property
     def lista(self):
@@ -72,7 +76,7 @@ class Sala(Item):
     LISTA = []
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
-        self.turmas = turmas
+        self.detalhe = self.turmas = turmas or list()
         
     @property
     def lista(self):
@@ -82,15 +86,15 @@ class Turma(Item):
     LISTA = []
     def __init__(self, nome, horarios=None):
         super().__init__(nome)
-        self.horarios = horarios
+        self.detalhe = self.horarios = horarios or list()
         
     @property
     def lista(self):
         return Turma.LISTA
         
-class Horario(Item):
-    def __init__(self, dia, horario, segmento="U", regente=None, sala=None):
-        super().__init__(f"{segmento}-{dia}-{horario}")
+class Horario:
+    def __init__(self, dia, horario, segmento="U", regente="I", sala=0):
+        self.nome = f"{segmento}-{dia}-{horario}-{regente}-{sala}"
         self.horario = horario
         self.dia = dia
         self.regente = regente
@@ -98,18 +102,18 @@ class Horario(Item):
         
 class Infantil(Horario):
     HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
-    def __init__(self, dia, horario, segmento="I", regente=None):
-        super().__init__(dia, horario, segmento, regente)
+    def __init__(self, dia, horario, segmento="I", regente="I", sala=0):
+        super().__init__(dia, horario, segmento, regente, sala)
         
 class Fundamental1(Horario):
     HORA = "7:30 7:45 8:35 9:25 9:40 10:30 11:20 12:10 12:15".split()
-    def __init__(self, dia, horario, segmento="J", regente=None):
-        super().__init__(dia, horario, segmento, regente)
+    def __init__(self, dia, horario, segmento="J", regente="I", sala=0):
+        super().__init__(dia, horario, segmento, regente, sala)
         
 class Fundamental2(Horario):
     HORA = "7:20 8:00 8:50 9:40 10:00 10:20 11:10 12:00 12:50 13:00".split()
-    def __init__(self, dia, horario, segmento="K", regente=None):
-        super().__init__(dia, horario, segmento, regente)
+    def __init__(self, dia, horario, segmento="K", regente="I", sala=0):
+        super().__init__(dia, horario, segmento, regente, sala)
         
 class Agora(Item):
     def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None):
@@ -122,10 +126,14 @@ class Storage(Item):
         self.horarios = horarios
 
 def main():
+    Turma.LISTA = []
+    HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
+    SS = TS.upper()
+    t = [Turma(nome, [Horario(choice("stqnx"), choice(HS), sala=choice(SS)) for _ in range(3)]) for nome in TS]
     p = [Pessoa(nome) for nome in NOME]
-    t = [Turma(nome) for nome in "abcdefgh"]
-    [print(a.nome) for a in t]
-    [print(a.nome) for a in p]
+    
+    [print(a.nome, [h.nome for h in a.horarios]) for a in t] # Turma.LISTA]
+    [print(a.nome, a.turmas) for a in p]
     
     
 if __name__ == "__main__":
