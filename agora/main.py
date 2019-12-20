@@ -80,7 +80,7 @@ class Sala(Item):
         
 class Turma(Item):
     LISTA = []
-    def __init__(self, nome, horarios):
+    def __init__(self, nome, horarios=None):
         super().__init__(nome)
         self.horarios = horarios
         
@@ -112,7 +112,7 @@ class Fundamental2(Horario):
         super().__init__(dia, horario, segmento, regente)
         
 class Agora(Item):
-    def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None, turmas=None):
+    def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None):
         super().__init__(nome)
         self.turmas = turmas
         
