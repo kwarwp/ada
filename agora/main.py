@@ -130,10 +130,10 @@ def main():
     HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
     SS = TS.upper()
     t = [Turma(nome, [Horario(choice("stqnx"), choice(HS), sala=choice(SS)) for _ in range(3)]) for nome in TS]
-    p = [Pessoa(nome) for nome in NOME]
+    p = [Pessoa(nome, choice(t)) for nome in NOME]
     
     [print(a.nome, [h.nome for h in a.horarios]) for a in t] # Turma.LISTA]
-    [print(a.nome, a.turmas) for a in p]
+    [print(a.nome, a.turmas.nome) for a in p]
     
     
 if __name__ == "__main__":
