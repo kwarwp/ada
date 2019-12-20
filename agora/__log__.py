@@ -72,3 +72,10 @@ TypeError: 'str' object does not support item assignment
     nomes = NOMES[:]
 NameError: name 'NOMES' is not defined
 '''},
+{'date': 'Fri Dec 20 2019 12:17:09.944 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 115
+  def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None, turmas=None):
+                                                                          ^
+SyntaxError: duplicate argument 'turmas' in function definition
+'''},
