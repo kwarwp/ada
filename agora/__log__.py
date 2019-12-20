@@ -121,3 +121,27 @@ TypeError: __init__() missing 1 positional argument: horarios
     self.lista.append(Item)
 AttributeError: 'Horario' object has no attribute 'lista'
 '''},
+{'date': 'Fri Dec 20 2019 12:38:26.856 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''aTraceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 138
+    main()
+  module <module> line 132
+    [pprint(a.nome, a.horarios) for a in t]
+  module pprint line 55
+    printer. pprint(object)
+  module pprint line 135
+    self. _format(object,self. _stream,0,0,{},0)
+  module pprint line 163
+    write=stream. write
+AttributeError: 'list' object has no attribute 'write'
+'''},
