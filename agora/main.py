@@ -49,7 +49,52 @@ class Application:
         [self.calendar <= tile  or tiler(wd, tile) for wd, tile in self.tiles]
         self.contents <= self.calendar
         
-
+class Item:
+    def __init__(self, nome):
+        self.nome = nome
+        
+class Pessoa(Item):
+    def __init__(self, nome, turmas=None):
+        super().__init__(nome)
+        self.turmas = turmas
+        
+class Sala(Item):
+    def __init__(self, nome, turmas=None):
+        super().__init__(nome)
+        self.turmas = turmas
+        
+class Turma(Item):
+    def __init__(self, nome, horarios):
+        super().__init__(nome)
+        self.horarios = horarios
+        self.regente = regente
+        
+class Horario(Item):
+    def __init__(self, dia, horario, segmento="U", regente=None):
+        super().__init__(f"{segmento}-{dia}-{horario}")
+        self.horario = horario
+        self.dia = dia
+        self.regente = regente
+        
+class Infantil(Horario):
+    HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
+    def __init__(self, dia, horario, segmento="I", regente=None):
+        super().__init__(dia, horario, segmento, regente)
+        
+class Fundamental1(Horario):
+    HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
+    def __init__(self, dia, horario, segmento="J", regente=None):
+        super().__init__(dia, horario, segmento, regente)
+        
+class Fundamental2(Horario):
+    HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
+    def __init__(self, dia, horario, segmento="K", regente=None):
+        super().__init__(dia, horario, segmento, regente)
+        
+class Storage(Item):
+    def __init__(self, nome, horarios):
+        super().__init__(nome)
+        self.horarios = horarios
 
 if __name__ == "__main__":
     Application()
