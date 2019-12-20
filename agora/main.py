@@ -52,29 +52,49 @@ class Application:
 class Item:
     def __init__(self, nome):
         self.nome = nome
+        self._lista = []
+        self.adiciona(self)
+        
+    def adiciona(self, item):
+        self.lista.append(Item)
         
 class Pessoa(Item):
+    LISTA = []
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
         self.turmas = turmas
+        
+    @property
+    def lista(self):
+        return Pessoa.LISTA
         
 class Sala(Item):
+    LISTA = []
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
         self.turmas = turmas
         
+    @property
+    def lista(self):
+        return Sala.LISTA
+        
 class Turma(Item):
+    LISTA = []
     def __init__(self, nome, horarios):
         super().__init__(nome)
         self.horarios = horarios
-        self.regente = regente
+        
+    @property
+    def lista(self):
+        return Turma.LISTA
         
 class Horario(Item):
-    def __init__(self, dia, horario, segmento="U", regente=None):
+    def __init__(self, dia, horario, segmento="U", regente=None, sala=None):
         super().__init__(f"{segmento}-{dia}-{horario}")
         self.horario = horario
         self.dia = dia
         self.regente = regente
+        self.sala = sala
         
 class Infantil(Horario):
     HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
@@ -82,19 +102,32 @@ class Infantil(Horario):
         super().__init__(dia, horario, segmento, regente)
         
 class Fundamental1(Horario):
-    HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
+    HORA = "7:30 7:45 8:35 9:25 9:40 10:30 11:20 12:10 12:15".split()
     def __init__(self, dia, horario, segmento="J", regente=None):
         super().__init__(dia, horario, segmento, regente)
         
 class Fundamental2(Horario):
-    HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
+    HORA = "7:20 8:00 8:50 9:40 10:00 10:20 11:10 12:00 12:50 13:00".split()
     def __init__(self, dia, horario, segmento="K", regente=None):
         super().__init__(dia, horario, segmento, regente)
+        
+class Agora(Item):
+    def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None, turmas=None):
+        super().__init__(nome)
+        self.turmas = turmas
         
 class Storage(Item):
     def __init__(self, nome, horarios):
         super().__init__(nome)
         self.horarios = horarios
 
+def main():
+    p = [Pessoa(nome) for nome in NOME]
+    t = [Turma(nome) for nome in "abcdefgh"]
+    [print(a.nome) for a in t]
+    [print(a.nome) for a in p]
+    
+    
 if __name__ == "__main__":
-    Application()
+    # Application()
+    main()
