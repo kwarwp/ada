@@ -72,6 +72,7 @@ class Pessoa(Item):
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
         self.detalhe = self.turmas = turmas or list()
+        [turma.rege(self) for turma in self.turmas]
         
     def lista(self):
         return Pessoa.LISTA
@@ -158,13 +159,13 @@ def main():
     Sala.LISTA = []
     HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
     SS = TS.upper()
-    t = [Turma(nome, [Horario(choice("stqnx"), choice(HS)) for _ in range(3)]) for nome in TS]
+    t = [Turma(nome, [Infantil(choice("stqnx"), choice(HS)) for _ in range(3)]) for nome in TS]
     s = [Sala(nome, sample(t, 3)) for nome in SS]
-    p = [Pessoa(nome, choice(t)) for nome in NOME]
+    p = [Pessoa(nome, [choice(t)]) for nome in NOME]
     
     [print(a.nome, [h.nome for h in a.horarios]) for a in Turma.LISTA]
     # [print(a.nome, a.horarios) for a in Turma.LISTA]
-    [print(a.nome, a.turmas.nome) for a in Pessoa.LISTA]
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Pessoa.LISTA]
     [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
     
     
