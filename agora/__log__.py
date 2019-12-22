@@ -313,3 +313,55 @@ Traceback (most recent call last):
     [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
 AttributeError: 'Item' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 22 2019 07:46:50.184 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''a ['U-t-7-X-C', 'U-s-2-X-D', 'U-t-8-X-I']
+b ['U-n-5-X-K', 'U-x-8-X-A', 'U-n-9-X-A']
+c ['U-t-7-X-L', 'U-n-4-X-J', 'U-q-6-X-N']
+d ['U-s-5-X-M', 'U-t-8-X-N', 'U-q-7-X-A']
+e ['U-x-4-X-M', 'U-s-8-X-B', 'U-x-5-X-M']
+f ['U-n-5-X-A', 'U-s-2-X-E', 'U-q-1-X-F']
+g ['U-s-1-X-M', 'U-s-5-X-J', 'U-s-4-X-C']
+h ['U-s-2-X-G', 'U-s-0-X-A', 'U-n-4-X-A']
+i ['U-t-9-X-I', 'U-n-3-X-B', 'U-n-9-X-C']
+j ['U-q-6-X-F', 'U-q-1-X-B', 'U-q-7-X-H']
+k ['U-n-2-X-K', 'U-x-8-X-C', 'U-n-2-X-G']
+l ['U-s-3-X-K', 'U-x-9-X-E', 'U-t-7-X-G']
+m ['U-n-5-X-F', 'U-s-0-X-D', 'U-x-5-X-F']
+n ['U-x-6-X-A', 'U-q-0-X-G', 'U-t-8-X-D']
+Adriana i
+Ana l
+Maria d
+Sandra m
+Juliana j
+Antônio h
+Carlos a
+Francisco d
+João b
+José g
+Bruna j
+Camila c
+Jéssica l
+Letícia l
+Amanda a
+Lucas b
+Luiz h
+Mateus c
+Guilherme e
+Pedro h
+Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 151
+    main()
+  module <module> line 146
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
+AttributeError: 'Item' object has no attribute 'nome'
+'''},
