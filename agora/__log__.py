@@ -724,3 +724,37 @@ Traceback (most recent call last):
     [print(a.nome, [h.nome for h in a.horarios], [s.nome for s in a.sala]) for a in Turma.LISTA]
 AttributeError: 'NoneType' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 22 2019 14:08:47.651 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''{'Sala': <class 'Sala'>, 'Turma': <class 'Turma'>, 'Pessoa': <class 'Pessoa'>, 'K': <class 'Fundamental2'>, 'J': <class 'Fundamental1'>, 'I': <class 'Infantil'>, 'U': <class 'Horario'>}
+[A, B, C, D, E, F, G, H, I, J, K, L, M, N] [A, B, C, D, E, F, G, H, I, J, K, L, M, N]
+a ['C', 'I', 'K']
+b ['N', 'C', 'D']
+c ['N', 'I', 'J']
+d ['K', 'G', 'M']
+e ['A', 'E', 'I']
+f ['N', 'K', 'J']
+g ['N', 'G', 'I']
+h ['C', 'K', 'I']
+i ['B', 'K', 'E']
+j ['F', 'M', 'G']
+k ['N', 'J', 'B']
+l ['L', 'B', 'I']
+m ['I', 'A', 'F']
+n ['J', 'E', 'D']
+Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 216
+    main()
+  module <module> line 198
+    [print(a.nome, [s.nome for s in a.turmas], [h for h in a.horarios]) for a in Sala.LISTA]
+AttributeError: 'Sala' object has no attribute 'horarios'
+'''},
