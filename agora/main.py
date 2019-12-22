@@ -2,9 +2,12 @@
 # Este aplicativo é um software livre com licensa GPL3 `GPL <http://is.gd/3Udt>`__.
 """
 Gerência de Recursos Educacionais
+__version__ = "22.12.18" : Correlacionando entidades
+__version__ = "21.12.18" : Priemeira estrutura OO
+__version__ = "19.12.18" : Maquete de Visualização
 """
 __author__ = "Carlo Oliveira"
-__version__ = "19.12.18"
+__version__ = "22.12.18"
 from _spy.vitollino.main import Cena,Elemento,Texto, STYLE, INVENTARIO
 from browser import document, html
 from random import choice, shuffle, sample
@@ -129,24 +132,26 @@ class Infantil(Horario):
     HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
     SEG = "I"
     def __init__(self, dia, horario, segmento="I", regente=SEMREGE, sala=SEMSALA):
-        super().__init__(dia, horario, segmento, regente, sala)
+        super().__init__(dia, self.HORA[horario], segmento, regente, sala)
         
 class Fundamental1(Horario):
     HORA = "7:30 7:45 8:35 9:25 9:40 10:30 11:20 12:10 12:15".split()
     SEG = "J"
     def __init__(self, dia, horario, segmento="J", regente=SEMREGE, sala=SEMSALA):
-        super().__init__(dia, horario, segmento, regente, sala)
+        super().__init__(dia, self.HORA[horario], segmento, regente, sala)
         
 class Fundamental2(Horario):
     HORA = "7:20 8:00 8:50 9:40 10:00 10:20 11:10 12:00 12:50 13:00".split()
     SEG = "K"
     def __init__(self, dia, horario, segmento="K", regente=SEMREGE, sala=SEMSALA):
-        super().__init__(dia, horario, segmento, regente, sala)
+        super().__init__(dia, self.HORA[horario], segmento, regente, sala)
         
 class Agora(Item):
     def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None):
         super().__init__(nome)
         self.turmas = turmas
+        self.pessoas = pessoas
+        self.salas = salas
         
 class Storage(Item):
     def __init__(self, nome, horarios):
@@ -159,6 +164,7 @@ def main():
     Sala.LISTA = []
     HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
     SS = TS.upper()
+    SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
     t = [Turma(nome, [Infantil(choice("stqnx"), choice(HS)) for _ in range(3)]) for nome in TS]
     s = [Sala(nome, sample(t, 3)) for nome in SS]
     p = [Pessoa(nome, [choice(t)]) for nome in NOME]
