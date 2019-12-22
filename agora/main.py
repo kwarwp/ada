@@ -7,7 +7,7 @@ __author__ = "Carlo Oliveira"
 __version__ = "19.12.18"
 from _spy.vitollino.main import Cena,Elemento,Texto, STYLE, INVENTARIO
 from browser import document, html
-from random import choice, shuffle
+from random import choice, shuffle, sample
 from pprint import pprint
 
 STYLE["width"]=1350
@@ -53,14 +53,19 @@ class Application:
 class Item:
     def __init__(self, nome):
         self.nome = nome
-        self._lista = []
         self.adiciona(self)
         
     def adiciona(self, item):
-        self.lista.append(Item)
+        self.lista().append(item)
         
     def atualiza(self, item):
-        self.detalhe.append(Item)
+        self.detalhe.append(item)
+        
+    def __str__(self):
+        return self.nome
+        
+    def __repr__(self):
+        return self.nome
         
 class Pessoa(Item):
     LISTA = []
@@ -68,7 +73,6 @@ class Pessoa(Item):
         super().__init__(nome)
         self.detalhe = self.turmas = turmas or list()
         
-    @property
     def lista(self):
         return Pessoa.LISTA
         
@@ -77,8 +81,8 @@ class Sala(Item):
     def __init__(self, nome, turmas=None):
         super().__init__(nome)
         self.detalhe = self.turmas = turmas or list()
+        [turma.localiza(self) for turma in self.turmas]
         
-    @property
     def lista(self):
         return Sala.LISTA
         
@@ -87,32 +91,55 @@ class Turma(Item):
     def __init__(self, nome, horarios=None):
         super().__init__(nome)
         self.detalhe = self.horarios = horarios or list()
+        self.sala = list()
         
-    @property
     def lista(self):
         return Turma.LISTA
         
+    def localiza(self, item):
+        self.sala.append(item)
+        [hora.localiza(item) for hora in self.horarios]
+        
+    def rege(self, regente):
+        [hora.rege(regente) for hora in self.horarios]
+        
+SEMSALA = Sala("")   
+SEMREGE = Pessoa("")
+
 class Horario:
-    def __init__(self, dia, horario, segmento="U", regente="I", sala=0):
-        self.nome = f"{segmento}-{dia}-{horario}-{regente}-{sala}"
+    SEG = "U"
+    def __init__(self, dia, horario, segmento="U", regente=SEMREGE, sala=SEMSALA):
         self.horario = horario
         self.dia = dia
         self.regente = regente
         self.sala = sala
+        sala.localiza(self) if sala.nome else None
+        self.nome = f"{self.SEG}-{self.dia}-{self.horario}-{self.regente.nome}-{self.sala.nome}"
+        
+    def localiza(self, item):
+        self.sala = item
+        self.nome = f"{self.SEG}-{self.dia}-{self.horario}-{self.regente.nome}-{self.sala.nome}"
+        
+    def rege(self, regente):
+        self.regente = regente
+        self.nome = f"{self.SEG}-{self.dia}-{self.horario}-{self.regente.nome}-{self.sala.nome}"
         
 class Infantil(Horario):
     HORA = "8:00 9:30 10:00 10:05 10:35 10:40 11:10 11:15 11:45 12:00".split()
-    def __init__(self, dia, horario, segmento="I", regente="I", sala=0):
+    SEG = "I"
+    def __init__(self, dia, horario, segmento="I", regente=SEMREGE, sala=SEMSALA):
         super().__init__(dia, horario, segmento, regente, sala)
         
 class Fundamental1(Horario):
     HORA = "7:30 7:45 8:35 9:25 9:40 10:30 11:20 12:10 12:15".split()
-    def __init__(self, dia, horario, segmento="J", regente="I", sala=0):
+    SEG = "J"
+    def __init__(self, dia, horario, segmento="J", regente=SEMREGE, sala=SEMSALA):
         super().__init__(dia, horario, segmento, regente, sala)
         
 class Fundamental2(Horario):
     HORA = "7:20 8:00 8:50 9:40 10:00 10:20 11:10 12:00 12:50 13:00".split()
-    def __init__(self, dia, horario, segmento="K", regente="I", sala=0):
+    SEG = "K"
+    def __init__(self, dia, horario, segmento="K", regente=SEMREGE, sala=SEMSALA):
         super().__init__(dia, horario, segmento, regente, sala)
         
 class Agora(Item):
@@ -127,13 +154,18 @@ class Storage(Item):
 
 def main():
     Turma.LISTA = []
+    Pessoa.LISTA = []
+    Sala.LISTA = []
     HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
     SS = TS.upper()
-    t = [Turma(nome, [Horario(choice("stqnx"), choice(HS), sala=choice(SS)) for _ in range(3)]) for nome in TS]
+    t = [Turma(nome, [Horario(choice("stqnx"), choice(HS)) for _ in range(3)]) for nome in TS]
+    s = [Sala(nome, sample(t, 3)) for nome in SS]
     p = [Pessoa(nome, choice(t)) for nome in NOME]
     
-    [print(a.nome, [h.nome for h in a.horarios]) for a in t] # Turma.LISTA]
-    [print(a.nome, a.turmas.nome) for a in p]
+    [print(a.nome, [h.nome for h in a.horarios]) for a in Turma.LISTA]
+    # [print(a.nome, a.horarios) for a in Turma.LISTA]
+    [print(a.nome, a.turmas.nome) for a in Pessoa.LISTA]
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
     
     
 if __name__ == "__main__":
