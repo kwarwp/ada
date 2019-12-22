@@ -112,6 +112,7 @@ SEMREGE = Pessoa("")
 
 class Horario:
     SEG = "U"
+    LISTA = []
     def __init__(self, dia, horario, segmento="U", regente=SEMREGE, sala=SEMSALA):
         self.horario = horario
         self.dia = dia
@@ -119,6 +120,7 @@ class Horario:
         self.sala = sala
         sala.localiza(self) if sala.nome else None
         self.nome = f"{self.SEG}-{self.dia}-{self.horario}-{self.regente.nome}-{self.sala.nome}"
+        self.LISTA.append(self)
         
     def localiza(self, item):
         self.sala = item
@@ -147,11 +149,21 @@ class Fundamental2(Horario):
         super().__init__(dia, self.HORA[horario], segmento, regente, sala)
         
 class Agora(Item):
-    def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None):
+    def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None, horarios=None):
         super().__init__(nome)
-        self.turmas = turmas
-        self.pessoas = pessoas
-        self.salas = salas
+        self.turmas = turmas or Turma.LISTA
+        self.pessoas = pessoas or Pessoa.LISTA
+        self.salas = salas or Sala.LISTA
+        self.horarios = salas or Horario.LISTA
+        self.entidades = {e.__class__.__name__: e for  e in (Pessoa, Turma, Sala)}
+        SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
+        self.entidades.update(SEG)
+
+    def limpa(self):
+        Turma.LISTA = []
+        Pessoa.LISTA = []
+        Sala.LISTA = []
+        Horario.LISTA = []
         
 class Storage(Item):
     def __init__(self, nome, horarios):
