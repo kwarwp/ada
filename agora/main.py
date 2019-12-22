@@ -164,6 +164,12 @@ class Agora(Item):
         Pessoa.LISTA = []
         Sala.LISTA = []
         Horario.LISTA = []
+
+    def atualiza(self, tipo, indice, outro, **kwargs):
+        self.entidade[tipo].LISTA[indice].atualiza(self.entidade[tipo](**kwargs))
+
+    def cria(self, tipo, **kwargs):
+        self.entidade[tipo](**kwargs)
         
 class Storage(Item):
     def __init__(self, nome, horarios):
