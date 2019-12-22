@@ -758,3 +758,10 @@ Traceback (most recent call last):
     [print(a.nome, [s.nome for s in a.turmas], [h for h in a.horarios]) for a in Sala.LISTA]
 AttributeError: 'Sala' object has no attribute 'horarios'
 '''},
+{'date': 'Sun Dec 22 2019 14:12:49.26 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 190
+  [agora.cria("Pessoa", nome=nome), turmas=[choice(t)] for nome in NOME]
+                                                        ^
+SyntaxError: invalid syntax
+'''},
