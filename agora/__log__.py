@@ -685,3 +685,22 @@ Traceback (most recent call last):
     [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for name in TS]
 NameError: free variable 'nome' referenced before assignment in enclosing scope
 '''},
+{'date': 'Sun Dec 22 2019 13:48:21.410 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''{'Sala': <class 'Sala'>, 'Turma': <class 'Turma'>, 'Pessoa': <class 'Pessoa'>, 'K': <class 'Fundamental2'>, 'J': <class 'Fundamental1'>, 'I': <class 'Infantil'>, 'U': <class 'Horario'>}
+Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 215
+    main()
+  module <module> line 186
+    [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for nome in TS]
+ValueError: Sample larger than population
+'''},
