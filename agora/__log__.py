@@ -659,3 +659,10 @@ Traceback (most recent call last):
     [print(a.nome, [h.nome for h in a.horarios]) for a in Turma.LISTA]
 AttributeError: 'NoneType' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 22 2019 13:47:20.175 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 186
+  [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for name in TS
+                                                                                        ^
+SyntaxError: invalid syntax
+'''},
