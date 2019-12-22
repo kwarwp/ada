@@ -261,3 +261,55 @@ AttributeError: 'method' object has no attribute 'append'
     [print(a.nome, [h.nome for h in a.horarios]) for a in  Turma.LISTA]
 AttributeError: 'Item' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 22 2019 07:44:41.945 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''a ['U-q-8-X-I', 'U-s-0-X-F', 'U-t-6-X-K']
+b ['U-q-2-X-K', 'U-t-7-X-B', 'U-s-9-X-A']
+c ['U-t-7-X-N', 'U-n-6-X-H', 'U-x-0-X-N']
+d ['U-x-0-X-B', 'U-t-4-X-C', 'U-t-0-X-L']
+e ['U-x-5-X-K', 'U-s-5-X-F', 'U-s-9-X-D']
+f ['U-s-2-X-K', 'U-x-3-X-F', 'U-n-4-X-K']
+g ['U-s-0-X-L', 'U-q-5-X-L', 'U-n-0-X-M']
+h ['U-s-3-X-N', 'U-t-7-X-N', 'U-q-6-X-F']
+i ['U-x-5-X-B', 'U-x-1-X-L', 'U-n-8-X-J']
+j ['U-x-1-X-K', 'U-n-3-X-B', 'U-x-6-X-J']
+k ['U-t-6-X-F', 'U-s-7-X-C', 'U-t-3-X-K']
+l ['U-n-1-X-J', 'U-n-5-X-H', 'U-x-1-X-L']
+m ['U-x-3-X-F', 'U-t-5-X-H', 'U-s-7-X-M']
+n ['U-x-0-X-G', 'U-x-7-X-G', 'U-x-4-X-D']
+Adriana b
+Ana c
+Maria e
+Sandra d
+Juliana l
+Antônio f
+Carlos e
+Francisco l
+João e
+José f
+Bruna c
+Camila c
+Jéssica b
+Letícia a
+Amanda b
+Lucas h
+Luiz d
+Mateus d
+Guilherme h
+Pedro k
+Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 151
+    main()
+  module <module> line 146
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
+AttributeError: 'Item' object has no attribute 'nome'
+'''},
