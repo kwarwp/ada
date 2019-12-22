@@ -193,7 +193,12 @@ def main():
     # [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for nome in TS]
     [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3), horarios=[
      agora.cria(choice("IJK"), dia=choice("stqnx"), horario=choice(HS)) for _ in range(3)]) for nome in TS]
-    [agora.cria("Pessoa", nome=nome, turmas=[choice(agora.turmas)for _ in range(1, choice([2, 3]))]) for nome in NOME]
+    [agora.cria(
+        "Pessoa", nome=nome, turmas=[choice(agora.turmas)for _ in range(1, choice([2, 3]))],
+        disponibilidade = [
+            (choice("stqnx"), choice([7, 8, 9]), choice([2, 3, 4, 5, 6, 7, 8, 9]))
+            for _ in range(1, choice([2, 3, 4, 5]))]
+        ) for nome in NOME]
     
     """
     s = [Sala(nome, sample(t, 3)) for nome in SS]
@@ -201,7 +206,7 @@ def main():
     """
     [print(a.nome, [s.nome for s in a.sala], [h.nome for h in a.horarios]) for a in Turma.LISTA]
     # [print(a.nome, a.horarios) for a in Turma.LISTA]
-    [print(a.nome, [s.nome for s in a.turmas]) for a in Pessoa.LISTA]
+    [print(a.nome, [s.nome for s in a.turmas], [d for d in a.disponibilidade]) for a in Pessoa.LISTA]
     print("-"*8, "SALAS", "-"*8)
     [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
 
