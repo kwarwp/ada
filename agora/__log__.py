@@ -219,3 +219,27 @@ AttributeError: 'list' object has no attribute 'write'
     [print(a.nome, [h.nome for h in a.horarios]) for a in Turma.LISTA]
 AttributeError: 'Item' object has no attribute 'nome'
 '''},
+{'date': 'Sun Dec 22 2019 07:09:16.328 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 138
+    main()
+  module <module> line 129
+    t = [Turma(nome, [Horario(choice("stqnx"), choice(HS), sala=choice(SS)) for _ in range(3)]) for nome in TS]
+  module <module> line 86
+    super().__init__(nome)
+  module <module> line 57
+    self.adiciona(self)
+  module <module> line 60
+    self.lista.append(Item)
+AttributeError: 'method' object has no attribute 'append'
+'''},
