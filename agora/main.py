@@ -72,9 +72,10 @@ class Item:
         
 class Pessoa(Item):
     LISTA = []
-    def __init__(self, nome, turmas=None):
+    def __init__(self, nome, turmas=None, disponibilidade=None):
         super().__init__(nome)
         self.detalhe = self.turmas = turmas or list()
+        self.disponibilidade = disponibilidade or list()
         [turma.rege(self) for turma in self.turmas]
         
     def lista(self):
