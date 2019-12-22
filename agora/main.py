@@ -90,12 +90,16 @@ class Sala(Item):
     def lista(self):
         return Sala.LISTA
         
+    def aloca(self, item):
+        self.turmas.append(item)
+        
 class Turma(Item):
     LISTA = []
-    def __init__(self, nome, horarios=None):
+    def __init__(self, nome, horarios=None, sala=None):
         super().__init__(nome)
         self.detalhe = self.horarios = horarios or list()
-        self.sala = list()
+        self.sala = sala or list()
+        [s.aloca(self) for s in self.sala]
         
     def lista(self):
         return Turma.LISTA
@@ -148,28 +152,29 @@ class Fundamental2(Horario):
     def __init__(self, dia, horario, segmento="K", regente=SEMREGE, sala=SEMSALA):
         super().__init__(dia, self.HORA[horario], segmento, regente, sala)
         
-class Agora(Item):
+class Agora:
     def __init__(self, nome="agora", pessoas=None, turmas=None, salas=None, horarios=None):
-        super().__init__(nome)
+        self.nome = nome
         self.turmas = turmas or Turma.LISTA
         self.pessoas = pessoas or Pessoa.LISTA
         self.salas = salas or Sala.LISTA
         self.horarios = salas or Horario.LISTA
-        self.entidades = {e.__class__.__name__: e for  e in (Pessoa, Turma, Sala)}
+        self.entidade = {e.__name__: e for  e in (Pessoa, Turma, Sala)}
         SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
-        self.entidades.update(SEG)
+        self.entidade.update(SEG)
 
     def limpa(self):
-        Turma.LISTA = []
-        Pessoa.LISTA = []
-        Sala.LISTA = []
-        Horario.LISTA = []
+        self.turmas = Turma.LISTA = []
+        self.pessoas = Pessoa.LISTA = []
+        self.salas = Sala.LISTA = []
+        self.horarios = Horario.LISTA = []
+        return self
 
     def atualiza(self, tipo, indice, outro, **kwargs):
-        self.entidade[tipo].LISTA[indice].atualiza(self.entidade[tipo](**kwargs))
+        self.entidade[tipo].LISTA[indice].atualiza(self.entidade[outro](**kwargs))
 
     def cria(self, tipo, **kwargs):
-        self.entidade[tipo](**kwargs)
+        return self.entidade[tipo](**kwargs)
         
 class Storage(Item):
     def __init__(self, nome, horarios):
@@ -177,9 +182,29 @@ class Storage(Item):
         self.horarios = horarios
 
 def main():
-    Turma.LISTA = []
-    Pessoa.LISTA = []
-    Sala.LISTA = []
+    agora = Agora().limpa()
+    HS, TS = [int(h) for h in "01234567"], "abcdefghijklmn"
+    SS = TS.upper()
+    SS = "fund2 agr3a agr3b agr4 agr2a nido1 agr2b nido mus1 mus2 mul idi".split()
+    print(agora.entidade)
+    [agora.cria("Sala", nome=nome) for nome in SS]
+    print(agora.salas, Sala.LISTA)
+    # [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for nome in TS]
+    [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3), horarios=[
+     agora.cria(choice("IJK"), dia=choice("stqnx"), horario=choice(HS)) for _ in range(3)]) for nome in TS]
+    [agora.cria("Pessoa", nome=nome, turmas=[choice(agora.turmas)for _ in range(1, choice([2, 3]))]) for nome in NOME]
+    
+    """
+    s = [Sala(nome, sample(t, 3)) for nome in SS]
+    p = [Pessoa(nome, [choice(t)]) for nome in NOME]
+    """
+    [print(a.nome, [s.nome for s in a.sala], [h.nome for h in a.horarios]) for a in Turma.LISTA]
+    # [print(a.nome, a.horarios) for a in Turma.LISTA]
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Pessoa.LISTA]
+    print("-"*8, "SALAS", "-"*8)
+    [print(a.nome, [s.nome for s in a.turmas]) for a in Sala.LISTA]
+
+def _main():
     HS, TS = [int(h) for h in "0123456789"], "abcdefghijklmn"
     SS = TS.upper()
     SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
