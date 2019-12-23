@@ -192,7 +192,7 @@ class Agora:
             shuffle(nomes)
             tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
             #[tile <= button(hora, nome) for hora, nome in zip(ihour, nomes)]
-            lines = [html.DIV(Class="tile is-child is-dark") for _ in range(12)]
+            lines = [html.DIV(Class="tile is-ancestor is-dark") for _ in range(12)]
             #[tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
             [tile <= div for div in lines]
             disp = [ (p.nome, tuple(range(inicio, inicio+fim)))
