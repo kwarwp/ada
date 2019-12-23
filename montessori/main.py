@@ -8,7 +8,7 @@ class Application:
         "Agr21TG1 Agr21TG2 Agr22TG1 Agr22TG2 Agr23TG1 Agr23TG2"\
         "Agr3MG1 Agr3MG2 Agr3TG1 Agr3TG2 Agr3TG3 Agr4MG1 Agr4MG2 Agr4TG1 Agr4TG2"\
         "Agr5MG1 Agr5MG2 Agr5MG3 Agr6MG1 Agr6MG2 Agr6MG3"
-        professores= """Claudia2 Priscila Cibele Lukas Alguém 
-        Larissa Paulo Dudu Sabrina Fabiana Carla1 Carla2 Rebeca kelly Eduardo Daniel 
-        Adriana Deni Gustavo Sol Rosane Gisele AnaRoxo Claudia1"""
+        professores= """Claudia2 Priscila Cibele Lukas Alguém Dominyke 
+        Leandro Claudinha Rafael Dudu Daniel Eduardo Sabrina Karla Rebeca Fabiana
+        Kelly Cristiane Giselle Rosane Ana Roxo Sol Gustavo Larissa Paulo Adriana Léo"""
         
