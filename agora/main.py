@@ -195,8 +195,8 @@ class Agora:
             _button.onclick = self.seleciona_pessoa
             return _button
         
-        def tiler(wd, tile, box):
-            box <= tile
+        def tiler(wd, tile):
+            #box <= tile
             tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
             lines = [html.DIV(Class="tile is-ancestor is-dark") for _ in range(12)]
             [tile <= div for div in lines]
@@ -211,11 +211,13 @@ class Agora:
         self.contents.html = ""
         as_pessoas = [pessoa for pessoa in self.pessoas if pessoa.nome == person] if person else self.pessoas
         self.calendar = html.DIV(Class="tile is-ancestor")
-        box = html.DIV(style=dict(padding="1px"))
-        tile = html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}")
-        tile.style.padding = "2px"
-        self.tiles = [(wd, tile, box ) for wd in WDS]
-        [self.calendar <= tile  or tiler(wd, tile, box) for wd, tile, box in self.tiles]
+        #box = html.DIV(style=dict(padding="1px"))
+        def dotile(wd):
+            tile = html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}")
+            tile.style.margin = "2px"
+            return tile
+        self.tiles = [(wd, dotile(wd)) for wd in WDS]
+        [self.calendar <= tile  or tiler(wd, tile) for wd, tile in self.tiles]
         self.contents <= self.calendar
         
 class Storage(Item):
