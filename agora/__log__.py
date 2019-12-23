@@ -785,3 +785,10 @@ Traceback (most recent call last):
     [agora.cria("Pessoa", nome=nome, turmas=[choice(t)]) for nome in NOME]
 NameError: name 't' is not defined
 '''},
+{'date': 'Mon Dec 23 2019 09:20:17.207 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 195
+  slots = [[person for div in slot ] fon wd in 
+                                      ^
+SyntaxError: invalid syntax
+'''},
