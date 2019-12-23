@@ -182,8 +182,8 @@ class Agora:
         
     def mostra_disponibilidades(self):
         def button(nome):
-            nome = nome[:3]
-            _button = html.BUTTON(f"{nome}", Class="tile is-child is-dark is-outlined is-inverted")
+            nick = nome[:3]
+            _button = html.BUTTON(f"{nick}", Class="tile is-child is-dark is-outlined is-inverted")
             _button.style.backgroundColor = NOMECOR[nome]
             return _button
         
