@@ -199,7 +199,7 @@ class Agora:
                     for i, p in enumerate(agora.pessoas)
                     for wy, inicio, fim in p.disponibilidade if wd == wy] # for wy, inicio, fim in dis if wd == wy]
             slots = {slot: [person for person, dsp in disp if slot in dsp ] for slot in range(7, 19)}
-            [[lines[slot] <= button(person) for person in persons] for slot, persons in  slots.items()]
+            [[lines[slot-7] <= button(person) for person in persons if (slot-7)<12] for slot, persons in  slots.items()]
             
             return (disp, slots)
         #return tiler("seg", html.DIV())
