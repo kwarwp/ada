@@ -2,12 +2,13 @@
 # Este aplicativo é um software livre com licensa GPL3 `GPL <http://is.gd/3Udt>`__.
 """
 Gerência de Recursos Educacionais
+__version__ = "23.12.18" : Disponibilidade de professores
 __version__ = "22.12.18" : Correlacionando entidades
 __version__ = "21.12.18" : Priemeira estrutura OO
 __version__ = "19.12.18" : Maquete de Visualização
 """
 __author__ = "Carlo Oliveira"
-__version__ = "22.12.18"
+__version__ = "23.12.18"
 from _spy.vitollino.main import Cena,Elemento,Texto, STYLE, INVENTARIO
 from browser import document, html
 from random import choice, shuffle, sample
@@ -191,7 +192,7 @@ class Agora:
             tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
             #[tile <= button(hora, nome) for hora, nome in zip(ihour, nomes)]
             lines = [html.DIV(Class="tile is-child is-dark") for _ in range(12)]
-            [tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
+            #[tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
             [tile <= div for div in lines]
             disp = [ (p.nome, tuple(range(inicio, inicio+fim)))
                     for i, p in enumerate(agora.pessoas)
