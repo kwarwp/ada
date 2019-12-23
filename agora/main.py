@@ -165,6 +165,7 @@ class Agora:
         self.entidade = {e.__name__: e for  e in (Pessoa, Turma, Sala)}
         SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
         self.entidade.update(SEG)
+        self.contents = document["pydiv"]
 
     def limpa(self):
         self.turmas = Turma.LISTA = []
