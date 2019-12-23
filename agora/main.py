@@ -211,8 +211,11 @@ class Agora:
         self.contents.html = ""
         as_pessoas = [pessoa for pessoa in self.pessoas if pessoa.nome == person] if person else self.pessoas
         self.calendar = html.DIV(Class="tile is-ancestor")
-        self.tiles = [(wd, html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}"), html.BOX()) for wd in WDS]
-        [self.calendar <= box  or tiler(wd, tile, box) for wd, tile, box in self.tiles]
+        box = html.DIV(style=dict(padding="1px"))
+        tile = html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}")
+        tile.style.padding = "2px"
+        self.tiles = [(wd, tile, box ) for wd in WDS]
+        [self.calendar <= tile  or tiler(wd, tile, box) for wd, tile, box in self.tiles]
         self.contents <= self.calendar
         
 class Storage(Item):
