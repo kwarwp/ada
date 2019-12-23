@@ -22,7 +22,8 @@ Letícia Amanda Lucas Luiz Mateus Guilherme Pedro""".split()
 COR = """#E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #929574
 #85A8BA #96B6C5 #ADC4CE #9E70C9 #B3C8C8 #4CB2A1 #4F9EC4 #769ECB #9DBAD5 #8FC1A9""".split()
 NOMECOR = {nome: cor for nome, cor in zip(NOME, COR)}
-
+WD ="stqnx".split()
+WDS = "seg ter qua qui sex".split()
 
 class Application:
     def __init__(self):
@@ -177,6 +178,35 @@ class Agora:
     def cria(self, tipo, **kwargs):
         return self.entidade[tipo](**kwargs)
         
+    def mostra_disponibilidades(self):
+        def button(nome):
+            nome = nome[:3]
+            _button = html.BUTTON(f"{nome}", Class="tile is-child is-dark is-outlined is-inverted")
+            _button.style.backgroundColor = NOMECOR[nome]
+            return _button
+        
+        def tiler(wd, tile):
+            nomes = NOME[:]
+            shuffle(nomes)
+            tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
+            #[tile <= button(hora, nome) for hora, nome in zip(ihour, nomes)]
+            lines = [html.DIV(Class="tile is-child is-dark") for _ in range(12)]
+            [tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
+            [tile <= div for div in lines]
+            disp = [ (p.nome, tuple(range(inicio, inicio+fim)))
+                    for i, p in enumerate(agora.pessoas)
+                    for wy, inicio, fim in p.disponibilidade if wd == wy] # for wy, inicio, fim in dis if wd == wy]
+            slots = {slot: [person for person, dsp in disp if slot in dsp ] for slot in range(7, 19)}
+            [[line[slot] <= button(person) for person in persons] for slot, persons in  slots.items()]
+            
+            return (disp, slots)
+        #return tiler("seg", html.DIV())
+        self.contents.html = ""
+        self.calendar = html.DIV(Class="tile is-ancestor")
+        self.tiles = [(wd, html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}")) for wd in WDS]
+        [self.calendar <= tile  or tiler(wd, tile) for wd, tile in self.tiles]
+        self.contents <= self.calendar
+        
 class Storage(Item):
     def __init__(self, nome, horarios):
         super().__init__(nome)
@@ -187,18 +217,21 @@ def main():
     HS, TS = [int(h) for h in "01234567"], "abcdefghijklmn"
     SS = TS.upper()
     SS = "fund2 agr3a agr3b agr4 agr2a nido1 agr2b nido mus1 mus2 mul idi".split()
-    print(agora.entidade)
+    # print(agora.entidade)
     [agora.cria("Sala", nome=nome) for nome in SS]
-    print(agora.salas, Sala.LISTA)
+    # print(agora.salas, Sala.LISTA)
     # [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3)) for nome in TS]
     [agora.cria("Turma", nome=nome, sala=sample(agora.salas, 3), horarios=[
-     agora.cria(choice("IJK"), dia=choice("stqnx"), horario=choice(HS)) for _ in range(3)]) for nome in TS]
+     agora.cria(choice("IJK"), dia=choice(WDS), horario=choice(HS)) for _ in range(3)]) for nome in TS]
     [agora.cria(
         "Pessoa", nome=nome, turmas=[choice(agora.turmas)for _ in range(1, choice([2, 3]))],
         disponibilidade = [
-            (choice("stqnx"), choice([7, 8, 9]), choice([2, 3, 4, 5, 6, 7, 8, 9]))
-            for _ in range(1, choice([2, 3, 4, 5]))]
+            (wd, choice([7, 8, 9]), choice([2, 3, 4, 5, 6, 7, 8, 9]))
+            for wd in sample(WDS, choice([1, 2, 3, 4]))]
         ) for nome in NOME]
+    #print(agora.mostra_disponibilidades())
+    agora.mostra_disponibilidades()
+    return
     
     """
     s = [Sala(nome, sample(t, 3)) for nome in SS]
