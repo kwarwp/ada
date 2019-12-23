@@ -18,9 +18,10 @@ STYLE["width"]=1350
 STYLE["height"]= "600px"
 IGR = "https://i.imgur.com/"
 CENA, RECT, SLATE, FACES = f"{IGR}kH1aOtS.jpg", f"{IGR}92GKogg.png", f"{IGR}pT6cuym.jpg", f"{IGR}utEu3Ib.png"
-NOME = """Adriana Ana Maria Sandra Juliana Antônio Carlos Francisco João José Bruna Camila Jéssica
+NOME = """_ Adriana Ana Maria Sandra Juliana Antônio Carlos Francisco João José Bruna Camila Jéssica
 Letícia Amanda Lucas Luiz Mateus Guilherme Pedro""".split()
-COR = """#E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #929574
+NOMES = NOME[1:]
+COR = """#101010 #E0BBE4 #957DAD #D291BC #FEC8D8 #FFDFD3 #B7C68B #F4F0CB #DED29E #B3A580 #929574
 #85A8BA #96B6C5 #ADC4CE #9E70C9 #B3C8C8 #4CB2A1 #4F9EC4 #769ECB #9DBAD5 #8FC1A9""".split()
 NOMECOR = {nome: cor for nome, cor in zip(NOME, COR)}
 WD ="stqnx".split()
@@ -166,6 +167,7 @@ class Agora:
         SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
         self.entidade.update(SEG)
         self.contents = document["pydiv"]
+        self.go = True
 
     def limpa(self):
         self.turmas = Turma.LISTA = []
@@ -180,33 +182,37 @@ class Agora:
     def cria(self, tipo, **kwargs):
         return self.entidade[tipo](**kwargs)
         
-    def mostra_disponibilidades(self):
+    def seleciona_pessoa(self, ev):
+        pessoa = ev.target.id[2:] if self.go else None
+        self.go = not self.go
+        self.mostra_disponibilidades(pessoa)
+        
+    def mostra_disponibilidades(self, person=None):
         def button(nome):
-            nick = nome[:3]
-            _button = html.BUTTON(f"{nick}", Class="tile is-child is-dark is-outlined is-inverted")
+            nick = nome[0]
+            _button = html.BUTTON(f"{nick}", Class="tile is-child is-dark is-outlined is-inverted", Id=f"b_{nome}")
             _button.style.backgroundColor = NOMECOR[nome]
+            _button.onclick = self.seleciona_pessoa
             return _button
         
-        def tiler(wd, tile):
-            nomes = NOME[:]
-            shuffle(nomes)
+        def tiler(wd, tile, box):
+            box <= tile
             tile <= html.BUTTON(wd.upper(), Class="tile is-child is-dark is-outlined is-inverted")
-            #[tile <= button(hora, nome) for hora, nome in zip(ihour, nomes)]
             lines = [html.DIV(Class="tile is-ancestor is-dark") for _ in range(12)]
-            #[tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
             [tile <= div for div in lines]
             disp = [ (p.nome, tuple(range(inicio, inicio+fim)))
-                    for i, p in enumerate(agora.pessoas)
-                    for wy, inicio, fim in p.disponibilidade if wd == wy] # for wy, inicio, fim in dis if wd == wy]
-            slots = {slot: [person for person, dsp in disp if slot in dsp ] for slot in range(7, 19)}
+                    for i, p in enumerate(as_pessoas)
+                    for wy, inicio, fim in p.disponibilidade if wd == wy]
+            slots = {slot: [person if slot in dsp else "_" for person, dsp in disp ] for slot in range(7, 19)}
             [[lines[slot-7] <= button(person) for person in persons if (slot-7)<12] for slot, persons in  slots.items()]
             
             return (disp, slots)
         #return tiler("seg", html.DIV())
         self.contents.html = ""
+        as_pessoas = [pessoa for pessoa in self.pessoas if pessoa.nome == person] if person else self.pessoas
         self.calendar = html.DIV(Class="tile is-ancestor")
-        self.tiles = [(wd, html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}")) for wd in WDS]
-        [self.calendar <= tile  or tiler(wd, tile) for wd, tile in self.tiles]
+        self.tiles = [(wd, html.DIV(Class="tile is-parent is-vertical", Id=f"weekday-{wd}"), html.BOX()) for wd in WDS]
+        [self.calendar <= box  or tiler(wd, tile, box) for wd, tile, box in self.tiles]
         self.contents <= self.calendar
         
 class Storage(Item):
@@ -230,7 +236,7 @@ def main():
         disponibilidade = [
             (wd, choice([7, 8, 9]), choice([2, 3, 4, 5, 6, 7, 8, 9]))
             for wd in sample(WDS, choice([1, 2, 3, 4]))]
-        ) for nome in NOME]
+        ) for nome in NOMES]
     #print(agora.mostra_disponibilidades())
     agora.mostra_disponibilidades()
     return
@@ -251,7 +257,7 @@ def _main():
     SEG = dict(U=Horario, I=Infantil, J=Fundamental1, K=Fundamental2)
     t = [Turma(nome, [Infantil(choice("stqnx"), choice(HS)) for _ in range(3)]) for nome in TS]
     s = [Sala(nome, sample(t, 3)) for nome in SS]
-    p = [Pessoa(nome, [choice(t)]) for nome in NOME]
+    p = [Pessoa(nome, [choice(t)]) for nome in NOMES]
     
     [print(a.nome, [h.nome for h in a.horarios]) for a in Turma.LISTA]
     # [print(a.nome, a.horarios) for a in Turma.LISTA]
