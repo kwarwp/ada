@@ -963,3 +963,10 @@ Traceback (most recent call last):
     [agora.cria(
 NameError: name 'wds' is not defined
 '''},
+{'date': 'Mon Dec 23 2019 10:52:37.379 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 199
+  [[slot <= person
+                                                                                                                  ^
+SyntaxError: invalid syntax
+'''},
