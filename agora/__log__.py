@@ -990,3 +990,25 @@ SyntaxError: invalid syntax
     self.contents.html = ""
 AttributeError: 'Agora' object has no attribute 'contents'
 '''},
+{'date': 'Mon Dec 23 2019 11:16:38.10 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 264
+    main()
+  module <module> line 235
+    agora.mostra_disponibilidades()
+  module <module> line 209
+    [self.calendar <= tile  or tiler(wd, tile) for wd, tile in self.tiles]
+  module <module> line 196
+    [tile <= button(hora, nome) for hora, nome in zip(Infantil.HORA, nomes)]
+TypeError: button() takes 1 positional argument but more were given
+'''},
