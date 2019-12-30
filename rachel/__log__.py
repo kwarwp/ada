@@ -625,3 +625,10 @@ AttributeError: 'Controlador' object has no attribute 'toca'
     self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=cena, vai=self.toca)
 AttributeError: 'Controlador' object has no attribute 'toca'
 '''},
+{'date': 'Mon Dec 30 2019 08:11:11.260 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 180
+  def pause(self, ev=0):
+  ^
+IndentationError: unexpected indent
+'''},
