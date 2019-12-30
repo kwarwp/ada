@@ -39,8 +39,6 @@ class gameInicio:
         dark = Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.7),cena=gameInicio)
         self.logotipo = Elemento(LOGO, x=370, y=30,w=650,h=400, cena=gameInicio)
         self.play = Elemento(PLAY, x=570, y=470,w=180,h=120, cena=gameInicio, vai = self.mostradia)
-        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=gameInicio, vai=self.toca)
-        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=gameInicio, vai=self.pause)
         
     def mostradia(self,ev=0):
         fake = Cena()
@@ -49,18 +47,6 @@ class gameInicio:
         dia.vai()
         self.bil = Elemento(BILHETE, x=200, y=20,w=900,h=600, cena=dia, vai = self.elevador)
         self.boton = Elemento(BOTAO, x=820, y=470,w=70,h=70, cena=dia, vai = self.elevador)
-        
-    def toca(self, ev=0):
-        self.musica = Musica(TRACK)
-        self.musica.sound.play()
-        self.musA.x = -1200
-        self.musB.x = 1200
-    
-    def pause(self, ev=0):
-        self.musica.sound.pause()
-        self.musA.x = 1200
-        self.musB.x = -1200
-        
     
     def elevador(self, ev=0):
         todos = Controlador()
@@ -266,8 +252,8 @@ class Controlador:
         self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
-        #self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
-        #self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
+        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
         self.sair = Elemento(SAIR, x=1150, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
         
         #self.toca()
