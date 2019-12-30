@@ -39,6 +39,8 @@ class gameInicio:
         dark = Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.7),cena=gameInicio)
         self.logotipo = Elemento(LOGO, x=370, y=30,w=650,h=400, cena=gameInicio)
         self.play = Elemento(PLAY, x=570, y=470,w=180,h=120, cena=gameInicio, vai = self.mostradia)
+        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
         
     def mostradia(self,ev=0):
         fake = Cena()
@@ -263,8 +265,8 @@ class Controlador:
         self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
-        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
-        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
+        #self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
+        #self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
         self.sair = Elemento(SAIR, x=1150, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
 
         cena.vai()
