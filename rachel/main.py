@@ -63,8 +63,8 @@ class gameInicio:
         
     
     def elevador(self, ev=0):
-        self.toca()
         todos = Controlador()
+        todos.toca()
         todos.vai()
         
 # fim da parte inicial     
