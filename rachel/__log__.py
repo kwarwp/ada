@@ -725,3 +725,23 @@ NameError: name 'cena' is not defined
     self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
 NameError: name 'cena' is not defined
 '''},
+{'date': 'Mon Dec 30 2019 14:46:42.261 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 160
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 306
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 278
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 295
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 276
+    gameInicio()
+  module <module> line 42
+    self.toca(self)
+  module <module> line 55
+    self.musA.x = -1200
+AttributeError: 'gameInicio' object has no attribute 'musA'
+'''},
