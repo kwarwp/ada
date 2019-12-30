@@ -63,6 +63,7 @@ class gameInicio:
         
     
     def elevador(self, ev=0):
+        self.toca()
         todos = Controlador()
         todos.vai()
         
@@ -269,7 +270,7 @@ class Controlador:
         self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
         self.sair = Elemento(SAIR, x=1150, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
         
-        self.toca()
+        #self.toca()
         cena.vai()
 
 
