@@ -632,3 +632,10 @@ AttributeError: 'Controlador' object has no attribute 'toca'
   ^
 IndentationError: unexpected indent
 '''},
+{'date': 'Mon Dec 30 2019 08:13:47.329 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 60
+  def elevador(self, ev=0):
+  ^
+IndentationError: unexpected indent
+'''},
