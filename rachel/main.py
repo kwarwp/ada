@@ -3,6 +3,7 @@
 # kesha.morgan.main.py
 # sarah.roxanne.main.py
 __autor__ = "Isabel Hortencia Garnica"
+__autor__ = "Paulo Freitas Silva Júnior"
 __designer__ = "Marília Campos Galvão"
 __version__ = "05.12.2019"
 from _spy.vitollino.main import Cena, Texto, Elemento, INVENTARIO, STYLE, Musica
@@ -51,8 +52,8 @@ class gameInicio:
     def elevador(self, ev=0):
         todos = Controlador()
         todos.vai()
-        self.musica = Musica(TRACK)
-        self.musica.sound.pause()
+        #self.musica = Musica(TRACK)
+        #self.musica.sound.pause()
         
 # fim da parte inicial     
 class Predio(Elemento): #predio
@@ -171,9 +172,9 @@ class Controlador:
         self.musA.x = 1200
         self.musB.x = -1200
         
-    #def elevador(self, ev=0):
-        #self.musica = Musica(TRACK)
-        #self.musica.sound.pause()
+    def song(self, ev=0):
+        self.musica = Musica(TRACK)
+        self.musica.sound.pause()
         
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
@@ -256,9 +257,9 @@ class Controlador:
         self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
-        self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=cena, vai=self.toca)
-        self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=cena, vai=self.pause)
-        self.sair = Elemento(SAIR, x=1050, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
+        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=cena, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=cena, vai=self.pause)
+        self.sair = Elemento(SAIR, x=1150, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
 
         cena.vai()
 
