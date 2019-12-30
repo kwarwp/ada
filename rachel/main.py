@@ -10,6 +10,7 @@ from _spy.vitollino.main import Cena, Texto, Elemento, INVENTARIO, STYLE, Musica
 STYLE ["width"] = 1320
 STYLE ["height"] = "600px"
 IGR = "https://i.imgur.com/"
+TRACK = "https://raw.githubusercontent.com/kwarwp/anita/master/bensound-creativeminds.mp3"
 CEST, DOG, BASE, CENA, PRED = f"{IGR}qtw6IoO.png", f"{IGR}ek5NQYw.png", f"{IGR}7Wh2Px0.png", f"{IGR}zRGdYRp.gif", f"{IGR}vL9kR9Y.png"
 BOY, GIRL, PREDIOQ = f"{IGR}MXiGMEc.png", f"{IGR}GDK3tcT.png", f"{IGR}ElCYvUO.png"
 CESTF = f"{IGR}am71B72.png"
