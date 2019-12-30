@@ -39,8 +39,8 @@ class gameInicio:
         dark = Elemento("",style=dict(width="1345px",height="600px",backgroundColor="black",opacity=0.7),cena=gameInicio)
         self.logotipo = Elemento(LOGO, x=370, y=30,w=650,h=400, cena=gameInicio)
         self.play = Elemento(PLAY, x=570, y=470,w=180,h=120, cena=gameInicio, vai = self.mostradia)
-        #self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=gameInicio, vai=self.toca)
-        #self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=gameInicio, vai=self.pause)
+        self.musA = Elemento(SOMA, x=1200, y=420,w=70,h=70, cena=gameInicio, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=420,w=70,h=70, cena=gameInicio, vai=self.pause)
         
     def mostradia(self,ev=0):
         fake = Cena()
