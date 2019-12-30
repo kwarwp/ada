@@ -46,24 +46,13 @@ class gameInicio:
         dia.vai()
         self.bil = Elemento(BILHETE, x=200, y=20,w=900,h=600, cena=dia, vai = self.elevador)
         self.boton = Elemento(BOTAO, x=820, y=470,w=70,h=70, cena=dia, vai = self.elevador)
-    
-    def toca(self, ev=0):
-        self.musica.sound.play()
-        self.musA.x = -1200
-        self.musB.x = 1200
-    
-    def pause(self, ev=0):
-        self.musica.sound.pause()
-        self.musA.x = 1200
-        self.musB.x = -1200
+        
     
     def elevador(self, ev=0):
         todos = Controlador()
         todos.vai()
         self.musica = Musica(TRACK)
         self.musica.sound.pause()
-        self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=todos, vai=self.toca)
-        self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=todos, vai=self.pause)
         
 # fim da parte inicial     
 class Predio(Elemento): #predio
@@ -172,6 +161,20 @@ class Cesta(Elemento): #cestas
                         
 class Controlador:
 
+    def toca(self, ev=0):
+        self.musica.sound.play()
+        self.musA.x = -1200
+        self.musB.x = 1200
+    
+    def pause(self, ev=0):
+        self.musica.sound.pause()
+        self.musA.x = 1200
+        self.musB.x = -1200
+        
+    #def elevador(self, ev=0):
+        #self.musica = Musica(TRACK)
+        #self.musica.sound.pause()
+        
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
         self.cesta_topo = self.cesta_base
@@ -253,7 +256,8 @@ class Controlador:
         self.doggie = Personagem(DOG, controlador=controlador, cena=cena, tit="10kg", h=50, w=80)
         self.menina = Personagem(GIRL,controlador=controlador, cena=cena, tit="20kg", h=80)
         self.menino = Personagem(BOY, controlador=controlador, cena=cena, tit="40kg", h=100, y=0)
-        
+        self.musA = Elemento(SOMA, x=1200, y=500,w=80,h=80, cena=cena, vai=self.toca)
+        self.musB = Elemento(SOMB, x=-1200, y=500,w=80,h=80, cena=cena, vai=self.pause)
         self.sair = Elemento(SAIR, x=1050, y=490,w=140,h=80, cena=cena, vai = self.concluir_jogo)
 
         cena.vai()
