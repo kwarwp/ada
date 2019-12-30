@@ -52,8 +52,6 @@ class gameInicio:
     def elevador(self, ev=0):
         todos = Controlador()
         todos.vai()
-        #self.musica = Musica(TRACK)
-        #self.musica.sound.pause()
         
 # fim da parte inicial     
 class Predio(Elemento): #predio
@@ -163,6 +161,7 @@ class Cesta(Elemento): #cestas
 class Controlador:
 
     def toca(self, ev=0):
+        self.musica = Musica(TRACK)
         self.musica.sound.play()
         self.musA.x = -1200
         self.musB.x = 1200
@@ -171,10 +170,6 @@ class Controlador:
         self.musica.sound.pause()
         self.musA.x = 1200
         self.musB.x = -1200
-        
-    def song(self, ev=0):
-        self.musica = Musica(TRACK)
-        self.musica.sound.pause()
         
     def inverte_cesta_topo_base(self):
         aux = self.cesta_topo
