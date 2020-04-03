@@ -49,7 +49,7 @@ class MickeyFeio():
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
         self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
         self.cauda_inferior.rotate(angle=-GRAUS_30, axis=EIXO_Z)
-
+        return [self.cauda_superior, self.cauda_inferior]
     def desenha_o_corpo(self,cor,l=1,d=(0,0)):
         return ellipsoid(
                 size=(PHI*l,l,l/PHI),pos=d,color=cor
