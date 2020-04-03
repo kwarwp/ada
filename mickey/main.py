@@ -34,7 +34,26 @@ class Cenario:
         '''
         self.quadro = 0
     def principal(self):
-        peixinho=Peixe()
+        #peixinho=Peixe()
+        mickey_feio=MickeyFeio()
+
+
+class MickeyFeio():
+    def __init__(self):
+        "Construtor do ser marinho, definindo um esqueleto(frame) e desenhando"
+        self.esqueleto=compound(self.desenha())
+
+    def desenha(self):
+        self.tamanho = t = 4.0
+        self.cauda_superior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*1/PHI4))
+        self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
+        self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
+        self.cauda_inferior.rotate(angle=-GRAUS_30, axis=EIXO_Z)
+
+    def desenha_o_corpo(self,cor,l=1,d=(0,0)):
+        return ellipsoid(
+                size=(PHI*l,l,l/PHI),pos=d,color=cor
+            )
 
 
 class Peixe():
