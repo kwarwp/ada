@@ -45,6 +45,7 @@ class MickeyFeio():
 
     def desenha(self):
         self.tamanho = t = 4.0
+        self.cor_cauda = cor_cauda = color.black
         self.cauda_superior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*1/PHI4))
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
         self.cauda_superior.rotate(angle=GRAUS_30, axis=EIXO_Z)
