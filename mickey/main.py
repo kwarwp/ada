@@ -45,6 +45,7 @@ class MickeyFeio():
 
     def desenha(self):
         self.tamanho = t = 4.0
+        self.corpo = self.desenha_o_corpo(self.cor_do_corpo,l=t)
         self.cor_cauda = cor_cauda = color.black
         self.cauda_superior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*1/PHI4))
         self.cauda_inferior=self.desenha_o_corpo(cor_cauda,l=t*1/PHI**2,d= (t*1.5/PHI,t*-1/PHI4))
@@ -53,7 +54,8 @@ class MickeyFeio():
         return [self.cauda_superior, self.cauda_inferior]
     def desenha_o_corpo(self,cor,l=1,d=(0,0)):
         return ellipsoid(
-                size=(PHI*l,l,l/PHI),pos=d,color=cor
+                # size=(PHI*l,l,l/PHI),pos=d,color=cor
+                size=(l/PHI,l,PHI*l),pos=d,color=cor
             )
 
 
