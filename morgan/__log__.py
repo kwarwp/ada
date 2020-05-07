@@ -22,3 +22,10 @@ NameError: name 'teste' is not defined
         ^
 SyntaxError: missing parenthesis in call to 'print'
 '''},
+{'date': 'Thu May 07 2020 20:13:45.335 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 3
+  print 'teste'
+        ^
+SyntaxError: missing parenthesis in call to 'print'
+'''},
