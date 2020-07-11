@@ -1,5 +1,5 @@
 # ada.kellee.main.py
-texto = "Vovó viu a maçã"
+texto = "Vovó viu a maçã ubiqüa"
 from _spy.vitollino.main import Cena,Elemento,Texto,STYLE,Dragger, Droppable, INVENTARIO
 STYLE["width"] = 800
 STYLE["height"] = "600px"
