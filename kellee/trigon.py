@@ -1,13 +1,13 @@
 # ada.kellee.trigon.py
 # SPDX-License-Identifier: GPL-3.0-or-later
-""" Projeto sem descrição, (mude esta linha).
+""" Vendo a maçã.
 
-.. codeauthor:: Nome Sobrenome <mail@local.tipo>
+.. codeauthor:: Carlo Oliveira <carlo@ufrj.br>
 
 Changelog
 ---------
 .. versionadded::    20.07
-        Descreva o que você adicionou no código.
+        adicionou nome *texto*.
 
 """
 texto = "Vovó viu a maçã"
