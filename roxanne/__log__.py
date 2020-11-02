@@ -390,3 +390,24 @@ AttributeError: 'module' object has no attribute 'case'
     class Testing(unittest.case.TestCase):
 AttributeError: 'module' object has no attribute 'case'
 '''},
+{'date': 'Mon Nov 02 2020 12:11:55.252 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Tuplethora 0.1 <Object object> [(-1, 0, 0), (0, -1, 0), (0, 0, -1), (0, 0, 1), (0, 1, 0), (1, 0, 0)]
+Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 232
+    main()
+  module <module> line 229
+    TABULEIRO = Tabuleiro()
+  module <module> line 145
+    shuffle(pecas)
+TypeError: 'module' object is not callable
+'''},
