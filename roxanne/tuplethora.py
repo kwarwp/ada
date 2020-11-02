@@ -23,7 +23,7 @@ Tuplethora - A 3D game as variation of tic-tac-toe
 In Tuplethora you combine the properties of blobs to win.
 """
 __version__ = 0.1
-from __random import shuffle
+from random import shuffle
 from browser import doc, timer
 from math import ceil
 from glow import *
