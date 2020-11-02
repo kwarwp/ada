@@ -67,7 +67,7 @@ class Peca:
         self.peca.pos = vec(VAO*x, VAO*y, VAO*z)
 
     def vanish(self):
-        print("vanish", self.tipo, self.peca)
+        # print("vanish", self.tipo, self.peca)
         self.peca.visible = False
 
     def create(self, peca=0):
@@ -106,7 +106,7 @@ class Casa:
             tipo = self.peca.tipo + 1
             self.peca.vanish()
             peca.vanish()
-            print("recebevanish", self.peca.tipo, self.peca.pos, peca.tipo, peca.pos)
+            # print("recebevanish", self.peca.tipo, self.peca.pos, peca.tipo, peca.pos)
             peca.create(tipo)
         self.peca = peca
         self.peca.move(self.pos)
@@ -225,7 +225,7 @@ class Tabuleiro:
 
 def main():
     global TABULEIRO
-    print('Tuplethora %s' % __version__, color, FOCO)
+    # print('Tuplethora %s' % __version__, color, FOCO)
     TABULEIRO = Tabuleiro()
 
 if __name__ == "__main__":
