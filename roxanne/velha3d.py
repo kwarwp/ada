@@ -16,8 +16,8 @@ from math import ceil
 from _spy.vpython.main import *
 from browser import doc
 #from urllib import unquote
-def unquote(txt):
-    return txt.replace("&quot;", "\"")
+#def unquote(txt):
+#    return txt.replace(""", "\"")
 TAM = (-1, 0, 1)
 SP = 9
 SZ = 4
@@ -243,7 +243,7 @@ TABULEIRO = None
 def main():
     global TABULEIRO
     doc['pydiv'].html = ""
-    _gs = glow('pydiv')
+    _gs = Glow('pydiv')
     cena = canvas()
     cena.width = 600
     cena.height = 600
