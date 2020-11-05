@@ -10,7 +10,7 @@ Changelog
         Código em https://github.com/carlotolla/velha3d
 
 """
-from random import shuffle
+from random import shuffle, choice
 from browser import doc, timer
 from math import ceil
 from _spy.vpython.main import *
