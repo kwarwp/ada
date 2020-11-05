@@ -49,7 +49,8 @@ class Casa:
 
     def __init__(self, x, y, z):
         self.pos = (x*SP, y*SP, z*SP)
-        self.e_casa = sphere(pos=self.pos, size=(SZ, SZ, SZ), opacity=0.2)
+        tam = SZ /2
+        self.e_casa = sphere(pos=self.pos, size=(tam, tam, tam), opacity=0.2)
         Casa.CASAS[self.pos] = self  # adiciona esta casa na coleção de casas
         self.peca = None
 
