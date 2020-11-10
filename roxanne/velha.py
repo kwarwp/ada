@@ -113,10 +113,14 @@ def main():
     cena = canvas()
     cena.width = 900
     cena.height = 600
-    box(pos=(0, 0, 0), size=(300, 300, 20), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
+    box(pos=(0, 0, 0), size=(310, 310, 20), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
     cylinder(pos=(-150, 50, 20), size=(300, 20, 10), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
     cylinder(pos=(-150, -50, 20), size=(300, 20, 10), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
+    cylinder(pos=(-150, 150, 20), size=(300, 20, 10), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
+    cylinder(pos=(-150, -150, 20), size=(300, 20, 10), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
     cylinder(pos=(-50, -150, 20), size=(300, 20, 10), axis=(0, 1, 0), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
+    cylinder(pos=(150, -150, 20), size=(300, 20, 10), axis=(0, 1, 0), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
+    cylinder(pos=(-150, -150, 20), size=(300, 20, 10), axis=(0, 1, 0), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
     cylinder(pos=(50, -150, 20), size=(300, 20, 10), axis=(0, 1, 0), texture="https://i.imgur.com/X1mxjn2b.jpg") #"https://i.imgur.com/0ezlRYUb.jpg")
     cylinder(pos=(0, 0, 20), size=(20, 70, 70), axis=(0, 0, 1), texture="https://i.imgur.com/IPcmVFnb.jpg")
     box(pos=(-100, -100, 20), size=(20, 70, 20), axis=(1, 1, 0), texture="https://i.imgur.com/d5fWaoab.jpg")
