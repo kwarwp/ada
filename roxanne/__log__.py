@@ -484,3 +484,10 @@ Traceback (most recent call last):
     casa_da_jogada = choice(self.casas)  # choice(TABULEIRO)  # TABULEIRO[0]
 NameError: name 'choice' is not defined
 '''},
+{'date': 'Tue Nov 10 2020 13:49:08.781 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 108
+  from _spy.vpython.main import *
+                                ^
+SyntaxError: import * only allowed at module level
+'''},
