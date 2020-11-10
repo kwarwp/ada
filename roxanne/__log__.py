@@ -502,3 +502,7 @@ Exception: <SyntaxError: missing ] in computed property name>
                                                               ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Nov 10 2020 13:59:36.43 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <SyntaxError: missing ] in computed property name>
+'''},
