@@ -117,7 +117,7 @@ def main():
     cylinder(pos=(0, 0, 30), size=(20, 70, 70), axis=(0, 0, 1), texture="https://i.imgur.com/IPcmVFnb.jpg")
     box(pos=(100, 100, 30), size=(60, 60, 60), texture="https://i.imgur.com/d5fWaoab.jpg")
     box(pos=(-100, -100, 30), size=(20, 70, 20), axis=(1, 1, 0), texture="https://i.imgur.com/d5fWaoab.jpg")
-    box(pos=(100, 100, 30), size=(70, 20, 20), axis=(1, 1, 0), texture="https://i.imgur.com/d5fWaoab.jpg")
+    box(pos=(-100, -100, 30), size=(70, 20, 20), axis=(1, 1, 0), texture="https://i.imgur.com/d5fWaoab.jpg")
 
 
 if __name__ == "__main__":
