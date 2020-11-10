@@ -491,3 +491,7 @@ NameError: name 'choice' is not defined
                                 ^
 SyntaxError: import * only allowed at module level
 '''},
+{'date': 'Tue Nov 10 2020 13:55:52.951 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <SyntaxError: missing ] in computed property name>
+'''},
