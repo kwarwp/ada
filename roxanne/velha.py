@@ -114,7 +114,7 @@ def main():
     cena.width = 900
     cena.height = 600
     box(pos=(0, 0, 0), size=(300, 300, 30), texture="https://i.imgur.com/0ezlRYUb.jpg")
-    cylinder(pos=(0, 0, 30), size=(90, 30, 90), axis=(0, 0, 1) texture="https://i.imgur.com/IPcmVFnb.jpg")
+    cylinder(pos=(0, 0, 30), size=(90, 90, 30), axis=(0, 0, 1), texture="https://i.imgur.com/IPcmVFnb.jpg")
     box(pos=(100, 100, 30), size=(90, 90, 30), texture="https://i.imgur.com/d5fWaoab.jpg")
 
 
