@@ -100,5 +100,18 @@ def main():
     print(jogo.vencedor())
 
 
+
+def main():
+    """ Coloca pinos aleatoriamente nas casas.
+    
+    """
+    from _spy.vpython.main import *
+    _gs=Glow("pydiv")
+    cena = canvas()
+    cena.width = 900
+    cena.height = 600
+    box(pos=(0, 0, 0), size=(300, 300, 10), texture="https://i.imgur.com/0ezlRYUb.jpg")
+
+
 if __name__ == "__main__":
     main()
