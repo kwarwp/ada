@@ -495,3 +495,10 @@ SyntaxError: import * only allowed at module level
 'error': '''
 Exception: <SyntaxError: missing ] in computed property name>
 '''},
+{'date': 'Tue Nov 10 2020 13:58:08.272 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 117
+  cylinder(pos=(0, 0, 30), size=(90, 30, 90), axis=(0, 0, 1) texture="https://i.imgur.com/IPcmVFnb.jpg")
+                                                              ^
+SyntaxError: invalid syntax
+'''},
