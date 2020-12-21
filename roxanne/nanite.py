@@ -11,7 +11,7 @@ Changelog
 
 """
 class Nanite:
-    IMGUR = "ig/{}"
+    IMGUR = "https://i.imgur.com/{}"
     CENAS = [
     'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
@@ -33,7 +33,7 @@ class Nanite:
         ['SV', 'SL', 'LS', 'LV']]
         quads = []
         self.mundo = {}
-        setores = [s for l in self.setores for s in l]
+        setores = [s for l in self.setores for s in l][:2]
         quadrantes = [s for l in self.quadrantes for s in l]
         for setor in setores:
             for quadrante in quadrantes:
