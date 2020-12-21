@@ -11,6 +11,7 @@ Changelog
 
 """
 class Nanite:
+    IMGUR = "ig/{}"
     CENAS = [
     'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
@@ -32,9 +33,10 @@ class Nanite:
         ['SV', 'SL', 'LS', 'LV']]
         quads = []
         self.mundo = {}
-        
-        for setor in self.setores:
-            for quadrante in self.quadrantes:
+        setores = [s for l in self.setores for s in l]
+        quadrantes = [s for l in self.quadrantes for s in l]
+        for setor in setores:
+            for quadrante in quadrantes:
                 shuffle(cenas)
                 quad = cenas[:4]
                 while quad in quads:
@@ -42,7 +44,7 @@ class Nanite:
                     quad = cenas[:4]
                 quads.append(quad)
                 self.mundo.update({setor+quadrante:{
-                p_cardeal:self.IMGUR.format(img)for p_cardel, img in zip("nlso", quad)}})
+                p_cardeal:self.IMGUR.format(img)for p_cardeal, img in zip("nlso", quad)}})
     
 if __name__ == "__main__":
     from _spy.vitollino.main import Jogo
