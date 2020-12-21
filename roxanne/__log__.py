@@ -561,3 +561,10 @@ AttributeError: 'module' object has no attribute 'case'
                           ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Mon Dec 21 2020 16:09:42.482 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  print([x.split("/")[-1] fox x in Nanite.CENAS.split()])
+                           ^
+SyntaxError: invalid syntax
+'''},
