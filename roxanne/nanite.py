@@ -1,33 +1,30 @@
 # ada.roxanne.nanite.py
 # SPDX-License-Identifier: GPL-3.0-or-later
-""" Projeto sem descrição, (mude esta linha).
+""" Game Resgate dos Nanites.
 
-.. codeauthor:: Nome Sobrenome <mail@local.tipo>
+.. codeauthor:: Carlo Oliveira <carlo@ufrj.br>
 
 Changelog
 ---------
 .. versionadded::    20.12
-        Descreva o que você adicionou no código.
+        Mapa da região.
 
 """
 class Nanite:
-    CENAS = """https://imgur.com/q308L34
-https://imgur.com/v1CVsjO
-https://imgur.com/7cXtyqA
-https://imgur.com/jHnybc0
-https://imgur.com/WyiiE0T
-https://imgur.com/KZoXpRI
-https://imgur.com/iILubFM
-https://imgur.com/regZ51L
-https://imgur.com/fUDoUc0
-https://imgur.com/CljPeMU
-https://imgur.com/bDqM8oP
-https://imgur.com/SghQp9q
-https://imgur.com/o8Hj2F4
-https://imgur.com/ctDxOKA
-https://imgur.com/gWvkAiR
-https://imgur.com/SJ428kZ
-https://imgur.com/kQWpngJ"""
+    CENAS = [
+    'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
+    'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
+    'o8Hj2F4', 'ctDxOKA', 'gWvkAiR', 'SJ428kZ', 'kQWpngJ']
+    def __init__(j):
+        self.quadrantes = """
+occipital CO 	frontal CF 	parietal CP
+endocrino menor EE 	respiratório RE 	sensorial SN
+tegumentar TE 	digestório DI 	cardiovascular CA
+torso muscular TO 	endócrino EC 	endócrino maior EA
+membro muscular MM 	excretor EX 	reprodutor RX
+esquelético menor SE 	esquelético SC 	esquelético maior SA
+"""
     
 if __name__ == "__main__":
-    print(x.split("/")[-1] fox x in Nanite.CENAS.split())
+    from _spy.vitollino.main import Jogo
+    print([[x[-2:] for x in l.split(" 	")] for l in Nanite(j).quadrantes.split()])
