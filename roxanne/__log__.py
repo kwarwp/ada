@@ -568,3 +568,10 @@ SyntaxError: invalid syntax
                            ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Mon Dec 21 2020 16:09:53.453 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  print([x.split("\/")[-1] fox x in Nanite.CENAS.split()])
+                            ^
+SyntaxError: invalid syntax
+'''},
