@@ -23,9 +23,13 @@ class Nanite:
         ['TO', 'EC', 'EA'],
         ['MM', 'EX', 'RX'],
         ['SE', 'SC', 'SA']]
-        self.quadrantes = "OV ON NO NV, OS O N NL, SO S L LN, SV SL LS LV"
+        self.quadrantes = [
+        ['OV', 'ON', 'NO', 'NV'],
+        ['OS', 'OM', 'NM', 'NL'],
+        ['SO', 'SM', 'LM', 'LN'],
+        ['SV', 'SL', 'LS', 'LV']]
     
 if __name__ == "__main__":
     from _spy.vitollino.main import Jogo
     import re
-    print([re.findall(r" ([A-Z]+)",l) for l in Nanite(Jogo).quadrantes.split("\n")])
+    print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
