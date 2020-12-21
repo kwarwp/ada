@@ -16,6 +16,8 @@ class Nanite:
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
     'o8Hj2F4', 'ctDxOKA', 'gWvkAiR', 'SJ428kZ', 'kQWpngJ']
     def __init__(self, j):
+        from random import shuffle
+        cenas = self.CENAS[:]
         self.setores = [
         ['CO', 'CF', 'CP'],
         ['EE', 'RE', 'SN'],
@@ -28,8 +30,22 @@ class Nanite:
         ['OS', 'OM', 'NM', 'NL'],
         ['SO', 'SM', 'LM', 'LN'],
         ['SV', 'SL', 'LS', 'LV']]
+        quads = []
+        self.mundo = {}
+        
+        for setor in self.setores:
+            for quadrante in self.quadrantes:
+                shuffle(cenas)
+                quad = cenas[:4]
+                while quad in quads:
+                    shuffle(cenas)
+                    quad = cenas[:4]
+                quads.append(quad)
+                self.mundo.update({setor+quadrante:{
+                p_cardeal:self.IMGUR.format(img)for p_cardel, img in zip("nlso", quad)}})
     
 if __name__ == "__main__":
     from _spy.vitollino.main import Jogo
     import re
-    print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
+    #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
+    print(Nanite(Jogo).mundo)
