@@ -46,14 +46,13 @@ class Nanite:
                 self.mundo.update({setor+quadrante:{
                 p_cardeal:self.IMGUR.format(img)for p_cardeal, img in zip("nlso", quad)}})
         self.salas = j.q(**self.mundo)
-        self.minilines = [[setor+quadrante for quadrante in quadrantes] for setor in setores]
         self.minilines = [
             [setor+quadrante for setor in setlinha for quadrante in quadlinha]
             for setlinha in self.setores for quadlinha in self.quadrantes][:4]
-        return
-        for y, line in enumerate(minilines):
+        #return
+        for y, line in enumerate(self.minilines):
             for x, quad in enumerate(line):
-                nome_sala, nome_norte, nome_leste = quad, miniline[y-1][x], miniline[y][x-1]
+                nome_sala, nome_norte, nome_leste = quad, self.minilines[y-1][x], self.minilines[y][x-1]
                 self.mapear(nome_sala, nome_norte, nome_leste)
         self.salas.COOV.norte.vai()
     def mapear(self, sala, norte, leste):
