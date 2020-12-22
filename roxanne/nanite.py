@@ -13,7 +13,7 @@ Changelog
 class Swap:
     def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
         swap = self
-        class Peca(j.e):
+        class Peca(j.a):
             def __init__(self, local, indice):
                 lx, ly = x+local%dw, y+local//dw
                 px, py = x+indice%dw, y+indice//dw
@@ -48,8 +48,8 @@ class Swap:
         pecas = list(range(dw*dh))
         nomes = [chr(c) for c  in range(10496,10496+dw*dh)]
         shuffle(pecas)
-        self.dropper = {nome:self.swap for nome in nomes}
-        pw, ph = w//dw, h //dh
+        #self.dropper = {nome:self.swap for nome in nomes}
+        #pw, ph = w//dw, h //dh
         self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
         
 
