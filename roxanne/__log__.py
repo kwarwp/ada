@@ -816,3 +816,23 @@ AttributeError: 'Sala' object has no attribute 'CPNV'
     class Peca(j.e):
 AttributeError: 'Jogo' object has no attribute 'e'
 '''},
+{'date': 'Tue Dec 22 2020 20:51:14.922 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 113
+    n = Nanite(JOGO)
+  module <module> line 101
+    Swap(j,"https://imgur.com/vY0Gdei",inicio)
+  module <module> line 51
+    self.dropper = {nome:self.swap for nome in nomes}
+AttributeError: 'Swap' object has no attribute 'swap'
+'''},
