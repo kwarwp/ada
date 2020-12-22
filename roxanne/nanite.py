@@ -11,7 +11,7 @@ Changelog
 
 """
 class Nanite:
-    IMGUR = "https://i.imgur.com/{}"
+    IMGUR = "https://i.imgur.com/{}.jpg"
     CENAS = [
     'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
@@ -49,7 +49,8 @@ class Nanite:
         self.salas.COOV.norte.vai()
     
 if __name__ == "__main__":
-    from _spy.vitollino.main import JOGO
+    from _spy.vitollino.main import JOGO, STYLE
+    STYLE.update(width=1000, height=650)
     import re
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
     print(Nanite(JOGO).mundo)
