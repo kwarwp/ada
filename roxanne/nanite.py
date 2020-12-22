@@ -56,6 +56,7 @@ class Nanite:
                 self.mapear(nome_sala, nome_norte, nome_leste)
         self.salas.COOV.norte.vai()
     def mapear(self, sala, norte, leste):
+        sala, norte, leste = getattr(self.salas, sala), getattr(self.salas, norte), getattr(self.salas, leste)
         sala.norte.meio = norte.norte
         norte.sul.meio = sala.sul
         sala.leste.meio = leste.leste
