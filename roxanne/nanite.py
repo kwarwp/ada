@@ -11,9 +11,17 @@ Changelog
 
 """
 class Swap:
-    def __init__(self, j, img, w=900,h=400,x=100,y=50,dw=3,dh=3):
+    def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
         swap = self
         class Peca(j.e):
+            def __init__(self, local, indice):
+                lx, ly = x+local%dw, y+local//dw
+                px, py = x+indice%dw, y+indice//dw
+                pw, ph = w//dw, h//dh
+                super().__init__(img, x=lx, y=ly, w=pw, h=ph, drag=True, cena=cena)
+                self.siz = (pw, ph)
+                self.elt.Id = "_swap_{indice}"
+                self.pos = (-px, -py)
             def drop(self, ev):
                 ev.preventDefault()
                 ev.stopPropagation()
@@ -31,9 +39,8 @@ class Swap:
 
         def cria_peca(indice):
             px, py = x+indice%dw, y+indice//dw
-            peca = j.e(img, x=px, y=py, w=pw, h=ph, drag=True, drop=self.dropper)
+            peca = Peca(img, x=px, y=py, w=pw, h=ph, drag=True)
             peca.siz = (w, h)
-            c
             peca.elt.Id = "_swap_{indice}"
             peca.pos = (-px, -py)
             return peca
@@ -43,8 +50,7 @@ class Swap:
         shuffle(pecas)
         self.dropper = {nome:self.swap for nome in nomes}
         pw, ph = w//dw, h //dh
-        self.pecas = [cria_peca(indice) for indice in pecas]
-    def dropper(self, peca):
+        self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
         
 
 class Nanite:
@@ -91,7 +97,9 @@ class Nanite:
             for x, quad in enumerate(line):
                 nome_sala, nome_norte, nome_leste = quad, self.minilines[y-1][x], self.minilines[y][x-1]
                 self.mapear(nome_sala, nome_norte, nome_leste)
-        self.salas.COOV.norte.vai()
+        inicio = self.salas.COOV.norte
+        Swap(j,"https://imgur.com/vY0Gdei",inicio)
+        inicio.vai()
     def mapear(self, sala, norte, leste):
         sala, norte, leste = getattr(self.salas, sala), getattr(self.salas, norte), getattr(self.salas, leste)
         sala.norte.meio = norte.norte
