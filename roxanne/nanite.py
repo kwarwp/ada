@@ -51,6 +51,6 @@ class Nanite:
 if __name__ == "__main__":
     from _spy.vitollino.main import JOGO, STYLE
     STYLE.update(width=1000, height=650)
-    import re
+    Nanite(JOGO)
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
-    print(Nanite(JOGO).mundo)
+    #print(Nanite(JOGO).mundo)
