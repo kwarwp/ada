@@ -76,7 +76,7 @@ class Nanite:
         ['SV', 'SL', 'LS', 'LV']]
         quads = []
         self.mundo = {}
-        setores = [s for l in self.setores for s in l][:2]
+        setores = [s for l in self.setores for s in l]
         quadrantes = [s for l in self.quadrantes for s in l]
         for setor in setores:
             for quadrante in quadrantes:
