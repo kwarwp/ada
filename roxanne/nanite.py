@@ -10,6 +10,43 @@ Changelog
         Mapa da região.
 
 """
+class Swap:
+    def __init__(self, j, img, w=900,h=400,x=100,y=50,dw=3,dh=3):
+        swap = self
+        class Peca(j.e):
+            def drop(self, ev):
+                ev.preventDefault()
+                ev.stopPropagation()
+                src_id = ev.data['text']
+                tit = int(src_id.split('_')[-1])
+                self.dropped(ev, tit)
+                
+            def dropped(self, ev, indice):
+                swap[indice].pra_la(self, self.x, self.y)
+            def pra_la(self, peca, x, y):
+                peca.pra_ca(self.x, self.y)
+                self.x, self.y = x, y
+            def pra_ca(self, x, y):
+                self.x, self.y = x, y
+
+        def cria_peca(indice):
+            px, py = x+indice%dw, y+indice//dw
+            peca = j.e(img, x=px, y=py, w=pw, h=ph, drag=True, drop=self.dropper)
+            peca.siz = (w, h)
+            c
+            peca.elt.Id = "_swap_{indice}"
+            peca.pos = (-px, -py)
+            return peca
+        from random import shuffle
+        pecas = list(range(dw*dh))
+        nomes = [chr(c) for c  in range(10496,10496+dw*dh)]
+        shuffle(pecas)
+        self.dropper = {nome:self.swap for nome in nomes}
+        pw, ph = w//dw, h //dh
+        self.pecas = [cria_peca(indice) for indice in pecas]
+    def dropper(self, peca):
+        
+
 class Nanite:
     IMGUR = "https://i.imgur.com/{}.jpg"
     CENAS = [
