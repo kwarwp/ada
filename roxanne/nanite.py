@@ -46,11 +46,26 @@ class Nanite:
                 self.mundo.update({setor+quadrante:{
                 p_cardeal:self.IMGUR.format(img)for p_cardeal, img in zip("nlso", quad)}})
         self.salas = j.q(**self.mundo)
+        self.minilines = [[setor+quadrante for quadrante in quadrantes] for setor in setores]
+        self.minilines = [
+            [setor+quadrante for setor in setlinha for quadrante in quadlinha]
+            for setlinha in self.setores for quadlinha in self.quadrantes][:4]
+        return
+        for y, line in enumerate(minilines):
+            for x, quad in enumerate(line):
+                nome_sala, nome_norte, nome_leste = quad, miniline[y-1][x], miniline[y][x-1]
+                self.mapear(nome_sala, nome_norte, nome_leste)
         self.salas.COOV.norte.vai()
+    def mapear(self, sala, norte, leste):
+        sala.norte.meio = norte.norte
+        norte.sul.meio = sala.sul
+        sala.leste.meio = leste.leste
+        leste.oeste.meio = sala.oeste
     
 if __name__ == "__main__":
     from _spy.vitollino.main import JOGO, STYLE
     STYLE.update(width=1150, height="600px")
-    Nanite(JOGO)
+    n = Nanite(JOGO)
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
     #print(Nanite(JOGO).mundo)
+    print(n.minilines)
