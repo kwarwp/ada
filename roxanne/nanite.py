@@ -45,9 +45,11 @@ class Nanite:
                 quads.append(quad)
                 self.mundo.update({setor+quadrante:{
                 p_cardeal:self.IMGUR.format(img)for p_cardeal, img in zip("nlso", quad)}})
+        self.salas = j.s(**self.mundo)
+        self.salas.COOV.norte.vai()
     
 if __name__ == "__main__":
-    from _spy.vitollino.main import Jogo
+    from _spy.vitollino.main import JOGO
     import re
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
-    print(Nanite(Jogo).mundo)
+    print(Nanite(JOGO).mundo)
