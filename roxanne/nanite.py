@@ -82,6 +82,7 @@ class Nanite:
                 self.mundo.update({setor+quadrante:{
                 p_cardeal:self.IMGUR.format(img)for p_cardeal, img in zip("nlso", quad)}})
         self.salas = j.q(**self.mundo)
+        self.limbo = j.c("")
         self.minilines = [
             [setor+quadrante for setor in setlinha for quadrante in quadlinha]
             for setlinha in self.setores for quadlinha in self.quadrantes][:4]
@@ -96,10 +97,10 @@ class Nanite:
             self.glow.o = self.glotim
         def game (ev):
             Swap(j,"https://i.imgur.com/GtQUoA5.png",inicio, dw=4)
-        inicio = self.salas.COOV.norte
+        self.inicio = inicio = self.salas.COOV.norte
         #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
-        self.glow = j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, h=20, o=0.1, cena= inicio)
-        self.glow.elt.style.transition= "opacity 1s 4s"
+        self.glow = j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, h=20, o=0.1, cena= self.limbo)
+        self.glow.elt.style.transition= "opacity 1s 1s"
         #self.glow.elt.style.transitionProperty= "opacity"
         #self.glow.elt.style.transitionDuration= "1s"
         #self.glow.elt.style.transitionDelay= "4s"
@@ -118,11 +119,18 @@ class Nanite:
         norte.sul.meio = sala.sul
         sala.leste.meio = leste.leste
         leste.oeste.meio = sala.oeste
+    def blink(self, ev=0):
+        self.glotim = 0 if self.glotim else 1
+        self.glow.enter(self.inicio if self.glotim else self.limbo)
+        self.glow.o = self.glotim
+        
     
 if __name__ == "__main__":
     from _spy.vitollino.main import JOGO, STYLE
+    from browser.timer import set_interval as sti
     STYLE.update(width=1150, height="600px")
     n = Nanite(JOGO)
+    sti(n.blink, "200")
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
     #print(Nanite(JOGO).mundo)
     #print(n.minilines)
