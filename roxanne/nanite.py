@@ -116,4 +116,4 @@ if __name__ == "__main__":
     n = Nanite(JOGO)
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
     #print(Nanite(JOGO).mundo)
-    print(n.minilines)
+    #print(n.minilines)
