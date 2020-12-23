@@ -20,7 +20,7 @@ class Swap:
                 px, py = indice%dw*pw, indice//dw*ph
                 super().__init__(img, x=lx, y=ly, w=pw, h=ph, drag=True, cena=cena)
                 self.siz = (w, h)
-                self.elt.Id = f"_swap_{indice}"
+                self.elt.Id = f"_swap_{local}"
                 self.pos = (-px, -py)
                 self.elt.ondrop = lambda ev: self.drop(ev)
             def drop(self, ev):
