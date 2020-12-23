@@ -40,19 +40,9 @@ class Swap:
             def pra_ca(self, x, y):
                 self.x, self.y = x, y
 
-        def cria_peca(indice):
-            px, py = x+indice%dw, y+indice//dw
-            peca = Peca(img, x=px, y=py, w=pw, h=ph, drag=True)
-            peca.siz = (w, h)
-            peca.elt.Id = "_swap_{indice}"
-            peca.pos = (-px, -py)
-            return peca
         from random import shuffle
         pecas = list(range(dw*dh))
-        nomes = [chr(c) for c  in range(10496,10496+dw*dh)]
         shuffle(pecas)
-        #self.dropper = {nome:self.swap for nome in nomes}
-        #pw, ph = w//dw, h //dh
         self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
         
 
@@ -101,7 +91,7 @@ class Nanite:
                 nome_sala, nome_norte, nome_leste = quad, self.minilines[y-1][x], self.minilines[y][x-1]
                 self.mapear(nome_sala, nome_norte, nome_leste)
         inicio = self.salas.COOV.norte
-        Swap(j,"https://imgur.com/vY0Gdei.png",inicio)
+        #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
         inicio.vai()
     def mapear(self, sala, norte, leste):
         sala, norte, leste = getattr(self.salas, sala), getattr(self.salas, norte), getattr(self.salas, leste)
