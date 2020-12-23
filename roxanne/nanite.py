@@ -91,8 +91,11 @@ class Nanite:
                 nome_sala, nome_norte, nome_leste = quad, self.minilines[y-1][x], self.minilines[y][x-1]
                 self.mapear(nome_sala, nome_norte, nome_leste)
         def togg (ev):
+            #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
             self.glotim = 0 if self.glotim else 1
             self.glow.o = self.glotim
+        def game (ev):
+            Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
         inicio = self.salas.COOV.norte
         #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
         self.glow = j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, h=20, o=0.1, cena= inicio)
@@ -102,8 +105,10 @@ class Nanite:
         #glow.elt.setAttribute("style", "transition-duration: 1s;")
         #glow.elt.style.update = {
         #"transition-property":  "opacity","transition-duration": "1s","transition-delay": "4s",}
-        self.glow.ontransitionend = togg
-        self.glow.o = 1
+        self.glow.elt.ontransitionend = togg
+        self.glow.elt.onclick = game
+        #self.glow.o = 0
+        self.glow.o = 0.3
         self.glotim =1
         inicio.vai()
     def mapear(self, sala, norte, leste):
