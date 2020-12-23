@@ -843,3 +843,10 @@ AttributeError: 'Swap' object has no attribute 'swap'
                                                              ^
 SyntaxError: keyword argument repeated
 '''},
+{'date': 'Wed Dec 23 2020 11:12:12.845 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 97
+  glow.style.transitionDuration: "3s, 5s, 3s, 5s;"
+                                ^
+SyntaxError: invalid syntax
+'''},
