@@ -100,7 +100,7 @@ class Nanite:
         self.inicio = inicio = self.salas.COOV.norte
         #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
         self.glow = j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, h=20, o=0.1, cena= self.limbo)
-        self.glow.elt.style.transition= "opacity 1s 1s"
+        self.glow.elt.style.transition= "opacity 2s 2s"
         #self.glow.elt.style.transitionProperty= "opacity"
         #self.glow.elt.style.transitionDuration= "1s"
         #self.glow.elt.style.transitionDelay= "4s"
@@ -121,7 +121,7 @@ class Nanite:
         leste.oeste.meio = sala.oeste
     def blink(self, ev=0):
         self.glotim = 0 if self.glotim else 1
-        self.glow.enter(self.inicio if self.glotim else self.limbo)
+        self.glow.entra(self.inicio if self.glotim else self.limbo)
         self.glow.o = self.glotim
         
     
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     from browser.timer import set_interval as sti
     STYLE.update(width=1150, height="600px")
     n = Nanite(JOGO)
-    sti(n.blink, "200")
+    sti(n.blink, "500")
     #print([l.split()  for l in Nanite(Jogo).quadrantes.split(",")])
     #print(Nanite(JOGO).mundo)
     #print(n.minilines)
