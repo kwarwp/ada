@@ -95,13 +95,14 @@ class Nanite:
             self.glotim = 0 if self.glotim else 1
             self.glow.o = self.glotim
         def game (ev):
-            Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
+            Swap(j,"https://i.imgur.com/GtQUoA5.png",inicio, dw=4)
         inicio = self.salas.COOV.norte
         #Swap(j,"https://imgur.com/vY0Gdei.png",inicio, dw=4)
         self.glow = j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, h=20, o=0.1, cena= inicio)
-        self.glow.elt.style.transitionProperty= "opacity"
-        self.glow.elt.style.transitionDuration= "1s"
-        self.glow.elt.style.transitionDelay= "4s"
+        self.glow.elt.style.transition= "opacity 1s 4s"
+        #self.glow.elt.style.transitionProperty= "opacity"
+        #self.glow.elt.style.transitionDuration= "1s"
+        #self.glow.elt.style.transitionDelay= "4s"
         #glow.elt.setAttribute("style", "transition-duration: 1s;")
         #glow.elt.style.update = {
         #"transition-property":  "opacity","transition-duration": "1s","transition-delay": "4s",}
