@@ -22,14 +22,17 @@ class Swap:
                 self.siz = (w, h)
                 self.elt.Id = f"_swap_{indice}"
                 self.pos = (-px, -py)
+                self.elt.ondrop = lambda ev: self.drop(ev)
             def drop(self, ev):
                 ev.preventDefault()
                 ev.stopPropagation()
                 src_id = ev.data['text']
                 tit = int(src_id.split('_')[-1])
+                print(f"indice -> {indice}")
                 self.dropped(ev, tit)
                 
             def dropped(self, ev, indice):
+                print(f"indice -> {indice}")
                 swap[indice].pra_la(self, self.x, self.y)
             def pra_la(self, peca, x, y):
                 peca.pra_ca(self.x, self.y)
