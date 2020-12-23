@@ -15,9 +15,9 @@ class Swap:
         swap = self
         class Peca(j.a):
             def __init__(self, local, indice):
-                lx, ly = x+local%dw, y+local//dw
-                px, py = x+indice%dw, y+indice//dw
                 pw, ph = w//dw, h//dh
+                lx, ly = x+local%dw*pw, y+local//dw*ph
+                px, py = x+indice%dw*pw, y+indice//dw*pw
                 super().__init__(img, x=lx, y=ly, w=pw, h=ph, drag=True, cena=cena)
                 self.siz = (pw, ph)
                 self.elt.Id = f"_swap_{indice}"
@@ -98,7 +98,7 @@ class Nanite:
                 nome_sala, nome_norte, nome_leste = quad, self.minilines[y-1][x], self.minilines[y][x-1]
                 self.mapear(nome_sala, nome_norte, nome_leste)
         inicio = self.salas.COOV.norte
-        Swap(j,"https://imgur.com/vY0Gdei",inicio)
+        Swap(j,"https://imgur.com/vY0Gdei.png",inicio)
         inicio.vai()
     def mapear(self, sala, norte, leste):
         sala, norte, leste = getattr(self.salas, sala), getattr(self.salas, norte), getattr(self.salas, leste)
