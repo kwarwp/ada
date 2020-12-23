@@ -836,3 +836,10 @@ AttributeError: 'Jogo' object has no attribute 'e'
     self.dropper = {nome:self.swap for nome in nomes}
 AttributeError: 'Swap' object has no attribute 'swap'
 '''},
+{'date': 'Wed Dec 23 2020 11:07:03.727 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 95
+  j.a("https://i.imgur.com/PfodQmT.gif",x=400, y=400, w=20, y=20, o=0.3, cena= inicio)
+                                                             ^
+SyntaxError: keyword argument repeated
+'''},
