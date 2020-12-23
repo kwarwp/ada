@@ -28,11 +28,11 @@ class Swap:
                 ev.stopPropagation()
                 src_id = ev.data['text']
                 tit = int(src_id.split('_')[-1])
-                print(f"indice -> {indice}")
+                print(f"indice -> {tit}")
                 self.dropped(ev, tit)
                 
             def dropped(self, ev, indice):
-                print(f"indice -> {indice}")
+                print(f"indice, swap -> {indice}", swap[indice])
                 swap[indice].pra_la(self, self.x, self.y)
             def pra_la(self, peca, x, y):
                 peca.pra_ca(self.x, self.y)
