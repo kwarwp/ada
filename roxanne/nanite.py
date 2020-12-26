@@ -15,6 +15,7 @@ class Swap:
         swap = self
         class Peca(j.a):
             def __init__(self, local, indice):
+                self.indice = indice
                 pw, ph = w//dw, h//dh
                 lx, ly = x+local%dw*pw, y+local//dw*ph
                 px, py = indice%dw*pw, indice//dw*ph
@@ -39,11 +40,20 @@ class Swap:
                 self.x, self.y = x, y
             def pra_ca(self, x, y):
                 self.x, self.y = x, y
+            def __repr__(self):
+                return str(self.indice)
 
         from random import shuffle
         pecas = list(range(dw*dh))
+        self.correto = " ".join(pecas)
         shuffle(pecas)
         self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
+        self.resultado = [str(peca) for peca in self.pecas]
+    def montou(self, origem, destino):
+        self.resultado[origem], self.resultado[destino] = self.resultado[destino], self.resultado[origem]
+        resultado = " ".join(self.resultado)
+        print(resultado, correto)
+        return resultado == self.correto
         
 
 class Nanite:
