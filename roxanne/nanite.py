@@ -35,6 +35,7 @@ class Swap:
             def dropped(self, ev, indice):
                 print(f"indice, swap -> {indice}", swap.pecas[indice])
                 swap.pecas[indice].pra_la(self, self.x, self.y)
+                swap.montou(indice, self.indice)
             def pra_la(self, peca, x, y):
                 peca.pra_ca(self.x, self.y)
                 self.x, self.y = x, y
