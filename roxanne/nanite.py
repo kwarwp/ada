@@ -13,17 +13,25 @@ Changelog
 class Puzzle:
     def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
         swap = self
-        class Estrela(j.a):
-            def __init__(self, local, indice):
-                super().__init__("", x=x, y=y, w=20, h=20, cena=cena)
-                self.elt.style.backgroundColor = "orange"
+        class Brilho(j.a):
+            def __init__(self):
+                super().__init__("https://i.imgur.com/PfodQmT.gif", x=x, y=y, w=20, h=20, o=0.1, cena=cena)
                 self.elt.style.transition= "opacity 1s 1s"
-                self.elt.ontransitionend = self.togg
-                self.elt.onclick = self.game
-                #self.glow.o = 0
-                self.glow.o = 0
+                self.elt.ontransitionend = togg
+                self.elt.onclick = game
+                self.o = 0
                 self.glotim =1
-                
+            def blink(self, ev=0):
+                self.glotim = 0 if self.glotim else 1
+                #self.glow.entra(self.inicio if self.glotim else self.limbo)
+                self.glow.entra(self.inicio)
+                self.glow.o = 0.4 #self.glotim
+            def togg (ev):
+                self.glow.o = 0 #self.glotim
+            def game (ev):
+                Swap(j,"https://i.imgur.com/GtQUoA5.png",inicio, dw=4)
+        self.glow = Brilho()
+
 class Swap:
     def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
         swap = self
@@ -73,7 +81,6 @@ class Swap:
 
 class Nanite:
     IMGUR = "https://i.imgur.com/{}.jpg"
-    AMINO = "AoSXvNI"
     CENAS = [
     'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
