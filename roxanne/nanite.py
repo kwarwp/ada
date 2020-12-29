@@ -10,6 +10,20 @@ Changelog
         Mapa da região.
 
 """
+class Puzzle:
+    def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
+        swap = self
+        class Estrela(j.a):
+            def __init__(self, local, indice):
+                super().__init__("", x=x, y=y, w=20, h=20, cena=cena)
+                self.elt.style.backgroundColor = "orange"
+                self.elt.style.transition= "opacity 1s 1s"
+                self.elt.ontransitionend = self.togg
+                self.elt.onclick = self.game
+                #self.glow.o = 0
+                self.glow.o = 0
+                self.glotim =1
+                
 class Swap:
     def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3):
         swap = self
@@ -59,6 +73,7 @@ class Swap:
 
 class Nanite:
     IMGUR = "https://i.imgur.com/{}.jpg"
+    AMINO = "AoSXvNI"
     CENAS = [
     'q308L34', 'v1CVsjO', '7cXtyqA', 'jHnybc0', 'WyiiE0T', 'KZoXpRI',
     'iILubFM', 'regZ51L', 'fUDoUc0', 'CljPeMU', 'bDqM8oP', 'SghQp9q',
