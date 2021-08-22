@@ -16,13 +16,28 @@ WAT = "https://imgur.com/IqLSYQ9.gif"
 GAS = "https://i.imgur.com/nLM66LY.gif"
 SND = "https://imgur.com/EbHrNju.gif"
 STR = "https://imgur.com/3LJN7lT.gif"
+OBS = "https://i.imgur.com/MsE46fE.png"
+GLD = "https://i.imgur.com/hk2OfjS.png"
+TUR = "https://i.imgur.com/C1Es3kB.png"
+EX0 = "https://i.imgur.com/4PsMLZz.png"
 def qualquernome():
 
     cena1 = Cena(img = entrada)
     elm = Elemento(ALPHA, w=1200, h=800, cena=cena1)
     spd = Elemento(SPD, x=200, y=100, w=200, h=100, cena=cena1)
-    fir = Elemento(STR, x=0, y=0, w=1200, h=800, o=0.9, cena=cena1)
+    fir = Elemento(STR, x=0, y=0, w=1200, h=800, o=0.4, cena=cena1)
     elm.siz = (2400, 2400)
+    ex0 = Elemento(EX0, x=300, y=400, w=100, h=240, cena=cena1)
+    ex0 = Elemento(EX0, x=400, y=450, w=100, h=240, cena=cena1)
+    ex0 = Elemento(EX0, x=500, y=400, w=100, h=240, cena=cena1)
+    ex0 = Elemento(EX0, x=600, y=450, w=100, h=240, cena=cena1)
+    ex0 = Elemento(EX0, x=700, y=400, w=100, h=240, cena=cena1)
+    obs = Elemento(OBS, x=800, y=500, w=100, h=100, cena=cena1)
+    tum = Elemento(TUR, x=900, y=550, w=100, h=100, cena=cena1)
+    tur = Elemento(TUR, x=900, y=500, w=100, h=100, cena=cena1)
+    gol = Elemento(GLD, x=1000, y=550, w=100, h=100, cena=cena1)
+    gld = Elemento(GLD, x=1000, y=500, w=100, h=100, cena=cena1)
+
     '''
     elemento1 = Elemento(img = pixacao, style = dict(left=0, top=95,height= '505px', width= 250,bottom=20,))
     elemento2 = Elemento(img = portao, style = dict(left= 215, top=0,height= '600px', width= 575,bottom=0))
