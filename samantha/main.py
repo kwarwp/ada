@@ -25,7 +25,7 @@ def qualquernome():
     cena1 = Cena(img = entrada)
     elm = Elemento(ALPHA, w=1200, h=800, cena=cena1)
     spd = Elemento(SPD, x=200, y=100, w=200, h=100, cena=cena1)
-    fir = Elemento(STR, x=0, y=0, w=1200, h=800, o=0.4, cena=cena1)
+    fir = Elemento(STR, x=0, y=0, w=1200, h=800, o=0.6, cena=cena1)
     elm.siz = (2400, 2400)
     ex0 = Elemento(EX0, x=300, y=400, w=100, h=240, cena=cena1)
     ex0 = Elemento(EX0, x=400, y=450, w=100, h=240, cena=cena1)
