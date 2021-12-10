@@ -4,6 +4,7 @@ from browser import html
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
 GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
+PETUNIO = "https://i.imgur.com/2KeouVt.png"
 
 class Abrigo:
     GW = 1350
@@ -21,6 +22,7 @@ class Gatil(Cena):
         #self.elt = html.DIV(style=STYLE, )
         self.dx, self.dy = x*Abrigo.DW, y*200, 
         self.cena = c = Elemento(img, x=0, y=0, w=1350, h=800, cena=self)
+        self.hero = h = Elemento(PETUNIO, x=400, y=350, w=250, h=200, cena=self)
         # self.elt.style.width = w
         c.siz = (Abrigo.IW, Abrigo.IH)
         c.pos = (-self.dx, -self.dy)
