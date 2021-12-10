@@ -17,6 +17,7 @@ class Abrigo:
 class Gatil(Cena):
     def __init__(self, img, x=0, y=0):
         super().__init__(img)
+        self.img = img
         #self.elt = html.DIV(style=STYLE, )
         self.dx, self.dy = x*Abrigo.DW, y*200, 
         self.cena = c = Elemento(img, x=0, y=0, w=1350, h=800, cena=self)
@@ -25,7 +26,7 @@ class Gatil(Cena):
         c.pos = (-self.dx, -self.dy)
     def vai(self):
         super().vai()
-        c0 = Elemento(img, x=140, y=340, w=200, h=200, cena=self)
+        c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     
 Gatil(GATIL_MOS).vai()
