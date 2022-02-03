@@ -1,5 +1,5 @@
 # ada.gatil.main.py
-from _spy.vitollino.main import Cena, STYLE, Elemento, Sala
+from _spy.vitollino.main import Cena, STYLE, Elemento, Sala, Labirinto
 from browser import html
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -37,6 +37,7 @@ class Gatil(Cena):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b = Sala(*[IM.format(lnk) for lnk in SB])
+        lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         sala_b.norte.vai()
     
 Gatil(GATIL_MOS).vai()
