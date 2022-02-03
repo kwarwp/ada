@@ -1,10 +1,13 @@
 # ada.gatil.main.py
-from _spy.vitollino.main import Cena, STYLE. Elemento
+from _spy.vitollino.main import Cena, STYLE, Elemento, Sala
 from browser import html
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
 GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
 PETUNIO = "https://i.imgur.com/2KeouVt.png"
+IM = "https://i.imgur.com/{}.jpg"
+SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
+SB = ["", "", "", ""]
 
 class Abrigo:
     GW = 1350
@@ -26,9 +29,12 @@ class Gatil(Cena):
         # self.elt.style.width = w
         c.siz = (Abrigo.IW, Abrigo.IH)
         c.pos = (-self.dx, -self.dy)
-    def vai(self):
+    def vai_(self):
         super().vai()
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
+    def vai(self):
+        sala_a = Sala(*[IM.format(lnk) for lnk in SA])
+        sala_a.norte.vai()
     
 Gatil(GATIL_MOS).vai()
