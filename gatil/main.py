@@ -7,7 +7,7 @@ GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
 PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
-SB = ["", "", "", ""]
+SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
 
 class Abrigo:
     GW = 1350
@@ -36,5 +36,7 @@ class Gatil(Cena):
     def vai(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
+        sala_b = Sala(*[IM.format(lnk) for lnk in SB])
+        sala_b.norte.vai()
     
 Gatil(GATIL_MOS).vai()
