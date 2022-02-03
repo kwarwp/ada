@@ -8,7 +8,7 @@ PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
 SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
-
+WIND = "https://imgur.com/3LJN7lT.gif"
 class Abrigo:
     GW = 1350
     GH = 800
@@ -38,6 +38,8 @@ class Gatil(Cena):
         sala_a.norte.vai()
         sala_b = Sala(*[IM.format(lnk) for lnk in SB])
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
+        self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
+        self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         sala_b.norte.vai()
     
 Gatil(GATIL_MOS).vai()
