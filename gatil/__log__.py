@@ -47,3 +47,10 @@ NameError: name 'img' is not defined
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
 NameError: name 'NADA' is not defined
 '''},
+{'date': 'Fri Feb 04 2022 08:39:05.484 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 40
+  class Hero(Elemento)
+                       ^
+SyntaxError: invalid syntax
+'''},
