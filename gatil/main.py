@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirint
 from browser import html
 from collections import namedtuple
 from random import randint
-GIRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
+GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
