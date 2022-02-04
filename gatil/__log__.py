@@ -61,3 +61,9 @@ SyntaxError: invalid syntax
                               ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Feb 04 2022 08:40:39.545 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: bases[i].$dict is undefined
+  module '$exec_339' line 5
+class P(Enum):
+'''},
