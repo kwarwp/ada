@@ -64,11 +64,13 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt):
         from browser import svg
+        s = svg.svg()
         circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
 
         #s = svg.Svg()
-        elt <= circle
+        elt <= s
+        s <= circle
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
