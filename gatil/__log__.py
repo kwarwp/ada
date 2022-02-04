@@ -74,3 +74,10 @@ class P(Enum):
                                                                                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Feb 04 2022 13:52:09.674 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 67
+  self.nome = nome
+            ^
+SyntaxError: keyword can't be an expression
+'''},
