@@ -43,8 +43,9 @@ class Rua(Cena):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
         class Stray(Elemento):
-            def __init__(self, x=0, y=0, w=130, h=130):
-                super().__init__(STRAY[randint(0,5)], x=x, y=y, w=w, h=h, cena=cena)
+            def __init__(self, x=0, y=0, w=80, h=80):
+                #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
+                super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, cena=cena)
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
@@ -87,14 +88,16 @@ class Gatil(Cena):
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0],[
-        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [950, 550]), (P.G, [340, 420])])
+        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
+        sala_b_args[1] = Rua(sala_b_args[1],[
+        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
         sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         # self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         # self.rain = r = Elemento(HAIL, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         # self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
-        self.stray = s = Elemento(IMP.format(STRAY[0]), x=600, y=550, w=130, h=100, cena=sala_b.norte)
+        # self.stray = s = Elemento(IMP.format(STRAY[0]), x=600, y=550, w=130, h=100, cena=sala_b.norte)
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
