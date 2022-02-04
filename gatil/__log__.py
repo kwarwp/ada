@@ -67,3 +67,10 @@ Exception: bases[i].$dict is undefined
   module '$exec_339' line 5
 class P(Enum):
 '''},
+{'date': 'Fri Feb 04 2022 09:40:04.520 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 48
+  super().__init__(IMP.format(STRAY[0], x=x, y=y, w=w, h=h, cena=cena)
+                                                                                ^
+SyntaxError: invalid syntax
+'''},
