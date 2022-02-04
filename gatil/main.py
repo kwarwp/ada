@@ -2,7 +2,8 @@
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
 from browser import html
 from collections import namedtuple
-P = namedtuple('Properties',"H T")(0, 1)
+from random import randint
+P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
 GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
@@ -39,10 +40,16 @@ class Rua(Cena):
             def __init__(self, x=0, y=0, w=130, h=100):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
-            def __init__(self, x=0, y=0, w=130, h=100):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, cena=cena)
+            def __init__(self, x=0, y=0, w=40, h=40):
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
+        class Stray(Elemento):
+            def __init__(self, x=0, y=0, w=130, h=130):
+                super().__init__(STRAY[randint(0,5)], x=x, y=y, w=w, h=h, cena=cena)
+        class Gui(Elemento):
+            def __init__(self, x=0, y=0, w=40, h=100):
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
         super().__init__(img)
-        self.props = p ={P.H: Hero, P.T: Trash}
+        self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui}
         [p[proname](*proargs) for proname, proargs  in props]
         self.img = img
     def vai_(self):
@@ -51,7 +58,7 @@ class Rua(Cena):
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def vai(self, *_):
         super().vai()
-        HERO.entra(self)
+        #HERO.entra(self)
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
@@ -79,7 +86,8 @@ class Gatil(Cena):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
-        sala_b_args[0] = Rua(sala_b_args[0],[(P.H, [300, 550]), (P.T, [300, 450])])
+        sala_b_args[0] = Rua(sala_b_args[0],[
+        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [950, 550]), (P.G, [340, 420])])
         sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
