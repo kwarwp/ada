@@ -64,7 +64,7 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt):
         from browser import svg
-        s = svg.svg( width="300" height="300")
+        s = svg.svg(xmlns="http://www.w3.org/2000/svg", version="1.1", viewBox="0 0 400 400", width="300", height="300")
         circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
 
