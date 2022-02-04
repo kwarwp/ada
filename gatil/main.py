@@ -88,6 +88,8 @@ class Gatil(Cena):
         super().vai()
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
+    def et_vai(self, *_):
+        self.et.x = 100
     def vai(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
@@ -110,7 +112,9 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
-        et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
+        self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte) #, vai=self.et_vai)
+        from browser import document
+        document['g1111'].bind('click', self.et_vai)
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
