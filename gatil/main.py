@@ -1,11 +1,8 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
 from browser import html
-from enum import Enum
-class P(Enum):
-    H = 1
-    T = 2
-    G = 3
+from collections import namedtuple
+P = namedtuple('Properties',"H T")(0, 1)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
 GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
@@ -37,14 +34,14 @@ class Abrigo:
 
 class Rua(Cena):
     def __init__(self, img, props=NO):
-        class Hero(Elemento)
-            def __init__(self,hero, x=0, y=0, w=1350, h=800):
-                super().__init__(hero, x=x, y=y, w=w, h=h)
-        class Trash(Elemento)
+        class Hero(Elemento):
             def __init__(self, x=0, y=0, w=1350, h=800):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h)
+        class Trash(Elemento):
+            def __init__(self, x=0, y=0, w=1350, h=800):
+                super().__init__(HALO, x=x, y=y, w=w, h=h)
         super().__init__(img)
-        self.props ={P.H: Hero, P.T}
+        self.props ={P.H: Hero, P.T: Trash}
         self.img = img
     def vai_(self):
         super().vai()
