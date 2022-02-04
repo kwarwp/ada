@@ -142,3 +142,23 @@ KeyError: g1111
                             ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Feb 04 2022 14:49:51.339 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 128
+    Gatil(GATIL_MOS).vai()
+  module <module> line 125
+    Thrash(sala_b.norte.elt)
+  module <module> line 67
+    s = svg.svg(xmlns="http://www.w3.org/2000/svg", version="1.1", viewBox="0 0 400 400", width="300", height="300")
+ValueError: can't set attribute xmlns
+'''},
