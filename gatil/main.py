@@ -1,6 +1,11 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
 from browser import html
+from enum import Enum
+class P(Enum):
+    H = 1
+    T = 2
+    G = 3
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
 GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
@@ -31,8 +36,15 @@ class Abrigo:
         super().__init__(img)
 
 class Rua(Cena):
-    def __init__(self, img, lixo=NO,  gente=NO,  video=NO,  stray=NO):
+    def __init__(self, img, props=NO):
+        class Hero(Elemento)
+            def __init__(self,hero, x=0, y=0, w=1350, h=800):
+                super().__init__(hero, x=x, y=y, w=w, h=h)
+        class Trash(Elemento)
+            def __init__(self, x=0, y=0, w=1350, h=800):
+                super().__init__(PETUNIO, x=x, y=y, w=w, h=h)
         super().__init__(img)
+        self.props ={P.H: Hero, P.T}
         self.img = img
     def vai_(self):
         super().vai()
@@ -44,7 +56,7 @@ class Rua(Cena):
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
-        self.cenas = [Rua(img) if isinstance(img, str) else img for img in [n, l, s, o]]
+        self.cenas = [Cena(img) if isinstance(img, str) else img for img in [n, l, s, o]]
         self.nome = nome
         Sala.c(**kwargs)
         self.p()
@@ -65,9 +77,9 @@ class Gatil(Cena):
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def vai(self):
-        sala_a = SalaVit(*[IM.format(lnk) for lnk in SA])
+        sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
-        sala_b = SalaVit(*[IM.format(lnk) for lnk in SB])
+        sala_b = Sala(*[IM.format(lnk) for lnk in SB])
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         # self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
