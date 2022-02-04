@@ -135,3 +135,10 @@ NameError: name 'GITRAW' is not defined
     document['g1111'].bind('click', self.et_vai)
 KeyError: g1111
 '''},
+{'date': 'Fri Feb 04 2022 14:41:57.446 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 67
+  s = svg.svg( width="300" height="300")
+                            ^
+SyntaxError: invalid syntax
+'''},
