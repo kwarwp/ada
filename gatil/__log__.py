@@ -54,3 +54,10 @@ NameError: name 'NADA' is not defined
                        ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Feb 04 2022 08:40:01.86 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 47
+  self.props ={P.H: Hero, P.T}
+                              ^
+SyntaxError: invalid syntax
+'''},
