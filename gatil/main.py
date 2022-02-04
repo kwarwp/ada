@@ -68,10 +68,12 @@ class Thrash:
         self.c = circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
         circle.bind('click', self.vai)
+        u = svg.use(href=GITRAW)
 
         #s = svg.Svg()
         elt <= s
         s <= circle
+        s <= u
     def vai(self, *_):
         self.c.cx =100
         
