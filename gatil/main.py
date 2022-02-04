@@ -62,9 +62,13 @@ class Rua(Cena):
         super().vai()
         #HERO.entra(self)
 class Thrash:
-    def __init__(self):
-        
-        et = Element(GATAR)
+    def __init__(self, elt):
+        from browser import svg
+        circle = svg.circle(cx=170, cy=220, r=100,
+                    stroke="black",stroke_width="2",fill="red")
+
+        #s = svg.Svg()
+        elt <= circle
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
@@ -113,11 +117,10 @@ class Gatil(Cena):
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
         self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte) #, vai=self.et_vai)
-        from browser import document
-        document['g1111'].bind('click', self.et_vai)
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
+        Thrash(sala_b.norte.elt)
         sala_b.norte.vai()
     
 Gatil(GATIL_MOS).vai()
