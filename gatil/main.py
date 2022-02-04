@@ -65,12 +65,16 @@ class Thrash:
     def __init__(self, elt):
         from browser import svg
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
-        circle = svg.circle(cx=170, cy=220, r=100,
+        self.c = circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
+        circle.bind('click', self.vai)
 
         #s = svg.Svg()
         elt <= s
         s <= circle
+    def vai(self, *_):
+        self.c.cx =100
+        
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
