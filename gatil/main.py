@@ -3,6 +3,7 @@ from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirint
 from browser import html
 from collections import namedtuple
 from random import randint
+GIRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -41,9 +42,9 @@ class Rua(Cena):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, cena=cena)
         class Stray(Elemento):
-            def __init__(self, x=0, y=0, w=80, h=80):
+            def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, cena=cena)
         class Gui(Elemento):
@@ -60,6 +61,10 @@ class Rua(Cena):
     def vai(self, *_):
         super().vai()
         #HERO.entra(self)
+class Thrash:
+    def __init__(self):
+        
+        et = Element(GATAR)
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
@@ -90,7 +95,11 @@ class Gatil(Cena):
         sala_b_args[0] = Rua(sala_b_args[0],[
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
         sala_b_args[1] = Rua(sala_b_args[1],[
-        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
+        (P.H, [310, 490]), (P.T, [540, 490]), (P.T, [780, 430, 150]), (P.G, [60, 510, 100]), (P.S, [980, 500])])
+        sala_b_args[2] = Rua(sala_b_args[2],[
+        (P.H, [100, 500]), (P.T, [780, 590, 60, 50]), (P.T, [840, 670]), (P.S, [850, 550]), (P.G, [390, 510, 80, 140])])
+        sala_b_args[3] = Rua(sala_b_args[3],[
+        (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550])])
         sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
@@ -101,6 +110,7 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
+        et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
