@@ -34,26 +34,28 @@ class Abrigo:
 
 class Rua(Cena):
     def __init__(self, img, props=NO):
+        cena = self
         class Hero(Elemento):
-            def __init__(self, x=0, y=0, w=1350, h=800):
-                super().__init__(PETUNIO, x=x, y=y, w=w, h=h)
+            def __init__(self, x=0, y=0, w=130, h=100):
+                super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
-            def __init__(self, x=0, y=0, w=1350, h=800):
-                super().__init__(HALO, x=x, y=y, w=w, h=h)
+            def __init__(self, x=0, y=0, w=130, h=100):
+                super().__init__(HALO, x=x, y=y, w=w, h=h, cena=cena)
         super().__init__(img)
-        self.props ={P.H: Hero, P.T: Trash}
+        self.props = p ={P.H: Hero, P.T: Trash}
+        [p[proname](*proargs) for proname, proargs  in props]
         self.img = img
     def vai_(self):
         super().vai()
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
-    def vai(self):
+    def vai(self, *_):
         super().vai()
         HERO.entra(self)
 
 class Sala(SalaVit):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
-        self.cenas = [Cena(img) if isinstance(img, str) else img for img in [n, l, s, o]]
+        self.cenas = [Rua(img) if isinstance(img, str) else img for img in [n, l, s, o]]
         self.nome = nome
         Sala.c(**kwargs)
         self.p()
@@ -76,12 +78,14 @@ class Gatil(Cena):
     def vai(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
-        sala_b = Sala(*[IM.format(lnk) for lnk in SB])
+        sala_b_args = [IM.format(lnk) for lnk in SB]
+        sala_b_args[0] = Rua(sala_b_args[0],[[P.H, [300, 550]], [P.T, [300, 450]]]
+        sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         # self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         # self.rain = r = Elemento(HAIL, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
-        self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
+        # self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
         self.stray = s = Elemento(IMP.format(STRAY[0]), x=600, y=550, w=130, h=100, cena=sala_b.norte)
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
