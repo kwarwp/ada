@@ -62,13 +62,15 @@ class Rua(Cena):
         super().vai()
         #HERO.entra(self)
 class Thrash:
-    def __init__(self, elt):
+    def __init__(self, elt, cena):
         from browser import svg
+        cache = create_script_tag(GITRAW)
+        cena <= cache
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
         self.c = circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
         circle.bind('click', self.vai)
-        u = svg.use(href=GITRAW+"#g1111", x=0, y=0, width=50, height=50)
+        u = svg.use("#g1111", x=0, y=0, width=90, height=90)
 
         #s = svg.Svg()
         elt <= s
@@ -76,6 +78,16 @@ class Thrash:
         s <= u
     def vai(self, *_):
         self.c.cx =100
+
+def create_script_tag(src):
+    import urllib.request
+    _fp = urllib.request.urlopen(src)
+    _data = _fp.read()
+
+    _tag = document.createElement('svg')
+    _tag.type = "image/svg+xml"
+    _tag.text = _data
+    return _tag
         
 
 class Sala(SalaVit):
@@ -130,6 +142,6 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        Thrash(x.elt)
+        Thrash(x.elt, sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
