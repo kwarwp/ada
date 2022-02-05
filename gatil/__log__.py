@@ -162,3 +162,25 @@ SyntaxError: invalid syntax
     s = svg.svg(xmlns="http://www.w3.org/2000/svg", version="1.1", viewBox="0 0 400 400", width="300", height="300")
 ValueError: can't set attribute xmlns
 '''},
+{'date': 'Sat Feb 05 2022 11:46:52.649 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 147
+    Gatil(GATIL_MOS).vai()
+  module <module> line 145
+    Thrash(x.elt, sala_b.norte)
+  module <module> line 67
+    cache = create_script_tag(GITRAW)
+  module <module> line 87
+    _tag = document.createElement('svg')
+NameError: name 'document' is not defined
+'''},
