@@ -68,7 +68,7 @@ class Thrash:
         self.c = circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
         circle.bind('click', self.vai)
-        u = svg.use(href=GITRAW)
+        u = svg.use(href=GITRAW+"#g1111", x=0, y=0, width=50, height=50)
 
         #s = svg.Svg()
         elt <= s
