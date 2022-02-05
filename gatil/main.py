@@ -69,8 +69,8 @@ class Thrash:
         from browser import svg
         cache = self.create_script_tag(TORRE)
         cena <= cache
-        cache = self.create_script_tag(CANDY)
-        cena <= cache
+        #cache = self.create_script_tag(CANDY)
+        #cena <= cache
         cache = self.create_script_tag(LIGHT)
         cena <= cache
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
@@ -82,7 +82,7 @@ class Thrash:
         u = svg.use(href="#g1111", x=50, y=50, width=50, height=50,
         transform="rotate(-10 50 100) translate(-36 45.5) scale(0.5 0.5)")
         u.bind('click', self.vai)
-        cs = svg.use(href="#glayer1", x=70, y=50, width=50, height=50,
+        cs = svg.use(href="#layer1", x=70, y=50, width=50, height=50,
         transform="rotate(-20 50 100) translate(-36 45.5) scale(0.5 0.5)")
         u.bind('click', self.vai)
 
