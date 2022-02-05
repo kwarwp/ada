@@ -64,7 +64,7 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt, cena):
         from browser import svg
-        cache = create_script_tag(GITRAW)
+        cache = self.create_script_tag(GITRAW)
         cena <= cache
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
         self.c = circle = svg.circle(cx=170, cy=220, r=100,
@@ -79,16 +79,16 @@ class Thrash:
     def vai(self, *_):
         self.c.cx =100
 
-def create_script_tag(src):
-    import urllib.request
-    from browser import document
-    _fp = urllib.request.urlopen(src)
-    _data = _fp.read()
+    def create_script_tag(self, src):
+        import urllib.request
+        from browser import document
+        _fp = urllib.request.urlopen(src)
+        _data = _fp.read()
 
-    _tag = document.createElement('svg')
-    _tag.type = "image/svg+xml"
-    _tag.text = _data
-    return _tag
+        _tag = document.createElement('svg')
+        #_tag.type = "image/svg+xml"
+        _tag.text = _data
+        return _tag
         
 
 class Sala(SalaVit):
