@@ -67,11 +67,13 @@ class Thrash:
         cache = self.create_script_tag(GITRAW)
         cena <= cache
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
-        self.c = circle = svg.circle(cx=170, cy=220, r=100,
+        self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
         circle.bind('click', self.vai)
         #u = svg.use("#g1111", x=0, y=0, width=90, height=90)
-        u = svg.use("#svg1", x=0, y=0, width=90, height=90)
+        cc = svg.use(href="#svcirc", x=100, y=0, width=90, height=90)
+        u = svg.use(href="#g1111", x=50, y=50, width=50, height=50,
+        transform="rotate(-10 50 100) translate(-36 45.5) scale(0.5 0.5)")
 
         #s = svg.Svg()
         elt <= s
