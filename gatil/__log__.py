@@ -184,3 +184,9 @@ ValueError: can't set attribute xmlns
     _tag = document.createElement('svg')
 NameError: name 'document' is not defined
 '''},
+{'date': 'Sat Feb 05 2022 11:49:26.299 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_320' line 148
+Gatil(GATIL_MOS).vai()
+'''},
