@@ -70,7 +70,8 @@ class Thrash:
         self.c = circle = svg.circle(cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
         circle.bind('click', self.vai)
-        u = svg.use("#g1111", x=0, y=0, width=90, height=90)
+        #u = svg.use("#g1111", x=0, y=0, width=90, height=90)
+        u = svg.use("#svg1", x=0, y=0, width=90, height=90)
 
         #s = svg.Svg()
         elt <= s
@@ -85,9 +86,9 @@ class Thrash:
         _fp = urllib.request.urlopen(src)
         _data = _fp.read()
 
-        _tag = document.createElement('svg')
+        _tag = document.createElement('div')
         #_tag.type = "image/svg+xml"
-        _tag.text = _data
+        _tag.html = _data
         return _tag
         
 
