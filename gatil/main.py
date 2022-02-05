@@ -143,6 +143,6 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        Thrash(x.elt, sala_b.norte)
+        Thrash(x.elt, sala_b.norte.elt)
     
 Gatil(GATIL_MOS).vai()
