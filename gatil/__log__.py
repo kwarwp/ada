@@ -190,3 +190,9 @@ Exception: $B.get_class(...) is undefined
   module '$exec_320' line 148
 Gatil(GATIL_MOS).vai()
 '''},
+{'date': 'Sat Feb 05 2022 11:51:58.772 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_320' line 148
+Gatil(GATIL_MOS).vai()
+'''},
