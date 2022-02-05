@@ -4,6 +4,9 @@ from browser import html
 from collections import namedtuple
 from random import randint
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
+TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
+LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
+CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -64,7 +67,11 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt, cena):
         from browser import svg
-        cache = self.create_script_tag(GITRAW)
+        cache = self.create_script_tag(TORRE)
+        cena <= cache
+        cache = self.create_script_tag(CANDY)
+        cena <= cache
+        cache = self.create_script_tag(LIGHT)
         cena <= cache
         s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
         self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
@@ -74,11 +81,16 @@ class Thrash:
         cc = svg.use(href="#svcirc", x=100, y=0, width=90, height=90)
         u = svg.use(href="#g1111", x=50, y=50, width=50, height=50,
         transform="rotate(-10 50 100) translate(-36 45.5) scale(0.5 0.5)")
+        u.bind('click', self.vai)
+        cs = svg.use(href="#glayer1", x=70, y=50, width=50, height=50,
+        transform="rotate(-20 50 100) translate(-36 45.5) scale(0.5 0.5)")
+        u.bind('click', self.vai)
 
         #s = svg.Svg()
         elt <= s
         s <= circle
         s <= u
+        s <= cs
     def vai(self, *_):
         self.c.cx =100
 
