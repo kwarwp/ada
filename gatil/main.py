@@ -81,6 +81,7 @@ class Thrash:
 
 def create_script_tag(src):
     import urllib.request
+    from browser import document
     _fp = urllib.request.urlopen(src)
     _data = _fp.read()
 
