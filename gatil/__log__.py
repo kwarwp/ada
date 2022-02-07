@@ -216,3 +216,10 @@ Gatil(GATIL_MOS).vai()
     s <= circle
 NameError: name 'circle' is not defined
 '''},
+{'date': 'Mon Feb 07 2022 12:43:38.133 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 103
+  obj = svg.use(href=f"#{label}" x= 50*dx, y=50*dy,
+                                  ^
+SyntaxError: invalid syntax
+'''},
