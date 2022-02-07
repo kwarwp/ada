@@ -106,7 +106,7 @@ class Thrash:
         for indice, label in enumerate(lixo):
             dx, dy = indice % 10, indice//10
             #obj = svg.use(href="#{label}", x= 10*dx, y=10*dy, width=50, height=50,
-            obj = svg.use(href=f"#{label}", x= 1000 -100*dx, y=800 - 80*dy, width=100, height=100,
+            obj = svg.use(href=f"#{label}", x= 2000 -200*dx, y=1000 - 100*dy, width=100, height=100,
             transform=f"scale(0.2 0.2)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
