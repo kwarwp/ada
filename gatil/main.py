@@ -2,12 +2,12 @@
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
 from browser import html
 from collections import namedtuple
-from random import randint
+from random import randint, shuffle
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
-LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixoplain.svg"
+LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -85,7 +85,7 @@ class Thrash:
         cache = self.create_script_tag(LIXAO)
         cena <= cache
         #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
-        s = svg.svg(version="1.1", viewBox="0 0 2000 1000", width="1300", height="800")
+        s = svg.svg(version="1.1", viewBox="100 100 2000 1000", width="1600", height="800")
         '''
         self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
@@ -103,11 +103,13 @@ class Thrash:
 
         #s = svg.Svg()
         elt <= s
+        shuffle(lixo)
         for indice, label in enumerate(lixo):
             dx, dy = indice % 10, indice//10
-            #obj = svg.use(href="#{label}", x= 10*dx, y=10*dy, width=50, height=50,
-            obj = svg.use(href=f"#{label}", x= 2000 -200*dx, y=1000 - 100*dy, width=100, height=100,
-            transform=f"scale(0.2 0.2)")
+            #obj = svg.use(href=f"#{label}", x= 6100 -600*dx, y=3500 - 350*dy, width=100, height=100,
+            #obj = svg.use(href=f"#{label}", x=1000 - 100*dx, y=500 -50*dy, width=50, height=50,
+            obj = svg.use(href=f"#{label}", x=5000 - 400*randint(0,9), y=300 -r200*randint(0,9), width=50, height=50,
+            transform=f"scale(2.0)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
         #s <= circle
