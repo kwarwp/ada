@@ -84,7 +84,8 @@ class Thrash:
         from browser import svg
         cache = self.create_script_tag(LIXAO)
         cena <= cache
-        s = svg.svg(version="1.1", viewBox="0 0 400 400", width="300", height="300")
+        #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
+        s = svg.svg(version="1.1", width="1300", height="800")
         '''
         self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
@@ -93,23 +94,25 @@ class Thrash:
         cc = svg.use(href="#svcirc", x=100, y=0, width=90, height=90)
         '''
         u = svg.use(href="#mala", x=50, y=50, width=50, height=50,
-        transform="rotate(-10 50 100) translate(-36 45.5) scale(2.5 2.5)")
+        transform="rotate(-10) scale(2.5 2.5)")
+        #transform="rotate(-10 50 100) translate(-36 45.5) scale(2.5 2.5)")
         u.bind('click', self.vai)
         cs = svg.use(href="#guitarra", x=70, y=50, width=50, height=50,
-        transform="rotate(-20 50 100) translate(-36 45.5) scale(2.5 2.5)")
+        transform="rotate(-20) scale(2.5 2.5)")
         cs.bind('click', self.vai)
 
         #s = svg.Svg()
         elt <= s
         for indice, label in enumerate(lixo):
             dx, dy = indice % 10, indice//10
-            obj = svg.use(href="#{label}", x= 50*dx, y=50*dy,
-            transform=f"rotate({-10*indice}) scale(2.5 2.5)")
+            #obj = svg.use(href="#{label}", x= 10*dx, y=10*dy, width=50, height=50,
+            obj = svg.use(href="#{label}", x= 50, y=50, width=50, height=50,
+            transform="scale(2.5 2.5)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
         #s <= circle
-        #s <= u
-        #s <= cs
+        s <= u
+        s <= cs
     def vai(self, *_):
         self.c.cx =100
 
