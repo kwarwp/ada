@@ -108,7 +108,7 @@ class Thrash:
             dx, dy = indice % 10, indice//10
             #obj = svg.use(href=f"#{label}", x= 6100 -600*dx, y=3500 - 350*dy, width=100, height=100,
             #obj = svg.use(href=f"#{label}", x=1000 - 100*dx, y=500 -50*dy, width=50, height=50,
-            obj = svg.use(href=f"#{label}", x=5000 - 400*randint(0,9), y=300 -r200*randint(0,9), width=50, height=50,
+            obj = svg.use(href=f"#{label}", x=300 - randint(-200,200), y=100 -randint(-80,80), width=50, height=50,
             transform=f"scale(2.0)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
