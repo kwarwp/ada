@@ -7,7 +7,7 @@ GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonym
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
-LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
+LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixoplain.svg"
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -85,7 +85,7 @@ class Thrash:
         cache = self.create_script_tag(LIXAO)
         cena <= cache
         #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
-        s = svg.svg(version="1.1", width="1300", height="800")
+        s = svg.svg(version="1.1", viewBox="0 0 2000 1000", width="1300", height="800")
         '''
         self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
@@ -106,8 +106,8 @@ class Thrash:
         for indice, label in enumerate(lixo):
             dx, dy = indice % 10, indice//10
             #obj = svg.use(href="#{label}", x= 10*dx, y=10*dy, width=50, height=50,
-            obj = svg.use(href=f"#{label}", x= 400 -5*dx, y=300 - 5*dy, width=100, height=100,
-            transform=f"scale(1.5 1.5)")
+            obj = svg.use(href=f"#{label}", x= 1000 -100*dx, y=800 - 80*dy, width=100, height=100,
+            transform=f"scale(0.2 0.2)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
         #s <= circle
