@@ -93,17 +93,22 @@ class Thrash:
         cc = svg.use(href="#svcirc", x=100, y=0, width=90, height=90)
         '''
         u = svg.use(href="#mala", x=50, y=50, width=50, height=50,
-        transform="rotate(-10 50 100) translate(-36 45.5) scale(0.5 0.5)")
+        transform="rotate(-10 50 100) translate(-36 45.5) scale(2.5 2.5)")
         u.bind('click', self.vai)
         cs = svg.use(href="#guitarra", x=70, y=50, width=50, height=50,
-        transform="rotate(-20 50 100) translate(-36 45.5) scale(0.5 0.5)")
+        transform="rotate(-20 50 100) translate(-36 45.5) scale(2.5 2.5)")
         cs.bind('click', self.vai)
+        for indice, label in enumerate(lixo):
+            dx, dy = indice % 10, indice//10
+            obj = svg.use(href=f"#{label}" x= 50*dx, y=50*dy,
+            transform=f"rotate(-10*{indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
+            s <= obj
 
         #s = svg.Svg()
         elt <= s
-        s <= circle
-        s <= u
-        s <= cs
+        #s <= circle
+        #s <= u
+        #s <= cs
     def vai(self, *_):
         self.c.cx =100
 
