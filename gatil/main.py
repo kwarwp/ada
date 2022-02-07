@@ -28,6 +28,20 @@ HAIL = "https://i.imgur.com/ZZ8nEkV.gif"
 HALO = "https://i.imgur.com/XDuFNZw.png"
 HERO = Elemento(PETUNIO, x=200, y=550, w=130, h=100)
 NO = []
+lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez',
+        'eifell', 'porquinho', 'bule', 'luva', 'panda', 'cafe', 'guitarra', 'aranha',
+        'livro', 'soldado', 'garrafa', 'pizza', 'carpa', 'bacalhau', 'atum', 'robalo',
+        'dourado', 'fone', 'microfone', 'plug', 'visa', 'lata', 'moeda', 'carro', 'sino',
+        'presente', 'gato', 'ipod', 'clarineta', 'cinquenta', 'sujeira', 'blob', 'sujo',
+        'facao', 'copinho', 'espremedor', 'pandeiro', 'sacola', 'latao', 'pimenta', 'areia',
+        'regar', 'latinha', 'casca', 'hd', 'tenis', 'filme', 'ampulheta', 'pimentao',
+        'bumerangue', 'relogio_pulso', 'relogio', 'oculos', 'martelo', 'faca', 'joaninha',
+        'radio', 'bussola', 'chapeu', 'alicate', 'trolha', 'tamborim', 'pelucia', 'formiga',
+        'jornal', 'chave_fenda', 'vidro', 'cd', 'calculadora', 'lapiseira', 'lampada', 'diploma',
+        'lapis', 'tesoura', 'disquete', 'escorpiao', 'bife', 'lagosta', 'pera', 'cubo', 'canivete',
+        'pulover', 'banana', 'tampinha', 'cantil', 'rolha', 'fava', 'vaso', 'vinho', 'bola',
+        'dalia', 'saco', 'melancia', 'azeitona', 'limao', 'hotdog', 'cachecol', 'papel', 'pote',
+        'picareta']
 class Abrigo:
     GW = 1350
     GH = 800
