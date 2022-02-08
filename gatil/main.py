@@ -8,6 +8,8 @@ TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymo
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
 LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
+#ROFFX, ROFFY, TOFF, SCAL =720, 330, 150, 2.5
+ROFFX, ROFFY, TOFF, SCAL =625, 430, 10, 2.5
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
 STYLE.update(width=1350, height="800px")
 GATIL_MOS = "https://i.imgur.com/5ZISX93.jpg"
@@ -85,7 +87,7 @@ class Thrash:
         cache = self.create_script_tag(LIXAO)
         cena <= cache
         #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
-        s = svg.svg(version="1.1", viewBox="100 100 2000 1000", width="1600", height="800")
+        s = svg.svg(version="1.1", viewBox="400 200 1500 1000", width="1600", height="800")
         '''
         self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
                     stroke="black",stroke_width="2",fill="red")
@@ -104,18 +106,22 @@ class Thrash:
         #s = svg.Svg()
         elt <= s
         shuffle(lixo)
-        for indice, label in enumerate(lixo[:4]):
-            dx, dy = indice % 10, indice//10
+        for indice, label in enumerate(lixo[:70]):
+            dx, dy = randint(-300,300) , 100  - randint(-100,100)
+            dy = abs(300 -dx)//3
+            dx, dy = 200 - dx , 100  - randint(-dy,dy)
             #obj = svg.use(href=f"#{label}", x= 6100 -600*dx, y=3500 - 350*dy, width=100, height=100,
             #obj = svg.use(href=f"#{label}", x=1000 - 100*dx, y=500 -50*dy, width=50, height=50,
-            '''
-            obj = svg.use(href=f"#{label}", x=300 - randint(-200,200), y=100 -randint(-80,80), width=50, height=50,
-            transform=f"scale(2.0)")
+            #obj = svg.use(href=f"#{label}", x=200 - randint(-100,100), y=100 -randint(0,1), width=50, height=50,
+            obj = svg.use(href=f"#{label}", x=200, y=100 , width=250, height=250,
+            transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
+            
             '''
             [s <= svg.use(href=f"#{label}", x=300, y=100, width=50, height=50,
-            transform=f"rotate({-10*indice} 50 100) scale(2.0)") for indice in range(0, 360, 15)]
+            transform=f"translate({dx} {TOFF}) rotate({indice} {ROFFX} {ROFFY}) scale({SCAL})") for indice in range(0, 360, 15)]
+        '''        
         #s <= circle
         #s <= u
         #s <= cs
