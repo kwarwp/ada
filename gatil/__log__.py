@@ -301,3 +301,10 @@ SyntaxError: invalid syntax
     elt <= s
 NameError: name 's' is not defined
 '''},
+{'date': 'Wed Feb 09 2022 20:07:34.750 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 92
+  def dump(self, cena, sorte=4)
+                                ^
+SyntaxError: invalid syntax
+'''},
