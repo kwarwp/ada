@@ -126,7 +126,7 @@ class Thrash:
         #s <= circle
         #s <= u
         #s <= cs
-    def vai(self, ev):f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
+    def vai(self, ev):
         from browser import document
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
