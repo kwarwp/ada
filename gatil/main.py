@@ -113,7 +113,7 @@ class Thrash:
             #obj = svg.use(href=f"#{label}", x= 6100 -600*dx, y=3500 - 350*dy, width=100, height=100,
             #obj = svg.use(href=f"#{label}", x=1000 - 100*dx, y=500 -50*dy, width=50, height=50,
             #obj = svg.use(href=f"#{label}", x=200 - randint(-100,100), y=100 -randint(0,1), width=50, height=50,
-            obj = svg.use(href=f"#{label}", x=200, y=100 , width=250, height=250,
+            obj = svg.use(id=f"#0{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
@@ -127,14 +127,17 @@ class Thrash:
         #s <= u
         #s <= cs
     def vai(self, ev):
-        from browser import document
+        from browser import document, alert
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
+        #alert (ev.target.id)
         obj = document[ev.target.id]
+        obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
+
         # obj.transform = f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
-        obj.setTranslate(dx, dy)
-        obj.setRotate(7*randint(0,70), ROFFX, ROFFY)
+        #obj.setTranslate(dx, dy)
+        #obj.setRotate(7*randint(0,70), ROFFX, ROFFY)
         # self.c.cx =100
 
     def create_script_tag(self, src):
