@@ -346,3 +346,9 @@ AttributeError: 'int' object has no attribute 'elt'
     self.cenas = [Rua(img) if isinstance(img, str) else img for img in [n, l, s, o]]
 TypeError: __init__ missing 1 positional argument: 'trash'
 '''},
+{'date': 'Wed Feb 09 2022 20:34:39.752 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: $B.get_class(...) is undefined
+  module '$exec_36683' line 208
+Gatil(GATIL_MOS).vai()
+'''},
