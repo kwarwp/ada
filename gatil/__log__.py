@@ -274,3 +274,10 @@ NameError: name 'r200' is not defined
                       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Feb 09 2022 18:13:23.270 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 139
+  food = Elemento('', x=0, y=0, w=200, h=200 cena=self.cena)
+                                              ^
+SyntaxError: invalid syntax
+'''},
