@@ -84,64 +84,45 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt, cena):
         from browser import svg
+        sujeira =[ 'sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cena = cena
+        self.remaining_shuffle_count = 10
         cache = self.create_script_tag(LIXAO)
-        cena <= cache
-        #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
-        s = svg.svg(version="1.1", viewBox="400 200 1500 1000", width="1600", height="800")
-        '''
-        self.c = circle = svg.circle(id="svcirc", cx=170, cy=220, r=100,
-                    stroke="black",stroke_width="2",fill="red")
-        circle.bind('click', self.vai)
-        #u = svg.use("#g1111", x=0, y=0, width=90, height=90)
-        cc = svg.use(href="#svcirc", x=100, y=0, width=90, height=90)
-        '''
-        u = svg.use(href="#mala", x=50, y=50, width=50, height=50,
-        transform="rotate(-10) scale(2.5 2.5)")
-        #transform="rotate(-10 50 100) translate(-36 45.5) scale(2.5 2.5)")
-        u.bind('click', self.vai)
-        cs = svg.use(href="#guitarra", x=70, y=50, width=50, height=50,
-        transform="rotate(-20) scale(2.5 2.5)")
-        cs.bind('click', self.vai)
-
-        #s = svg.Svg()
+        cena.elt <= cache
+        self.rubish = svg.svg(version="1.1", viewBox="400 200 1500 1000", width="1600", height="800")
         elt <= s
         shuffle(lixo)
-        for indice, label in enumerate(lixo[:70]):
+        pilha = lixo[:60] + sujeira
+        shuffle(pilha)
+        for indice, label in enumerate(pilha):
             dx, dy = randint(-300,300) , 100  - randint(-100,100)
             dy = abs(300 -dx)//3
             dx, dy = 200 - dx , 100  - randint(-dy,dy)
-            #obj = svg.use(href=f"#{label}", x= 6100 -600*dx, y=3500 - 350*dy, width=100, height=100,
-            #obj = svg.use(href=f"#{label}", x=1000 - 100*dx, y=500 -50*dy, width=50, height=50,
-            #obj = svg.use(href=f"#{label}", x=200 - randint(-100,100), y=100 -randint(0,1), width=50, height=50,
-            obj = svg.use(id=f"#0{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
+            obj = svg.use(id=f"#{indice:02d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
-            #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
-            s <= obj
+            self.rubish <= obj
             obj.bind('click', self.vai)
             
-            '''
-            [s <= svg.use(href=f"#{label}", x=300, y=100, width=50, height=50,
-            transform=f"translate({dx} {TOFF}) rotate({indice} {ROFFX} {ROFFY}) scale({SCAL})") for indice in range(0, 360, 15)]
-        '''        
-        #s <= circle
-        #s <= u
-        #s <= cs
     def vai(self, ev):
-        come = ['pizza', 'carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
-        from browser import document, alert
+        self.remaining_shuffle_count -= 1
+        if not self.remaining_shuffle_count:
+            self.rubish.remove()
+            return
+            
+        come = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
+        from browser import document, alert, svg
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
-        if ev.target.id[1:] in come:
-            food = Elemento('', x=0, y=0, cena=self.cena)
+        if ev.target.id[3:] in come:
+            food = Elemento(PIX, x=0, y=50, w=200, h=200, cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
             stag <= obj
-            obj.setAttribute('transform',f"translate(0, 0) scale(0.5)")
-            #INV.bota(food)
+            obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
+            INV.bota(food)
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
@@ -214,6 +195,6 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        Thrash(x.elt, sala_b.norte.elt)
+        Thrash(x.elt, sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
