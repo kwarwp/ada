@@ -117,6 +117,7 @@ class Thrash:
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             #transform=f"rotate({-10*indice} 50 100) translate(-36 45.5) scale(2.5 2.5)")
             s <= obj
+            obj.bind('click', self.vai)
             
             '''
             [s <= svg.use(href=f"#{label}", x=300, y=100, width=50, height=50,
@@ -125,8 +126,16 @@ class Thrash:
         #s <= circle
         #s <= u
         #s <= cs
-    def vai(self, *_):
-        self.c.cx =100
+    def vai(self, ev):f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
+        from browser import document
+        dx, dy = randint(-300,300) , 100  - randint(-100,100)
+        dy = abs(300 -dx)//3
+        dx, dy = 200 - dx , 100  - randint(-dy,dy)
+        obj = document[ev.target.id]
+        # obj.transform = f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
+        obj.setTranslate(dx, dy)
+        obj.setRotate(7*randint(0,70), ROFFX, ROFFY)
+        # self.c.cx =100
 
     def create_script_tag(self, src):
         import urllib.request
