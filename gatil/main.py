@@ -8,6 +8,8 @@ TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymo
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
 LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
+#RUBISH = "https://i.imgur.com/4cZQRvF.png"
+RUBISH = "https://i.imgur.com/MSJw5kB.png"
 #ROFFX, ROFFY, TOFF, SCAL =720, 330, 150, 2.5
 ROFFX, ROFFY, TOFF, SCAL =625, 430, 10, 2.5
 P = namedtuple('Properties',"H T S G")(0, 1, 2, 3)
@@ -33,8 +35,7 @@ HERO = Elemento(PETUNIO, x=200, y=550, w=130, h=100)
 NO = []
 lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez',
         'eifell', 'porquinho', 'bule', 'luva', 'panda', 'cafe', 'guitarra', 'aranha',
-        'livro', 'soldado', 'garrafa', 'pizza', 'carpa', 'bacalhau', 'atum', 'robalo',
-        'dourado', 'fone', 'microfone', 'plug', 'visa', 'lata', 'moeda', 'carro', 'sino',
+        'livro', 'soldado', 'garrafa', 'pizza', 'fone', 'microfone', 'plug', 'visa', 'lata', 'moeda', 'carro', 'sino',
         'presente', 'gato', 'ipod', 'clarineta', 'cinquenta', 'sujeira', 'blob', 'sujo',
         'facao', 'copinho', 'espremedor', 'pandeiro', 'sacola', 'latao', 'pimenta', 'areia',
         'regar', 'latinha', 'casca', 'hd', 'tenis', 'filme', 'ampulheta', 'pimentao',
@@ -83,21 +84,26 @@ class Rua(Cena):
         #HERO.entra(self)
 class Thrash:
     def __init__(self, elt, cena):
-        from browser import svg
-        sujeira =[ 'sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
+        self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cena = cena
-        self.remaining_shuffle_count = 10
         cache = self.create_script_tag(LIXAO)
         cena.elt <= cache
-        self.rubish = svg.svg(version="1.1", viewBox="400 200 1500 1000", width="1600", height="800")
-        elt <= s
+        self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
+    def dump(self, cena, sorte=4)
+        from browser import svg
+        self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
+        self.remaining_shuffle_count = 10
+        self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
+        self.fundo.elt <= self.rubish
+        comer = self.comida * 4
+        shuffle(comer)
         shuffle(lixo)
-        pilha = lixo[:60] + sujeira
+        pilha = lixo[:60] + self.sujeira + comer[:sorte]
         shuffle(pilha)
         for indice, label in enumerate(pilha):
             dx, dy = randint(-300,300) , 100  - randint(-100,100)
             dy = abs(300 -dx)//3
-            dx, dy = 200 - dx , 100  - randint(-dy,dy)
+            dx, dy = 200 - dx , 100  - randint(-dy, dy)
             obj = svg.use(id=f"#{indice:02d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             self.rubish <= obj
@@ -106,18 +112,17 @@ class Thrash:
     def vai(self, ev):
         self.remaining_shuffle_count -= 1
         if not self.remaining_shuffle_count:
-            self.rubish.remove()
+            self.fundo.elt.remove()
             return
             
-        come = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
         from browser import document, alert, svg
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
-        if ev.target.id[3:] in come:
-            food = Elemento(PIX, x=0, y=50, w=200, h=200, cena=self.cena)
+        if ev.target.id[3:] in self.comida:
+            food = Elemento('', x=0, y=50, w=200, h=200, cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
             stag <= obj
@@ -195,6 +200,7 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        Thrash(x.elt, sala_b.norte)
+        self.trash = Thrash(x.elt, sala_b.norte)
+        self.trash.dump(sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
