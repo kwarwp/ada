@@ -352,3 +352,10 @@ Exception: $B.get_class(...) is undefined
   module '$exec_36683' line 208
 Gatil(GATIL_MOS).vai()
 '''},
+{'date': 'Wed Feb 09 2022 20:53:07.955 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 92
+  def dump(self, cena, sorte=4)
+                                ^
+SyntaxError: invalid syntax
+'''},
