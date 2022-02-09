@@ -84,6 +84,7 @@ class Rua(Cena):
 class Thrash:
     def __init__(self, elt, cena):
         from browser import svg
+        self.cena = cena
         cache = self.create_script_tag(LIXAO)
         cena <= cache
         #s = svg.svg(version="1.1", viewBox="0 0 400 600", width="1300", height="800")
@@ -127,13 +128,22 @@ class Thrash:
         #s <= u
         #s <= cs
     def vai(self, ev):
+        come = ['pizza', 'carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
         from browser import document, alert
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
-        obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
+        if ev.target.id[1:] in come:
+            food = Elemento('', x=0, y=0, cena=self.cena)
+            stag = svg.svg(version="1.1", width="200", height="200")
+            food.elt <= stag
+            stag <= obj
+            obj.setAttribute('transform',f"translate(0, 0) scale(0.5)")
+            #INV.bota(food)
+        else:
+            obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
         # obj.transform = f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
         #obj.setTranslate(dx, dy)
