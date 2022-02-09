@@ -267,3 +267,10 @@ HTTPError: file not found
     obj = svg.use(href=f"#{label}", x=5000 - 400*randint(0,9), y=300 -r200*randint(0,9), width=50, height=50,
 NameError: name 'r200' is not defined
 '''},
+{'date': 'Wed Feb 09 2022 10:44:03.130 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 129
+  def vai(self, ev):f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
+                      ^
+SyntaxError: invalid syntax
+'''},
