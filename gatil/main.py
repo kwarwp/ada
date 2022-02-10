@@ -1,8 +1,10 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
+from _spy.vitollino.main import Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle
+CATPUZ = "lVlPvCB"
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
@@ -46,6 +48,85 @@ lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez
         'pulover', 'banana', 'tampinha', 'cantil', 'rolha', 'fava', 'vaso', 'vinho', 'bola',
         'dalia', 'saco', 'melancia', 'azeitona', 'limao', 'hotdog', 'cachecol', 'papel', 'pote',
         'picareta']
+
+
+class Swap:
+    """ Jogo que embaralha as partes de um desenho e usa drag and drop para rearrumar.
+        
+        As peças aparecem inicialmente embaralhadas e devem ser arrastadas para o local onde deveriam estar
+        
+        :param    j: referência ao Jogo do Vitollino.
+        :param  img: a imagem que deve ser embaralhada
+        :param cena: a cena onde o jogo aparece
+        :param    x: a posição horizontal da imagem
+        :param    y: a posição vertical da imagem
+        :param    w: a largura da imagem
+        :param    h: a altura da imagem
+        :param   dw: quantidade de colunas que recortam a imagem
+        :param   dh: quantidade de linhas que recortam a imagem
+    """
+    def __init__(self, j, img, cena, w=900,h=400,x=100,y=50,dw=3,dh=3, venceu=None):
+        swap = self
+        class Peca(j.a):
+            """ A Peça representa um recorte da imagem que vai ser embaralhada.
+            """
+            def __init__(self, local, indice):
+                self.local, self.indice = local, indice
+                """ local em que a peça foi colocada; local onde a peça deveria estar"""
+                pw, ph = w//dw, h//dh
+                """largura e altura da peça"""
+                lx, ly = x+local%dw*pw, y+local//dw*ph
+                """posição horizontal e vertical em pixels onde a peça será desenhada"""
+                px, py = indice%dw*pw, indice//dw*ph
+                """posição horizontal e vertical em pixels onde o desenho da peça está na imagem"""
+                super().__init__(img, x=lx, y=ly, w=pw, h=ph, drag=True, cena=cena)
+                """chama o construtor do Elemento Vitollino passandoa as informações necessárias"""
+                self.siz = (w, h)
+                """redimensiona a figura da imagem para o tamanho fornecido"""
+                self.elt.Id = f"_swap_{local}"
+                """rotula o elemento da peça com a posição onde foi alocada"""
+                self.pos = (-px, -py)
+                """reposiciona a figura da imagem para o pedaço que vai aparecer na peça"""
+                self.elt.ondrop = lambda ev: self.drop(ev)
+                """captura o evento drop da peça para ser tratado pelo método self.drop"""
+            def drop(self, ev):
+                ev.preventDefault()
+                ev.stopPropagation()
+                src_id = ev.data['text']
+                local = int(src_id.split('_')[-1])
+                print(f"local -> {local} | indice -> {self.indice}")
+                self.dropped(ev, local)
+                
+            def dropped(self, ev, local):
+                o_outro = swap.pecas[local].pra_la(self, self.x, self.y, local)
+                o_local = swap.pecas[local].local
+                print(f"indice, o outro -> {self.indice} @ {self.local} <-> {o_outro} @ {o_local}")
+                swap.montou()
+            def pra_la(self, peca, x, y, local):
+                self.local = peca.pra_ca(self.x, self.y, self.local)
+                self.x, self.y = x, y
+                return self.indice
+            def pra_ca(self, x, y, local):
+                self.local, local = local, self.local
+                self.x, self.y = x, y
+                return local
+            def certo(self):
+                return self.indice == self.local
+            def __repr__(self):
+                return str(self.indice)
+
+        from random import shuffle
+        pecas = list(range(dw*dh))
+        shuffle(pecas)
+        self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
+        self.venceu = venceu or J.n(cena, "Voce venceu!")
+    def montou(self):
+        resultado = [peca.certo() for peca in self.pecas]
+        print(resultado)
+        self.venceu.vai() if all(resultado) else None 
+        return all(resultado)
+
+
 class Abrigo:
     GW = 1350
     GH = 800
@@ -69,7 +150,9 @@ class Rua(Cena):
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
-                super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, cena=cena)
+                super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
+            def dump(self, *_):
+                Swap(cena)
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
@@ -205,5 +288,6 @@ class Gatil(Cena):
         INV.bota(p)
         sala_b.norte.vai()
         #self.trash.dump(sala_b.norte)
+        Swap(J, IM.format(CATPUZ),sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
