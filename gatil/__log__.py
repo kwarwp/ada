@@ -525,3 +525,10 @@ AttributeError: 'Jogo' object has no attribute 'a'
     self.venceu = venceu or J.n(cena, "Voce venceu!")
 AttributeError: 'Jogo' object has no attribute 'n'
 '''},
+{'date': 'Wed Feb 09 2022 22:40:53.511 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 99
+  return compound([
+                                                                                                 ^
+SyntaxError: invalid syntax
+'''},
