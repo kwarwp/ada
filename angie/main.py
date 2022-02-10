@@ -15,7 +15,7 @@ class Retangulos:
 
 
     def make_rects(self, maxX, maxY):
-        for rect in range(100):
+        for rect in range(1000):
             r = svg.rect(
             x=randint(0, maxX + 50) - 50,
             y=randint(0, maxY + 50) - 50,
@@ -26,5 +26,15 @@ class Retangulos:
             transform=f"rotate({3*randint(0, 30)})"
             )
             self.tela <= r
+            transform = svg.animateTransform(
+            attributeName="transform",
+            begin="0s",
+            dur="20s",
+            type="rotate",
+            from="0 60 60",
+            to="360 60 60",
+            repeatCount="indefinite")
+            r <= transform
+
 
 Retangulos().make_rects(1300, 800)
