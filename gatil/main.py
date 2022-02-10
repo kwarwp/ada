@@ -62,8 +62,10 @@ class CPuzzle:
             def __init__(self, posicao):
                 ldx, ldy, lw, lh =dx, dy, w, h
                 self.posicao = posicao # posição original no topo da página
-                posx = (lw//ldx) * (posicao % ldx)
-                posy = (lh//ldy) * (posicao // ldx)
+                #posx = (lw//ldx) * (posicao % ldx)
+                #posy = (lh//ldy) * (posicao // ldx)
+                posx = 100 * (posicao % ldx)
+                posy = 50 * (posicao // ldx)
                 self.linha = Elemento(imagem, x=posicao*150, y=20, w=100, h=50, cena=esta_cena)
                 self.linha.siz=(100*ldx, 50*ldy)
                 self.linha.pos=(-posx, -posy)
