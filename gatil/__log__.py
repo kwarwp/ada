@@ -579,3 +579,10 @@ AttributeError: 'Jogo' object has no attribute 'n'
     self.venceu = venceu or J.n(cena, "Voce venceu!")
 AttributeError: 'Jogo' object has no attribute 'n'
 '''},
+{'date': 'Wed Feb 09 2022 23:30:20.888 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 157
+  self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi)
+                                                                                              ^
+SyntaxError: invalid syntax
+'''},
