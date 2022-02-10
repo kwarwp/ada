@@ -288,6 +288,6 @@ class Gatil(Cena):
         INV.bota(p)
         sala_b.norte.vai()
         #self.trash.dump(sala_b.norte)
-        Swap(J, IM.format(CATPUZ),sala_b.norte)
+        Swap(J(), IM.format(CATPUZ),sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
