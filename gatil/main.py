@@ -65,7 +65,6 @@ class Rua(Cena):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.dump, cena=cena)
             def dump(self, *_):
-                alert(cena.img)
                 trash.dump(cena)
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
@@ -96,7 +95,7 @@ class Thrash:
         cena.elt <= self.cache
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
-        self.remaining_shuffle_count = 10
+        self.remaining_shuffle_count = 20
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
         self.fundo.elt <= self.rubish
         comer = self.comida * 4
