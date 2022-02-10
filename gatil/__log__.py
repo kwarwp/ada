@@ -465,3 +465,23 @@ Traceback (most recent call last):
   module <module> line 3
     from _spy.vitollino.main import J
 '''},
+{'date': 'Wed Feb 09 2022 21:48:38.933 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 293
+    Gatil(GATIL_MOS).vai()
+  module <module> line 291
+    Swap(J, IM.format(CATPUZ),sala_b.norte)
+  module <module> line 70
+    class Peca(j.a):
+AttributeError: 'Jogo' object has no attribute 'a'
+'''},
