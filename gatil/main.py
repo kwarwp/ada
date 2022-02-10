@@ -119,7 +119,7 @@ class Swap:
         pecas = list(range(dw*dh))
         shuffle(pecas)
         self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
-        self.venceu = venceu or J.n(cena, "Voce venceu!")
+        self.venceu = venceu or j.n(cena, "Voce venceu!")
     def limpa(self):
         [peca.elt.remove() for peca in self.pecas]
     def montou(self):
