@@ -1,6 +1,6 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from browser import html
+from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -63,8 +63,9 @@ class Rua(Cena):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.cena, cena=cena)
-            def vai(self, *_):
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.dump, cena=cena)
+            def dump(self, *_):
+                alert(cena.img)
                 trash.dump(cena)
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
