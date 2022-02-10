@@ -180,7 +180,7 @@ class Thrash:
         self.cache = self.create_script_tag(LIXAO)
         #cena.elt <= cache
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
-        self.__vai = self.vai
+        #self.__vai = self.vai
     def dump(self, cena, sorte=4):
         from browser import svg
         cena.elt <= self.cache
@@ -202,7 +202,8 @@ class Thrash:
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             self.rubish <= obj
             obj.bind('click', self._vai)
-            obj.click(self._vai)
+            obj.setAttribute("data-didit", "_no_")
+            #obj.click(self._vai)
             
     def _vai_(self, ev):
         self.__vai(ev)
@@ -218,15 +219,18 @@ class Thrash:
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
+        if obj.getAttribute("data-didit") == "_did_":
+            return
         if ev.target.id[3:] in self.comida:
             food = Elemento('', x=0, y=50, w=200, h=200, cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
             stag <= obj
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
+            obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
             #self.__vai = lambda *_: None
-            obj.click(None)
+            obj.setAttribute("data-didit", "_did_")
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
