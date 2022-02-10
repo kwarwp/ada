@@ -152,7 +152,9 @@ class Rua(Cena):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
-                Swap(cena)
+                Swap(J(), IM.format(CATPUZ),cena, venceu=self)
+            def vai(self, *_):
+                INV.bota(self)
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
@@ -288,6 +290,7 @@ class Gatil(Cena):
         INV.bota(p)
         sala_b.norte.vai()
         #self.trash.dump(sala_b.norte)
-        Swap(J(), IM.format(CATPUZ),sala_b.norte)
+        #go = Cena(vai=
+        Swap(J(), IM.format(CATPUZ),sala_b.norte,)
     
 Gatil(GATIL_MOS).vai()
