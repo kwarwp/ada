@@ -646,3 +646,10 @@ AttributeError: 'Jogo' object has no attribute 'n'
     self.__vai = self.vai
 AttributeError: 'Thrash' object has no attribute 'vai'
 '''},
+{'date': 'Thu Feb 10 2022 14:58:25.600 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 63
+  posx, posy = -w//dx * (posicao % dx), -h//dy * (posicao // dx)
+                                       ^
+SyntaxError: invalid syntax
+'''},
