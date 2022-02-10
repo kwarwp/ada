@@ -15,14 +15,15 @@ class Retangulos:
 
 
     def make_rects(self, maxX, maxY):
-        for rect in range(1000):
+        for rect in range(100):
             r = svg.rect(
             x=randint(0, maxX + 50) - 50,
             y=randint(0, maxY + 50) - 50,
             width=randint(0, 200) + 20,
             height=randint(0, 200) + 20,
             opacity=0.8*randint(0, 10),
-            fill=colorPalette[randint(0,4)]
+            fill=colorPalette[randint(0,4)],
+            transform=f"rotate({3*randint(0, 30)})"
             )
             self.tela <= r
 
