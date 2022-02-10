@@ -660,3 +660,10 @@ SyntaxError: invalid syntax
                                        ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Feb 10 2022 15:05:06.20 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 63
+  posx, posy = -(w//dx) * (posicao % dx), -(h//dy) * (posicao // dx)
+                                         ^
+SyntaxError: invalid syntax
+'''},
