@@ -532,3 +532,10 @@ AttributeError: 'Jogo' object has no attribute 'n'
                                                                                                  ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Feb 09 2022 22:42:26.3 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 99
+  return compound([ellipsoid(size=(m, m, m / PHI), pos=d, color=cor),
+                                                                                    ^
+SyntaxError: invalid syntax
+'''},
