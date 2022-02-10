@@ -56,18 +56,20 @@ class CPuzzle:
     """
     def __init__(self,imagem, esta_cena, dx=3, dy=3, w=1000, h=600, venceu=None):
         posiciona_proxima = self.posiciona_proxima
-        ldx=dx, ldy=dy, lw=w, lh=w
+        #ldx, ldy, lw, lh =dx, dy, w, h
         class LinhaGeracional:
             """Representa cada uma das linhas recortadas do herdograma original"""
             def __init__(self, posicao):
+                ldx, ldy, lw, lh =dx, dy, w, h
                 self.posicao = posicao # posição original no topo da página
-                posx = -(lw//ldx) * (posicao % ldx)
-                posy = -(lh//ldy) * (posicao // ldx)
-                self.linha = Elemento(imagem, siz=(w, h), pos=(posx, posy), x=posicao*200, y=20, w=200, h=50, cena=esta_cena)
-                self.linha.siz=(w, h), self.linha.pos=(posx, posy)
+                posx = (lw//ldx) * (posicao % ldx)
+                posy = (lh//ldy) * (posicao // ldx)
+                self.linha = Elemento(imagem, x=posicao*150, y=20, w=100, h=50, cena=esta_cena)
+                self.linha.siz=(100*ldx, 50*ldy)
+                self.linha.pos=(-posx, -posy)
                 self.linha.vai = self.clica_e_posiciona_a_linha #quando clica, monta o herdograma
             def zera(self):
-                self.linha.x = self.posicao*200  # posiciona cada peça com 200 pixels de distância
+                self.linha.x = self.posicao*150  # posiciona cada peça com 200 pixels de distância
                 self.linha.y = 20  # posiciona a peça no topo da página
                 self.linha.vai = self.clica_e_posiciona_a_linha
             def clica_e_posiciona_a_linha(self, *_):
