@@ -144,3 +144,10 @@ NameError: name 'Elemento' is not defined
                                                                                                                                                                                                                                                                                       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Feb 10 2022 09:47:22.168 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 29
+  transform = svg.animateTransform(
+                                                                                                                                                                  ^
+SyntaxError: invalid syntax
+'''},
