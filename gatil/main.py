@@ -66,13 +66,14 @@ class CPuzzle:
                 #posy = (lh//ldy) * (posicao // ldx)
                 posx = 100 * (posicao % ldx)
                 posy = 50 * (posicao // ldx)
-                self.linha = Elemento(imagem, x=posicao*150, y=20, w=100, h=50, cena=esta_cena)
+                self.linha = Elemento(imagem, x=posicao*150, y=30, w=100, h=50)
                 self.linha.siz=(100*ldx, 50*ldy)
                 self.linha.pos=(-posx, -posy)
+                self.linha.entra(esta_cena)
                 self.linha.vai = self.clica_e_posiciona_a_linha #quando clica, monta o herdograma
             def zera(self):
                 self.linha.x = self.posicao*150  # posiciona cada peça com 200 pixels de distância
-                self.linha.y = 20  # posiciona a peça no topo da página
+                self.linha.y = 30  # posiciona a peça no topo da página
                 self.linha.vai = self.clica_e_posiciona_a_linha
             def clica_e_posiciona_a_linha(self, *_):
                 x, y = posiciona_proxima(self.posicao)
