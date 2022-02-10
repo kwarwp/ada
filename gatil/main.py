@@ -94,6 +94,7 @@ class Thrash:
     def dump(self, cena, sorte=4):
         from browser import svg
         cena.elt <= self.cache
+        self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
         self.remaining_shuffle_count = 10
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
@@ -199,7 +200,7 @@ class Gatil(Cena):
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
         self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
-        x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
+        #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
