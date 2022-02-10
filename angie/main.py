@@ -9,7 +9,7 @@ class Retangulos:
         self.tela = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
         self.cena = Cena(OCEANO)
         self.cena.vai()
-        self.cena.elt <= self.rubish
+        self.cena.elt <= self.tela
 
 
     def make_rects(maxX, maxY):
