@@ -3,8 +3,8 @@ from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirint
 from _spy.vitollino.main import Jogo as J
 from browser import html, alert
 from collections import namedtuple
-from random import randint, shuffle
-CATPUZ = "lVlPvCB"
+from random import randint, shuffle, choice
+CATPUZ = "lVlPvCB zVp6z".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
@@ -152,7 +152,7 @@ class Rua(Cena):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
-                Swap(J(), IM.format(CATPUZ),cena, venceu=self)
+                Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=self)
             def vai(self, *_):
                 INV.bota(self)
         class Gui(Elemento):
