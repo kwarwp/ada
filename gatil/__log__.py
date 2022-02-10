@@ -688,3 +688,10 @@ SyntaxError: invalid syntax
                                          ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Feb 10 2022 18:44:03.633 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 72
+  self.linha.entra(esta_cena)esta_cena
+                              ^
+SyntaxError: invalid syntax
+'''},
