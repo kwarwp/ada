@@ -12,7 +12,7 @@ class Retangulos:
         self.cena.elt <= self.tela
 
 
-    def make_rects(maxX, maxY):
+    def make_rects(self, maxX, maxY):
         for rect in range(100):
             r = svg.rect(
             x=randint(0, maxX + 50) - 50,
