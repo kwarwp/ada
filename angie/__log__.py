@@ -137,3 +137,10 @@ NameError: name 'Elemento' is not defined
     self.rects = Elemento('', x=0, y=0, w=1350, h=800, cena=self.cena)
 NameError: name 'Elemento' is not defined
 '''},
+{'date': 'Wed Feb 09 2022 23:15:30.987 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 19
+  r = svg.rect(
+                                                                                                                                                                                                                                                                                      ^
+SyntaxError: invalid syntax
+'''},
