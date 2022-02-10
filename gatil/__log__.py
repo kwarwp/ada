@@ -695,3 +695,10 @@ SyntaxError: invalid syntax
                               ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Feb 10 2022 19:55:41.402 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 71
+  sty = {'background-position': '{} {}'.format(posx, posy), 'background-size': '{} {}'.format(300, 150),
+                                                                                                                                                                                                                                                                                                                                                                                           ^
+SyntaxError: invalid syntax
+'''},
