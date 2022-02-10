@@ -202,10 +202,11 @@ class Thrash:
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             self.rubish <= obj
             obj.bind('click', self._vai)
+            obj.click(self._vai)
             
-    def _vai(self, ev):
+    def _vai_(self, ev):
         self.__vai(ev)
-    def vai(self, ev):
+    def _vai(self, ev):
         self.remaining_shuffle_count -= 1
         if not self.remaining_shuffle_count:
             self.fundo.elt.remove()
@@ -224,7 +225,8 @@ class Thrash:
             stag <= obj
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
-            self.__vai = lambda *_: None
+            #self.__vai = lambda *_: None
+            obj.click(None)
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
