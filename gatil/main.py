@@ -56,14 +56,16 @@ class Abrigo:
         super().__init__(img)
 
 class Rua(Cena):
-    def __init__(self, img, props=NO):
+    def __init__(self, img, trash=None, props=NO):
         cena = self
         class Hero(Elemento):
             def __init__(self, x=0, y=0, w=130, h=100):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, cena=cena)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.cena, cena=cena)
+            def vai(self, *_):
+                trash.dump(cena)
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
@@ -83,14 +85,14 @@ class Rua(Cena):
         super().vai()
         #HERO.entra(self)
 class Thrash:
-    def __init__(self, elt, cena):
+    def __init__(self):
         self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
-        self.cena = cena
-        cache = self.create_script_tag(LIXAO)
-        cena.elt <= cache
+        self.cache = self.create_script_tag(LIXAO)
+        #cena.elt <= cache
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
-    def dump(self, cena, sorte=4)
+    def dump(self, cena, sorte=4):
         from browser import svg
+        cena.elt <= self.cache
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
         self.remaining_shuffle_count = 10
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
@@ -159,6 +161,7 @@ class Gatil(Cena):
     def __init__(self, img, x=0, y=0):
         super().__init__(img)
         self.img = img
+        self.trash = Thrash()
         #self.elt = html.DIV(style=STYLE, )
         self.dx, self.dy = x*Abrigo.DW, y*200, 
         self.cena = c = Elemento(img, x=0, y=0, w=1350, h=800, cena=self)
@@ -176,13 +179,13 @@ class Gatil(Cena):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
-        sala_b_args[0] = Rua(sala_b_args[0],[
+        sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
-        sala_b_args[1] = Rua(sala_b_args[1],[
+        sala_b_args[1] = Rua(sala_b_args[1], self.trash, [
         (P.H, [310, 490]), (P.T, [540, 490]), (P.T, [780, 430, 150]), (P.G, [60, 510, 100]), (P.S, [980, 500])])
-        sala_b_args[2] = Rua(sala_b_args[2],[
+        sala_b_args[2] = Rua(sala_b_args[2], self.trash, [
         (P.H, [100, 500]), (P.T, [780, 590, 60, 50]), (P.T, [840, 670]), (P.S, [850, 550]), (P.G, [390, 510, 80, 140])])
-        sala_b_args[3] = Rua(sala_b_args[3],[
+        sala_b_args[3] = Rua(sala_b_args[3], self.trash, [
         (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550])])
         sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
@@ -200,7 +203,6 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        self.trash = Thrash(x.elt, sala_b.norte)
-        self.trash.dump(sala_b.norte)
+        #self.trash.dump(sala_b.norte)
     
 Gatil(GATIL_MOS).vai()
