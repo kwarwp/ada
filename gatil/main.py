@@ -120,6 +120,8 @@ class Swap:
         shuffle(pecas)
         self.pecas = [Peca(local, indice) for local, indice in enumerate(pecas)]
         self.venceu = venceu or J.n(cena, "Voce venceu!")
+    def limpa(self):
+        [peca.elt.remove() for peca in self.pecas]
     def montou(self):
         resultado = [peca.certo() for peca in self.pecas]
         print(resultado)
@@ -152,8 +154,9 @@ class Rua(Cena):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
-                Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=self)
-            def vai(self, *_):
+                self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi)
+            def foi(self, *_):
+                self.puz.limpa()
                 INV.bota(self)
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
