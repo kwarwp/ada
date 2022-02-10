@@ -56,19 +56,21 @@ class CPuzzle:
     """
     def __init__(self,imagem, esta_cena, dx=3, dy=3, w=1000, h=600, venceu=None):
         posiciona_proxima = self.posiciona_proxima
+        self.dx = dx
         #ldx, ldy, lw, lh =dx, dy, w, h
         class LinhaGeracional:
             """Representa cada uma das linhas recortadas do herdograma original"""
-            def __init__(self, posicao):
+            def __init__(self, posicao, index):
                 ldx, ldy, lw, lh =dx, dy, w, h
                 self.posicao = posicao # posição original no topo da página
+                self.index = index
                 #posx = (lw//ldx) * (posicao % ldx)
                 #posy = (lh//ldy) * (posicao // ldx)
-                posx = 100 * (posicao % ldx)
-                posy = 50 * (posicao // ldx)
-                self.linha = Elemento(imagem, x=posicao*150, y=30, w=100, h=50)
-                self.linha.siz=(100*ldx, 50*ldy)
-                self.linha.pos=(-posx, -posy)
+                posx = 100 * (index % ldx)
+                posy = 50 * (index // ldx)
+                self.linha = Elemento(imagem, tit=f"_{index}_", x=posicao*150, y=30, w=100, h=50)
+                self.linha.siz = (100*ldx, 50*ldy)
+                self.linha.pos = (-posx, -posy)
                 self.linha.entra(esta_cena)
                 self.linha.vai = self.clica_e_posiciona_a_linha #quando clica, monta o herdograma
             def zera(self):
@@ -76,7 +78,7 @@ class CPuzzle:
                 self.linha.y = 30  # posiciona a peça no topo da página
                 self.linha.vai = self.clica_e_posiciona_a_linha
             def clica_e_posiciona_a_linha(self, *_):
-                x, y = posiciona_proxima(self.posicao)
+                x, y = posiciona_proxima(self.index)
                 if y:  # se o y retornou zero é porque o posiciona próxima detectou montagem errada
                     self.linha.x, self.linha.y = x, y # monta a linha no herdograma
                     self.linha.vai = lambda *_:None #desativa o click da linha
@@ -84,10 +86,12 @@ class CPuzzle:
         # coloca cada uma das linhas embaralhadas
         tiles = list(range(dx*dy))
         shuffle(tiles)
-        self.linhas = [LinhaGeracional(posicao=uma_posicao) for uma_posicao in tiles]
+        self.linhas = [LinhaGeracional(posicao=uma_posicao, index=index) for uma_posicao, index in enumerate(tiles)]
         self.acertou = venceu # or alert("acertou")
-        self.linha_inicial = 300
+        self.peca_inicial = 0
+        self.posicao_x = self.posicao_y = 300
         self.altura_da_linha = 50  # cada peça do herdograma tem esta altura
+        self.largura_da_linha = 100  # cada peça do herdograma tem esta altura
         self.posicoes_montadas = []  #l ista das linhas já montadas no herdograma
         self.posicoes_corretas = list(range(dx*dy))  # lista das linhas montadas corretamente
 
@@ -96,18 +100,24 @@ class CPuzzle:
            Calcula se montou correto, comparando com a lista de posicões corretas.
            Se já montou quatro peças, e não acerto sinaliza com zero, para iniciar o jogo.
         """
-        self.linha_inicial += self.altura_da_linha  # incrementa a posição para montar na linha de baixo
+        dx, dy = self.peca_inicial % self.dx, self.peca_inicial // self.dx
+        self.posicao_x, self.posicao_y = 300+self.largura_da_linha*dx,  300+self.altura_da_linha*dy  # incrementa a posição para montar na linha de baixo
         self.posicoes_montadas += [posicao]  # adiciona o índice desta peça na lista de peças montadas
-        if self.posicoes_montadas == self.posicoes_corretas:
-            self.acertou()  # invoca a ação acertou se montou nas posições corretas
-            return 300, self.linha_inicial
+        self.peca_inicial += 1  # incrementa a posição para montar na linha de baixo
+        #alert(self.posicoes_montadas)
+        if self.posicoes_montadas == self.posicoes_corretas[:len(self.posicoes_montadas)]:
+            if self.posicoes_montadas == self.posicoes_corretas:
+                self.acertou()  # invoca a ação acertou se montou nas posições corretas
+            return self.posicao_x, self.posicao_y
         else:
             if len(self.posicoes_montadas) == 4:  # se montou qutro peças incorretas reinicia o game
                 [linha.zera() for linha in self.linhas]  # volta as peças para o topo
                 self.posicoes_montadas = []  # indica que nenhuma peça foi montada
-                self.linha_inicial = 300  # inicia a altura de ontagem da primeira peça
+                self.peca_inicial = 0  # inicia a altura de ontagem da primeira peça
                 return 0, 0  #  retorna uma posição inválida para sinalizar a peça
-        return 300, self.linha_inicial
+        return self.posicao_x, self.posicao_y
+    def limpa(self):
+        [peca.linha.elt.remove() for peca in self.linhas]
             
 
 class Swap:
