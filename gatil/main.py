@@ -4,7 +4,7 @@ from _spy.vitollino.main import Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
-CATPUZ = "lVlPvCB zVp6z NUyttbn VWjRf".split()
+CATPUZ = "lVlPvCB zVp6z NUyttbn".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
