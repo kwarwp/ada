@@ -148,12 +148,14 @@ class Rua(Cena):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.dump, cena=cena)
             def dump(self, *_):
+                self.x = -1000
                 trash.dump(cena)
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
+                self.vai = lambda *_: None
                 self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
             def foi(self, *_):
                 self.puz.limpa()
@@ -178,6 +180,7 @@ class Thrash:
         self.cache = self.create_script_tag(LIXAO)
         #cena.elt <= cache
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
+        self.__vai = self.vai
     def dump(self, cena, sorte=4):
         from browser import svg
         cena.elt <= self.cache
@@ -198,8 +201,10 @@ class Thrash:
             obj = svg.use(id=f"#{indice:02d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             self.rubish <= obj
-            obj.bind('click', self.vai)
+            obj.bind('click', self._vai)
             
+    def _vai(self, ev):
+        self.__vai(ev)
     def vai(self, ev):
         self.remaining_shuffle_count -= 1
         if not self.remaining_shuffle_count:
@@ -219,6 +224,7 @@ class Thrash:
             stag <= obj
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
+            self.__vai = lambda *_: None
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
