@@ -4,7 +4,7 @@ from _spy.vitollino.main import Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
-ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 mq5JUkD FJrCK laiDtu4".split()]
+ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -356,15 +356,15 @@ class Gatil(Cena):
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def et_vai(self, *_):
         self.et.x = 100
-    def vai(self):
+    def vai_esgoto(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in ESGOTO[0]])
         sala_a.norte.vai()
-        sala_b_args = [IM.format(lnk) for lnk in ESGOTO[1]]]
+        sala_b_args = [IM.format(lnk) for lnk in ESGOTO[1]]
         sala_b = Sala(*sala_b_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         sala_b.norte.vai()
-    def vai_(self):
+    def vai(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
@@ -386,7 +386,7 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
         self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
-        self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
+        #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
         INV.bota(g)
@@ -394,6 +394,6 @@ class Gatil(Cena):
         sala_b.norte.vai()
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
-        Swap(J(), IM.format(CATPUZ),sala_b.norte,)
+        #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
     
 Gatil(GATIL_MOS).vai()
