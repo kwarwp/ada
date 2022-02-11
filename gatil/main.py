@@ -4,6 +4,7 @@ from _spy.vitollino.main import Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
+ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 mq5JUkD FJrCK laiDtu4".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -31,8 +32,9 @@ PIX = "https://imgur.com/0OoP7wt.jpg"
 RAIN = "https://cdn.wallpapersafari.com/44/7/bvCdLK.gif"
 STORM = "https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif"
 FLOOD = "https://media.giphy.com/media/3HoB7BmMnKMdq/giphy.gif"
+#HALO = "https://i.imgur.com/XDuFNZw.png"
 HAIL = "https://i.imgur.com/ZZ8nEkV.gif"
-HALO = "https://i.imgur.com/XDuFNZw.png"
+HALO = "https://imgur.com/FiS2X97.gif"
 HERO = Elemento(PETUNIO, x=200, y=550, w=130, h=100)
 NO = []
 lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez',
@@ -217,7 +219,7 @@ class Rua(Cena):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.2, vai=self.dump, cena=cena)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, vai=self.dump, cena=cena)
             def dump(self, *_):
                 self.x = -1000
                 trash.dump(cena)
@@ -234,7 +236,7 @@ class Rua(Cena):
                 INV.bota(self)
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, cena=cena)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena)
         super().__init__(img)
         self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui}
         [p[proname](*proargs) for proname, proargs  in props]
@@ -252,9 +254,10 @@ class Thrash:
         self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cache = self.create_script_tag(LIXAO)
         pycard = document["pycard"]
-        hidden = Elemento['']
-        hidden.setAttribute['hidden', 'hidden']
-        hidden <= self.cache
+        hidden = Elemento('')
+        hidden.elt.setAttribute('hidden', 'hidden')
+        hidden.elt <= self.cache
+        pycard <= hidden.elt
         #cena.elt <= cache
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
         #self.__vai = self.vai
@@ -354,6 +357,14 @@ class Gatil(Cena):
     def et_vai(self, *_):
         self.et.x = 100
     def vai(self):
+        sala_a = Sala(*[IM.format(lnk) for lnk in ESGOTO[0]])
+        sala_a.norte.vai()
+        sala_b_args = [IM.format(lnk) for lnk in ESGOTO[1]]]
+        sala_b = Sala(*sala_b_args)
+        lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
+        lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
+        sala_b.norte.vai()
+    def vai_(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
