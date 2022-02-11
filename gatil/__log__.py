@@ -782,3 +782,10 @@ AttributeError: 'Elemento' object has no attribute 'setAttribute'
     pycard <= hidden
 TypeError: can't add 'Elemento' object to DOMNode instance
 '''},
+{'date': 'Fri Feb 11 2022 11:50:14.184 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 362
+  sala_b_args = [IM.format(lnk) for lnk in ESGOTO[1]]]
+                                                     ^
+SyntaxError: invalid syntax
+'''},
