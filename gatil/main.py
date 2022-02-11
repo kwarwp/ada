@@ -248,14 +248,19 @@ class Rua(Cena):
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
+        from browser import document
         self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cache = self.create_script_tag(LIXAO)
+        pycard = document["pycard"]
+        hidden = Elemento['']
+        hidden.setAttribute['hidden', 'hidden']
+        hidden <= self.cache
         #cena.elt <= cache
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
         #self.__vai = self.vai
     def dump(self, cena, sorte=4):
         from browser import svg
-        cena.elt <= self.cache
+        #cena.elt <= self.cache
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
         self.remaining_shuffle_count = 20
