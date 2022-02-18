@@ -14,6 +14,22 @@ class Retangulos:
         self.rects = Elemento('', x=0, y=0, w=1350, h=800, cena=self.cena)
         self.cena.vai()
         self.rects.elt <= self.tela
+        
+    def make_nodes(self):
+        class Node(Elemento):
+            def __init__(self, x, y, w, c):
+                super().__init__(ELIPSE, x= x, y=y, w=w, h=33, cena=self.cena)
+                self.siz= (100,100)
+                self.pos= (0, c)
+        [Node(x, y, w, c) for x, y, w, c in ([100, 100, 100, -66])]
+        '''
+        green = Elemento(ELIPSE, x= 100, y=200, w=100, h=33, cena=self.cena)
+        green.siz= (100,100)
+        green.pos= (0,-33)
+        green = Elemento(ELIPSE, x= 100, y=300, w=100, h=33, cena=self.cena)
+        green.siz= (100,100)
+        #green.pos= (0,-66)
+        '''
 
 
     def make_rects(self, maxX, maxY):
@@ -39,4 +55,4 @@ class Retangulos:
             r <= transform
 
 
-Retangulos() #.make_rects(1300, 800)
+Retangulos().make_nodes() #.make_rects(1300, 800)
