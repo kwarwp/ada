@@ -176,3 +176,23 @@ SyntaxError: invalid syntax
     [Node(x, y, w, c) for x, y, w, c in ([100, 100, 100, -66])]
 TypeError: 'int' object is not iterable
 '''},
+{'date': 'Fri Feb 18 2022 10:39:04.459 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 58
+    Retangulos().make_nodes() #.make_rects(1300, 800)
+  module <module> line 24
+    [Node(x, y, w, c) for x, y, w, c in [[100, 100, 100, -66],[100, 200, 100, -33]]]
+  module <module> line 21
+    super().__init__(ELIPSE, x=x, y=y, w=w, h=33, cena=self.cena)
+AttributeError: 'Node' object has no attribute 'cena'
+'''},
