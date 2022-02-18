@@ -16,9 +16,10 @@ class Retangulos:
         self.rects.elt <= self.tela
         
     def make_nodes(self):
+        cena = self.cena
         class Node(Elemento):
             def __init__(self, x, y, w, c):
-                super().__init__(ELIPSE, x=x, y=y, w=w, h=33, cena=self.cena)
+                super().__init__(ELIPSE, x=x, y=y, w=w, h=33, cena=cena)
                 self.siz= (100,100)
                 self.pos= (0, c)
         [Node(x, y, w, c) for x, y, w, c in [[100, 100, 100, -66],[100, 200, 100, -33]]]
