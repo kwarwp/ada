@@ -18,28 +18,23 @@ class Retangulos:
     def make_nodes(self):
         cena = self.cena
         class Node(Elemento):
-            def __init__(self, x, y, w, c):
-                super().__init__(ELIPSE, x=x, y=y, w=w, h=33, o=0.95, cena=cena, vai=self.nomeia)
+            def __init__(self, x, y, w, c, h=33):
+                super().__init__(ELIPSE, x=x, y=y, w=w, h=h, o=0.45, cena=cena, vai=self.nomeia)
                 self.siz= (w,100)
                 self.pos= (0, c)
                 self.text = ""
             def nomeia(self, *_):
                 from browser import html
                 self.text = input("nomei os parentes aqui")
+                self.elt.html = ""
                 self.elt <= html.PRE(self.text, style=dict(
                     position='relative', top=0, left=0, backgroundColor='transparent', padding="0.5rem 1.5rem"))
+                self.o =1
         [Node(x, y, w, c) for x, y, w, c in [
-            [100, 100, 100, -66],[100, 200, 100, -33],[100, 300, 100, 0],
-            [410, 55, 170, -33],[380, 100, 170, -33],[390, 150, 190, -33]
+            [85, 479, 180, -66],[410, 493, 180, -66],[850, 458, 180, -66],
+            [410, 55, 170, -33],[380, 100, 170, -33],[425, 145, 190, -33],
+            [280, 143, 150, 0],[560, 120, 150, 0],[560, 180, 150, 0]
         ]]
-        '''
-        green = Elemento(ELIPSE, x= 100, y=200, w=100, h=33, cena=self.cena)
-        green.siz= (100,100)
-        green.pos= (0,-33)
-        green = Elemento(ELIPSE, x= 100, y=300, w=100, h=33, cena=self.cena)
-        green.siz= (100,100)
-        #green.pos= (0,-66)
-        '''
 
 
     def make_rects(self, maxX, maxY):
