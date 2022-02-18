@@ -27,7 +27,7 @@ class Retangulos:
                 from browser import html
                 self.text = input("nomei os parentes aqui")
                 self.elt <= html.PRE(self.text, style=dict(
-                    position='relative', top=0, left=0, backgroundColor='transparent'))
+                    position='relative', top=0, left=0, backgroundColor='transparent', padding="0.5rem 1.5rem"))
         [Node(x, y, w, c) for x, y, w, c in [
             [100, 100, 100, -66],[100, 200, 100, -33],[100, 300, 100, 0],
             [410, 55, 170, -33],[380, 100, 170, -33],[390, 150, 190, -33]
