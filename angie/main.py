@@ -1,6 +1,7 @@
 # ada.angie.main.py
 OCEANO = "https://i.imgur.com/NRi5i6d.jpg"
 colorPalette = ["#9B2E69", "#D93750", "#E2724F", "#F3DC7B", "#4E9397"]
+ELIPSE = "https://imgur.com/Gea0Z3c.png"
 from _spy.vitollino.main import Cena, STYLE, Elemento
 from browser import svg
 from random import randint
