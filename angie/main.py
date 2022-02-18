@@ -31,10 +31,10 @@ class Retangulos:
             attributeName="transform",
             begin="0s",
             dur="20s",
-            type="rotate",
-            from="0 60 60",
             to="360 60 60",
             repeatCount="indefinite")
+            transform.setAttribute("type","rotate")
+            transform.setAttribute("from","0 60 60")
             r <= transform
 
 
