@@ -33,7 +33,7 @@ class Arvore:
             [410, 55, 170, green],[380, 100, 170, green],[425, 145, 190, green],
             [280, 143, 150, red],[560, 120, 150, red],[560, 180, 150, red]
         ]]
-        '''Somente alguns nós estão programados. Outros podem ser acrescentados adicionando os parâmetros'''
+        '''Somente alguns nós estão programados. Outros podem ser acrescentados adicionando os parâmetros na lista acima'''
 
 
 Arvore().make_nodes()
