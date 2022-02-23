@@ -279,3 +279,10 @@ TypeError: style must be dict, not str
                      ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Feb 23 2022 16:26:22.265 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 147
+  style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness, 'stroke-linecap'="round" }
+                                                                                                     ^
+SyntaxError: invalid syntax
+'''},
