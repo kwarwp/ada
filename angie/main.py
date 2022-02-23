@@ -185,11 +185,15 @@ class Tartaruga:
 
     def __init__(self):
 
-        turtle.set_defaults(turtle_canvas_wrapper = document['pydiv'])
-        window = turtle.Screen()
+        turtle.set_defaults(turtle_canvas_wrapper = document['pydiv'],
+            canvwidth = 600,  # default is 500
+            canvheight = 400,  # default is 500
 
-        window.setup(width=800, height=600, startx=10, starty=0.5)
-        self.blahaj = blahaj = turtle.Turtle() 
+        )
+        #window = turtle.Screen()
+
+        #window.setup(width=800, height=600, startx=10, starty=0.5)
+        self.blahaj = blahaj = turtle.Turtle("turtle") 
         blahaj.shape("turtle")
         blahaj.penup()
         blahaj.setpos(-390, 0)
