@@ -134,38 +134,6 @@ class Linhas:
 
             # Increase the thickness.
             current_thickness += rescale
-        for i, point in []: #enumerate(points):
-
-            # Create the overlay.
-            # overlay_image = Image.new("RGB", (image_size_px, image_size_px), (0, 0, 0))
-            # overlay_draw = ImageDraw.Draw(overlay_image)
-
-            if i == n_points:
-                # Connect the last point back to the first.
-                next_point = points[0]
-            else:
-                # Otherwise connect it to the next element.
-                next_point = points[i + 1]
-
-            # Find the right color.
-            factor = i / n_points
-            line_color = self.interpolate(start_color, end_color, factor=factor)
-
-            # Draw the line.
-            #overlay_draw.line([point, next_point], fill=line_color, width=current_thickness)
-            #pts = point + next_point
-            a, b = *point
-            c, d = *next_point
-            r, g, b = *line_color
-            style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness, 'stroke-linecap':"round" }
-            lin = svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
-            self.tela <= lin
-
-            # Increase the thickness.
-            current_thickness += rescale
-
-            # Add the overlay channel.
-            #image = ImageChops.add(image, overlay_image)
 
         # Image is done! Now resize it to be smooth.
         '''
