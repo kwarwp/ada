@@ -124,12 +124,12 @@ class Linhas:
         ypoints = points[1:]+[points[0]]
         liner = zip(points, ypoints)
         #alert(list(liner))
-        for i, ((a, b), (c, d)) in enumerate(liner):
+        for i, ((i, j), (k, l)) in enumerate(liner):
             factor = i / n_points
             line_color = self.interpolate(start_color, end_color, factor=factor)
-            r, g, l = *line_color
-            style = {'stroke':f'rgb({r},{g},{l})', 'stroke-width':current_thickness, 'stroke-linecap':"round" }
-            lin = svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
+            r, g, b = *line_color
+            style = {'stroke':f'rgb({r},{g},{l})', 'stroke-width':current_thickness) #, 'stroke-linecap':"round" }
+            lin = svg.line (x1=i, y1=j, x2=k, y2=l, style=style)
             self.tela <= lin
 
             # Increase the thickness.
