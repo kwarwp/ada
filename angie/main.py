@@ -141,7 +141,8 @@ class Linhas:
             # Draw the line.
             #overlay_draw.line([point, next_point], fill=line_color, width=current_thickness)
             pts = point + next_point
-            a, b, c, d = *pts
+            a, b = *point
+            c, d = *next_point
             r, g, b = *line_color
             style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness}
             lin = svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
