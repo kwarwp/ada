@@ -272,3 +272,10 @@ Traceback (most recent call last):
     svg.line (x1=a, y1=b, x2=c, y2=d, style=f"stroke:rgb(255,0,0);stroke-width:{current_thickness}")
 TypeError: style must be dict, not str
 '''},
+{'date': 'Wed Feb 23 2022 14:53:14.443 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 145
+  style = {'stroke':'rgb(255,0,0)';'stroke-width':current_thickness}
+                     ^
+SyntaxError: invalid syntax
+'''},
