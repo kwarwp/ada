@@ -121,7 +121,20 @@ class Linhas:
         # Draw the points.
         current_thickness = 1 * rescale
         n_points = len(points) - 1
-        for i, point in enumerate(points):
+        ypoints = points[1:]+points[0]
+        liner = zip(points, ypoints)
+        [self.tela <= 
+        for i, (a, b), (c, d) in enumerate(liner):
+            factor = i / n_points
+            line_color = self.interpolate(start_color, end_color, factor=factor)
+            r, g, b = *line_color
+            style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness, 'stroke-linecap':"round" }
+            lin = svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
+            self.tela <= lin
+
+            # Increase the thickness.
+            current_thickness += rescale
+        for i, point in []: #enumerate(points):
 
             # Create the overlay.
             # overlay_image = Image.new("RGB", (image_size_px, image_size_px), (0, 0, 0))
