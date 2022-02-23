@@ -286,3 +286,10 @@ SyntaxError: invalid syntax
                                                                                                      ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Feb 23 2022 16:36:12.199 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 126
+  [self.tela <= 
+                          ^
+SyntaxError: invalid syntax
+'''},
