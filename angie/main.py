@@ -5,7 +5,7 @@ ELIPSE = "https://imgur.com/Gea0Z3c.png"
 ARVORE = "https://imgur.com/VkBQmuU.jpg"
 BLACK = "https://i.imgur.com/cQogon6.jpg"
 from _spy.vitollino.main import Cena, STYLE, Elemento
-from browser import svg
+from browser import svg, alert
 from random import randint, random
 import colorsys
 
@@ -123,6 +123,7 @@ class Linhas:
         n_points = len(points) - 1
         ypoints = points[1:]+[points[0]]
         liner = zip(points, ypoints)
+        alert(list(liner))
         for i, (a, b), (c, d) in enumerate(liner):
             factor = i / n_points
             line_color = self.interpolate(start_color, end_color, factor=factor)
