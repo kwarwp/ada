@@ -92,8 +92,8 @@ class Linhas:
         points = []
 
         # Pick the colors.
-        start_color = random_color()
-        end_color = random_color()
+        start_color = self.random_color()
+        end_color = self.random_color()
 
         # Generate points to draw.
         for _ in range(num_lines):
@@ -136,7 +136,7 @@ class Linhas:
 
             # Find the right color.
             factor = i / n_points
-            line_color = interpolate(start_color, end_color, factor=factor)
+            line_color = self.interpolate(start_color, end_color, factor=factor)
 
             # Draw the line.
             #overlay_draw.line([point, next_point], fill=line_color, width=current_thickness)
