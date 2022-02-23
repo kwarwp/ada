@@ -98,8 +98,8 @@ class Linhas:
         # Generate points to draw.
         for _ in range(num_lines):
             point = (
-                random_point(image_size_px, padding),
-                random_point(image_size_px, padding),
+                self.random_point(image_size_px, padding),
+                self.random_point(image_size_px, padding),
             )
             points.append(point)
 
