@@ -128,7 +128,7 @@ class Linhas:
             factor = i / n_points
             line_color = self.interpolate(start_color, end_color, factor=factor)
             r, g, b = *line_color
-            style = {'stroke':f'rgb({r},{g},{l})', 'stroke-width':current_thickness) #, 'stroke-linecap':"round" }
+            style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness} #, 'stroke-linecap':"round" }
             lin = svg.line (x1=i, y1=j, x2=k, y2=l, style=style)
             self.tela <= lin
 
