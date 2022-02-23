@@ -93,7 +93,7 @@ class Linhas:
 
         # Pick the colors.
         start_color = self.random_color()
-        end_color = self.random_color()
+        end_color = self.random_color(0.4)
 
         # Generate points to draw.
         for _ in range(num_lines):
