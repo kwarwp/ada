@@ -142,7 +142,8 @@ class Linhas:
             #overlay_draw.line([point, next_point], fill=line_color, width=current_thickness)
             pts = point + next_point
             a, b, c, d = *pts
-            svg.line (x1=a, y1=b, x2=c, y2=d, style=f"stroke:rgb(255,0,0);stroke-width:{current_thickness}")
+            style = {'stroke':'rgb(255,0,0)';'stroke-width':current_thickness}
+            svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
 
             # Increase the thickness.
             current_thickness += rescale
