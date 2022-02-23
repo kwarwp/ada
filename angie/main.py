@@ -177,6 +177,10 @@ class Linhas:
             int(float_rbg[2] * 255),
         )
 
+
+    def random_point(self, image_size_px: int, padding: int):
+        return randint(padding, image_size_px - padding)
+
     def interpolate(self, start_color, end_color, factor: float):
         # Find the color that is exactly factor (0.0 - 1.0) between the two colors.
         new_color_rgb = []
