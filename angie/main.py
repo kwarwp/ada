@@ -64,7 +64,7 @@ class Retangulos:
 
 class Linhas:
     def __init__(self):
-        self.tela = svg.svg(version="1.1", viewBox="0 0 300 300", width="1600", height="800")
+        self.tela = svg.svg(version="1.1", viewBox="100 -50 300 300", width="1600", height="800")
         self.cena = Cena(BLACK)
         self.rects = Elemento('', x=0, y=0, w=1350, h=800, cena=self.cena)
         self.cena.vai()
