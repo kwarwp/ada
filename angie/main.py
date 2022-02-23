@@ -64,7 +64,7 @@ class Retangulos:
 
 class Linhas:
     def __init__(self):
-        self.tela = svg.svg(version="1.1", viewBox="0 0 400 400", width="1600", height="800")
+        self.tela = svg.svg(version="1.1", viewBox="0 0 300 300", width="1600", height="800")
         self.cena = Cena(BLACK)
         self.rects = Elemento('', x=0, y=0, w=1350, h=800, cena=self.cena)
         self.cena.vai()
@@ -140,7 +140,7 @@ class Linhas:
 
             # Draw the line.
             #overlay_draw.line([point, next_point], fill=line_color, width=current_thickness)
-            pts = point + next_point
+            #pts = point + next_point
             a, b = *point
             c, d = *next_point
             r, g, b = *line_color
