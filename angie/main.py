@@ -3,6 +3,7 @@ OCEANO = "https://i.imgur.com/NRi5i6d.jpg"
 colorPalette = ["#9B2E69", "#D93750", "#E2724F", "#F3DC7B", "#4E9397"]
 ELIPSE = "https://imgur.com/Gea0Z3c.png"
 ARVORE = "https://imgur.com/VkBQmuU.jpg"
+BLACK = "https://i.imgur.com/cQogon6.jpg"
 from _spy.vitollino.main import Cena, STYLE, Elemento
 from browser import svg
 from random import randint
@@ -59,5 +60,15 @@ class Retangulos:
             transform.setAttribute("from","0 60 60")
             r <= transform
 
+class Linhas:
+    def __init__(self):
+        self.tela = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
+        self.cena = Cena(BLACK)
+        self.rects = Elemento('', x=0, y=0, w=1350, h=800, cena=self.cena)
+        self.cena.vai()
+        self.rects.elt <= self.tela
+        
+    def make_nodes(self):
+        cena = self.cena
 
-Retangulos().make_nodes() #.make_rects(1300, 800)
+Linhas().make_nodes() #.make_rects(1300, 800)
