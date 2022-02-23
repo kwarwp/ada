@@ -143,7 +143,8 @@ class Linhas:
             pts = point + next_point
             a, b, c, d = *pts
             style = {'stroke':'rgb(255,0,0)', 'stroke-width':current_thickness}
-            svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
+            lin = svg.line (x1=a, y1=b, x2=c, y2=d, style=style)
+            self.tela <= lin
 
             # Increase the thickness.
             current_thickness += rescale
