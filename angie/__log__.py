@@ -350,3 +350,10 @@ Traceback (most recent call last):
     for i, (a, b), (c, d) in enumerate(list(liner)):
 ValueError: need more than 2 values to unpack
 '''},
+{'date': 'Wed Feb 23 2022 17:42:20.253 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 131
+  style = {'stroke':f'rgb({r},{g},{l})', 'stroke-width':current_thickness) #, 'stroke-linecap':"round" }
+                                                         ^
+SyntaxError: invalid syntax
+'''},
