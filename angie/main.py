@@ -189,4 +189,4 @@ class Linhas:
     def make_nodes(self):
         cena = self.cena
 
-Linhas().make_nodes() #.make_rects(1300, 800)
+Linhas().generate_art() #.make_rects(1300, 800)
