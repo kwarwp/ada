@@ -178,5 +178,41 @@ class Linhas:
        
     def make_nodes(self):
         cena = self.cena
+import turtle
 
-Linhas().generate_art() #.make_rects(1300, 800)
+class Tartaruga:
+
+    def __init__(self):
+
+        window = turtle.Screen()
+        window.setup(width=800, height=600, startx=10, starty=0.5)
+        self.blahaj = blahaj = turtle.Turtle() 
+        blahaj.shape("turtle")
+        scale = 5 
+        blahaj.penup()
+        blahaj.setpos(-390, 0)
+        blahaj.pendown()
+    def draw(self):
+
+        current = 0  
+        seen = set()
+        blahaj = self.blahaj
+        for step_size in range(1, 100):
+
+            backwards = current - step_size
+            if backwards > 0 and backwards not in seen:
+                blahaj.setheading(90)
+                blahaj.circle(scale * step_size/2, 180)
+                current = backwards
+                seen.add(current)
+
+            else:
+                blahaj.setheading(270) 
+                blahaj.circle(scale * step_size/2, 180)
+                current += step_size
+                seen.add(current)
+
+        turtle.done()
+
+Tartaruga().draw()
+#Linhas().generate_art() #.make_rects(1300, 800)
