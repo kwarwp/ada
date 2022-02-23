@@ -88,7 +88,7 @@ class Linhas:
         # image = Image.new("RGB", (image_size_px, image_size_px), bg_color)
 
         # How many lines do we want to draw?
-        num_lines = 10
+        num_lines = 18
         points = []
 
         # Pick the colors.
