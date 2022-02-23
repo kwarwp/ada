@@ -188,13 +188,13 @@ class Tartaruga:
         window.setup(width=800, height=600, startx=10, starty=0.5)
         self.blahaj = blahaj = turtle.Turtle() 
         blahaj.shape("turtle")
-        scale = 5 
         blahaj.penup()
         blahaj.setpos(-390, 0)
         blahaj.pendown()
     def draw(self):
 
         current = 0  
+        scale = 5 
         seen = set()
         blahaj = self.blahaj
         for step_size in range(1, 100):
@@ -212,7 +212,7 @@ class Tartaruga:
                 current += step_size
                 seen.add(current)
 
-        turtle.done()
+        #turtle.done()
 
 Tartaruga().draw()
 #Linhas().generate_art() #.make_rects(1300, 800)
