@@ -357,3 +357,10 @@ ValueError: need more than 2 values to unpack
                                                          ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Feb 23 2022 17:42:34.580 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 131
+  style = {'stroke':f'rgb({r},{g},{b})', 'stroke-width':current_thickness) #, 'stroke-linecap':"round" }
+                                                         ^
+SyntaxError: invalid syntax
+'''},
