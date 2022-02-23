@@ -123,7 +123,6 @@ class Linhas:
         n_points = len(points) - 1
         ypoints = points[1:]+points[0]
         liner = zip(points, ypoints)
-        [self.tela <= 
         for i, (a, b), (c, d) in enumerate(liner):
             factor = i / n_points
             line_color = self.interpolate(start_color, end_color, factor=factor)
