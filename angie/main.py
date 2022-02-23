@@ -121,7 +121,7 @@ class Linhas:
         # Draw the points.
         current_thickness = 1 * rescale
         n_points = len(points) - 1
-        ypoints = points[1:]+points[0]
+        ypoints = points[1:]+[points[0]]
         liner = zip(points, ypoints)
         for i, (a, b), (c, d) in enumerate(liner):
             factor = i / n_points
