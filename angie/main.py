@@ -151,7 +151,7 @@ class Linhas:
 
         # I want a bright, vivid color, so max V and S and only randomize HUE.
         h = random()
-        s = 1
+        s = 1 - 0.3*random()
         v = 1
         float_rbg = colorsys.hsv_to_rgb(h, s, v)
 
