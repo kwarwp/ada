@@ -179,12 +179,15 @@ class Linhas:
     def make_nodes(self):
         cena = self.cena
 import turtle
+from browser import document
 
 class Tartaruga:
 
     def __init__(self):
 
+        turtle.set_defaults(turtle_canvas_wrapper = document['pydiv'])
         window = turtle.Screen()
+
         window.setup(width=800, height=600, startx=10, starty=0.5)
         self.blahaj = blahaj = turtle.Turtle() 
         blahaj.shape("turtle")
