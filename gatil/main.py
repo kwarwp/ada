@@ -231,7 +231,7 @@ class Rua(Cena):
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
                 self.vai = lambda *_: None
-                self.desiste = Elemento(DESISTO, 0,300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
+                self.desiste = Elemento(DESISTO, tit="DESISTO!", x=0, y=300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
                 #self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
                 self.puz = CPuzzle(IM.format(choice(CATPUZ)),cena, venceu=self.foi)
             def foi(self, *_, ganhou=True):
