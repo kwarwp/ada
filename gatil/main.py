@@ -11,6 +11,8 @@ TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymo
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
 LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
+GATEIRA = "https://i.imgur.com/Ey0W3TR.png"
+DESISTO = "https://i.imgur.com/OwMSTHC.png"
 #RUBISH = "https://i.imgur.com/4cZQRvF.png"
 RUBISH = "https://i.imgur.com/MSJw5kB.png"
 #ROFFX, ROFFY, TOFF, SCAL =720, 330, 150, 2.5
@@ -229,11 +231,14 @@ class Rua(Cena):
                 super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
                 self.vai = lambda *_: None
+                self.desiste = Elemento(DESISTO, 0,300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
                 #self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
                 self.puz = CPuzzle(IM.format(choice(CATPUZ)),cena, venceu=self.foi)
-            def foi(self, *_):
+            def foi(self, *_, ganhou=True):
                 self.puz.limpa()
-                INV.bota(self)
+                self.desiste.elt.remove()
+                self.desiste = None
+                INV.bota(self) if ganhou else None
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena)
