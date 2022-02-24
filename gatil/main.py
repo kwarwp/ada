@@ -1,6 +1,6 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from _spy.vitollino.main import Jogo as J
+from _spy.vitollino.main import Texto, Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
@@ -216,6 +216,7 @@ class Abrigo:
 class Rua(Cena):
     def __init__(self, img, trash=None, props=NO):
         cena = self
+        self.cats = []
         class Hero(Elemento):
             def __init__(self, x=0, y=0, w=130, h=100):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
@@ -234,11 +235,13 @@ class Rua(Cena):
                 self.desiste = Elemento(DESISTO, tit="DESISTO!", x=0, y=300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
                 #self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
                 self.puz = CPuzzle(IM.format(choice(CATPUZ)),cena, venceu=self.foi)
+            def hide(self, *_, ganhou=True):
+                self.x = -1000
             def foi(self, *_, ganhou=True):
                 self.puz.limpa()
                 self.desiste.elt.remove()
                 self.desiste = None
-                INV.bota(self) if ganhou else None
+                INV.bota(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena)
