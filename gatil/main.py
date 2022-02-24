@@ -113,7 +113,7 @@ class CPuzzle:
                 self.acertou()  # invoca a ação acertou se montou nas posições corretas
             return self.posicao_x, self.posicao_y
         else:
-            if len(self.posicoes_montadas) == 4:  # se montou qutro peças incorretas reinicia o game
+            if len(self.posicoes_montadas) >= 4:  # se montou qutro peças incorretas reinicia o game
                 [linha.zera() for linha in self.linhas]  # volta as peças para o topo
                 self.posicoes_montadas = []  # indica que nenhuma peça foi montada
                 self.peca_inicial = 0  # inicia a altura de ontagem da primeira peça
