@@ -221,5 +221,5 @@ class Tartaruga:
 
         #turtle.done()
 
-Tartaruga().draw()
-#Linhas().generate_art() #.make_rects(1300, 800)
+#Tartaruga().draw()
+Linhas().generate_art() #.make_rects(1300, 800)
