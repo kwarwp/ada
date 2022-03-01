@@ -7,6 +7,7 @@ from random import randint, shuffle, choice
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
+CATPUZ = "eHRmeht U0iADj9 EaPTgKQ G81qf9N j7GXWPF sPKaCUU GTaG70H uHqY9zC qLPH0o4 VK6fsjK uHqY9zC".split()
 TORRE = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
 LIGHT = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/brunurb_yellowlighter_1.svg"
 CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisdesign_candystick.svg"
