@@ -45,7 +45,7 @@ class Cursor(Elemento):
             def nextst(self, ev):
                 ev.target.style = self.update_style("move", _PATTERN.BCROSS)
                 outer.tit = "next move"
-                alert("next move")
+                #alert("next move")
                 outer.current = outer.move
 
             def mouse_over(self, ev):
@@ -82,7 +82,7 @@ class Cursor(Elemento):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
                 outer.tit = "next resize"
-                alert("next resize")
+                #alert("next resize")
                 outer.current = outer.resize
 
         class Resize(Noop):
@@ -102,7 +102,7 @@ class Cursor(Elemento):
             def nextst(self, ev):
                 #print("next noop")
                 ev.target.style = self.update_style("default", _PATTERN.STARRY)
-                alert("next noop")
+                #alert("next noop")
                 outer.current = outer.noop
 
         def next_state(ev):
@@ -138,12 +138,12 @@ class Cursor(Elemento):
         cstyle = cstyle.format(width, height, height, left, top)
         style.update(**_PATTERN.STARRY)
         self.style = style
-        self.elt = html.DIV(Id="__cursor__", style=style, title="")
+        #self.elt = html.DIV(Id="__cursor__", style=style, title="")
         #self.elt.ID, self.elt.style, self.elt.title = "__cursor__", style, ""
 
         #self.cena <= self.elt
-        self.cena.elt.html = ""
-        self.cena.elt <= self.elt
+        #self.cena.elt.html = ""
+        #self.cena.elt <= self.elt
         #print("elt = ", self.elt.Id)
         #self.elt.onclick = next_state
         self.elt.bind('click', next_state)
