@@ -11,7 +11,7 @@ Changelog
 
 """
 from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, ISTYLE, CURSOR_ELEMENT, _PATTERN
-from browser import html
+from browser import html, alert
 
 
 
@@ -45,6 +45,7 @@ class Cursor(Elemento):
             def next(self, ev):
                 ev.target.style = self.update_style("move", _PATTERN.BCROSS)
                 outer.tit = "next move"
+                alert("next move")
                 outer.current = outer.move
 
             def mouse_over(self, ev):
@@ -81,6 +82,7 @@ class Cursor(Elemento):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
                 outer.tit = "next resize"
+                alert("next resize")
                 outer.current = outer.resize
 
         class Resize(Noop):
@@ -98,8 +100,9 @@ class Cursor(Elemento):
                 ev.target.style.cursor = "grab"
 
             def next(self, ev):
-                print("next noop")
+                #print("next noop")
                 ev.target.style = self.update_style("default", _PATTERN.STARRY)
+                alert("next noop")
                 outer.current = outer.noop
 
         def next_state(ev):
