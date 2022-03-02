@@ -1025,3 +1025,10 @@ Exception: <TypeError: $B.get_class(...) is undefined>
 
 Exception: <TypeError: $B.get_class(...) is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 17:59:29.65 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 234
+  eat = (time * (len(self.cats)+1)
+                                            ^
+SyntaxError: invalid syntax
+'''},
