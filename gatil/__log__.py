@@ -1005,3 +1005,8 @@ Traceback (most recent call last):
     self.elt = html.DIV(Id="__cursor__", style=style, title="")
 NameError: name 'html' is not defined
 '''},
+{'date': 'Wed Mar 02 2022 13:50:16.587 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''dim left, top =  [250, 100, 200, 100]
+
+Exception: <TypeError: $B.get_class(...) is undefined>
+'''},
