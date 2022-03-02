@@ -869,3 +869,10 @@ AttributeError: 'dict' object has no attribute 'top'
     dims = [self.alvo.style.top, self.alvo.style.minHeight, self.alvo.style.left, self.alvo.style.width]
 AttributeError: 'dict' object has no attribute 'top'
 '''},
+{'date': 'Wed Mar 02 2022 13:25:43.530 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module gatil.util line 17
+  class Cursor(Elemento:
+                        ^
+SyntaxError: invalid syntax
+'''},
