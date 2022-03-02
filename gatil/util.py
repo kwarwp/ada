@@ -123,7 +123,7 @@ class Cursor(Elemento):
         self.current = self.move
         style = dict(**ISTYLE)
         dims = [self.y, self.h, self.x, self.w]
-        print("dim left, top = ", dims)
+        #print("dim left, top = ", dims)
         #dims = [_strip_kind(dm) for dm in dims]
         top, height, left, width = dims
         left, top = left + width//2 - 30, top + height//2 - 30
@@ -136,7 +136,7 @@ class Cursor(Elemento):
 
         #self.cena <= self.elt
         self.cena.elt <= self.elt
-        print("elt = ", self.elt.Id)
+        #print("elt = ", self.elt.Id)
         self.elt.onclick = next_state
         self.elt.onmousedown = _mouse_down
         self.elt.onmouseup = _mouse_up
