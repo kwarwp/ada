@@ -1,6 +1,6 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from _spy.vitollino.main import Texto, singleton, Jogo as J
+from _spy.vitollino.main import Texto, Jogo as J
 from gatil.util import Cursor
 from browser import html, alert
 from collections import namedtuple
@@ -215,6 +215,25 @@ class Abrigo:
     DW = (IW-GW)//6
     def __init__(self):
         super().__init__(img)
+
+import functools
+def singleton(cls):
+    _instance = {}
+    cls._origin_new = cls.__new__
+    cls._origin_init = cls.__init__
+    @functools.wraps(cls.__new__)
+    def _singleton_new(cls, *args, **kwargs):
+        if cls not in _instance:
+            sin_instance = cls._origin_new(cls, *args, **kwargs)
+            sin_instance._origin_init(*args, **kwargs)
+            _instance[cls] = sin_instance
+        return _instance[cls]
+    # As a special case,__new__ is a staticmethod, need convert function to staticmethod by self
+    cls.__new__ = staticmethod(_singleton_new)
+    # setattr(cls, '__new__', staticmethod(_singleton_new))
+    cls.__init__ = lambda self, *args, **kwargs: None
+    # setattr(cls, '__init__', lambda self, *args, **kwargs: None)
+    return cls
 
 
 @singleton
