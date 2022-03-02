@@ -132,9 +132,9 @@ class Cursor(Elemento):
         style.update(**_PATTERN.STARRY)
         self.style = style
         self.elt = html.DIV(Id="__cursor__", style=style, title="")
-        print("elt = ", self.elt.Id)
 
         self.cena <= self.elt
+        print("elt = ", self.elt.Id)
         self.elt.onclick = next_state
         self.elt.onmousedown = _mouse_down
         self.elt.onmouseup = _mouse_up
