@@ -218,9 +218,9 @@ class Abrigo:
 
 
 @singleton
-class Hero(Elemento):
-    def __init__(self, img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
-        super().__init__(img, x=x, y=y, w=w, h=h, cena=cena)
+class TheHero(Elemento):
+    def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
+        super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         self.cats = []
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
         self.profile = {pr: 1 for pr in p_names}
@@ -240,9 +240,9 @@ class Rua(Cena):
     def __init__(self, img, trash=None, props=NO):
         cena = self
         self.cats = []
-        class Hero_(Elemento):
+        class Hero(TheHero):
             def __init__(self, x=0, y=0, w=130, h=100):
-                super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
+                super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, vai=self.dump, cena=cena)
