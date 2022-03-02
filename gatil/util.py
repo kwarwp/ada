@@ -10,7 +10,7 @@ Changelog
         Descreva o que você adicionou no código.
 
 """
-from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, CURSOR_ELEMENT, _PATTERN
+from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, ISTYLE, CURSOR_ELEMENT, _PATTERN
 
 
 
@@ -117,15 +117,19 @@ class Cursor(Elemento):
             # dm = str(dm) if isinstance(dm, int) else dm if isinstance(dm, str) else "0"
             return int(dm.rstrip(kind[0])) if kind else int(dm) if dm else 0
 
+        self.cursor = self.noop
+        self.current = self.move
         self.noop, self.move, self.resize = self.state = [Noop(), Move(), Resize()]
         self.cursor = self.noop
         self.current = self.move
-        # left, top = left + width//2 - 30, top + height//2 - 30
+        style = dict(**ISTYLE)
+        dims = [self.y, self.h, self.x, self.w]
+        print("dim left, top = ", dims)
+        #dims = [_strip_kind(dm) for dm in dims]
+        top, height, left, width = dims
+        left, top = left + width//2 - 30, top + height//2 - 30
         cstyle = CURSOR_STYLE
-        #cstyle = cstyle.format(width, height, height, left, top)
-        #print("cstyle = ", cstyle)
-        #cstyle = {k.strip(): v for k, v in (tp.split(":") for tp in cstyle.replace("\n", "").split(", ") if tp)}
-        #style.update(**cstyle)
+        cstyle = cstyle.format(width, height, height, left, top)
         style.update(**_PATTERN.STARRY)
         self.style = style
         self.elt = html.DIV(Id="__cursor__", style=style, title="")
@@ -135,3 +139,8 @@ class Cursor(Elemento):
         self.elt.onmouseup = _mouse_up
         self.elt.onmousemove = _mouse_move
         self.elt.onmouseover = _mouse_over
+
+
+if __name__ == "__main__":
+    c = Cena("https://i.imgur.com/cQogon6.jpg").vai()
+    m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
