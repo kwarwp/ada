@@ -986,3 +986,22 @@ AttributeError: 'Cursor' object has no attribute 'noop'
     self.cursor = self.noop
 AttributeError: 'Cursor' object has no attribute 'noop'
 '''},
+{'date': 'Wed Mar 02 2022 13:49:00.32 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''dim left, top =  [250, 100, 200, 100]
+Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 147
+    m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
+  module <module> line 133
+    self.elt = html.DIV(Id="__cursor__", style=style, title="")
+NameError: name 'html' is not defined
+'''},
