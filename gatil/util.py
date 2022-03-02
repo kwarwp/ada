@@ -107,7 +107,7 @@ class Cursor(Elemento):
 
         def next_state(ev):
             # self.state.append(self.state.pop(0))
-            alert(ev.x, self.current)
+            #alert(ev.x, self.current)
             self.current.nextst(ev)
 
         def _mouse_down(ev): return self.cursor.mouse_down(ev)
