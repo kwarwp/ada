@@ -231,7 +231,7 @@ class Hero(Elemento):
         
     def turn(self, time=1):
         GATIL.turn(time)
-        eat = (time * (len(self.cats)+1)
+        eat = time * (len(self.cats)+1)
         self.food -= eat
         if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
             self.game_over()
