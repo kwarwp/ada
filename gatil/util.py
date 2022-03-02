@@ -44,6 +44,7 @@ class Cursor(Elemento):
 
             def nextst(self, ev):
                 ev.target.style = self.update_style("move", _PATTERN.BCROSS)
+                outer.x, outer.y = outer.position
                 outer.tit = "next move"
                 #alert("next move")
                 outer.current = outer.move
@@ -72,7 +73,7 @@ class Cursor(Elemento):
                 delta = Point(outer.x, outer.y) + Point(ev.x, ev.y) - outer.ponto
                         
                 outer.x, outer.y = delta
-                outer.delta = delta
+                outer.position = delta
                 #outer.elt.left, outer.elt.top = delta
                 outer.ponto = Point(ev.x, ev.y)
 
@@ -82,7 +83,7 @@ class Cursor(Elemento):
             def nextst(self, ev):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
-                outer.x, outer.y = outer.delta
+                outer.x, outer.y = outer.position
                 outer.tit = "next resize"
                 #alert("next resize")
                 outer.current = outer.resize
@@ -92,7 +93,7 @@ class Cursor(Elemento):
                 #delta = Point(int(outer.elt.style.width.rstrip("px")), int(outer.elt.style.minHeight.rstrip("px"))) \
                 #        + Point(ev.x, ev.y) - outer.ponto
                 delta = Point(outer.w, outer.h) + Point(ev.x, ev.y) - outer.ponto
-                outer.w, outer.h = delta.px()
+                outer.w, outer.h = delta #.px()
                 # alvo.style = self.update_style("default", {}, delta)
                 # outer.elt.style = self.update_style("default", PATTERN.BOKEH, delta)
                 # print("mouse_move", alvo.style.minHeight, delta)
@@ -104,6 +105,7 @@ class Cursor(Elemento):
             def nextst(self, ev):
                 #print("next noop")
                 ev.target.style = self.update_style("default", _PATTERN.STARRY)
+                outer.x, outer.y = outer.position
                 #alert("next noop")
                 outer.current = outer.noop
 
