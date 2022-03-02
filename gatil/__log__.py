@@ -1010,3 +1010,7 @@ NameError: name 'html' is not defined
 
 Exception: <TypeError: $B.get_class(...) is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 13:53:51.335 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: $B.get_class(...) is undefined>
+'''},
