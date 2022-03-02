@@ -142,7 +142,7 @@ class Cursor(Elemento):
         #self.elt.ID, self.elt.style, self.elt.title = "__cursor__", style, ""
 
         #self.cena <= self.elt
-        self.cena.html = ""
+        self.cena.elt.html = ""
         self.cena.elt <= self.elt
         #print("elt = ", self.elt.Id)
         #self.elt.onclick = next_state
