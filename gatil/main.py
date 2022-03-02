@@ -406,9 +406,7 @@ class Gatil(Cena):
         #INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        c = Elemento(GATAR, x=200, y=250, w=100, h=100)
-        c.style.update(left=200, top=250, width=100, height=100)
-        cur = Cursor(alvo=c)
+        cur = Cursor(GATAR, x=200, y=250, w=100, h=100)
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
