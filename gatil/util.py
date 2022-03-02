@@ -142,5 +142,6 @@ class Cursor(Elemento):
 
 
 if __name__ == "__main__":
+    from _spy.vitollino.main import Cena 
     c = Cena("https://i.imgur.com/cQogon6.jpg").vai()
     m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
