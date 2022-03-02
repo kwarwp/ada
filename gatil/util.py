@@ -42,7 +42,7 @@ class Cursor(Elemento):
                 #cur_style["min-height"] = "{}px".format(delta.y)
                 return cur_style
 
-            def next(self, ev):
+            def nextst(self, ev):
                 ev.target.style = self.update_style("move", _PATTERN.BCROSS)
                 outer.tit = "next move"
                 alert("next move")
@@ -78,7 +78,7 @@ class Cursor(Elemento):
             def mouse_over(self, ev):
                 ev.target.style.cursor = "move"
 
-            def next(self, ev):
+            def nextst(self, ev):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
                 outer.tit = "next resize"
@@ -99,7 +99,7 @@ class Cursor(Elemento):
             def mouse_over(self, ev):
                 ev.target.style.cursor = "grab"
 
-            def next(self, ev):
+            def nextst(self, ev):
                 #print("next noop")
                 ev.target.style = self.update_style("default", _PATTERN.STARRY)
                 alert("next noop")
@@ -107,7 +107,7 @@ class Cursor(Elemento):
 
         def next_state(ev):
             # self.state.append(self.state.pop(0))
-            self.current.next(ev)
+            self.current.nextst(ev)
 
         def _mouse_down(ev): return self.cursor.mouse_down(ev)
 
