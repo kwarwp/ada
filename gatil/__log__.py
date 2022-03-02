@@ -1014,3 +1014,9 @@ Exception: <TypeError: $B.get_class(...) is undefined>
 'error': '''
 Exception: <TypeError: $B.get_class(...) is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 13:57:49.299 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''dim left, top =  [250, 100, 200, 100]
+elt =  __cursor__
+
+Exception: <TypeError: $B.get_class(...) is undefined>
+'''},
