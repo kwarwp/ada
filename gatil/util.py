@@ -11,6 +11,7 @@ Changelog
 
 """
 from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, ISTYLE, CURSOR_ELEMENT, _PATTERN
+from browser import html
 
 
 
