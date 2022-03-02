@@ -117,8 +117,6 @@ class Cursor(Elemento):
             # dm = str(dm) if isinstance(dm, int) else dm if isinstance(dm, str) else "0"
             return int(dm.rstrip(kind[0])) if kind else int(dm) if dm else 0
 
-        self.cursor = self.noop
-        self.current = self.move
         self.noop, self.move, self.resize = self.state = [Noop(), Move(), Resize()]
         self.cursor = self.noop
         self.current = self.move
