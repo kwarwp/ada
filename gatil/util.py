@@ -142,7 +142,8 @@ class Cursor(Elemento):
         #self.cena <= self.elt
         self.cena.elt <= self.elt
         #print("elt = ", self.elt.Id)
-        self.elt.onclick = next_state
+        #self.elt.onclick = next_state
+        self.elt.bind('click', next_state)
         self.elt.onmousedown = _mouse_down
         self.elt.onmouseup = _mouse_up
         self.elt.onmousemove = _mouse_move
