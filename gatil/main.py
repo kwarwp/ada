@@ -1,6 +1,7 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from _spy.vitollino.main import Texto, Cursor, Jogo as J
+from _spy.vitollino.main import Texto, Jogo as J
+from gatil.util import Cursor
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
