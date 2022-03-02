@@ -1,6 +1,6 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from _spy.vitollino.main import Texto, Jogo as J
+from _spy.vitollino.main import Texto, singleton, Jogo as J
 from gatil.util import Cursor
 from browser import html, alert
 from collections import namedtuple
@@ -40,6 +40,7 @@ FLOOD = "https://media.giphy.com/media/3HoB7BmMnKMdq/giphy.gif"
 HAIL = "https://i.imgur.com/ZZ8nEkV.gif"
 HALO = "https://imgur.com/FiS2X97.gif"
 HERO = Elemento(PETUNIO, x=200, y=550, w=130, h=100)
+GATIL = None
 NO = []
 lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez',
         'eifell', 'porquinho', 'bule', 'luva', 'panda', 'cafe', 'guitarra', 'aranha',
@@ -215,11 +216,31 @@ class Abrigo:
     def __init__(self):
         super().__init__(img)
 
+
+@singleton
+class Hero(Elemento):
+    def __init__(self, img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
+        super().__init__(img, x=x, y=y, w=w, h=h, cena=cena)
+        self.cats = []
+        p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
+        self.profile = {pr: 1 for pr in p_names}
+        self.food = 4
+        self.loot = 0
+        self.level = 1
+        self.turns = 1
+        
+    def turn(self, time=1):
+        GATIL.turn(time)
+        eat = (time * (len(self.cats)+1)
+        self.food -= eat
+        if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
+            self.game_over()
+
 class Rua(Cena):
     def __init__(self, img, trash=None, props=NO):
         cena = self
         self.cats = []
-        class Hero(Elemento):
+        class Hero_(Elemento):
             def __init__(self, x=0, y=0, w=130, h=100):
                 super().__init__(PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
@@ -348,8 +369,6 @@ class Sala(SalaVit):
         Sala.c(**kwargs)
         self.p()
 
-GATIL = None
-
 
 class Gatil(Cena):
     def __init__(self, img, x=0, y=0):
@@ -403,10 +422,10 @@ class Gatil(Cena):
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
-        #INV.bota(g)
+        INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        cur = Cursor(GATAR, x=200, y=250, w=100, h=100)
+        cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
