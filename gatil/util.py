@@ -20,6 +20,7 @@ class Cursor(Elemento):
         super().__init__(img, **kwargs)
         outer = self
         style = self.elt.style
+        self.results = []
 
         class Noop:
             def __init__(self):
@@ -66,6 +67,7 @@ class Cursor(Elemento):
                 #width_, height_, left_, top_ = st.width, st.minHeight, st.left, st.top
                 #self.outer.elt.title = CURSOR_ELEMENT.format(left_, top_, width_, height_)
                 outer.tit = CURSOR_ELEMENT.format(outer.x, outer.y, outer.w, outer.h)
+                outer.results.append(outer.tit)
 
         class Move(Noop):
             def mouse_move(self, ev):
@@ -149,8 +151,7 @@ class Cursor(Elemento):
         #self.cena.elt.html = ""
         #self.cena.elt <= self.elt
         #print("elt = ", self.elt.Id)
-        #self.elt.onclick = next_state
-        self.elt.bind('click', next_state)
+        self.elt.onclick = next_state
         self.elt.onmousedown = _mouse_down
         self.elt.onmouseup = _mouse_up
         self.elt.onmousemove = _mouse_move
@@ -158,8 +159,13 @@ class Cursor(Elemento):
 
 
 if __name__ == "__main__":
-    from _spy.vitollino.main import Cena, STYLE 
+    from _spy.vitollino.main import Cena, STYLE, INVENTARIO, Elemento
     STYLE.update(width=1350, height="800px")
 
     c = Cena("https://i.imgur.com/cQogon6.jpg").vai()
     m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
+    def res(*_):
+        Codigo("\n".join(m.results), cena=c)
+    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
+    r.elt.onclick = res
+    INVENTARIO.bota(r)
