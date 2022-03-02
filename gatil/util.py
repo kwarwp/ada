@@ -44,6 +44,7 @@ class Cursor(Elemento):
 
             def next(self, ev):
                 ev.target.style = self.update_style("move", _PATTERN.BCROSS)
+                outer.tit = "next move"
                 outer.current = outer.move
 
             def mouse_over(self, ev):
@@ -77,8 +78,9 @@ class Cursor(Elemento):
                 ev.target.style.cursor = "move"
 
             def next(self, ev):
-                print("next resize")
+                #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
+                outer.tit = "next resize"
                 outer.current = outer.resize
 
         class Resize(Noop):
