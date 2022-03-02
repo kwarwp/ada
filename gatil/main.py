@@ -1,6 +1,6 @@
 # ada.gatil.main.py
 from _spy.vitollino.main import Cena, STYLE, Elemento, Sala as SalaVit, Labirinto, NADA, INVENTARIO as INV
-from _spy.vitollino.main import Texto, Jogo as J
+from _spy.vitollino.main import Texto, Cursor, Jogo as J
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
@@ -347,10 +347,14 @@ class Sala(SalaVit):
         Sala.c(**kwargs)
         self.p()
 
+GATIL = None
+
+
 class Gatil(Cena):
     def __init__(self, img, x=0, y=0):
         super().__init__(img)
         self.img = img
+        GATIL = self
         self.trash = Thrash()
         #self.elt = html.DIV(style=STYLE, )
         self.dx, self.dy = x*Abrigo.DW, y*200, 
@@ -401,6 +405,7 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
+        cur = Cursor(alvo=sala_b.norte)
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
