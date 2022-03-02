@@ -16,6 +16,7 @@ from browser import html, alert
 
 
 class Cursor(Elemento):
+    ELM_FORMAT = "x={}, y={}, w={}, h={}"
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
         outer = self
@@ -49,6 +50,7 @@ class Cursor(Elemento):
                 outer.tit = "next move"
                 #alert("next move")
                 outer.current = outer.move
+                outer.results.append(Cursor.ELM_FORMAT.format(outer.x, outer.y, outer.w, outer.h))
 
             def mouse_over(self, ev):
                 ev.target.style.cursor = "default"
@@ -67,7 +69,6 @@ class Cursor(Elemento):
                 #width_, height_, left_, top_ = st.width, st.minHeight, st.left, st.top
                 #self.outer.elt.title = CURSOR_ELEMENT.format(left_, top_, width_, height_)
                 outer.tit = CURSOR_ELEMENT.format(outer.x, outer.y, outer.w, outer.h)
-                outer.results.append(outer.tit)
 
         class Move(Noop):
             def mouse_move(self, ev):
@@ -159,13 +160,17 @@ class Cursor(Elemento):
 
 
 if __name__ == "__main__":
-    from _spy.vitollino.main import Cena, STYLE, INVENTARIO, Elemento
+    from _spy.vitollino.main import Cena, STYLE, INVENTARIO, Elemento, Codigo
     STYLE.update(width=1350, height="800px")
 
     c = Cena("https://i.imgur.com/cQogon6.jpg").vai()
     m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
     def res(*_):
-        Codigo("\n".join(m.results), cena=c)
+        s=Codigo("\n".join(m.results), cena=c)
+        s.x=0
+        s.y=0
+        s.w=500
     r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
     r.elt.onclick = res
+    INVENTARIO.inicia()
     INVENTARIO.bota(r)
