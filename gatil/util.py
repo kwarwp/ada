@@ -107,6 +107,7 @@ class Cursor(Elemento):
 
         def next_state(ev):
             # self.state.append(self.state.pop(0))
+            alert(ev.x, self.current)
             self.current.nextst(ev)
 
         def _mouse_down(ev): return self.cursor.mouse_down(ev)
@@ -123,7 +124,8 @@ class Cursor(Elemento):
             # dm = str(dm) if isinstance(dm, int) else dm if isinstance(dm, str) else "0"
             return int(dm.rstrip(kind[0])) if kind else int(dm) if dm else 0
 
-        self.noop, self.move, self.resize = self.state = [Noop(), Move(), Resize()]
+        #self.noop, self.move, self.resize = self.state = [Noop(), Move(), Resize()]
+        self.noop, self.move, self.resize = [Noop(), Move(), Resize()]
         self.cursor = self.noop
         self.current = self.move
         style = dict(**ISTYLE)
