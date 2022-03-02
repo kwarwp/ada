@@ -18,6 +18,7 @@ class Cursor(Elemento):
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
         outer = self
+        style = self.elt.style
 
         class Noop:
             def __init__(self):
