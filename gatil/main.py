@@ -242,7 +242,7 @@ class Rua(Cena):
         self.cats = []
         class Hero(TheHero):
             def __init__(self, x=0, y=0, w=130, h=100):
-                super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
+                super().__init__(x=x, y=y, w=w, h=h, cena=cena)
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, vai=self.dump, cena=cena)
