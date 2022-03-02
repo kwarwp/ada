@@ -402,10 +402,10 @@ class Gatil(Cena):
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
-        INV.bota(g)
+        #INV.bota(g)
         INV.bota(p)
         sala_b.norte.vai()
-        cur = Cursor(alvo=sala_b.norte)
+        cur = Cursor(alvo=g)
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
