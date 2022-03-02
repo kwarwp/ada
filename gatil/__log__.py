@@ -1020,3 +1020,8 @@ elt =  __cursor__
 
 Exception: <TypeError: $B.get_class(...) is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 14:01:03.854 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''dim left, top =  [250, 100, 200, 100]
+
+Exception: <TypeError: $B.get_class(...) is undefined>
+'''},
