@@ -14,7 +14,7 @@ from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, CURSOR_ELE
 
 
 
-class Cursor(Elemento:
+class Cursor(Elemento):
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
         outer = self
