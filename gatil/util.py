@@ -72,6 +72,7 @@ class Cursor(Elemento):
                 delta = Point(outer.x, outer.y) + Point(ev.x, ev.y) - outer.ponto
                         
                 outer.x, outer.y = delta
+                outer.delta = delta
                 #outer.elt.left, outer.elt.top = delta
                 outer.ponto = Point(ev.x, ev.y)
 
@@ -81,6 +82,7 @@ class Cursor(Elemento):
             def nextst(self, ev):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
+                outer.x, outer.y = outer.delta
                 outer.tit = "next resize"
                 #alert("next resize")
                 outer.current = outer.resize
