@@ -168,6 +168,7 @@ class Cursor(Elemento):
         
     def resposta(self, *_):
         self.codigo = c = Codigo("\n".join(self.results))
+        c.entra(self.cena)
         c.x, c.y,  c.w = 50,50, 600 
 
 
