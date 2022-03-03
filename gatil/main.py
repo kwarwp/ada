@@ -232,6 +232,8 @@ class TheHero(Elemento):
         p_names += "p_loot p_levl p_turn p_cats".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"] = []
+    def fishing(self, fish):
+        TheHero.FISH.append(fish)
     def turn(self, time=1):
         #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
@@ -355,6 +357,7 @@ class Thrash:
             INV.bota(food)
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
+            TheHero().fishing(food)
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
