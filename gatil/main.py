@@ -238,17 +238,21 @@ def singleton(cls):
 
 #@singleton
 class TheHero(Elemento):
+    FISH = []
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
+        self.start()
+        
+    def start(self):
         self.cats = []
-        self.fish = [f"{fish}_fish" for fish in range(4)]
-        [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in self.fish]
+        TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
+        [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
         self.profile = {pr: 1 for pr in p_names}
-        self.food = 4
         self.loot = 0
         self.level = 1
         self.turns = 1
+        self.start = lambda *_: None
         
     def turn(self, time=1):
         GATIL.turn(time)
@@ -265,7 +269,7 @@ class Rua(Cena):
         class Hero:
             def __init__(self, x=0, y=0, w=130, h=100):
                 #super().__init__(x=x, y=y, w=w, h=h, cena=cena)
-                self.hero = Rua.THE_HERO
+                self.hero = TheHero()
                 self.hero.entra(cena)
                 self.hero.x, self.hero.y, self.hero.w, self.hero.h = x,y,w,h
         class Trash(Elemento):
