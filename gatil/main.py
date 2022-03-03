@@ -244,6 +244,7 @@ class TheHero(Elemento):
         self.start()
         
     def start(self):
+        if TheHero.FISH: return
         self.cats = []
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
