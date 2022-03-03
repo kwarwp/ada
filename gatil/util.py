@@ -179,7 +179,10 @@ if __name__ == "__main__":
         s.x=0
         s.y=0
         s.w=500
-    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
-    r.elt.onclick = res
     INVENTARIO.inicia()
+    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
+    r.elt.onclick = m.resposta
+    INVENTARIO.bota(r)
+    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
+    r.elt.onclick = m.limpa
     INVENTARIO.bota(r)
