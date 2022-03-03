@@ -20,7 +20,7 @@ class Cursor(Elemento):
 
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
-        outer = selfu
+        outer = self
         style = self.elt.style
         self.results = []
         self.codigo = c =Codigo("\n".join(m.results))
