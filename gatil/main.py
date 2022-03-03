@@ -358,7 +358,7 @@ class Thrash:
             INV.bota(food)
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
-            TheHero().fishing(food.elt.Id)
+            TheHero().fishing(food.tit)
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
