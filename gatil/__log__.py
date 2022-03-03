@@ -1152,3 +1152,10 @@ Exception: obj is undefined
   module '$exec_2701' line 18
 class Cursor(Elemento):
 '''},
+{'date': 'Wed Mar 02 2022 22:25:33.689 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 127
+  def _mouse_move(ev)u: return self.cursor.mouse_move(ev)
+                      ^
+SyntaxError: invalid syntax
+'''},
