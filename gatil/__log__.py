@@ -1195,3 +1195,7 @@ NameError: name 'selfu' is not defined
     outer = selfu
 NameError: name 'selfu' is not defined
 '''},
+{'date': 'Wed Mar 02 2022 22:27:51.135 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
