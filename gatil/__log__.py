@@ -1199,3 +1199,7 @@ NameError: name 'selfu' is not defined
 'error': '''
 Exception: <TypeError: obj is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 22:30:34.843 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
