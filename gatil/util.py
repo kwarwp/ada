@@ -24,6 +24,7 @@ class Cursor(Elemento):
         super().__init__(img, **kwargs)
         outer = self
         style = self.elt.style
+        self.position = self.x, self.y
         self.results = []
         self.codigo = c =Codigo("\n".join(self.results))
         c.x, c.y,  c.w = -2000,50, 600 
@@ -86,7 +87,7 @@ class Cursor(Elemento):
             def mouse_over(self, ev):
                 ev.target.style.cursor = "move"
 
-            def nextst(selfu, ev):
+            def nextst(self, ev):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
                 outer.x, outer.y = outer.position
