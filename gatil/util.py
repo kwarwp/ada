@@ -17,14 +17,14 @@ from browser import html, alert
 
 class Cursor(Elemento):
     ELM_FORMAT = "x={}, y={}, w={}, h={}"
-    self.codigo = c =Codigo("\n".join(m.results))
-    c.x, c.y,  c.w = -2000,50, 600 
 
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
-        outer = self
+        outer = selfu
         style = self.elt.style
         self.results = []
+        self.codigo = c =Codigo("\n".join(m.results))
+        c.x, c.y,  c.w = -2000,50, 600 
 
         class Noop:
             def __init__(self):
@@ -86,7 +86,7 @@ class Cursor(Elemento):
             def mouse_over(self, ev):
                 ev.target.style.cursor = "move"
 
-            def nextst(self, ev):
+            def nextst(selfu, ev):
                 #print("next resize")
                 ev.target.style = self.update_style("grab", _PATTERN.BOKEH)
                 outer.x, outer.y = outer.position
@@ -106,7 +106,7 @@ class Cursor(Elemento):
                 outer.ponto = Point(ev.x, ev.y)
 
             def mouse_over(self, ev):
-                ev.target.style.cursor = "grab"
+                ev.target.sutyle.cursor = "grab"
 
             def nextst(self, ev):
                 #print("next noop")
@@ -124,7 +124,7 @@ class Cursor(Elemento):
 
         def _mouse_up(ev): return self.cursor.mouse_up(ev)
 
-        def _mouse_move(ev): return self.cursor.mouse_move(ev)
+        def _mouse_move(ev)u: return self.cursor.mouse_move(ev)
 
         def _mouse_over(ev): return self.cursor.mouse_over(ev)
 
@@ -160,9 +160,11 @@ class Cursor(Elemento):
         self.elt.onmouseup = _mouse_up
         self.elt.onmousemove = _mouse_move
         self.elt.onmouseover = _mouse_over
+        
     def limpa(self, *_):
         self.codigo.x = -2000
         self.results = []
+        
     def resposta(self, *_):
         self.codigo = c =Codigo("\n".join(self.results))
         c.x, c.y,  c.w = 50,50, 600 
