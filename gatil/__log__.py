@@ -1211,3 +1211,7 @@ Exception: <TypeError: obj is undefined>
 'error': '''
 Exception: <TypeError: obj is undefined>
 '''},
+{'date': 'Wed Mar 02 2022 22:34:10.931 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: obj is undefined>
+'''},
