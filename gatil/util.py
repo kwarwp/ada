@@ -10,7 +10,7 @@ Changelog
         Descreva o que você adicionou no código.
 
 """
-from _spy.vitollino.main import STYLE, Elemento, Point, CURSOR_STYLE, ISTYLE, CURSOR_ELEMENT, _PATTERN
+from _spy.vitollino.main import STYLE, Elemento, Codigo, Point, CURSOR_STYLE, ISTYLE, CURSOR_ELEMENT, _PATTERN, Codigo
 from browser import html, alert
 
 
@@ -23,7 +23,7 @@ class Cursor(Elemento):
         outer = self
         style = self.elt.style
         self.results = []
-        self.codigo = c =Codigo("\n".join(m.results))
+        self.codigo = c =Codigo("\n".join(self.results))
         c.x, c.y,  c.w = -2000,50, 600 
 
         class Noop:
@@ -176,11 +176,6 @@ if __name__ == "__main__":
 
     c = Cena("https://i.imgur.com/cQogon6.jpg").vai()
     m = Cursor("https://i.imgur.com/bo5bxUQ.jpg", x=200, y=250, w=100, h=100, cena=c)
-    def res(*_):
-        s=Codigo("\n".join(m.results), cena=c)
-        s.x=0
-        s.y=0
-        s.w=500
     INVENTARIO.inicia()
     r=Elemento("https://i.imgur.com/iEiiGKK.png")
     r.elt.onclick = m.resposta
