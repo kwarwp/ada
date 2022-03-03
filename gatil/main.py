@@ -231,12 +231,12 @@ class TheHero(Elemento):
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
         p_names += "p_loot p_levl p_turn p_cats".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
-        
+        TheHero.PROFILE["p_cats"] = []
     def turn(self, time=1):
         GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
         
-        eat = time * (len(self.cats)+1)
+        eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
         fish = fishes.pop()
         INV.tira(fish)
