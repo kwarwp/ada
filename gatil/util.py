@@ -166,7 +166,7 @@ class Cursor(Elemento):
         self.results = []
         
     def resposta(self, *_):
-        self.codigo = c =Codigo("\n".join(self.results))
+        self.codigo = c = Codigo("\n".join(self.results))
         c.x, c.y,  c.w = 50,50, 600 
 
 
@@ -182,7 +182,7 @@ if __name__ == "__main__":
         s.y=0
         s.w=500
     INVENTARIO.inicia()
-    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
+    r=Elemento("https://i.imgur.com/iEiiGKK.png")
     r.elt.onclick = m.resposta
     INVENTARIO.bota(r)
     r=Elemento("https://i.imgur.com/OwMSTHC.png")
