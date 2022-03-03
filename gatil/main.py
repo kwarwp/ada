@@ -234,13 +234,17 @@ class TheHero(Elemento):
         TheHero.PROFILE["p_cats"] = []
     def fishing(self, fish):
         TheHero.FISH.append(fish)
+    def game_over(self, time=1):
+        c = Cena(RUBISH).vai()
+        Elemento("https://i.imgur.com/DVOvsGI.png", x=200, y=200, w=900, h=400, cena=c)
+        INV.inicia()
     def turn(self, time=1):
         #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
-        fish = fishes.pop()
+        fish = fishes.pop() if fishes else self.game_over()
         INV.tira(fish)
         #if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
         #   self.game_over()
