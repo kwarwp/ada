@@ -1118,3 +1118,9 @@ TypeError: __init__() got an unexpected keyword argument 'x'
     self.enter(cena)
 AttributeError: 'Hero' object has no attribute 'enter'
 '''},
+{'date': 'Wed Mar 02 2022 21:15:40.899 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+RuntimeError: too much recursion
+  module '$exec_8562' line 481
+Gatil(GATIL_MOS).vai()
+'''},
