@@ -236,7 +236,7 @@ def singleton(cls):
     return cls
 
 
-@singleton
+#@singleton
 class TheHero(Elemento):
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
@@ -259,6 +259,7 @@ class Rua(Cena):
     def __init__(self, img, trash=None, props=NO):
         cena = self
         self.cats = []
+        @singleton
         class Hero(TheHero):
             def __init__(self, x=0, y=0, w=130, h=100):
                 super().__init__(x=x, y=y, w=w, h=h, cena=cena)
