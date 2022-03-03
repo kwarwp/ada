@@ -185,6 +185,6 @@ if __name__ == "__main__":
     r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
     r.elt.onclick = m.resposta
     INVENTARIO.bota(r)
-    r=Elemento("https://i.imgur.com/bo5bxUQ.jpg")
+    r=Elemento("https://i.imgur.com/OwMSTHC.png")
     r.elt.onclick = m.limpa
     INVENTARIO.bota(r)
