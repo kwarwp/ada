@@ -1146,3 +1146,9 @@ Gatil(GATIL_MOS).vai()
     self.enter(cena)
 AttributeError: 'Hero' object has no attribute 'enter'
 '''},
+{'date': 'Wed Mar 02 2022 22:22:44.868 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: obj is undefined
+  module '$exec_2701' line 18
+class Cursor(Elemento):
+'''},
