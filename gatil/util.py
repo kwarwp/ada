@@ -17,6 +17,9 @@ from browser import html, alert
 
 class Cursor(Elemento):
     ELM_FORMAT = "x={}, y={}, w={}, h={}"
+    self.codigo = c =Codigo("\n".join(m.results))
+    c.x, c.y,  c.w = -2000,50, 600 
+
     def __init__(self, img, **kwargs):
         super().__init__(img, **kwargs)
         outer = self
@@ -157,6 +160,12 @@ class Cursor(Elemento):
         self.elt.onmouseup = _mouse_up
         self.elt.onmousemove = _mouse_move
         self.elt.onmouseover = _mouse_over
+    def limpa(self, *_):
+        self.codigo.x = -2000
+        self.results = []
+    def resposta(self, *_):
+        self.codigo = c =Codigo("\n".join(self.results))
+        c.x, c.y,  c.w = 50,50, 600 
 
 
 if __name__ == "__main__":
