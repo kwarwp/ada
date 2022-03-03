@@ -233,7 +233,7 @@ class TheHero(Elemento):
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"] = []
     def turn(self, time=1):
-        GATIL.turn()
+        #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
