@@ -124,7 +124,7 @@ class Cursor(Elemento):
 
         def _mouse_up(ev): return self.cursor.mouse_up(ev)
 
-        def _mouse_move(ev)u: return self.cursor.mouse_move(ev)
+        def _mouse_move(ev): return self.cursor.mouse_move(ev)
 
         def _mouse_over(ev): return self.cursor.mouse_over(ev)
 
