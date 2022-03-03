@@ -16,7 +16,8 @@ from browser import html, alert
 
 
 class Cursor(Elemento):
-    ELM_FORMAT = "x={}, y={}, w={}, h={}"
+    ELM_FORMAT_ = "x={}, y={}, w={}, h={}"
+    ELM_FORMAT = "[{}, {}, {}, {}]"
 
     #@staticmethod
 
