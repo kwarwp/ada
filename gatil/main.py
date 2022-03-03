@@ -217,8 +217,8 @@ class Abrigo:
         super().__init__(img)
 
 import functools
+_instance = {}
 def singleton(cls):
-    _instance = {}
     cls._origin_new = cls.__new__
     cls._origin_init = cls.__init__
     @functools.wraps(cls.__new__)
@@ -241,6 +241,8 @@ class TheHero(Elemento):
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         self.cats = []
+        self.fish = [f"{fish}_fish" for fish in range(4)]
+        [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in self.fish]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
         self.profile = {pr: 1 for pr in p_names}
         self.food = 4
@@ -254,16 +256,18 @@ class TheHero(Elemento):
         self.food -= eat
         if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
             self.game_over()
-
 class Rua(Cena):
+    THE_HERO = TheHero()
+
     def __init__(self, img, trash=None, props=NO):
         cena = self
         self.cats = []
-        @singleton
-        class Hero(TheHero):
+        class Hero:
             def __init__(self, x=0, y=0, w=130, h=100):
-                super().__init__(x=x, y=y, w=w, h=h, cena=cena)
-                self.enter(cena)
+                #super().__init__(x=x, y=y, w=w, h=h, cena=cena)
+                self.hero = Rua.THE_HERO
+                self.hero.entra(cena)
+                self.hero.x, self.hero.y, self.hero.w, self.hero.h = x,y,w,h
         class Trash(Elemento):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, vai=self.dump, cena=cena)
@@ -419,6 +423,13 @@ class Gatil(Cena):
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         sala_b.norte.vai()
     def vai(self):
+        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
+        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
+        #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
+        #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
+        INV.inicia()
+        INV.bota(g)
+        INV.bota(p)
         sala_a = Sala(*[IM.format(lnk) for lnk in SA])
         sala_a.norte.vai()
         sala_b_args = [IM.format(lnk) for lnk in SB]
@@ -438,13 +449,6 @@ class Gatil(Cena):
         # self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
         # self.stray = s = Elemento(IMP.format(STRAY[0]), x=600, y=550, w=130, h=100, cena=sala_b.norte)
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
-        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
-        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
-        #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
-        #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
-        INV.inicia()
-        INV.bota(g)
-        INV.bota(p)
         sala_b.norte.vai()
         cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
         #self.trash.dump(sala_b.norte)
