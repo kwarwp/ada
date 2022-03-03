@@ -216,53 +216,35 @@ class Abrigo:
     def __init__(self):
         super().__init__(img)
 
-import functools
-_instance = {}
-def singleton(cls):
-    cls._origin_new = cls.__new__
-    cls._origin_init = cls.__init__
-    @functools.wraps(cls.__new__)
-    def _singleton_new(cls, *args, **kwargs):
-        if cls not in _instance:
-            sin_instance = cls._origin_new(cls, *args, **kwargs)
-            sin_instance._origin_init(*args, **kwargs)
-            _instance[cls] = sin_instance
-        return _instance[cls]
-    # As a special case,__new__ is a staticmethod, need convert function to staticmethod by self
-    cls.__new__ = staticmethod(_singleton_new)
-    # setattr(cls, '__new__', staticmethod(_singleton_new))
-    cls.__init__ = lambda self, *args, **kwargs: None
-    # setattr(cls, '__init__', lambda self, *args, **kwargs: None)
-    return cls
 
-
-#@singleton
 class TheHero(Elemento):
-    FISH = []
+    FISH = None
+    PROFILE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
         self.start()
         
     def start(self):
         if TheHero.FISH: return
-        self.cats = []
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
-        self.profile = {pr: 1 for pr in p_names}
-        self.loot = 0
-        self.level = 1
-        self.turns = 1
-        self.start = lambda *_: None
+        p_names += "p_loot p_levl p_turn p_cats".split()
+        TheHero.PROFILE = {pr: 1 for pr in p_names}
         
     def turn(self, time=1):
-        GATIL.turn(time)
+        GATIL.turn()
+        TheHero.PROFILE["p_turn"] += time
+        
         eat = time * (len(self.cats)+1)
-        self.food -= eat
-        if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
-            self.game_over()
+        fishes = TheHero.FISH
+        fish = fishes.pop()
+        INV.tira(fish)
+        #if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
+        #   self.game_over()
+
 class Rua(Cena):
-    THE_HERO = TheHero()
+    #THE_HERO = TheHero()
 
     def __init__(self, img, trash=None, props=NO):
         cena = self
@@ -308,6 +290,7 @@ class Rua(Cena):
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def vai(self, *_):
         super().vai()
+        TheHero().turn()
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
@@ -408,17 +391,17 @@ class Gatil(Cena):
         self.trash = Thrash()
         #self.elt = html.DIV(style=STYLE, )
         self.dx, self.dy = x*Abrigo.DW, y*200, 
-        self.cena = c = Elemento(img, x=0, y=0, w=1350, h=800, cena=self)
-        self.hero = h = Elemento(PETUNIO, x=400, y=350, w=250, h=200, cena=self)
+        #self.cena = c = Elemento(img, x=0, y=0, w=1350, h=800, cena=self)
+        #self.hero = h = Elemento(PETUNIO, x=400, y=350, w=250, h=200, cena=self)
         # self.elt.style.width = w
-        c.siz = (Abrigo.IW, Abrigo.IH)
-        c.pos = (-self.dx, -self.dy)
+        #c.siz = (Abrigo.IW, Abrigo.IH)
+        #c.pos = (-self.dx, -self.dy)
     def vai_(self):
         super().vai()
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
-    def et_vai(self, *_):
-        self.et.x = 100
+    def turn(self, *_):
+        pass
     def vai_esgoto(self):
         sala_a = Sala(*[IM.format(lnk) for lnk in ESGOTO[0]])
         sala_a.norte.vai()
@@ -435,8 +418,8 @@ class Gatil(Cena):
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
-        sala_a = Sala(*[IM.format(lnk) for lnk in SA])
-        sala_a.norte.vai()
+        sala_a_args = [IM.format(lnk) for lnk in SA]
+        sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_args]
         sala_b_args = [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
@@ -447,6 +430,7 @@ class Gatil(Cena):
         sala_b_args[3] = Rua(sala_b_args[3], self.trash, [
         (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550])])
         sala_b = Sala(*sala_b_args)
+        sala_a = Sala(*sala_a_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         # self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
