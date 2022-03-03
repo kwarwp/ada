@@ -348,10 +348,10 @@ class Thrash:
         if obj.getAttribute("data-didit") == "_did_":
             return
         if ev.target.id[3:] in self.comida:
-            food = Elemento('', x=0, y=50, w=200, h=200, cena=self.cena)
+            food = Elemento('', x=0, y=50, w=200, h=200, tit=f"{ev.target.id}_", cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
-            food.tit = f"{ev.target.id}_"
+            #food.tit = f"{ev.target.id}_"
             stag <= obj
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
