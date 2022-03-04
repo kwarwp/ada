@@ -233,9 +233,9 @@ class TheHero(Elemento):
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"] = []
         for key, value in TheHero.PROFILE.items():
-            setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key], self.fn_readyonly))
+            setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key])) #, lambda *_:  raise "It is ready only"))
 
-    def fn_readonly(self, v)
+    def fn_readonly(self, v):
         raise "It is ready only"
 
     def fishing(self, fish):
