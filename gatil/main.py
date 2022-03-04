@@ -320,6 +320,7 @@ class Thrash:
         #self.__vai = self.vai
     def dump(self, cena, sorte=4):
         from browser import svg
+        h = TheHero()
         #cena.elt <= self.cache
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
@@ -329,7 +330,10 @@ class Thrash:
         comer = self.comida * 4
         shuffle(comer)
         shuffle(lixo)
-        pilha = lixo[:60] + self.sujeira + comer[:sorte]
+        trash = 20 + 10*h.levl
+        sujo = 10 + 10*h.levl
+        sorte += h.luck
+        pilha = lixo[:trash] + self.sujeira[:sujo] + comer[:sorte]
         shuffle(pilha)
         for indice, label in enumerate(pilha):
             dx, dy = randint(-300,300) , 100  - randint(-100,100)
