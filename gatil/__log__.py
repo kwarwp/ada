@@ -1355,3 +1355,7 @@ TypeError: 'int' object is not callable
                                                                          ^
 SyntaxError: EOL while scanning string literal
 '''},
+{'date': 'Fri Mar 04 2022 20:08:35.502 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: $range.tree[0] is undefined>
+'''},
