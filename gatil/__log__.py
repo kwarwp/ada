@@ -1388,3 +1388,10 @@ TypeError: can only concatenate list (not "int") to list
                   ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Mar 04 2022 20:55:43.982 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 222
+  class TheHero(Cursor) #Elemento):
+                                    ^
+SyntaxError: invalid syntax
+'''},
