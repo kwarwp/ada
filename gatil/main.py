@@ -333,7 +333,8 @@ class Thrash:
         shuffle(pilha)
         for indice, label in enumerate(pilha):
             dx, dy = randint(-300,300) , 100  - randint(-100,100)
-            dy = abs(300 -dx)//3
+            #dy = abs(300 -dx)//3
+            dy = (300 - abs(dx))//2
             dx, dy = 200 - dx , 100  - randint(-dy, dy)
             obj = svg.use(id=f"#{indice:02d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
