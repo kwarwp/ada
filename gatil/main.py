@@ -241,6 +241,10 @@ class TheHero(Elemento):
     def _get_key(self, key):
         return TheHero.PROFILE[key]
 
+    def catching(self, cat):
+        TheHero.PROFILE['p_cats'].append(cat)
+        INV.bota(cat)
+
     def fishing(self, fish):
         TheHero.FISH.append(fish)
     def game_over(self, time=1):
@@ -253,7 +257,7 @@ class TheHero(Elemento):
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
-        eaten = self.cats + 1
+        eaten = len(self.cats) + 1
         #fish = fishes.pop() if fishes else self.game_over()
         [INV.tira(fishes.pop()) for _ in range(eaten)] if len(fishes) >= eaten else self.game_over()
         #if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
@@ -292,7 +296,8 @@ class Rua(Cena):
                 self.puz.limpa()
                 self.desiste.elt.remove()
                 self.desiste = None
-                INV.bota(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
+                #INV.bota(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
+                TheHero().catching(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena)
