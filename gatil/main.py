@@ -229,14 +229,20 @@ class TheHero(Elemento):
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
-        p_names += "p_loot p_levl p_turn p_cats".split()
+        p_names += "p_loot p_levl p_turn p_cats p_xper".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"] = []
+        for key, value in TheHero.PROFILE.items():
+            setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key], self.fn_readyonly)
+
+    def fn_readonly(self, v)
+        raise "It is ready only"
+
     def fishing(self, fish):
         TheHero.FISH.append(fish)
     def game_over(self, time=1):
         c = Cena(RUBISH).vai()
-        Elemento("https://i.imgur.com/DVOvsGI.png", x=200, y=200, w=900, h=400, cena=c)
+        Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero.turn}", x=200, y=200, w=900, h=400, cena=c)
         INV.inicia()
     def turn(self, time=1):
         #GATIL.turn()
