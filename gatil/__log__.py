@@ -1321,3 +1321,10 @@ SyntaxError: invalid syntax
     setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key], self.fn_readyonly))
 AttributeError: 'TheHero' object has no attribute 'fn_readyonly'
 '''},
+{'date': 'Fri Mar 04 2022 12:23:28.988 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 236
+  setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key], lambda *_:  raise "It is ready only"))
+                                                                                   ^
+SyntaxError: invalid syntax
+'''},
