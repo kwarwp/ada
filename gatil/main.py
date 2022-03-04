@@ -228,23 +228,24 @@ class TheHero(Elemento):
         if TheHero.FISH is not None: return
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
-        p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_spee b_heal b_stre b_pers".split()
+        p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
         p_names += "p_loot p_levl p_turn p_cats p_xper".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"] = []
         for key, value in TheHero.PROFILE.items():
-            setattr(TheHero, key[2:], property(lambda *_: TheHero.PROFILE[key])) #, lambda *_:  raise "It is ready only"))
+            setattr(TheHero, key[2:], property(lambda *_, _tur=self, _k=key: _tur._get_key(_k))) #, lambda *_:  raise "It is ready only"))
+            #setattr(TheHero, key[2:], lambda *_: TheHero.PROFILE[key]) #, lambda *_:  raise "It is ready only"))
 
-    def fn_readonly(self, v):
-        raise "It is ready only"
+    def _get_key(self, key):
+        return TheHero.PROFILE[key]
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
     def game_over(self, time=1):
         c = Cena(RUBISH).vai()
-        Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero.turn}", x=200, y=200, w=900, h=400, cena=c)
+        Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero().turn}", x=200, y=200, w=900, h=400, cena=c)
         INV.inicia()
-    def turn(self, time=1):
+    def do_turn(self, time=1):
         #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
         
@@ -302,7 +303,7 @@ class Rua(Cena):
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def vai(self, *_):
         super().vai()
-        TheHero().turn()
+        TheHero().do_turn()
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
@@ -310,8 +311,8 @@ class Thrash:
         self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cache = self.create_script_tag(LIXAO)
         pycard = document["pycard"]
-        hidden = Elemento('')
-        hidden.elt.setAttribute('hidden', 'hidden')
+        hidden = Elemento('', style={'position':'absolute', 'top':-2000, 'left':-2000})
+        #hidden.elt.setAttribute('hidden', 'hidden')
         hidden.elt <= self.cache
         pycard <= hidden.elt
         #cena.elt <= cache
