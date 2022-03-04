@@ -5,6 +5,7 @@ from gatil.util import Cursor
 from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
+PUZLEV = [(1, 2), (2, 2), (2,3), (3,3), (3,4), (4, 4)]
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -61,8 +62,9 @@ class CPuzzle:
     """Usa um editor de imagem ( /) e recorta o Herdograma em linhas geracionais.
        No game, o jogador terá que clicar nas linhas em ordem certa para montar o herdograma corretamente.
     """
-    def __init__(self,imagem, esta_cena, dx=3, dy=3, w=1000, h=600, venceu=None):
+    def __init__(self,imagem, esta_cena, dx=2, dy=2, w=1000, h=600, venceu=None):
         posiciona_proxima = self.posiciona_proxima
+        dx, dy = PUZLEV[TheHero().levl+1]
         self.dx = dx
         #ldx, ldy, lw, lh =dx, dy, w, h
         class LinhaGeracional:
@@ -251,8 +253,9 @@ class TheHero(Elemento):
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
-        fish = fishes.pop() if fishes else self.game_over()
-        INV.tira(fish)
+        eaten = self.cats + 1
+        #fish = fishes.pop() if fishes else self.game_over()
+        [INV.tira(fishes.pop()) for _ in range(eaten)] if len(fishes) >= eaten else self.game_over()
         #if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
         #   self.game_over()
 
