@@ -1348,3 +1348,10 @@ SyntaxError: invalid syntax
     TheHero().turn()
 TypeError: 'int' object is not callable
 '''},
+{'date': 'Fri Mar 04 2022 13:29:31.859 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 314
+  hidden = Elemento('', style="position:absolute; top:-2000; left:-2000;)
+                                                                         ^
+SyntaxError: EOL while scanning string literal
+'''},
