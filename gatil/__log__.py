@@ -1288,3 +1288,10 @@ AttributeError: 'NoneType' object has no attribute 'turn'
                                                                                                ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Mar 04 2022 12:21:26.397 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 238
+  def fn_readonly(self, v)
+                           ^
+SyntaxError: invalid syntax
+'''},
