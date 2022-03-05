@@ -473,7 +473,9 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         sala_b.norte.vai()
         cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
-        g.vai = TheHero().resultado
+        h = TheHero().cursor
+        g.vai = h.resultado
+        p.vai = h.limpa
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
