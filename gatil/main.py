@@ -224,7 +224,7 @@ class TheHero(Elemento):
     PROFILE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
-        self.limpa = self.resposta = lambda *_ = None
+        self.limpa = self.resposta = lambda *_: None
         self.start()
         
     def start(self):
