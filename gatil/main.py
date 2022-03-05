@@ -449,11 +449,16 @@ class Gatil(Cena):
         self.pix = p = Elemento(PIX, tit="pix", x=200, y=550, w=100, h=100) #, vai=h.limpa)
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
+        '''[201, 428, 126, 100]
+[1043, 473, 81, 92]
+        '''
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
-        sala_a_args = [IM.format(lnk) for lnk in SA]
-        sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_args]
+        sala_a_img = [IM.format(lnk) for lnk in SA]
+        sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_img]
+        sala_a_args[0] = Rua(sala_a_img[0], self.trash, [
+        (P.H, [201, 428]), (P.T, [801, 409, 36, 36]), (P.S, [1043, 473])])
         sala_b_args = [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550]), (P.G, [484, 400, 48, 44])])
