@@ -219,7 +219,7 @@ class Abrigo:
         super().__init__(img)
 
 
-class TheHero(Elemento):
+class TheHero(Cursor): #Elemento):
     FISH = None
     PROFILE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
@@ -228,7 +228,7 @@ class TheHero(Elemento):
         
     def start(self):
         if TheHero.FISH is not None: return
-        TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
+        TheHero.FISH = f = [f"{fish}_fish" for fish in range(14)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
         p_names += "p_loot p_levl p_turn p_cats p_xper".split()
@@ -439,8 +439,9 @@ class Gatil(Cena):
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         sala_b.norte.vai()
     def vai(self):
-        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100)
-        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100)
+        h = TheHero()
+        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100, vai=h.resposta)
+        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100, vai=h.limpa)
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
