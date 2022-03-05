@@ -449,8 +449,8 @@ class Gatil(Cena):
         self.pix = p = Elemento(PIX, tit="pix", x=200, y=550, w=100, h=100) #, vai=h.limpa)
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
-        '''[201, 428, 126, 100]
-[1043, 473, 81, 92]
+        '''[111, 535, 106, 104]
+[503, 414, 77, 50]
         '''
         INV.inicia()
         INV.bota(g)
@@ -459,6 +459,13 @@ class Gatil(Cena):
         sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_img]
         sala_a_args[0] = Rua(sala_a_img[0], self.trash, [
         (P.H, [201, 428]), (P.T, [801, 409, 36, 36]), (P.S, [1043, 473])])
+        sala_a_args[1] = Rua(sala_a_img[1], self.trash, [
+        (P.H, [340, 518]), (P.G, [789, 453, 47, 43]), (P.T, [863, 453, 34, 40]),
+        (P.T, [918, 499, 25, 32]), (P.T, [1011, 548, 42, 48])])
+        sala_a_args[2] = Rua(sala_a_img[2], self.trash, [
+        (P.H, [272, 534]), (P.T, [498, 414, 89, 47]), (P.G, [827, 384, 40, 40]), (P.S, [981, 454])])
+        sala_a_args[3] = Rua(sala_a_img[3], self.trash, [
+        (P.H, [111, 535]), (P.T, [503, 414, 77, 50]), (P.T, [890, 430, 61, 25]), (P.G, [662, 404, 50, 41]), (P.S, [969, 473])])
         sala_b_args = [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550]), (P.G, [484, 400, 48, 44])])
