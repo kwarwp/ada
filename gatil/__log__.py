@@ -1503,3 +1503,10 @@ AttributeError: 'TheHero' object has no attribute 'resposta'
     self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100, vai=h.resposta)
 AttributeError: 'TheHero' object has no attribute 'resposta'
 '''},
+{'date': 'Fri Mar 04 2022 21:10:07.574 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 1
+  # ada.gatil.main.py
+                               ^
+SyntaxError: invalid syntax
+'''},
