@@ -224,12 +224,12 @@ class TheHero(Elemento):
     PROFILE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
-        self.limpa = self.resposta = lambda *_: None
         self.start()
         
     def start(self):
         if TheHero.FISH is not None: return
         self.cursor = c = Cursor("")
+        GATIL.g.vai = resposta
         c.entra(self.cena)
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
@@ -473,9 +473,7 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         sala_b.norte.vai()
         cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
-        h = TheHero().cursor
-        g.vai = h.resultado
-        p.vai = h.limpa
+        h = TheHero()
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
