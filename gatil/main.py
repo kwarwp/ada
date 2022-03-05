@@ -441,9 +441,9 @@ class Gatil(Cena):
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         sala_b.norte.vai()
     def vai(self):
-        h = TheHero()
-        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100, vai=h.resposta)
-        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100, vai=h.limpa)
+        #h = TheHero()
+        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100) #, vai=h.resposta)
+        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100) #, vai=h.limpa)
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
@@ -471,6 +471,7 @@ class Gatil(Cena):
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         sala_b.norte.vai()
         cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
+        g.vai = TheHero().resultado
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
