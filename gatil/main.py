@@ -229,7 +229,8 @@ class TheHero(Elemento):
     def start(self):
         if TheHero.FISH is not None: return
         self.cursor = c = Cursor("")
-        GATIL.g.vai = resposta
+        INV.item["gatar"].vai = c.resposta
+        INV.item["pix"].vai = c.limpa
         c.entra(self.cena)
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
@@ -444,8 +445,8 @@ class Gatil(Cena):
         sala_b.norte.vai()
     def vai(self):
         #h = TheHero()
-        self.gatar = g = Elemento(GATAR, x=200, y=550, w=100, h=100) #, vai=h.resposta)
-        self.pix = p = Elemento(PIX, x=200, y=550, w=100, h=100) #, vai=h.limpa)
+        self.gatar = g = Elemento(GATAR, tit="gatar", x=200, y=550, w=100, h=100) #, vai=h.resposta)
+        self.pix = p = Elemento(PIX, tit="pix", x=200, y=550, w=100, h=100) #, vai=h.limpa)
         #self.et = Elemento(GITRAW, x=500, y=200, w=100, h=100, cena=sala_b.norte)
         #x = Elemento('', x=0, y=0, w=1000, h=800, cena=sala_b.norte)#, vai=self.et_vai)
         INV.inicia()
@@ -455,7 +456,7 @@ class Gatil(Cena):
         sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_args]
         sala_b_args = [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
-        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.S, [1050, 550]), (P.G, [480, 400])])
+        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550]), (P.G, [484, 400, 48, 44])])
         sala_b_args[1] = Rua(sala_b_args[1], self.trash, [
         (P.H, [310, 490]), (P.T, [540, 490]), (P.T, [780, 430, 150]), (P.G, [60, 510, 100]), (P.S, [980, 500])])
         sala_b_args[2] = Rua(sala_b_args[2], self.trash, [
@@ -472,8 +473,7 @@ class Gatil(Cena):
         # self.stray = s = Elemento(IMP.format(STRAY[0]), x=600, y=550, w=130, h=100, cena=sala_b.norte)
         # self.strays = z = Elemento(IMP.format(STRAYS[0]), x=300, y=50, w=650, h=650, cena=sala_b.norte)
         sala_b.norte.vai()
-        cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
-        h = TheHero()
+        #cur = Cursor(GATAR, x=200, y=250, w=100, h=100, cena=sala_b.norte)
         #self.trash.dump(sala_b.norte)
         #go = Cena(vai=
         #Swap(J(), IM.format(CATPUZ),sala_b.norte,)
