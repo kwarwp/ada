@@ -220,6 +220,19 @@ class Tartaruga:
                 seen.add(current)
 
         #turtle.done()
-
+class Candango:
+    def __init__(self):
+        url = "https://imgur.com/zzVFsU0.png"
+        fun = "https://i.imgur.com/cQogon6.jpg"
+        ce = Cena(fun).vai()
+        can1 = Elemento(url, tit="BUTUCA", x=0, y=50, w=300, h=200, cena=ce)
+        can1.siz = (300, 600)
+        can1 = Elemento(url, tit="CORISCO", x=350, y=50, w=300, h=200, cena=ce)
+        can1.siz = (300, 600)
+        can1.pos = (0, -200)
+        can1 = Elemento(url, tit="RETALHO", x=700, y=50, w=300, h=200, cena=ce)
+        can1.siz = (300, 600)
+        can1.pos = (0, -400)
 #Tartaruga().draw()
-Linhas().generate_art() #.make_rects(1300, 800)
+#Linhas().generate_art() #.make_rects(1300, 800)
+Candango()
