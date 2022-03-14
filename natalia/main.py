@@ -15,7 +15,7 @@ class Numer:
     def __init__(self, name):
         words = name.split()
         orda = ord('a') - 1
-        nums = [[self.alka(ord(lt)- orda) for lt in ws] for ws in words ]
+        nums = self.alka(sum(sum(self.alka(ord(lt)- orda) for lt in ws) for ws in words))
         print(nums)
         
     def alka(self, alk):
