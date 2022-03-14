@@ -15,11 +15,11 @@ class Numer:
     def __init__(self, name):
         words = name.split()
         orda = ord('a') - 1
-        nums = [self.alka(ord(lt)- orda) for ws in words for lt in words]
+        nums = [[self.alka(ord(lt)- orda) for lt in ws] for ws in words ]
         print(nums)
         
     def alka(self, alk):
         return alk if alk < 10 else alk//10 + alk%10
         
-Numer('jonh doe')
+Numer('jon doe')
         
