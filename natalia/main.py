@@ -8,4 +8,16 @@ class anna():
     canada=Cena(img=CANADA)
     sala.entra(canada)
     canada.vai()
-anna()    
+#anna()
+class Numer:
+    def __init__(self, name):
+        words = name.split()
+        orda = ord('a') - 1
+        nums = [self.alka(ord(lt)- orda) for ws in words for lt in words]
+        print(nums)
+        
+    def alka(self, alk):
+        return alk if alk < 10 else alk//10 + alk%10
+        
+Numer('jonh doe')
+        
