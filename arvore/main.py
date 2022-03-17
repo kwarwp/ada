@@ -1,15 +1,25 @@
 # ada.arvore.main.py
 ELIPSE = "https://imgur.com/Gea0Z3c.png"
 ARVORE = "https://imgur.com/VkBQmuU.jpg"
+PECAS = "https://i.imgur.com/PqKHfTW.png"
 MUSICA = "https://activufrj.nce.ufrj.br/file/carlo/Synth-pop_2080.mp3?disp=inline"
-from _spy.vitollino.main import Cena, STYLE, Elemento, Musica
+from _spy.vitollino.main import Cena, STYLE, Elemento, Musica, INVENTARIO as INV
 STYLE.update(width=1350, height="650px")
 class Arvore:
     '''Arvore onde pode clicar nos nós e colocar o nome do parente '''
     def __init__(self):
+        def make_piece(index):
+            pc = Elemento(PECAS, w=60, h=60, cena=self.cena)
+            pc.siz(180, 180)
+            x, y = index//3, index%3
+            pc.pos(-x, -y)
+            INV.bota(pc)
+            return pc
+            
         self.cena = Cena(ARVORE)
         self.cena.vai()
-        Musica(MUSICA)
+        self.pecas = [make_piece(index) for index in range(9)]
+        #Musica(MUSICA)
         
     def make_nodes(self):
         cena = self.cena
