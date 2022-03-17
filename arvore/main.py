@@ -9,14 +9,15 @@ class Arvore:
     '''Arvore onde pode clicar nos nós e colocar o nome do parente '''
     def __init__(self):
         def make_piece(index):
-            pc = Elemento(PECAS, w=60, h=60, cena=self.cena)
-            pc.siz(180, 180)
-            x, y = index//3, index%3
-            pc.pos(-x, -y)
+            pc = Elemento(PECAS, x=0, y=0, w=60, h=60, cena=self.cena)
+            pc.siz = (180, 180)
+            dx, dy = 60*(index//3), 60*(index%3)
+            pc.pos = (-dx, -dy)
             INV.bota(pc)
             return pc
             
         self.cena = Cena(ARVORE)
+        INV.inicia()
         self.cena.vai()
         self.pecas = [make_piece(index) for index in range(9)]
         #Musica(MUSICA)
