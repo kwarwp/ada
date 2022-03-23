@@ -65,3 +65,10 @@ SyntaxError: invalid syntax
                            ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Mar 23 2022 13:11:10.381 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 44
+  [tela <= svg.rect(x=ix*40, width="40", height=600-ix*30, style={"fill":'rgb(255,0,0)'},'filter': f'hue-rotate({ix*20}deg)'}) for ix in range(20)]
+                                                                                                  ^
+SyntaxError: invalid syntax
+'''},
