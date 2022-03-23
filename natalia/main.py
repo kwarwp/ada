@@ -49,7 +49,9 @@ class Volpi:
         from browser import svg, document
         from random import randint
         def bandeira(x, y, style, **_):
-            return path(d=f"M{x} {x} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
+            x += randint(-9, 9)
+            y += randint(-9, 9)
+            return svg.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
         # cena  = Cena(WHITE).vai()
         base = document["pydiv"]
         base.html = ''
@@ -58,6 +60,6 @@ class Volpi:
         #[tela <= svg.rect(x=randint(0,ix%20)*40, y=randint(0,ix%15)*50, width="40", height=50,
         #[tela <= svg.rect(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
         [tela <= bandeira(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
-        style={"fill":'rgb(255,0,0)','filter': f'hue-rotate({randint(0, ix*18)}deg)'}) for ix in range(400)]
+        style={"fill":'rgb(255,100,100)','filter': f'hue-rotate({randint(0, 360)}deg)'}) for ix in range(900)]
 
 Volpi()
