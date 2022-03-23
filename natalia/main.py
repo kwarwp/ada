@@ -65,20 +65,20 @@ class Volpi:
 class Labir:
     def __init__(self):
         from browser import svg, document
-        rosa = [(1,0),(0,-1),(-1,0),(1,0)]*20
-        self.last = (500,400)
+        rosa = [(1,0),(0,-1),(-1,0),(0,1)]*20
+        self.last = (500,200)
         def block(dd):
             nx, ny = rosa.pop(0)
             ox, oy = self.last
-            nx, ny = ox+nx*10, oy+ny*10
+            nx, ny = ox+nx*20, oy-ny*20
             self.last = (nx, ny)
-            return svg.rect(width=dd*10, height=dd*10, x=nx, y=ny,
-                style={"fill":'rgb(255,0,0)','filter': f'hue-rotate({dd*18}deg)'})
+            return svg.rect(width=400-dd*20, height=400-dd*20, x=nx, y=ny,
+                style={"fill":'rgb(255,0,0)','filter': f'hue-rotate({dd*48}deg)', 'opacity':0.2})
         # cena  = Cena(WHITE).vai()
         base = document["pydiv"]
         base.html = ''
         tela = svg.svg(width=1200, height=700)
         base <= tela
-        [tela <= block(dd) for dd in range(20)]
+        [tela <= block(dd) for dd in range(4)]
 #Volpi()
 Labir()
