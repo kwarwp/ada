@@ -62,4 +62,23 @@ class Volpi:
         [tela <= bandeira(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
         style={"fill":'rgb(255,100,100)','filter': f'hue-rotate({randint(0, 360)}deg)'}) for ix in range(900)]
 
-Volpi()
+class Labir:
+    def __init__(self):
+        from browser import svg, document
+        rosa = [(1,0),(0,-1),(-1,0),(1,0)]*20
+        self.last = (500,400)
+        def block(dd):
+            nx, ny = rosa.pop(0)
+            ox, oy = self.last
+            nx, ny = ox+nx*10, oy+ny*10
+            self.last = (nx, ny)
+            return svg.rect(width=dd*10, height=dd*10, x=nx, y=ny,
+                style={"fill":'rgb(255,0,0)','filter': f'hue-rotate({dd*18}deg)'})
+        # cena  = Cena(WHITE).vai()
+        base = document["pydiv"]
+        base.html = ''
+        tela = svg.svg(width=1200, height=700)
+        base <= tela
+        [tela <= block(dd) for dd in range(20)]
+#Volpi()
+Labir()
