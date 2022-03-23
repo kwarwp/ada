@@ -33,11 +33,14 @@ class Rainbow:
 
 class Rainbow2:
     def __init__(self):
-        from browser import svg
-        cena  = Cena(WHITE).vai()
+        from browser import svg, document
+        # cena  = Cena(WHITE).vai()
+        base = document["pydiv"]
+        base.html = ''
         tela = svg.svg(width=1200, height=700)
-        cena.elt <= tela
-        bar = svg.rect( width="300", height="100", style={"fill":'rgb(0,0,255)'})
+        base <= tela
+        bar = svg.rect( width="300", height="100", style={"fill":'rgb(255,0,0)'})
         tela <= bar
+        [tela <= svg.rect(x=ix*40, width="40", height=600-ix*30, style={"fill":'rgb(255,0,0)','filter': f'hue-rotate({ix*18}deg)'}) for ix in range(20)]
 
 Rainbow2()
