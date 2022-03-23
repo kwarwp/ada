@@ -58,3 +58,10 @@ TypeError: __init__() missing 1 positional argument: name
                            ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Mar 23 2022 12:22:57.243 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 32
+  [Elemento(GREEN,x=ix*40 w=40, h=400-ix*20, cena=cena, style={'filter': f'hue-rotate({ix*20}deg)'}) for ix in range(20)]
+                           ^
+SyntaxError: invalid syntax
+'''},
