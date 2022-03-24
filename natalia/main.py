@@ -48,19 +48,22 @@ class Volpi:
     def __init__(self):
         from browser import svg, document
         from random import randint
-        def bandeira(x, y, style, **_):
-            x += randint(-9, 9)
-            y += randint(-9, 9)
-            return svg.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
         # cena  = Cena(WHITE).vai()
         base = document["pydiv"]
+        self.hue = (0, 360)
         base.html = ''
-        tela = svg.svg(width=1200, height=700)
-        base <= tela
+        self.tela = svg.svg(width=1200, height=700)
+        base <= self.tela
         #[tela <= svg.rect(x=randint(0,ix%20)*40, y=randint(0,ix%15)*50, width="40", height=50,
         #[tela <= svg.rect(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
-        [tela <= bandeira(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
-        style={"fill":'rgb(255,100,100)','filter': f'hue-rotate({randint(0, 360)}deg)'}) for ix in range(900)]
+    def bandeira(self, x, y, style, **_):
+        x += randint(-9, 9)
+        y += randint(-9, 9)
+        return svg.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
+    def main(self):
+        self.tela.hatml = ''
+        [self.tela <= self.bandeira(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
+        style={"fill":'rgb(255,100,100)','filter': f'hue-rotate({randint(*self.hue)}deg)'}) for ix in range(900)]
 
 class Labir:
     def __init__(self):
@@ -80,5 +83,5 @@ class Labir:
         tela = svg.svg(width=1200, height=700)
         base <= tela
         [tela <= block(dd) for dd in range(4)]
-#Volpi()
-Labir()
+Volpi().main()
+#Labir()
