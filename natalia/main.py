@@ -47,7 +47,6 @@ class Rainbow2:
 class Volpi:
     def __init__(self):
         from browser import svg, document
-        from random import randint
         # cena  = Cena(WHITE).vai()
         base = document["pydiv"]
         self.rect = svg.rect
@@ -63,6 +62,7 @@ class Volpi:
         y += randint(-9, 9)
         return svg.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
     def main(self):
+        from random import randint
         r, g, b = self.color
         self.tela.html = ''
         self.tela <= self.rect(width=1200, height=700, style={f"fill":'white'})
