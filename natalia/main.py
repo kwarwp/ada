@@ -49,7 +49,7 @@ class Volpi:
         from browser import svg, document
         # cena  = Cena(WHITE).vai()
         base = document["pydiv"]
-        self.rect = svg.rect
+        self.rect, self.path = svg.rect, svg.path
         self.hue = (0, 360)
         self.color = (255, 100, 100)
         base.html = ''
@@ -60,14 +60,16 @@ class Volpi:
     def bandeira(self, x, y, style, **_):
         x += randint(-9, 9)
         y += randint(-9, 9)
-        return svg.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
-    def main(self):
+        path = self.path(d=f"M{x} {y} h40 v50 l-20 -20 l-20 20 v-40 Z", style=style)
+        path.onclick = self.main
+        return path
+    def main(self, *_):
         from random import randint
         r, g, b = self.color
         self.tela.html = ''
         self.tela <= self.rect(width=1200, height=700, style={f"fill":'white'})
         [self.tela <= self.bandeira(x=randint(0,30)*40, y=randint(0,15)*50, width="40", height=50,
-        style={f"fill":'rgb({r},{g},{b})','filter': f'hue-rotate({randint(*self.hue)}deg)'}) for ix in range(900)]
+        style={"fill":f'rgb({r},{g},{b})','filter': f'hue-rotate({randint(*self.hue)}deg)'}) for ix in range(900)]
 
 class Labir:
     def __init__(self):
