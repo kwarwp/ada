@@ -1708,3 +1708,10 @@ AttributeError: 'NoneType' object has no attribute 'g'
     INV.item["gatar"].vai = resposta
 NameError: name 'resposta' is not defined
 '''},
+{'date': 'Mon Mar 28 2022 13:00:44.315 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 510
+  TODOS = [{PERGUTA: "Qual do nomes abaixo é um vídeo da Flávia?", 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+SyntaxError: invalid syntax
+'''},
