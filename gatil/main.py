@@ -228,12 +228,12 @@ class TheHero(Elemento):
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
 
-        self.start()
+        self.start(cena=cena)
         
-    def start(self):
+    def start(self, cena=cena):
+        if TheHero.FISH is not None: return
         def foi(*_):
             self.GATEIRA.y = -1000
-        if TheHero.FISH is not None: return
         TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
         cena=cena, foi=foi)
         #self.cursor = c = Cursor("")
@@ -329,7 +329,7 @@ class Rua(Cena):
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
                 if letter == self.correto:
-                    TheHero().gateira.y = 100
+                    TheHero.GATEIRA.y = 100
                     for cat in TheHero().cats:
                         INV.tira(cat)
                         kept = Elemento(CTHOUSE)
