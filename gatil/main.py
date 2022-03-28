@@ -17,6 +17,7 @@ CANDY = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Chrisde
 LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
 GATEIRA = "https://i.imgur.com/Ey0W3TR.png"
 DESISTO = "https://i.imgur.com/OwMSTHC.png"
+CTHOUSE = "https://imgur.com/LMWRDNw.jpg"
 #RUBISH = "https://i.imgur.com/4cZQRvF.png"
 RUBISH = "https://i.imgur.com/MSJw5kB.png"
 #ROFFX, ROFFY, TOFF, SCAL =720, 330, 150, 2.5
@@ -236,9 +237,9 @@ class TheHero(Elemento):
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
-        p_names += "p_loot p_levl p_turn p_cats p_xper".split()
+        p_names += "p_loot p_levl p_turn p_cats p_xper p_kept".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
-        TheHero.PROFILE["p_cats"] = []
+        TheHero.PROFILE["p_cats"], TheHero.PROFILE["p_kept"] = [], []
         for key, value in TheHero.PROFILE.items():
             setattr(TheHero, key[2:], property(lambda *_, _tur=self, _k=key: _tur._get_key(_k))) #, lambda *_:  raise "It is ready only"))
             #setattr(TheHero, key[2:], lambda *_: TheHero.PROFILE[key]) #, lambda *_:  raise "It is ready only"))
@@ -321,8 +322,15 @@ class Rua(Cena):
                     texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
-                text = "acertou" if letter == self.correto else "errou"
-                Texto(cena,text).vai()
+                if letter == self.correto:
+                    grt = Elemento(GATEIRA, texto="Eu tomo conta dos gatinhos equanto você acha os outros", cena=cena)
+                    for cat in TheHero.cats:
+                        INV.tira(cat)
+                        kept = Elemento(CTHOUSE)
+                        TheHero().kept.append(kept)
+                        INV.bota(kept)
+                else:
+                    Texto(cena,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
                 
         super().__init__(img)
         self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui}
