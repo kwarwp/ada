@@ -230,7 +230,7 @@ class TheHero(Elemento):
 
         self.start(cena=cena)
         
-    def start(self, cena=cena):
+    def start(self, cena):
         if TheHero.FISH is not None: return
         def foi(*_):
             self.GATEIRA.y = -1000
@@ -255,7 +255,7 @@ class TheHero(Elemento):
 
     def catching(self, cat):
         TheHero.PROFILE['p_cats'].append(cat)
-        INV.bota(cat)
+        INV.bota(cat.tit,cat.face)
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
@@ -277,9 +277,11 @@ class TheHero(Elemento):
 
 class Rua(Cena):
     #THE_HERO = TheHero()
+    ADDRESS = 0
 
     def __init__(self, img, trash=None, props=NO):
         cena = self
+        Rua.ADDRESS += 1
         self.cats = []
         class Hero:
             def __init__(self, x=0, y=0, w=130, h=100):
@@ -296,12 +298,15 @@ class Rua(Cena):
         class Stray(Elemento):
             def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
-                super().__init__(IMP.format(STRAY[0]), x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
+                self.oid = f"gato_{Rua.ADDRESS:02}"
+                self.face = IMP.format(STRAY[0])
+                super().__init__(self.face, tit=self.oid, x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
             def dump(self, *_):
                 self.vai = lambda *_: None
                 self.desiste = Elemento(DESISTO, tit="DESISTO!", x=0, y=300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
                 #self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
                 self.puz = CPuzzle(IM.format(choice(CATPUZ)),cena, venceu=self.foi)
+                self.foi()
             def hide(self, *_, ganhou=True):
                 self.x = -1000
             def foi(self, *_, ganhou=True):
@@ -328,13 +333,21 @@ class Rua(Cena):
                     texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
-                if letter == self.correto:
-                    TheHero.GATEIRA.y = 100
+                def foi(*_):
+                    TheHero.GATEIRA.y = -1000
                     for cat in TheHero().cats:
-                        INV.tira(cat)
-                        kept = Elemento(CTHOUSE)
+                        INV.tira(cat.tit)
+                        ktit = f"o{cat.oid}"
+                        kept = Elemento(CTHOUSE, tit=ktit)
+                        INV.bota(kept.tit, CHOUSE)
                         TheHero().kept.append(kept)
-                        INV.bota(kept)
+                    
+                if letter == self.correto:
+                    Texto(cena, "")
+                    TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
+                    TheHero.GATEIRA.entra(cena)
+                    TheHero.GATEIRA.y = 200
+                    TheHero.GATEIRA.foi = foi
                 else:
                     Texto(cena,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
                 
