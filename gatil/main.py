@@ -4,7 +4,7 @@ from _spy.vitollino.main import Texto, Jogo as J
 from gatil.util import Cursor
 from browser import html, alert
 from collections import namedtuple
-from random import randint, shuffle, choice, choices
+from random import randint, shuffle, choice
 PERGUNTA, CERTO, ERRADO, LINK = "pg ct er ln".split()
 PUZLEV = [(1, 2), (2, 2), (2,3), (3,3), (3,4), (4, 4)]
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
@@ -308,14 +308,15 @@ class Rua(Cena):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
             def quiz(self, *_):
                 def prg(pg, ct, er, ln):
-                    wr = choices(sequence=er, k=4)
+                    alert(pg, len(ct), len(er))
+                    wr = shuffle(er)
                     rt = choice(ct)
-                    an = [rt] + wr
+                    an = [rt] + wr[:3]
                     shuffle(an)
                     self.correto = chr(ord("A") + an.index(rt))
                     opt = {k: v for k, v in zip(list("ABCDE"), an)}
                     texto = Texto(cena, pg, foi=self.resposta, **opt)
-                prg(**Video.TODOS[0])
+                prg(**Videos.TODOS[0])
             def resposta(self, letter):
                 text = "acertou" if letter == self.correto else "errou"
                 Texto(cena,text)
@@ -507,11 +508,11 @@ class Gatil(Cena):
         
         
 class Videos:
-    TODOS = [{PERGUTA: "Qual do nomes abaixo é um vídeo da Flávia?", 
-    LINK="https://www.youtube.com/c/Fl%C3%A1viaSantosSOCIALIZANDO/videos",
-    CERTO = ["Júlio e Eu", "História dos Gatos", "Gatos no Egito", "Gato Bravo de Patas Negras", "Gato do Deserto",
+    TODOS = [{PERGUNTA: "Qual do nomes abaixo é um vídeo da Flávia?", 
+    LINK: "https://www.youtube.com/c/Fl%C3%A1viaSantosSOCIALIZANDO/videos",
+    CERTO: ["Júlio e Eu", "História dos Gatos", "Gatos no Egito", "Gato Bravo de Patas Negras", "Gato do Deserto",
     "Gatinhos Fantasiados", "Gatinhos e Sono", "Gatinhos Carecas", "Gato de Pallas Manul", "Gato Mourisco"],
-    ERRADO = ["Félix e Eu", "História dos Bichanos", "Gatos na Grécia", "Gato Bravo de Cauda Negra", "Gato da Planície",
+    ERRADO: ["Félix e Eu", "História dos Bichanos", "Gatos na Grécia", "Gato Bravo de Cauda Negra", "Gato da Planície",
     "Gatinhos Fantasmas", "Gatinhos e Som", "Gatinhos Peludos", "Gato de Pallas Atenas", "Gato Arabesco",
     "Garfield e Eu", "História dos Peludos", "Gatos na Pérsia", "Gato Bravo de Orelha Peluda", "Gato da Savana",
     "Gatinhos Fantásticos", "Gatinhos e Samba", "Gatinhos Azuis", "Gato de Pallas Esparta", "Gato Sumério"    ]
