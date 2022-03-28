@@ -6,7 +6,7 @@ from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
 PERGUNTA, CERTO, ERRADO, LINK = "pg ct er ln".split()
-PUZLEV = [(1, 2), (2, 2), (2,3), (3,3), (3,4), (4, 4)]
+PUZLEV = [(1, 2), (2, 2), (3,2), (3,3), (3,4), (4, 4)]
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -224,16 +224,22 @@ class Abrigo:
 class TheHero(Elemento):
     FISH = None
     PROFILE = None
+    GATEIRA = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
+
         self.start()
         
     def start(self):
+        def foi(*_):
+            self.GATEIRA.y = -1000
         if TheHero.FISH is not None: return
-        self.cursor = c = Cursor("")
-        INV.item["gatar"].vai = c.resposta
-        INV.item["pix"].vai = c.limpa
-        c.entra(self.cena)
+        TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
+        cena=cena, foi=foi)
+        #self.cursor = c = Cursor("")
+        #INV.item["gatar"].vai = c.resposta
+        #INV.item["pix"].vai = c.limpa
+        #c.entra(self.cena)
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
@@ -316,15 +322,15 @@ class Rua(Cena):
                     shuffle(an)
                     #alert(an)
                     self.correto = chr(ord("A") + an.index(rt))
-                    opt = {k: v for k, v in zip(list("EDCBA"), an)}
+                    opt = {k: v for k, v in zip(list("EDCBA"), an[::-1])}
                     #alert(opt)
                     texto = Texto(cena, pg, foi=self.resposta, **opt)
                     texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
                 if letter == self.correto:
-                    grt = Elemento(GATEIRA, texto="Eu tomo conta dos gatinhos equanto você acha os outros", cena=cena)
-                    for cat in TheHero.cats:
+                    TheHero().gateira.y = 100
+                    for cat in TheHero().cats:
                         INV.tira(cat)
                         kept = Elemento(CTHOUSE)
                         TheHero().kept.append(kept)
