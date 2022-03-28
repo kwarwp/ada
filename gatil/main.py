@@ -308,18 +308,21 @@ class Rua(Cena):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
             def quiz(self, *_):
                 def prg(pg, ct, er, ln):
-                    alert(pg, len(ct), len(er))
-                    wr = shuffle(er)
+                    #alert(f"{pg} {len(ct)} {len(er)}")
+                    shuffle(er)
                     rt = choice(ct)
-                    an = [rt] + wr[:3]
+                    an = [rt] + er[:4]
                     shuffle(an)
+                    #alert(an)
                     self.correto = chr(ord("A") + an.index(rt))
-                    opt = {k: v for k, v in zip(list("ABCDE"), an)}
+                    opt = {k: v for k, v in zip(list("EDCBA"), an)}
+                    #alert(opt)
                     texto = Texto(cena, pg, foi=self.resposta, **opt)
+                    texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
                 text = "acertou" if letter == self.correto else "errou"
-                Texto(cena,text)
+                Texto(cena,text).vai()
                 
         super().__init__(img)
         self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui}
