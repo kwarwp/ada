@@ -240,7 +240,7 @@ class TheHero(Elemento):
             yt.elt.html = f'<a href="{ln}" target="_blank"><img src="{YOUTUBE}"></></>'
         TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
         cena=cena, foi=foi)
-        TheHero.YOUTUBE = Elemento(YOUTUBE, y =-1000, vai=vai, cena=cena)
+        TheHero.YOUTUBE = Elemento("", tit="YOU TUBE", y =-1000, vai=vai, cena=cena)
         yt = TheHero.YOUTUBE
         
         #self.cursor = c = Cursor("")
@@ -340,12 +340,16 @@ class Rua(Cena):
                     opt = {k: v for k, v in zip(list("EDCBA"), an[::-1])}
                     #alert(opt)
                     texto = Texto(self.scene, pg, foi=self.resposta, **opt)
+                    '''
                     pp = texto.POP.popup.html
+                    alert(pp)
+                    alert(html.A(tt, href=ln).html + pp)
                     texto.POP.popup.html = html.A(tt, href=ln).html + pp
                     #texto.POP.popup <= html.A(tt, href=ln)
-                    #TheHero.YOUTUBE.y = 200
-                    #TheHero.YOUTUBE.vai(ln)
-                    #TheHero.YOUTUBE.entra(self.scene)
+                    
+                    TheHero.YOUTUBE.y = 200
+                    TheHero.YOUTUBE.vai(ln)
+                    TheHero.YOUTUBE.entra(self.scene)'''
                     texto.vai()
                 prg(**Videos.TODOS[0])
                 self.y -= 1000
