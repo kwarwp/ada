@@ -18,6 +18,7 @@ LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocen
 GATEIRA = "https://i.imgur.com/Ey0W3TR.png"
 DESISTO = "https://i.imgur.com/OwMSTHC.png"
 CTHOUSE = "https://imgur.com/LMWRDNw.jpg"
+YOUTUBE = "https://imgur.com/sbb6he7.png"
 #RUBISH = "https://i.imgur.com/4cZQRvF.png"
 RUBISH = "https://i.imgur.com/MSJw5kB.png"
 #ROFFX, ROFFY, TOFF, SCAL =720, 330, 150, 2.5
@@ -225,6 +226,7 @@ class TheHero(Elemento):
     FISH = None
     PROFILE = None
     GATEIRA = None
+    YOUTUBE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
 
@@ -234,8 +236,13 @@ class TheHero(Elemento):
         if TheHero.FISH is not None: return
         def foi(*_):
             self.GATEIRA.y = -1000
+        def vai(ln):
+            yt.elt.html = f'<a href="{ln}" target="_blank"><img src="{YOUTUBE}"></></>'
         TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
         cena=cena, foi=foi)
+        TheHero.YOUTUBE = Elemento(YOUTUBE, y =-1000, vai=vai, cena=cena)
+        yt = TheHero.YOUTUBE
+        
         #self.cursor = c = Cursor("")
         #INV.item["gatar"].vai = c.resposta
         #INV.item["pix"].vai = c.limpa
@@ -322,6 +329,7 @@ class Rua(Cena):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
             def quiz(self, *_):
                 def prg(pg, ct, er, ln, tt="Videos da Flávia"):
+                    from browser import html
                     #alert(f"{pg} {len(ct)} {len(er)}")
                     shuffle(er)
                     rt = choice(ct)
@@ -332,9 +340,15 @@ class Rua(Cena):
                     opt = {k: v for k, v in zip(list("EDCBA"), an[::-1])}
                     #alert(opt)
                     texto = Texto(self.scene, pg, foi=self.resposta, **opt)
-                    #texto.POP.tit.html = '<a src="{ln}">{tt}</>\n '+ texto.POP.tit.html
+                    pp = texto.POP.popup.html
+                    texto.POP.popup.html = html.A(tt, href=ln).html + pp
+                    #texto.POP.popup <= html.A(tt, href=ln)
+                    #TheHero.YOUTUBE.y = 200
+                    #TheHero.YOUTUBE.vai(ln)
+                    #TheHero.YOUTUBE.entra(self.scene)
                     texto.vai()
                 prg(**Videos.TODOS[0])
+                self.y -= 1000
             def resposta(self, letter):
                 def foi(*_):
                     TheHero.GATEIRA.y = -1000
@@ -347,8 +361,8 @@ class Rua(Cena):
                     Texto(self.scene, "")
                     #TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
                     Texto(self.scene, "Eu tomo conta dos gatinhos equanto você acha os outros", foi=foi).vai()
-                    TheHero.GATEIRA.entra(self.scene)
                     TheHero.GATEIRA.y = 200
+                    TheHero.GATEIRA.entra(self.scene)
                     #TheHero.GATEIRA.foi = foi
                 else:
                     Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
