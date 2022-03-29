@@ -336,19 +336,23 @@ class Rua(Cena):
             def resposta(self, letter):
                 def foi(*_):
                     TheHero.GATEIRA.y = -1000
-                    for cat in TheHero().cats:
-                        INV.tira(cat.tit)
-                        ktit = f"o{cat.oid}"
-                        kept = Elemento(CTHOUSE, tit=ktit)
-                        INV.bota(kept.tit, CHOUSE)
-                        TheHero().kept.append(kept)
+                    while TheHero().cats:
+                        cat = TheHero().cats.pop()
+                        INV.item[cat.oid].img = CTHOUSE
+                        alert(f"{cat.oid} :  {CTHOUSE}")
+                        #INV.tira(cat.tit)
+                        #ktit = f"o{cat.oid}"
+                        #kept = Elemento(CTHOUSE, tit=ktit)
+                        #INV.bota(kept.tit, CHOUSE)
+                        TheHero().kept.append(cat)
                     
                 if letter == self.correto:
                     Texto(self.scene, "")
-                    TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
+                    #TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
+                    Texto(self.scene, "Eu tomo conta dos gatinhos equanto você acha os outros", foi=foi).vai()
                     TheHero.GATEIRA.entra(self.scene)
                     TheHero.GATEIRA.y = 200
-                    TheHero.GATEIRA.foi = foi
+                    #TheHero.GATEIRA.foi = foi
                 else:
                     Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
                 
