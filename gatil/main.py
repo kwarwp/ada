@@ -240,8 +240,8 @@ class TheHero(Elemento):
             yt.elt.html = f'<a href="{ln}" target="_blank"><img src="{YOUTUBE}"></></>'
         TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
         cena=cena, foi=foi)
-        TheHero.YOUTUBE = Elemento("", tit="YOU TUBE", y =-1000, vai=vai, cena=cena)
-        yt = TheHero.YOUTUBE
+        #TheHero.YOUTUBE = Elemento("", tit="YOU TUBE", y =-1000, vai=vai, cena=cena)
+        #yt = TheHero.YOUTUBE
         
         #self.cursor = c = Cursor("")
         #INV.item["gatar"].vai = c.resposta
@@ -365,8 +365,8 @@ class Rua(Cena):
                     Texto(self.scene, "")
                     #TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
                     Texto(self.scene, "Eu tomo conta dos gatinhos equanto você acha os outros", foi=foi).vai()
-                    TheHero.GATEIRA.y = 200
                     TheHero.GATEIRA.entra(self.scene)
+                    TheHero.GATEIRA.y = 200
                     #TheHero.GATEIRA.foi = foi
                 else:
                     Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
