@@ -255,7 +255,8 @@ class TheHero(Elemento):
 
     def catching(self, cat):
         TheHero.PROFILE['p_cats'].append(cat)
-        INV.bota(cat.tit,cat.face)
+        #INV.bota(cat.tit,cat.face)
+        INV.bota(cat)
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
@@ -339,11 +340,6 @@ class Rua(Cena):
                     while TheHero().cats:
                         cat = TheHero().cats.pop()
                         INV.item[cat.oid].img = CTHOUSE
-                        alert(f"{cat.oid} :  {CTHOUSE}")
-                        #INV.tira(cat.tit)
-                        #ktit = f"o{cat.oid}"
-                        #kept = Elemento(CTHOUSE, tit=ktit)
-                        #INV.bota(kept.tit, CHOUSE)
                         TheHero().kept.append(cat)
                     
                 if letter == self.correto:
