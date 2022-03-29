@@ -317,6 +317,7 @@ class Rua(Cena):
                 TheHero().catching(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
         class Gui(Elemento):
             def __init__(self, x=0, y=0, w=40, h=100):
+                self.scene = cena
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
             def quiz(self, *_):
                 def prg(pg, ct, er, ln):
@@ -329,7 +330,7 @@ class Rua(Cena):
                     self.correto = chr(ord("A") + an.index(rt))
                     opt = {k: v for k, v in zip(list("EDCBA"), an[::-1])}
                     #alert(opt)
-                    texto = Texto(cena, pg, foi=self.resposta, **opt)
+                    texto = Texto(self.scene, pg, foi=self.resposta, **opt)
                     texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
@@ -343,13 +344,13 @@ class Rua(Cena):
                         TheHero().kept.append(kept)
                     
                 if letter == self.correto:
-                    Texto(cena, "")
+                    Texto(self.scene, "")
                     TheHero.GATEIRA.texto="Eu tomo conta dos gatinhos equanto você acha os outros"
-                    TheHero.GATEIRA.entra(cena)
+                    TheHero.GATEIRA.entra(self.scene)
                     TheHero.GATEIRA.y = 200
                     TheHero.GATEIRA.foi = foi
                 else:
-                    Texto(cena,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
+                    Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
                 
         super().__init__(img)
         self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui}
