@@ -321,7 +321,7 @@ class Rua(Cena):
                 self.scene = cena
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
             def quiz(self, *_):
-                def prg(pg, ct, er, ln):
+                def prg(pg, ct, er, ln, tt="Videos da Flávia"):
                     #alert(f"{pg} {len(ct)} {len(er)}")
                     shuffle(er)
                     rt = choice(ct)
@@ -332,6 +332,7 @@ class Rua(Cena):
                     opt = {k: v for k, v in zip(list("EDCBA"), an[::-1])}
                     #alert(opt)
                     texto = Texto(self.scene, pg, foi=self.resposta, **opt)
+                    #texto.POP.tit.html = '<a src="{ln}">{tt}</>\n '+ texto.POP.tit.html
                     texto.vai()
                 prg(**Videos.TODOS[0])
             def resposta(self, letter):
