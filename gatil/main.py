@@ -30,6 +30,8 @@ GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
 PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 IMP = "https://i.imgur.com/{}.png"
+S3 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()
+S5 = "DVF8gdU   ".split()https://i.imgur.com/.jpg
 SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
 SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
 WIND = "https://imgur.com/3LJN7lT.gif"
@@ -247,7 +249,7 @@ class TheHero(Elemento):
         #INV.item["gatar"].vai = c.resposta
         #INV.item["pix"].vai = c.limpa
         #c.entra(self.cena)
-        TheHero.FISH = f = [f"{fish}_fish" for fish in range(4)]
+        TheHero.FISH = f = [f"{fish}_fish" for fish in range(24)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
         p_names += "p_loot p_levl p_turn p_cats p_xper p_kept".split()
