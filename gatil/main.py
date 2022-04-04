@@ -31,6 +31,7 @@ PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 IMP = "https://i.imgur.com/{}.png"
 S3 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()
+S4 = "Uz09iIU ne9otoW t54WFVs Cu1LUOW".split()
 S5 = "DVF8gdU GeBVSTg XkVO4OO VILIdxv".split()
 S8 = "SbfOQXo Lf4P8Sf KIM7bF0 op8EIEc".split()
 S7 = "tij0sLE JZLAbJe T67iyg1 xF3P9SA".split()
