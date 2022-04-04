@@ -30,16 +30,16 @@ GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
 PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 IMP = "https://i.imgur.com/{}.png"
-S1 = "tePmvv1 E8XXF89 mnx0Fnz cI8WuaL".split()
-S3 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()
-S4 = "Uz09iIU ne9otoW t54WFVs Cu1LUOW".split()
-S5 = "DVF8gdU GeBVSTg XkVO4OO VILIdxv".split()
-S8 = "SbfOQXo Lf4P8Sf KIM7bF0 op8EIEc".split()
-S7 = "tij0sLE JZLAbJe T67iyg1 xF3P9SA".split()
-S9 = "2p2lq9f 50tt9Az QPOKvPk I1YPLcQ".split()
-SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
-SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
-SALAS = [SA, SB, S3, S4, S5, S6, S7, S8, S9]
+S4 = "tePmvv1 E8XXF89 mnx0Fnz cI8WuaL".split()  # 1
+S2 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()  # 3
+S3 = "Uz09iIU ne9otoW t54WFVs Cu1LUOW".split()  # 4
+S1 = "DVF8gdU GeBVSTg XkVO4OO VILIdxv".split()  # 5
+S8 = "SbfOQXo Lf4P8Sf KIM7bF0 op8EIEc".split()  # 8
+S7 = "tij0sLE JZLAbJe T67iyg1 xF3P9SA".split()  # 7
+S9 = "2p2lq9f 50tt9Az QPOKvPk I1YPLcQ".split()  # 9
+S5 = SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
+S6 = SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
+SALAS = [S1, S2, S3, S4, S5, S6, S7, S8, S9]
 WIND = "https://imgur.com/3LJN7lT.gif"
 GATAR = "https://imgur.com/WcrEeLj.png"
 STRAY = "qooCvWD SfGf1gv hlA5iCO RWc9j9Q FPWh9Nt".split()
@@ -530,7 +530,12 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         sala_a_img = [IM.format(lnk) for lnk in SA]
-        sala_a_args = [Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_img]
+        # SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
+        salas_imgs = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
+        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_img] for sala_img in salas_imgs]
+        SAI1, SAI2, SAI3, SAI4, SAI5, SAI6, SAI7, SAI8, SAI9 = salas_args
+        # alert(SAI6)
+        sala_a_args =  SAI5 #[Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_img]
         sala_a_args[0] = Rua(sala_a_img[0], self.trash, [
         (P.H, [201, 428]), (P.T, [801, 409, 36, 36]), (P.S, [1043, 473])])
         sala_a_args[1] = Rua(sala_a_img[1], self.trash, [
@@ -540,7 +545,7 @@ class Gatil(Cena):
         (P.H, [272, 534]), (P.T, [498, 414, 89, 47]), (P.G, [827, 384, 40, 40]), (P.S, [981, 454])])
         sala_a_args[3] = Rua(sala_a_img[3], self.trash, [
         (P.H, [111, 535]), (P.T, [503, 414, 77, 50]), (P.T, [890, 430, 61, 25]), (P.G, [662, 404, 50, 41]), (P.S, [969, 473])])
-        sala_b_args = [IM.format(lnk) for lnk in SB]
+        sala_b_args =  [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [
         (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550]), (P.G, [484, 400, 48, 44])])
         sala_b_args[1] = Rua(sala_b_args[1], self.trash, [
@@ -549,10 +554,16 @@ class Gatil(Cena):
         (P.H, [100, 500]), (P.T, [780, 590, 60, 50]), (P.T, [840, 670]), (P.S, [850, 550]), (P.G, [390, 510, 80, 140])])
         sala_b_args[3] = Rua(sala_b_args[3], self.trash, [
         (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550])])
-        sala_b = Sala(*sala_b_args)
-        sala_a = Sala(*sala_a_args)
+        SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [Sala(*sala_) for sala_ in salas_args]
+        SI6 = sala_b = Sala(*sala_b_args)
+        SI5 = sala_a = Sala(*sala_a_args)
         lab0 = Labirinto(sala_a, sala_b, sala_b, sala_b, sala_b)
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
+        Labirinto(SI5, SI8, SI6, SI2, SI4)
+        Labirinto(SI6, SI9, SI4, SI3, SI5)
+        Labirinto(SI8, SI2, SI9, SI5, SI7)
+        Labirinto(SI9, SI3, SI7, SI6, SI8)
+        Labirinto(SI1, SI4, SI2, SI7, SI3)
         # self.cena = c = Elemento(WIND, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         # self.rain = r = Elemento(HAIL, x=0, y=0, w=1350, h=800, o=0.4, cena=sala_b.norte)
         # self.hero = h = Elemento(PETUNIO, x=200, y=550, w=130, h=100, cena=sala_b.norte)
