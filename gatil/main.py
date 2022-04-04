@@ -39,6 +39,7 @@ S7 = "tij0sLE JZLAbJe T67iyg1 xF3P9SA".split()
 S9 = "2p2lq9f 50tt9Az QPOKvPk I1YPLcQ".split()
 SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
 SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
+SALAS = [SA, SB, S3, S4, S5, S6, S7, S8, S9]
 WIND = "https://imgur.com/3LJN7lT.gif"
 GATAR = "https://imgur.com/WcrEeLj.png"
 STRAY = "qooCvWD SfGf1gv hlA5iCO RWc9j9Q FPWh9Nt".split()
