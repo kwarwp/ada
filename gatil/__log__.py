@@ -1859,3 +1859,25 @@ NameError: name 'SI5' is not defined
     sala_a_args[0] = Rua(sala_a_img[0], self.trash, [(P.P, [f"UMA RUA {0}"])
 TypeError: 'tuple' object is not callable
 '''},
+{'date': 'Mon Apr 04 2022 17:23:17.148 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 596
+    Gatil(GATIL_MOS).vai()
+  module <module> line 546
+    sala_a_args[0] = Rua(sala_a_img[0], self.trash, [(P.P, [f"UMA RUA {0}"]),
+  module <module> line 391
+    [p[proname](*proargs) for proname, proargs  in props]
+  module <module> line 305
+    super().__init__(HALO, x=x, y=y, w=w, h=h, cena=cena)
+TypeError: object() takes no parameters
+'''},
