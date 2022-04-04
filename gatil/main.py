@@ -536,34 +536,38 @@ class Gatil(Cena):
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
+        G = [0]*15 + [-2000]*(4*9-15)
+        shuffle(G)
         C = "Norte Leste Sul Oeste".split()
         R = "JUDITE FLAVIANO TARGINO GERALDO MENDES RIBEIRO ESPERANÇA HOLMES CARLOS ANTÔNIO".split()
+        Z = "JUDITE FLAVIANO TARGINO GERALDO ESPERANÇA HOLMES CARLOS ANTÔNIO".split()
         sala_a_img = [IM.format(lnk) for lnk in SA]
         # SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
         salas_imgs = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
-        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, 573]), (P.P, [f"RUA {R[rua]} {C[canto]}"])])
+        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, 573+G.pop()if rua in Z else 0]),
+                       (P.P, [f"RUA {R[rua]} {C[canto]}"])])
                        for canto, sala in enumerate(sala_img)] for rua, sala_img in enumerate(salas_imgs)]
         SAI1, SAI2, SAI3, SAI4, SAI5, SAI6, SAI7, SAI8, SAI9 = salas_args
         # alert(SAI6)
         sala_a_args =  SAI5 #[Rua(sala, self.trash,[(P.H, [200, 550])]) for sala in sala_a_img]
         sala_a_args[0] = Rua(sala_a_img[0], self.trash, [(P.P, [f"RUA MENDES {C[0]}"]),
-        (P.H, [201, 428]), (P.T, [801, 409, 36, 36]), (P.S, [1043, 473])])
+        (P.H, [201, 428]), (P.T, [801, 409, 36, 36]), (P.S, [1043, 473+G.pop()])])
         sala_a_args[1] = Rua(sala_a_img[1], self.trash, [(P.P, [f"RUA MENDES {C[1]}"]),
         (P.H, [340, 518]), (P.G, [789, 453, 47, 43]), (P.T, [863, 453, 34, 40]),
         (P.T, [918, 499, 25, 32]), (P.T, [1011, 548, 42, 48])])
         sala_a_args[2] = Rua(sala_a_img[2], self.trash, [(P.P, [f"RUA MENDES {C[2]}"]),
-        (P.H, [272, 534]), (P.T, [498, 414, 89, 47]), (P.G, [827, 384, 40, 40]), (P.S, [981, 454])])
+        (P.H, [272, 534]), (P.T, [498, 414, 89, 47]), (P.G, [827, 384, 40, 40]), (P.S, [981, 454+G.pop()])])
         sala_a_args[3] = Rua(sala_a_img[3], self.trash, [(P.P, [f"RUA MENDES {C[3]}"]),
-        (P.H, [111, 535]), (P.T, [503, 414, 77, 50]), (P.T, [890, 430, 61, 25]), (P.G, [662, 404, 50, 41]), (P.S, [969, 473])])
+        (P.H, [111, 535]), (P.T, [503, 414, 77, 50]), (P.T, [890, 430, 61, 25]), (P.G, [662, 404, 50, 41]), (P.S, [969, 473+G.pop()])])
         sala_b_args =  [IM.format(lnk) for lnk in SB]
         sala_b_args[0] = Rua(sala_b_args[0], self.trash, [(P.P, [f"RUA RIBEIRO {C[0]}"]),
-        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550]), (P.G, [484, 400, 48, 44])])
+        (P.H, [200, 550]), (P.T, [540, 440]), (P.T, [840, 470]), (P.T, [397, 559, 50, 50]), (P.S, [1050, 550+G.pop()]), (P.G, [484, 400, 48, 44])])
         sala_b_args[1] = Rua(sala_b_args[1], self.trash, [(P.P, [f"RUA RIBEIRO {C[1]}"]),
-        (P.H, [310, 490]), (P.T, [540, 490]), (P.T, [780, 430, 150]), (P.G, [60, 510, 100]), (P.S, [980, 500])])
+        (P.H, [310, 490]), (P.T, [540, 490]), (P.T, [780, 430, 150]), (P.G, [60, 510, 100]), (P.S, [980, 500+G.pop()])])
         sala_b_args[2] = Rua(sala_b_args[2], self.trash, [(P.P, [f"RUA RIBEIRO {C[2]}"]),
-        (P.H, [100, 500]), (P.T, [780, 590, 60, 50]), (P.T, [840, 670]), (P.S, [850, 550]), (P.G, [390, 510, 80, 140])])
+        (P.H, [100, 500]), (P.T, [780, 590, 60, 50]), (P.T, [840, 670]), (P.S, [850, 550+G.pop()]), (P.G, [390, 510, 80, 140])])
         sala_b_args[3] = Rua(sala_b_args[3], self.trash, [(P.P, [f"RUA RIBEIRO {C[3]}"]),
-        (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550])])
+        (P.H, [300, 600]), (P.T, [650, 440, 60, 50]), (P.T, [910, 470, 220, 120]), (P.T, [1140, 610, 90]), (P.S, [850, 550+G.pop()])])
         SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [Sala(*sala_) for sala_ in salas_args]
         SI6 = sala_b = Sala(*sala_b_args)
         SI5 = sala_a = Sala(*sala_a_args)
