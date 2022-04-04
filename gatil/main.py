@@ -30,6 +30,7 @@ GATIL_POR = "https://i.imgur.com/Ockz2ae.png"
 PETUNIO = "https://i.imgur.com/2KeouVt.png"
 IM = "https://i.imgur.com/{}.jpg"
 IMP = "https://i.imgur.com/{}.png"
+S1 = "tePmvv1 E8XXF89 mnx0Fnz cI8WuaL".split()
 S3 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()
 S4 = "Uz09iIU ne9otoW t54WFVs Cu1LUOW".split()
 S5 = "DVF8gdU GeBVSTg XkVO4OO VILIdxv".split()
