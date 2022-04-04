@@ -301,7 +301,7 @@ class Rua(Cena):
         Rua.ADDRESS += 1
         self.cats = []
         class Placa(Elemento):
-            def __init__(self, name="UMA RUA", x=200, y=400, w=130, h=30):
+            def __init__(self, name="UMA RUA", x=200, y=400, w=150, h=30):
                 super().__init__(PLACA, x=x, y=y, w=w, h=h, cena=cena, style={"color": "white"})
                 #super().__init__(x=x, y=y, w=w, h=h, cena=cena)
                 self.name = name
@@ -536,12 +536,12 @@ class Gatil(Cena):
         INV.inicia()
         INV.bota(g)
         INV.bota(p)
-        C = list("NLSE")
+        C = "Norte Leste Sul Oeste".split()
         R = "JUDITE FLAVIANO TARGINO GERALDO MENDES RIBEIRO ESPERANÇA HOLMES CARLOS ANTÔNIO".split()
         sala_a_img = [IM.format(lnk) for lnk in SA]
         # SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
         salas_imgs = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
-        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.P, [f"RUA {R[rua]} {C[canto]}"])])
+        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, 573]), (P.P, [f"RUA {R[rua]} {C[canto]}"])])
                        for canto, sala in enumerate(sala_img)] for rua, sala_img in enumerate(salas_imgs)]
         SAI1, SAI2, SAI3, SAI4, SAI5, SAI6, SAI7, SAI8, SAI9 = salas_args
         # alert(SAI6)
