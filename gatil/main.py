@@ -32,6 +32,7 @@ IM = "https://i.imgur.com/{}.jpg"
 IMP = "https://i.imgur.com/{}.png"
 S3 = "gpzERzq q9aWB3U BhjZmAt PijjHX7".split()
 S5 = "DVF8gdU GeBVSTg XkVO4OO VILIdxv".split()
+S8 = "SbfOQXo Lf4P8Sf KIM7bF0 op8EIEc".split()
 SA = "VV1xbBG SEblwJG JVXK8gA nyly8wp".split()
 SB = "NqNXbr4 2QdVrAj jvM9BQC 2KZpwVf".split()
 WIND = "https://imgur.com/3LJN7lT.gif"
