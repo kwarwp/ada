@@ -1899,3 +1899,21 @@ TypeError: object() takes no parameters
     salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.P, [f"RUA {R[rua]} {C[canto]}"])]), (P.S, [1043, 473])
 TypeError: append() takes 2 positional argument but more were given
 '''},
+{'date': 'Mon Apr 04 2022 18:22:06.446 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 603
+    Gatil(GATIL_MOS).vai()
+  module <module> line 551
+    sala_a_args[0] = Rua(sala_a_img[0], self.trash, [(P.P, [f"RUA MENDES {C[0]}"]),
+IndexError: pop index out of range
+'''},
