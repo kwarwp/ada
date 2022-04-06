@@ -608,5 +608,22 @@ class Videos:
     "Gatinhos Fantasmas", "Gatinhos e Som", "Gatinhos Peludos", "Gato de Pallas Atenas", "Gato Arabesco",
     "Garfield e Eu", "História dos Peludos", "Gatos na Pérsia", "Gato Bravo de Orelha Peluda", "Gato da Savana",
     "Gatinhos Fantásticos", "Gatinhos e Samba", "Gatinhos Azuis", "Gato de Pallas Esparta", "Gato Sumério"    ]
-    }]
+    },
+    {PERGUNTA: "No vídeo OS GATOS NO EGITO ANTIGO, qual frase foi falada?", 
+    LINK: "https://www.youtube.com/watch?v=t55bSp3yC2w&t=10s",
+    CERTO: ["Construiram estátuas felinas como a Esfinge de Gisé", "Achavam que seus deuses e governantes tinham qualidades felinas",
+    "Amados pela sua habilidade de caçar ratos", "Museu Smithsoniam de arte asiática", "Protetores leais e carinhosos",
+    "Combativos independentes e ferozes", "Mumificaram incontáveis gatos", "primeiro cemitério de animais de estimação",
+    "Usando notáveis coleiras de ferro e contas", "Egípcios eram obcecados por gatos", ],
+    ERRADO: ["Construiram obras monumentais como a Pirâmide de Gisé", "Achavam que seus antepassados e guerreiros tinham qualidades felinas",
+    "Cobiçados pela sua habilidade de achar esconderijos", "Museu Sony de arte fantástica", "Protetores impávidos e atentos",
+    "Combativos silenciosos e ágeis", "Edificaram numerosos túmulos", "Primeiro abrigo de animais de rua",
+    "Usando vistosas tiaras de ouro e pedras", "Egípcios eram superticiosos com os gatos",
+    "Construiram obras eternizadas como o Complexo de Gisé", "Achavam que seus sacerdotes e pitonisas tinham qualidades felinas",
+    "Negociados pela sua vantagem de encontrar comida", "Exposição Sony de games asiáticos", "Protetores corajosos e esguios",
+    "Competitivos, experientes e velozes", "Edificaram ostensivos monumentos", "Primeiro hospital de felinos feridos",
+    "Usando luxuosas coroas de prata e esmeralda", "Egípcios se identificavam com seus gatos",
+    ],
+    }
+    ]
 Gatil(GATIL_MOS).vai()
