@@ -1984,3 +1984,10 @@ Gatil(GATIL_MOS).vai()
     shuffle(Y)
 NameError: name 'Y' is not defined
 '''},
+{'date': 'Wed Apr 06 2022 17:50:13.687 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 282
+  texto = (f"Total de pontos: {self.xper}. Você alcançou o nível {self.levl} em {self.turn} turnos."+
+                                                                                                                                                                                                          ^
+SyntaxError: invalid syntax
+'''},
