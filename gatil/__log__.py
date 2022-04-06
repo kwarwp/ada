@@ -1960,3 +1960,9 @@ TypeError: append() takes 2 positional argument but more were given
                              ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 06 2022 11:08:56.590 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+NameError: cannot assign to function call
+  module '$exec_4450' line 609
+Gatil(GATIL_MOS).vai()
+'''},
