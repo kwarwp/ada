@@ -6,7 +6,7 @@ from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
 PERGUNTA, CERTO, ERRADO, LINK = "pg ct er ln".split()
-PUZLEV = [(1, 2), (2, 2), (3,2), (3,3), (3,4), (4, 4)]
+PUZLEV = [(1, 2), (2, 2), (3,2), (3,3), (3,4), (4, 4), (4, 5), (5, 4), (5, 5), (6, 5), (5, 6), (6, 6)]
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -249,6 +249,7 @@ class TheHero(Elemento):
             yt.elt.html = f'<a href="{ln}" target="_blank"><img src="{YOUTUBE}"></></>'
         TheHero.GATEIRA = Elemento(GATEIRA, y =-1000, texto="Eu tomo conta dos gatinhos equanto você acha os outros",
         cena=cena, foi=foi)
+        TheHero.YOUTUBE = Elemento(YOUTUBE, y =-1000, cena=cena, style={"padding":"15px"})
         #TheHero.YOUTUBE = Elemento("", tit="YOU TUBE", y =-1000, vai=vai, cena=cena)
         #yt = TheHero.YOUTUBE
         
@@ -272,27 +273,27 @@ class TheHero(Elemento):
     def catching(self, cat):
         TheHero.PROFILE['p_cats'].append(cat)
         #INV.bota(cat.tit,cat.face)
-        self.learn(self.lvl*10)
+        self.learn(self.levl*10)
         INV.bota(cat)
 
     def learn(self, xp):
         TheHero.PROFILE["p_xper"] += xp
-        TheHero.PROFILE["p_levl"] += 1 if self.xper >= self.levl * 100 else 0
+        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 200) else 0
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
-        self.learn(2*self.lvl+10)
+        self.learn(2*self.levl+10)
     def game_over(self, time=1):
         c = Cena(RUBISH).vai()
         Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero().turn}", x=200, y=200, w=900, h=400, cena=c)
         texto = (f"Total de pontos: {self.xper}. Você alcançou o nível {self.levl} em {self.turn} turnos."+
-        f"Você resgatou {self.kept} gatinhos. Você e {self.cats} gatinhos morreram de fome")
+        f"Você resgatou {len(self.kept)} gatinhos. Você e {len(self.cats)} gatinhos morreram de fome")
         Texto(c, texto).vai()
         INV.inicia()
     def do_turn(self, time=1):
         #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
-        self.learn(self.lvl+2)
+        self.learn(self.levl+2)
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
@@ -371,10 +372,11 @@ class Rua(Cena):
                     alert(html.A(tt, href=ln).html + pp)
                     texto.POP.popup.html = html.A(tt, href=ln).html + pp
                     #texto.POP.popup <= html.A(tt, href=ln)
-                    
+                    '''
                     TheHero.YOUTUBE.y = 200
-                    TheHero.YOUTUBE.vai(ln)
-                    TheHero.YOUTUBE.entra(self.scene)'''
+                    TheHero.YOUTUBE.elt.html = ""
+                    TheHero.YOUTUBE.elt <= html.A(tt, href=ln, target="_blank")
+                    #TheHero.YOUTUBE.entra(self.scene)
                     texto.vai()
                 prg(**Videos.TODOS[choice([0,1])])
                 self.y -= 1000
@@ -392,9 +394,12 @@ class Rua(Cena):
                     Texto(self.scene, "Eu tomo conta dos gatinhos equanto você acha os outros", foi=foi).vai()
                     TheHero.GATEIRA.entra(self.scene)
                     TheHero.GATEIRA.y = 200
+                    TheHero().learn(100)
                     #TheHero.GATEIRA.foi = foi
                 else:
                     Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
+                    TheHero.YOUTUBE.entra(self.scene)
+                    TheHero.YOUTUBE.y = 200
                 
         super().__init__(img)
         self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
@@ -417,6 +422,7 @@ class Thrash:
         from browser import document
         self.sujeira =['sujeira', 'blob', 'sujo', 'formiga', 'areia', 'casca', 'joaninha', 'escorpiao', 'aranha', 'latinha']*4
         self.cache = self.create_script_tag(LIXAO)
+        self.bonus = 20
         pycard = document["pycard"]
         hidden = Elemento('', style={'position':'absolute', 'top':-2000, 'left':-2000})
         #hidden.elt.setAttribute('hidden', 'hidden')
@@ -432,14 +438,15 @@ class Thrash:
         #cena.elt <= self.cache
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
+        self.desiste = Elemento(DESISTO, cena = cena, vai=self.quit)
         self.remaining_shuffle_count = 20
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
         self.fundo.elt <= self.rubish
-        comer = self.comida * 4
+        comer = self.comida * (4 + h.levl//2)
         shuffle(comer)
         shuffle(lixo)
-        trash = 20 + 10*h.levl
-        sujo = 10 + 10*h.levl
+        trash = 20 + 5*h.levl
+        sujo = 10 + 5*h.levl
         sorte += h.luck
         pilha = lixo[:trash] + self.sujeira[:sujo] + comer[:sorte]
         shuffle(pilha)
@@ -457,10 +464,17 @@ class Thrash:
             
     def _vai_(self, ev):
         self.__vai(ev)
+    def quit(self, *_):
+        self.remaining_shuffle_count = 0
+        if not self.remaining_shuffle_count:
+            self.fundo.elt.remove()
+            self.desiste.elt.remove()
+            TheHero().learn(self.bonus)
+            return
     def _vai(self, ev):
         self.remaining_shuffle_count -= 1
         if not self.remaining_shuffle_count:
-            self.fundo.elt.remove()
+            self.quit()
             return
             
         from browser import document, alert, svg
@@ -471,7 +485,7 @@ class Thrash:
         obj = document[ev.target.id]
         if obj.getAttribute("data-didit") == "_did_":
             return
-        if ev.target.id[3:] in self.comida:
+        if ev.target.id[3:] in self.comida+["gato"]:
             food = Elemento('', x=0, y=50, w=200, h=200, tit=f"{ev.target.id}_", cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
