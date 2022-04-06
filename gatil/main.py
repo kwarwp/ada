@@ -272,17 +272,27 @@ class TheHero(Elemento):
     def catching(self, cat):
         TheHero.PROFILE['p_cats'].append(cat)
         #INV.bota(cat.tit,cat.face)
+        self.learn(self.lvl*10)
         INV.bota(cat)
+
+    def learn(self, xp):
+        TheHero.PROFILE["p_xper"] += xp
+        TheHero.PROFILE["p_levl"] += 1 if self.xper >= self.levl * 100 else 0
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
+        self.learn(2*self.lvl+10)
     def game_over(self, time=1):
         c = Cena(RUBISH).vai()
         Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero().turn}", x=200, y=200, w=900, h=400, cena=c)
+        texto = (f"Total de pontos: {self.xper}. Você alcançou o nível {self.levl} em {self.turn} turnos."+
+        f"Você resgatou {self.kept} gatinhos. Você e {self.cats} gatinhos morreram de fome")
+        Texto(c, texto).vai()
         INV.inicia()
     def do_turn(self, time=1):
         #GATIL.turn()
         TheHero.PROFILE["p_turn"] += time
+        self.learn(self.lvl+2)
         
         eat = time * (len(TheHero.PROFILE["p_cats"])+1)
         fishes = TheHero.FISH
@@ -387,9 +397,13 @@ class Rua(Cena):
                     Texto(self.scene,"Melhor assistir os vídeos da Flávia, você ainda sabe pouco sobre gatos.").vai()
                 
         super().__init__(img)
-        self.props = p ={P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
-        [p[proname](*proargs) for proname, proargs  in props]
+        self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
+        self.properties = {kind: [] for kind in p.keys()}
+        [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
         self.img = img
+    @property
+    def stray(self):
+        return self.properties[P.S][0]
     def vai_(self):
         super().vai()
         c0 = Elemento(self.img, x=140, y=340, w=200, h=200, cena=self)
