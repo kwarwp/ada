@@ -525,6 +525,8 @@ class Gatil(Cena):
         lab1 = Labirinto(sala_b, sala_a, sala_a, sala_a, sala_a)
         sala_b.norte.vai()
     def vai(self):
+        def maybe(pos, rua, collection):
+            return pos+collection.pop() if R[rua] in Z else pos
         #h = TheHero()
         self.gatar = g = Elemento(GATAR, tit="gatar", x=200, y=550, w=100, h=100) #, vai=h.resposta)
         self.pix = p = Elemento(PIX, tit="pix", x=200, y=550, w=100, h=100) #, vai=h.limpa)
@@ -537,15 +539,20 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         G = [0]*15 + [-2000]*(4*9-15)
+        Y, T = G[:], G[:]
+        #*_ = 
         shuffle(G)
+        shuffle(Y)
+        shuffle(T)
         C = "Norte Leste Sul Oeste".split()
         R = "JUDITE FLAVIANO TARGINO GERALDO MENDES RIBEIRO ESPERANÇA HOLMES CARLOS ANTÔNIO".split()
         Z = "JUDITE FLAVIANO TARGINO GERALDO ESPERANÇA HOLMES CARLOS ANTÔNIO".split()
         sala_a_img = [IM.format(lnk) for lnk in SA]
         # SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
         salas_imgs = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
-        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, 573+G.pop()if rua in Z else 0]),
-                       (P.P, [f"RUA {R[rua]} {C[canto]}"])])
+        salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, maybe(573, rua, G)]),
+                       (P.P, [f"RUA {R[rua]} {C[canto]}"]), (P.T, [863, maybe(453, rua, T), 34, 40]),
+                       (P.G, [827,  maybe(403, rua, Y), 40, 40])])
                        for canto, sala in enumerate(sala_img)] for rua, sala_img in enumerate(salas_imgs)]
         SAI1, SAI2, SAI3, SAI4, SAI5, SAI6, SAI7, SAI8, SAI9 = salas_args
         # alert(SAI6)
