@@ -539,7 +539,8 @@ class Gatil(Cena):
         INV.bota(g)
         INV.bota(p)
         G = [0]*15 + [-2000]*(4*9-15)
-        Y, T = G[:], G[:]
+        Y = [0]*25 + [-2000]*(4*9-25)
+        T = G[:]
         #*_ = 
         shuffle(G)
         shuffle(Y)
