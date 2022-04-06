@@ -1953,3 +1953,10 @@ TypeError: append() takes 2 positional argument but more were given
     salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, (573+G.pop()) if rua in Z else 573]),
 TypeError: append() takes 2 positional argument but more were given
 '''},
+{'date': 'Wed Apr 06 2022 11:08:25.328 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 529
+  return pos+collection.pop()) if R[rua] in Z else pos
+                             ^
+SyntaxError: invalid syntax
+'''},
