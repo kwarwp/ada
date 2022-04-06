@@ -366,7 +366,7 @@ class Rua(Cena):
                     TheHero.YOUTUBE.vai(ln)
                     TheHero.YOUTUBE.entra(self.scene)'''
                     texto.vai()
-                prg(**Videos.TODOS[0])
+                prg(**Videos.TODOS[choice([0,1])])
                 self.y -= 1000
             def resposta(self, letter):
                 def foi(*_):
