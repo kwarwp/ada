@@ -2104,3 +2104,10 @@ AttributeError: 'Rua' object has no attribute 'fury'
                         ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 06 2022 23:30:34.318 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 540
+  if obj_name == "gato"
+                        ^
+SyntaxError: invalid syntax
+'''},
