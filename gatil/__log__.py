@@ -2097,3 +2097,10 @@ AttributeError: 'Rua' object has no attribute 'fury'
     Rua.fury()
 AttributeError: 'Rua' object has no attribute 'fury'
 '''},
+{'date': 'Wed Apr 06 2022 23:30:11.667 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 540
+  if obj_name == "gato"
+                        ^
+SyntaxError: invalid syntax
+'''},
