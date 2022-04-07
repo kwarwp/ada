@@ -281,7 +281,7 @@ class TheHero(Elemento):
 
     def learn(self, xp):
         TheHero.PROFILE["p_xper"] += xp
-        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 500) else 0
+        TheHero.PROFILE["p_levl"] += 1 if self.xper >= int(self.levl**1.5*500) else 0
 
     def blacking(self, black_cat):
         TheHero.BLACK.append(black_cat)
@@ -290,11 +290,14 @@ class TheHero(Elemento):
     def fishing(self, fish):
         TheHero.FISH.append(fish)
         self.learn(2*self.levl+10)
-    def game_over(self, time=1):
+    def game_over(self, time=0):
         c = Cena(RUBISH).vai()
         Elemento("https://i.imgur.com/DVOvsGI.png", tit=f"turnos = {TheHero().turn}", x=200, y=200, w=900, h=400, cena=c)
+        gatos = len(self.cats)
+        causa = " no desastre global" if time else " de fome"
+        gatinhos = {0: "morreu", 1: " e um gatinho morreram", 2: f" e {gatos} gatinhos morreram"}
         texto = (f"Total de pontos: {self.xper}. Você alcançou o nível {self.levl} em {self.turn} turnos."+
-        f"Você resgatou {len(self.kept)} gatinhos. Você e {len(self.cats)} gatinhos morreram de fome")
+        f"Você resgatou {len(self.kept)} gatinhos. Você {gatinhos[min(2, gatos)]}"+causa)
         Texto(c, texto).vai()
         INV.inicia()
     def furia(self, addr):
@@ -307,8 +310,9 @@ class TheHero(Elemento):
         INV.tira(TheHero.BLACK.pop())
         self.learn(30*self.levl)
         self.addr.calma()
+        self.addr.foge()
     def do_turn(self,rua, time=1):
-        rua.hero.tit = f"XP:{self.xper} LV:{self.levl}"
+        rua.hero.hero.tit = f"XP:{self.xper} LV:{self.levl}"
         TheHero.PROFILE["p_addr"] = rua
         TheHero.PROFILE["p_turn"] += time
         self.learn(self.levl+2)
@@ -354,7 +358,7 @@ class Rua(Cena):
     @staticmethod
     def enfuriar(*_):
         if not Rua.GOOD:
-            TheHero().game_over()
+            TheHero().game_over(1)
             return
         shuffle(Rua.GOOD)
         Rua.GOOD.pop().furia()
