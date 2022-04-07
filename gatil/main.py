@@ -239,6 +239,7 @@ class TheHero(Elemento):
     YOUTUBE = None
     def __init__(self,img=PETUNIO, x=0, y=0, w=130, h=100, cena=INV):
         super().__init__(img=PETUNIO, x=x, y=y, w=w, h=h, cena=cena)
+        self.rua = cena
 
         self.start(cena=cena)
         
@@ -291,8 +292,13 @@ class TheHero(Elemento):
         f"Você resgatou {len(self.kept)} gatinhos. Você e {len(self.cats)} gatinhos morreram de fome")
         Texto(c, texto).vai()
         INV.inicia()
-    def do_turn(self, time=1):
+    def calma(self, *_):
         #GATIL.turn()
+        self.learn(30*self.levl)
+        self.rua.calma()
+    def do_turn(self,rua, time=1):
+        #GATIL.turn()
+        self.rua = rua
         TheHero.PROFILE["p_turn"] += time
         self.learn(self.levl+2)
         
@@ -450,7 +456,7 @@ class Rua(Cena):
         if Rua.GOOD is None:
             Rua.GOOD = list(Rua.MAPA.values())
             
-        TheHero().do_turn()
+        TheHero().do_turn(self)
         Rua.furia()
         #HERO.entra(self)
 class Thrash:
@@ -519,9 +525,10 @@ class Thrash:
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
+        ob_name = ev.target.id[3:]
         if obj.getAttribute("data-didit") == "_did_":
             return
-        if ev.target.id[3:] in self.comida+["gato"]:
+        if ob_name in self.comida+["gato"]:
             food = Elemento('', x=0, y=50, w=200, h=200, tit=f"{ev.target.id}_", cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
@@ -530,6 +537,8 @@ class Thrash:
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
+            if obj_name == "gato"
+                food.vai = TheHero().calma
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
             TheHero().fishing(food.tit)
