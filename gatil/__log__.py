@@ -2295,3 +2295,10 @@ IndexError: list index out of range
     rua.hero.tit = f"XP:{self.xper} LV:{self.levl}"
 AttributeError: 'Rua' object has no attribute 'hero'
 '''},
+{'date': 'Thu Apr 07 2022 18:36:37.902 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 298
+  gatinhos = {0: "morreu" 1: " e um gatinho morreram", 2: f" e {gatos} gatinhos morreram"}
+                           ^
+SyntaxError: invalid syntax
+'''},
