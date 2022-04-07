@@ -346,8 +346,8 @@ class Rua(Cena):
         self.fury = True
 
     def turno(self, destino):
-        self.properties[P.S].toggle()
-        destino.properties[P.S].toggle()
+        self.properties[P.S][0].toggle()
+        destino.properties[P.S][0].toggle()
 
     @staticmethod
     def enfuriar(*_):
