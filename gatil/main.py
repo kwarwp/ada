@@ -475,6 +475,9 @@ class Rua(Cena):
         [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
         self.img = img
     @property
+    def hero(self):
+        return self.properties[P.H][0]
+    @property
     def stray(self):
         return self.properties[P.S][0]
     def vai_(self):
