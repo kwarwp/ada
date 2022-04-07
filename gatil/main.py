@@ -446,6 +446,9 @@ class Rua(Cena):
         p0 = Elemento(GATIL_POR, x=100, y=300, w=300, h=300, cena=self)
     def vai(self, *_):
         super().vai()
+        if Rua.GOOD is None:
+            Rua.GOOD = list(Rua.MAPA.values())
+            
         TheHero().do_turn()
         Rua.fury()
         #HERO.entra(self)
