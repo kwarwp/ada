@@ -308,6 +308,7 @@ class TheHero(Elemento):
         self.learn(30*self.levl)
         self.addr.calma()
     def do_turn(self,rua, time=1):
+        rua.hero.tit = f"XP:{self.xper} LV:{self.levl}"
         TheHero.PROFILE["p_addr"] = rua
         TheHero.PROFILE["p_turn"] += time
         self.learn(self.levl+2)
