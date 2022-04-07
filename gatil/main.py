@@ -52,6 +52,7 @@ FLOOD = "https://media.giphy.com/media/3HoB7BmMnKMdq/giphy.gif"
 #HALO = "https://i.imgur.com/XDuFNZw.png"
 HAIL = "https://i.imgur.com/ZZ8nEkV.gif"
 HALO = "https://imgur.com/FiS2X97.gif"
+BADWE = [WIND, RAIN, STORM, FLOOD, HAIL]
 HERO = Elemento(PETUNIO, x=200, y=550, w=130, h=100)
 GATIL = None
 NO = []
@@ -306,6 +307,25 @@ class TheHero(Elemento):
 class Rua(Cena):
     #THE_HERO = TheHero()
     ADDRESS = 0
+    MAPA = {}
+    GOOD = None
+
+    def foge(self, *_):
+        if not self.GOOD:
+            TheHero().game_over()
+            return
+        choice(self.GOOD).vai()
+
+    def calma(self, *_):
+        self.GOOD.append(self)
+        self.weather.img = ''
+
+    @staticmethod
+    def furia(*_):
+        shuffle(Rua.GOOD)
+        fury = Rua.GOOD.pop()
+        fury.weather.img = choice(BADWE)
+    
 
     def __init__(self, img, trash=None, props=NO):
         cena = self
@@ -316,6 +336,7 @@ class Rua(Cena):
                 super().__init__(PLACA, x=x, y=y, w=w, h=h, cena=cena, style={"color": "white"})
                 #super().__init__(x=x, y=y, w=w, h=h, cena=cena)
                 self.name = name
+                Rua.MAPA[name] = cena
                 self.elt.html = name
         class Hero:
             def __init__(self, x=0, y=0, w=130, h=100):
@@ -324,7 +345,7 @@ class Rua(Cena):
                 self.hero.entra(cena)
                 self.hero.x, self.hero.y, self.hero.w, self.hero.h = x,y,w,h
         class Mark(Elemento):
-            def __init__(self,img, x=0, y=0, w=40, h=40, vai=None, tit='', o=0.4):
+            def __init__(self,img, x=0, y=0, w=40, h=40, vai=None, tit='', o=1.0):
                 super().__init__(img, x=x, y=y, w=w, h=h, o=o, vai=vai, tit=tit, cena=cena)
             def go(self, *_):
                 self.y +=2000
@@ -332,7 +353,7 @@ class Rua(Cena):
                 self.y -=2000
         class Trash(Mark):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=1.0, tit='lixo', vai=self.dump)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, tit='lixo', vai=self.dump)
             def dump(self, *_):
                 #self.x = -1000
                 self.no()
@@ -411,6 +432,7 @@ class Rua(Cena):
                     TheHero.YOUTUBE.y = 200
                 
         super().__init__(img)
+        self.weather = Elemento('', x=0, y=0, w=1350, h=800, cena=cena, vai=self.foge)
         self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
         self.properties = {kind: [] for kind in p.keys()}
         [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
@@ -425,6 +447,7 @@ class Rua(Cena):
     def vai(self, *_):
         super().vai()
         TheHero().do_turn()
+        Rua.fury()
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
