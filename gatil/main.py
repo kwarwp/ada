@@ -6,7 +6,7 @@ from browser import html, alert
 from collections import namedtuple
 from random import randint, shuffle, choice
 PERGUNTA, CERTO, ERRADO, LINK = "pg ct er ln".split()
-PUZLEV = [(1, 2), (2, 2), (3,2), (3,3), (3,4), (4, 4), (4, 5), (5, 4), (5, 5), (6, 5), (5, 6), (6, 6)]
+PUZLEV = [(1, 2), (2, 2), (3,2), (3,3), (3,4), (4, 4), (4, 5), (5, 4), (5, 5), (6, 5), (5, 6), (6, 6)] +[(6, 6)]*20
 ESGOTO = ["OQL9NgQ Y6XqniR ZFA7XS5 WF7XFw0".split(), "sKMYGf6 lRWv0hQ qG62xkd AAqF8GM".split()]
 CATPUZ = "lVlPvCB O3EIPHp NUyttbn Ejn0Yvi BxzKAez vprewss Ak4G7bU nkKvuBy 5M529kP HyvXqoJ".split()
 GITRAW = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/Anonymous_Eiffel_tower.svg"
@@ -59,7 +59,7 @@ NO = []
 lixo = ['mala', 'chaves', 'escova', 'isqueiro', 'suco', 'vinil', 'baralho', 'dez',
         'eifell', 'porquinho', 'bule', 'luva', 'panda', 'cafe', 'guitarra', 'aranha',
         'livro', 'soldado', 'garrafa', 'pizza', 'fone', 'microfone', 'plug', 'visa', 'lata', 'moeda', 'carro', 'sino',
-        'presente', 'gato', 'ipod', 'clarineta', 'cinquenta', 'sujeira', 'blob', 'sujo',
+        'presente', 'ipod', 'clarineta', 'cinquenta', 'sujeira', 'blob', 'sujo',
         'facao', 'copinho', 'espremedor', 'pandeiro', 'sacola', 'latao', 'pimenta', 'areia',
         'regar', 'latinha', 'casca', 'hd', 'tenis', 'filme', 'ampulheta', 'pimentao',
         'bumerangue', 'relogio_pulso', 'relogio', 'oculos', 'martelo', 'faca', 'joaninha',
@@ -77,7 +77,7 @@ class CPuzzle:
     """
     def __init__(self,imagem, esta_cena, dx=2, dy=2, w=1000, h=600, venceu=None):
         posiciona_proxima = self.posiciona_proxima
-        dx, dy = PUZLEV[TheHero().levl+1]
+        dx, dy = PUZLEV[TheHero().levl//2+1]
         self.dx = dx
         #ldx, ldy, lw, lh =dx, dy, w, h
         class LinhaGeracional:
@@ -346,8 +346,9 @@ class Rua(Cena):
         self.fury = True
 
     def turno(self, destino):
-        self.properties[P.S][0].toggle()
-        destino.properties[P.S][0].toggle()
+        origin, destiny =  self.properties[P.S], destino.properties[P.S]
+        origin[0].toggle() if origin else None
+        destiny[0].toggle() if destiny else None
 
     @staticmethod
     def enfuriar(*_):
@@ -508,24 +509,24 @@ class Thrash:
         #cena.elt <= self.cache
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
-        self.desiste = Elemento(DESISTO, cena = cena, vai=self.quit)
+        self.desiste = Elemento(DESISTO, y=100, cena = cena, vai=self.quit)
         self.remaining_shuffle_count = 20
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
         self.fundo.elt <= self.rubish
         comer = self.comida * (4 + h.levl//2)
         shuffle(comer)
         shuffle(lixo)
-        trash = 20 + 5*h.levl
-        sujo = 10 + 5*h.levl
-        sorte += h.luck
-        pilha = lixo[:trash] + self.sujeira[:sujo] + comer[:sorte]
+        trash = 20 + 2*h.levl
+        sujo = 10 + 2*h.levl
+        sorte += h.luck + randint(0, h.levl)//3
+        pilha = lixo[:trash] + self.sujeira[:sujo] + comer[:sorte] + ['gato']
         shuffle(pilha)
         for indice, label in enumerate(pilha):
             dx, dy = randint(-300,300) , 100  - randint(-100,100)
             #dy = abs(300 -dx)//3
             dy = (300 - abs(dx))//2
             dx, dy = 200 - dx , 100  - randint(-dy, dy)
-            obj = svg.use(id=f"#{indice:02d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
+            obj = svg.use(id=f"#{indice:03d}{label}", href=f"#{label}", x=200, y=100 , width=250, height=250,
             transform=f"translate({dx} {dy})  rotate({7*indice} {ROFFX} {ROFFY}) scale(2.5)")
             self.rubish <= obj
             obj.bind('click', self._vai)
@@ -553,7 +554,7 @@ class Thrash:
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
-        obj_name = ev.target.id[3:]
+        obj_name = ev.target.id[4:]
         if obj.getAttribute("data-didit") == "_did_":
             return
         if obj_name in self.comida+["gato"]:
@@ -568,6 +569,7 @@ class Thrash:
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
             if obj_name == "gato":
+                obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.0)")
                 food.vai = TheHero().calma
                 TheHero().blacking(food.tit)
                 return
