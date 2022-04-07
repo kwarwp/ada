@@ -2035,3 +2035,25 @@ AttributeError: 'TheHero' object has no attribute 'lvl'
     self.learn(self.lvl+2)
 AttributeError: 'TheHero' object has no attribute 'lvl'
 '''},
+{'date': 'Wed Apr 06 2022 22:48:20.221 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 690
+    Gatil(GATIL_MOS).vai()
+  module <module> line 614
+    salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, maybe(573, rua, G)]),
+  module <module> line 334
+    self.weather = Elemento('', x=0, y=0, w=1350, h=800, cena=cena, vai=self.foge)
+  module _spy.vitollino.main line 554
+    self.scorer = dict(ponto=1, valor=cena.nome, carta=tit or img, casa=self.xy, move=None)
+AttributeError: 'Rua' object has no attribute 'nome'
+'''},
