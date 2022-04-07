@@ -297,13 +297,17 @@ class TheHero(Elemento):
         f"Você resgatou {len(self.kept)} gatinhos. Você e {len(self.cats)} gatinhos morreram de fome")
         Texto(c, texto).vai()
         INV.inicia()
+    def furia(self, addr):
+        if (self.addr != addr) or (not addr.fury):
+            return
+        INV.tira(self.FISH.pop()) if self.FISH else None
+        INV.tira(self.cats.pop()) if self.cats else None
+        self.learn(5*self.levl)
     def calma(self, *_):
-        #GATIL.turn()
         INV.tira(TheHero.BLACK.pop())
         self.learn(30*self.levl)
         self.addr.calma()
     def do_turn(self,rua, time=1):
-        #GATIL.turn()
         TheHero.PROFILE["p_addr"] = rua
         TheHero.PROFILE["p_turn"] += time
         self.learn(self.levl+2)
@@ -313,6 +317,7 @@ class TheHero(Elemento):
         eaten = len(self.cats) + 1
         #fish = fishes.pop() if fishes else self.game_over()
         [INV.tira(fishes.pop()) for _ in range(eaten)] if len(fishes) >= eaten else self.game_over()
+        self.furia(rua)
         #if (self.food + self.profile["b_heal"]) < - self.profile["b_asce"]:
         #   self.game_over()
 
@@ -330,18 +335,22 @@ class Rua(Cena):
 
     def calma(self, *_):
         self.GOOD.append(self)
-        self.weather.img = ''
+        self.weather.no()
+
+    def furia(self, *_):
+        self.weather.img = choice(BADWE)
+        self.weather.go()
+        self.fury = True
 
     @staticmethod
     def furia(*_):
         shuffle(Rua.GOOD)
-        fury = Rua.GOOD.pop()
-        fury.weather.img = choice(BADWE)
-        fury.weather.y += 2000
+        Rua.GOOD.pop().furia()
     
 
     def __init__(self, img, trash=None, props=NO):
         cena = self
+        self.fury = False
         Rua.ADDRESS += 1
         self.cats = []
         class Placa(Elemento):
@@ -361,9 +370,9 @@ class Rua(Cena):
             def __init__(self,img, x=0, y=0, w=40, h=40, vai=None, tit='', o=1.0):
                 super().__init__(img, x=x, y=y, w=w, h=h, o=o, vai=vai, tit=tit, cena=cena)
             def go(self, *_):
-                self.y +=2000
+                self.y += 2000 if self.y <0 else 0
             def no(self, *_):
-                self.y -=2000
+                self.y -= 2000 if self.y >0 else 0
         class Trash(Mark):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, tit='lixo', vai=self.dump)
@@ -445,7 +454,7 @@ class Rua(Cena):
                     TheHero.YOUTUBE.y = 200
                 
         super().__init__(img)
-        self.weather = Elemento('', x=0, y=-2000, w=1350, h=800, cena=cena, o=0.2, vai=self.foge)
+        self.weather = Mark('', x=0, y=-2000, w=1350, h=800, o=0.2, vai=self.foge)
         self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
         self.properties = {kind: [] for kind in p.keys()}
         [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
