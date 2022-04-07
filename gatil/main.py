@@ -301,7 +301,7 @@ class TheHero(Elemento):
         if (self.addr != addr) or (not addr.fury):
             return
         INV.tira(self.FISH.pop()) if self.FISH else None
-        INV.tira(self.cats.pop()) if self.cats else None
+        INV.tira(self.cats.pop().tit) if self.cats else None
         self.learn(5*self.levl)
     def calma(self, *_):
         INV.tira(TheHero.BLACK.pop())
@@ -336,6 +336,9 @@ class Rua(Cena):
     def calma(self, *_):
         self.GOOD.append(self)
         self.weather.no()
+        self.fury = False
+        things = self.properties[P.T]+self.properties[P.G]
+        [thing.go() for thing in things]
 
     def furia(self, *_):
         self.weather.img = choice(BADWE)
@@ -343,7 +346,10 @@ class Rua(Cena):
         self.fury = True
 
     @staticmethod
-    def furia(*_):
+    def enfuriar(*_):
+        if not Rua.GOOD:
+            TheHero().game_over()
+            return
         shuffle(Rua.GOOD)
         Rua.GOOD.pop().furia()
     
@@ -372,7 +378,7 @@ class Rua(Cena):
             def go(self, *_):
                 self.y += 2000 if self.y <0 else 0
             def no(self, *_):
-                self.y -= 2000 if self.y >0 else 0
+                self.y -= 2000 if self.y >=-10 else 0
         class Trash(Mark):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, tit='lixo', vai=self.dump)
@@ -472,7 +478,7 @@ class Rua(Cena):
             Rua.GOOD = list(Rua.MAPA.values())
             
         TheHero().do_turn(self)
-        Rua.furia()
+        Rua.enfuriar()
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
@@ -642,8 +648,8 @@ class Gatil(Cena):
         # SI1, SI2, SI3, SI4, SI5, SI6, SI7, SI8, SI9 = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
         salas_imgs = [[IM.format(lnk) for lnk in sala_] for sala_ in SALAS]
         salas_args = [[Rua(sala, self.trash,[(P.H, [200, 550]), (P.S, [1043, maybe(573, rua, G)]),
-                       (P.P, [f"RUA {R[rua]} {C[canto]}"]), (P.T, [863, maybe(453, rua, T), 34, 40]),
-                       (P.G, [827,  maybe(403, rua, Y), 40, 40])])
+                       (P.P, [f"RUA {R[rua]} {C[canto]}"]), (P.T, [863, maybe(453, rua, T), 50, 50]),
+                       (P.G, [150,  maybe(403, rua, Y), 60, 60])])
                        for canto, sala in enumerate(sala_img)] for rua, sala_img in enumerate(salas_imgs)]
         SAI1, SAI2, SAI3, SAI4, SAI5, SAI6, SAI7, SAI8, SAI9 = salas_args
         # alert(SAI6)
