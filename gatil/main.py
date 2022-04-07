@@ -234,6 +234,7 @@ class Abrigo:
 
 class TheHero(Elemento):
     FISH = None
+    BLACK = []
     PROFILE = None
     GATEIRA = None
     YOUTUBE = None
@@ -262,7 +263,7 @@ class TheHero(Elemento):
         TheHero.FISH = f = [f"{fish}_fish" for fish in range(24)]
         [INV.bota(fish, "https://i.imgur.com/Tjswa4z.png") for fish in f]
         p_names = "s_luck s_char s_asce s_prot m_keen m_lead m_snea m_cunn b_nimb b_heal b_stre b_pers".split()
-        p_names += "p_loot p_levl p_turn p_cats p_xper p_kept".split()
+        p_names += "p_loot p_levl p_turn p_cats p_xper p_kept p_addr".split()
         TheHero.PROFILE = {pr: 1 for pr in p_names}
         TheHero.PROFILE["p_cats"], TheHero.PROFILE["p_kept"] = [], []
         for key, value in TheHero.PROFILE.items():
@@ -280,7 +281,11 @@ class TheHero(Elemento):
 
     def learn(self, xp):
         TheHero.PROFILE["p_xper"] += xp
-        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 200) else 0
+        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 300) else 0
+
+    def blacking(self, black_cat):
+        TheHero.BLACK.append(black_cat)
+        self.learn(2*self.levl+20)
 
     def fishing(self, fish):
         TheHero.FISH.append(fish)
@@ -294,11 +299,12 @@ class TheHero(Elemento):
         INV.inicia()
     def calma(self, *_):
         #GATIL.turn()
+        INV.tira(TheHero.BLACK.pop())
         self.learn(30*self.levl)
-        self.rua.calma()
+        self.addr.calma()
     def do_turn(self,rua, time=1):
         #GATIL.turn()
-        self.rua = rua
+        TheHero.PROFILE["p_addr"] = rua
         TheHero.PROFILE["p_turn"] += time
         self.learn(self.levl+2)
         
@@ -537,10 +543,12 @@ class Thrash:
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
-            if obj_name == "gato":
-                food.vai = TheHero().calma
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
+            if obj_name == "gato":
+                food.vai = TheHero().calma
+                TheHero().blacking(food.tit)
+                return
             TheHero().fishing(food.tit)
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
