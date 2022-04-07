@@ -281,7 +281,7 @@ class TheHero(Elemento):
 
     def learn(self, xp):
         TheHero.PROFILE["p_xper"] += xp
-        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 300) else 0
+        TheHero.PROFILE["p_levl"] += 1 if self.xper >= (self.levl * 500) else 0
 
     def blacking(self, black_cat):
         TheHero.BLACK.append(black_cat)
@@ -510,7 +510,7 @@ class Thrash:
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
         self.desiste = Elemento(DESISTO, y=100, cena = cena, vai=self.quit)
-        self.remaining_shuffle_count = 20
+        self.remaining_shuffle_count = 20 + 2*h.pers + h.levl//5
         self.rubish = svg.svg(version="1.1", viewBox="400 250 1000 600", width="1600", height="800")
         self.fundo.elt <= self.rubish
         comer = self.comida * (4 + h.levl//2)
@@ -569,7 +569,7 @@ class Thrash:
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
             if obj_name == "gato":
-                obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.0)")
+                obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-345}) scale(0.60 0.6)")
                 food.vai = TheHero().calma
                 TheHero().blacking(food.tit)
                 return
