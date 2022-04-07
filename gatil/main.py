@@ -325,6 +325,7 @@ class Rua(Cena):
         shuffle(Rua.GOOD)
         fury = Rua.GOOD.pop()
         fury.weather.img = choice(BADWE)
+        fury.weather.y += 2000
     
 
     def __init__(self, img, trash=None, props=NO):
@@ -432,7 +433,7 @@ class Rua(Cena):
                     TheHero.YOUTUBE.y = 200
                 
         super().__init__(img)
-        self.weather = Elemento('', x=0, y=0, w=1350, h=800, cena=cena, vai=self.foge)
+        self.weather = Elemento('', x=0, y=-2000, w=1350, h=800, cena=cena, o=0.4, vai=self.foge)
         self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
         self.properties = {kind: [] for kind in p.keys()}
         [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
@@ -450,7 +451,7 @@ class Rua(Cena):
             Rua.GOOD = list(Rua.MAPA.values())
             
         TheHero().do_turn()
-        Rua.fury()
+        Rua.furia()
         #HERO.entra(self)
 class Thrash:
     def __init__(self):
