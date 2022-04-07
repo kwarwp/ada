@@ -345,6 +345,10 @@ class Rua(Cena):
         self.weather.go()
         self.fury = True
 
+    def turno(self, destino):
+        self.properties[P.S].toggle()
+        destino.properties[P.S].toggle()
+
     @staticmethod
     def enfuriar(*_):
         if not Rua.GOOD:
@@ -352,6 +356,7 @@ class Rua(Cena):
             return
         shuffle(Rua.GOOD)
         Rua.GOOD.pop().furia()
+        Rua.GOOD[0].turno(Rua.GOOD[1]) if len(Rua.GOOD) > 1 else None
     
 
     def __init__(self, img, trash=None, props=NO):
@@ -379,6 +384,8 @@ class Rua(Cena):
                 self.y += 2000 if self.y <0 else 0
             def no(self, *_):
                 self.y -= 2000 if self.y >=-10 else 0
+            def toggle(self, *_):
+                self.y -= 2000 if self.y >=-10 else -2000
         class Trash(Mark):
             def __init__(self, x=0, y=0, w=40, h=40):
                 super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, tit='lixo', vai=self.dump)
