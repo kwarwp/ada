@@ -323,36 +323,44 @@ class Rua(Cena):
                 self.hero = TheHero()
                 self.hero.entra(cena)
                 self.hero.x, self.hero.y, self.hero.w, self.hero.h = x,y,w,h
-        class Trash(Elemento):
+        class Mark(Elemento):
+            def __init__(self,img, x=0, y=0, w=40, h=40, vai=None, tit='', o=0.4):
+                super().__init__(img, x=x, y=y, w=w, h=h, o=o, vai=vai, tit=tit, cena=cena)
+            def go(self, *_):
+                self.y +=2000
+            def no(self, *_):
+                self.y -=2000
+        class Trash(Mark):
             def __init__(self, x=0, y=0, w=40, h=40):
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.4, vai=self.dump, cena=cena)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=1.0, tit='lixo', vai=self.dump)
             def dump(self, *_):
-                self.x = -1000
+                #self.x = -1000
+                self.no()
                 trash.dump(cena)
-        class Stray(Elemento):
+        class Stray(Mark):
             def __init__(self, x=0, y=0, w=60, h=60):
                 #super().__init__(STRAY[randint(0,4)], x=x, y=y, w=w, h=h, cena=cena)
                 self.oid = f"gato_{Rua.ADDRESS:02}"
                 self.face = IMP.format(STRAY[0])
-                super().__init__(self.face, tit=self.oid, x=x, y=y, w=w, h=h, vai=self.dump, cena=cena)
+                super().__init__(self.face, tit=self.oid, x=x, y=y, w=w, h=h, vai=self.dump)
             def dump(self, *_):
                 self.vai = lambda *_: None
                 self.desiste = Elemento(DESISTO, tit="DESISTO!", x=0, y=300, cena=cena, vai=lambda *_: self.foi(ganhou=False))
                 #self.puz = Swap(J(), IM.format(choice(CATPUZ)),cena, venceu=Cena(vai=self.foi))
                 self.puz = CPuzzle(IM.format(choice(CATPUZ)),cena, venceu=self.foi)
                 self.foi()
-            def hide(self, *_, ganhou=True):
+            def __hide(self, *_, ganhou=True):
                 self.x = -1000
             def foi(self, *_, ganhou=True):
                 self.puz.limpa()
                 self.desiste.elt.remove()
                 self.desiste = None
                 #INV.bota(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
-                TheHero().catching(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.hide).vai()
-        class Gui(Elemento):
+                TheHero().catching(self) if ganhou else Texto(cena, "Minhéeeeeu!",foi=self.no).vai()
+        class Gui(Mark):
             def __init__(self, x=0, y=0, w=40, h=100):
                 self.scene = cena
-                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, cena=cena, vai=self.quiz)
+                super().__init__(HALO, x=x, y=y, w=w, h=h, o=0.5, vai=self.quiz)
             def quiz(self, *_):
                 def prg(pg, ct, er, ln, tt="Videos da Flávia"):
                     from browser import html
@@ -379,7 +387,8 @@ class Rua(Cena):
                     #TheHero.YOUTUBE.entra(self.scene)
                     texto.vai()
                 prg(**Videos.TODOS[choice([0,1])])
-                self.y -= 1000
+                #self.y -= 1000
+                self.no()
             def resposta(self, letter):
                 def foi(*_):
                     TheHero.GATEIRA.y = -1000
