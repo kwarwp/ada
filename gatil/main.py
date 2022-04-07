@@ -439,7 +439,7 @@ class Rua(Cena):
                     TheHero.YOUTUBE.y = 200
                 
         super().__init__(img)
-        self.weather = Elemento('', x=0, y=-2000, w=1350, h=800, cena=cena, o=0.4, vai=self.foge)
+        self.weather = Elemento('', x=0, y=-2000, w=1350, h=800, cena=cena, o=0.2, vai=self.foge)
         self.props = p = {P.H: Hero, P.T: Trash, P.S: Stray, P.G: Gui, P.P: Placa}
         self.properties = {kind: [] for kind in p.keys()}
         [self.properties[proname].append(p[proname](*proargs)) for proname, proargs  in props]
@@ -525,10 +525,10 @@ class Thrash:
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
         #alert (ev.target.id)
         obj = document[ev.target.id]
-        ob_name = ev.target.id[3:]
+        obj_name = ev.target.id[3:]
         if obj.getAttribute("data-didit") == "_did_":
             return
-        if ob_name in self.comida+["gato"]:
+        if obj_name in self.comida+["gato"]:
             food = Elemento('', x=0, y=50, w=200, h=200, tit=f"{ev.target.id}_", cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
@@ -537,7 +537,7 @@ class Thrash:
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
-            if obj_name == "gato"
+            if obj_name == "gato":
                 food.vai = TheHero().calma
             #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
