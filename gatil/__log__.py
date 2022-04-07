@@ -2131,3 +2131,97 @@ SyntaxError: invalid syntax
     self.weather = Mark('', x=0, y=-2000, w=1350, h=800, cena=cena, o=0.2, vai=self.foge)
 TypeError: __init__() got an unexpected keyword argument 'cena'
 '''},
+{'date': 'Thu Apr 07 2022 11:09:05.341 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 720
+    Gatil(GATIL_MOS).vai()
+  module <module> line 686
+    sala_b.norte.vai()
+  module <module> line 475
+    Rua.furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+  module <module> line 348
+    Rua.GOOD.pop().furia()
+IndexError: pop index out of range
+'''},
