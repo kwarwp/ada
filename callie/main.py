@@ -3,6 +3,7 @@ STYLE.update(width=850, height="650px")
 
 GOGHRoom ="https://i.imgur.com/CRNsfXO.jpg"
 GOGHIntru = "https://i.imgur.com/nVpyITK.png"
+CITY1 = "https://i.imgur.com/jiJY1NY.jpg"
 
 
 class Cubos:
