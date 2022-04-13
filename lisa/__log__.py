@@ -127,3 +127,10 @@ SyntaxError: non-keyword arg after keyword arg
     self.cesta.outro, self.cesta2.outro = self.cesta2.outro, self.cesta.outro
 AttributeError: 'Veiculo' object has no attribute 'outro'
 '''},
+{'date': 'Wed Apr 13 2022 15:45:34.99 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  def move(self,evento=None)
+                             ^
+SyntaxError: invalid syntax
+'''},
