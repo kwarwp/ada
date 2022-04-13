@@ -1,9 +1,18 @@
-from _spy.vitollino.main import Cena, Elemento, Droppable, Dragger, Codigo
+from _spy.vitollino.main import Cena, Elemento, STYLE
+STYLE.update(width=850, height="650px")
 
 GOGHRoom ="https://i.imgur.com/CRNsfXO.jpg"
-GOGHIntru = "https://images.vexels.com/media/users/3/139889/isolated/preview/da50fec14dc402a17863b78227684335-silhueta-do-gato-2-by-vexels.png"
+GOGHIntru = "https://i.imgur.com/nVpyITK.png"
 
+
+class Cubos:
+    def __init__(self):
+        cena = Cena(GOGHRoom).vai()
+        el = Elemento(GOGHIntru, cena=cena)
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
+
+if __name__ == "__main__":
+    Cubos()
 
 
 
