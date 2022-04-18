@@ -15,25 +15,28 @@ OFF = 2000
 class Cubos:
     def __init__(self, cenas, tw=800, th=500, nx=4, ny=3):
         class Face(Elemento):
-            def __init__(self,inx, face, **kwargs):
+            def __init__(self,cubo, inx, face, **kwargs):
+                self.cubo = cubo
                 w, h = tw//nx, th//ny
                 x, y = (inx % nx)*w, (inx // nx)*h
-                super().__init__(IMGUR.format(face), x=x, y=y-OFF, w=w, h=h, cena=cena)
+                super().__init__(IMGUR.format(face), x=x, y=y-OFF, w=w, h=h, cena=cena, vai=self.vai)
                 self.siz = (tw, th)
                 self.pos = (-x, -y)
             def show(self):
                 self.y += OFF if self.y < -10  else 0
             def hide(self):
                 self.y -= OFF if self.y > 10  else 0
+            def vai(self):
+                self.cubo.roll(randint(0,5))
         class Cubo:
             def __init__(self,inx, faces, **kwargs):
-                self.faces = [Face(inx=inx, face=face) for face in faces]
+                self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
             def roll(self,inx):
                 [face.show() if inx == face_index else face.hide() for face_index, face in enumerate(self.faces)]
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
-        [cube.roll(randint(0,6)) for cube in cubos]
+        [cube.roll(randint(0,5)) for cube in cubos]
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
