@@ -23,22 +23,27 @@ class Cubos:
                 super().__init__(IMGUR.format(face), x=x, y=y-OFF, w=w, h=h, cena=cena, vai=self.vai)
                 self.siz = (tw, th)
                 self.pos = (-x, -y)
+                self.quad = 0
             def show(self):
                 self.y += OFF if self.y < -10  else 0
+                return True
             def hide(self):
                 self.y -= OFF if self.y > 10  else 0
-            def vai(self, ev):
+                return False
+            def vai(self, evt):
                 e = evt.target;
                 dim = e.getBoundingClientRect()
                 x = evt.clientX - dim.left
                 y = evt.clientY - dim.top
-                alert("x: "+x+" y:"+y)
+                self.quad = 1 if x-y > 0 else 3
+                alert(f"x: {x} y: {y} qd: {self.quad}")
                 self.cubo.roll(randint(0,5))
         class Cubo:
             def __init__(self,inx, faces, **kwargs):
                 self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
             def roll(self,inx):
-                [face.show() if inx == face_index else face.hide() for face_index, face in enumerate(self.faces)]
+                self.face = [face.show() if inx == face_index else face.hide()
+                for face_index, face in enumerate(self.faces)].indexof(True)
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
