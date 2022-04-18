@@ -1,4 +1,5 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE
+from random import randint
 STYLE.update(width=850, height="650px")
 
 IMGUR = "https://i.imgur.com/{}.jpg"
@@ -7,8 +8,8 @@ FUNDO = "qWcEao4"
 GOGHIntru = "https://i.imgur.com/nVpyITK.png"
 CITY1 = "https://i.imgur.com/jiJY1NY.jpg"
 LAND1 = "https://i.imgur.com/GsdFmpz.jpg"
-CENAS = "CRNsfXO nVpyITK jiJY1NY GsdFmpz T6pmXbY dJ4WOIh "
-CENAS_ = "swVe1IW      "
+CENAS = "CRNsfXO swVe1IW jiJY1NY GsdFmpz T6pmXbY dJ4WOIh".split()
+CENAS_ = "swVe1IW nVpyITK     "
 OFF = 2000
 
 class Cubos:
@@ -32,7 +33,7 @@ class Cubos:
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
-        [cube.roll(0) for cube in cubos]
+        [cube.roll(randint(0,6)) for cube in cubos]
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
