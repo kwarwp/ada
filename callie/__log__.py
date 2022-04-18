@@ -73,3 +73,10 @@ UnboundLocalError: local variable 'h' referenced before assignment
     [face.show() if inx == face_index else face.hide() for face_index, face in enumerate(faces)]
 NameError: name 'faces' is not defined
 '''},
+{'date': 'Mon Apr 18 2022 15:27:22.554 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 36
+  }
+  ^
+SyntaxError: invalid syntax
+'''},
