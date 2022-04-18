@@ -17,15 +17,15 @@ class Cubos:
             def __init__(self,inx, face, **kwargs):
                 w, h = tw//nx, h//ny
                 x, y = (inx % nx)*w, (inx // nx)*h
-                super().__init__(face, x=x, y=y-OFF, w=w, h=h, cena=cena)
+                super().__init__(IMGUR.format(face), x=x, y=y-OFF, w=w, h=h, cena=cena)
                 self.siz = (tw, th)
                 self.pos = (-x, -y)
         class Cubo:
             def __init__(self,inx, faces, **kwargs):
                 self.faces = [Face(inx=inx, face=face) for face in faces]
-        cena = Cena(GOGHRoom).vai()
-        el = Elemento(FUNDO, cena=cena)
-        cubos = [Cubo(inx=inx, faces=faces) for inx in range(12)]
+        cena = Cena(IMGUR.format(FUNDO)).vai()
+        #el = Elemento(IMGUR.format(FUNDO), cena=cena)
+        cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
