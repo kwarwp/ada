@@ -28,7 +28,7 @@ class Cubos:
             def __init__(self,inx, faces, **kwargs):
                 self.faces = [Face(inx=inx, face=face) for face in faces]
             def roll(self,inx):
-                [face.show() if inx == face_index else face.hide() for face_index, face in enumerate(faces)]
+                [face.show() if inx == face_index else face.hide() for face_index, face in enumerate(self.faces)]
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
