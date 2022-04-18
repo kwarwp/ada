@@ -36,8 +36,10 @@ class Cubos:
                 dim = e.getBoundingClientRect()
                 x = evt.clientX - dim.left
                 y = evt.clientY - dim.top
-                self.quad = 0 if x-y > 0 else 2
-                self.quad += 1 if x+y > self.h else -1
+                e, n, h  = x-y, x+y , self.h
+                self.quad = 0
+                self.quad = 0 if (e > 0) and ( n <h) else 1 if (e > 0) and ( n >h) else 3 if (e < 0) and ( n >h) else 2
+                #self.quad += 1 if  > self.h else -1
                 alert(f"x: {x} y: {y} qd: {self.quad}")
                 self.cubo.roll(randint(0,5))
         class Cubo:
