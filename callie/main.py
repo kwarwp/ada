@@ -1,5 +1,6 @@
 from _spy.vitollino.main import Cena, Elemento, STYLE
 from random import randint
+from browser import alert
 STYLE.update(width=850, height="650px")
 
 IMGUR = "https://i.imgur.com/{}.jpg"
@@ -26,7 +27,13 @@ class Cubos:
                 self.y += OFF if self.y < -10  else 0
             def hide(self):
                 self.y -= OFF if self.y > 10  else 0
-            def vai(self):
+            def vai(self, ev):
+                e = evt.target;
+                dim = e.getBoundingClientRect();
+                x = evt.clientX - dim.left;
+                y = evt.clientY - dim.top;
+                alert("x: "+x+" y:"+y)
+}
                 self.cubo.roll(randint(0,5))
         class Cubo:
             def __init__(self,inx, faces, **kwargs):
