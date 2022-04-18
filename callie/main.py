@@ -29,11 +29,10 @@ class Cubos:
                 self.y -= OFF if self.y > 10  else 0
             def vai(self, ev):
                 e = evt.target;
-                dim = e.getBoundingClientRect();
-                x = evt.clientX - dim.left;
-                y = evt.clientY - dim.top;
+                dim = e.getBoundingClientRect()
+                x = evt.clientX - dim.left
+                y = evt.clientY - dim.top
                 alert("x: "+x+" y:"+y)
-}
                 self.cubo.roll(randint(0,5))
         class Cubo:
             def __init__(self,inx, faces, **kwargs):
