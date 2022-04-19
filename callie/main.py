@@ -77,7 +77,7 @@ class Cubos:
                 fc1, ot1 = self.face, self.orient
                 #Cubo.CUBOS.write(f"inx: {inx} face: {fc0} ori: {ot0} gfr: {go_face_roll} face: {fc1} ori: {ot1} ")
         cena = Cena(IMGUR.format(FUNDO)).vai()
-        tw, th = (tw, tw//nx*ty) if tw else (th//ny*nx, th)
+        tw, th = (tw, tw//nx*ny) if tw else (th//ny*nx, th)
         Cubo.CUBOS = self
         self.el = Elemento(IMGUR.format(FUNDO),w=300, cena=cena, style={"color": "white"})
         self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(nx*ny)]
@@ -89,7 +89,7 @@ class Cubos:
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
-    Cubos(CENAS, tw=700, nx=3)
+    Cubos(CENAS, tw=500, nx=2, ny=2)
 
 
 
