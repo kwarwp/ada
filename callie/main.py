@@ -63,10 +63,11 @@ class Cubos:
                 self.faces[self.face].orient(self.orient)
             def go(self,inx):
                 go_face_roll = self.ROLL[self.face][inx]
+                Cubo.CUBOS.write(f"inx: {inx} face: {self.face} gfr: {go_face_roll}")
                 self.roll(go_face_roll)
         cena = Cena(IMGUR.format(FUNDO)).vai()
         Cubo.CUBOS = self
-        self.el = Elemento(IMGUR.format(FUNDO), cena=cena)
+        self.el = Elemento(IMGUR.format(FUNDO), cena=cena, style={"color": "white"})
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
         [cube.roll(randint(0,23)) for cube in cubos]
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
