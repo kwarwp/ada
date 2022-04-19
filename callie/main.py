@@ -53,10 +53,10 @@ class Cubos:
                 self.cubo.go(self.quad)
         class Cubo:
             ROLL = [
-                [19,4,21,12],[18,8,22,0],[17,12,23,4],[16,0,20,8],[6,1,12,11],[12,3,6,10],
-                [5,22,13,16],[9,23,1,19],[13,20,5,18],[1,21,9,17],[2,13,8,7],[0,7,10,13],
-                [23,14,17,6],[20,2,16,10],[21,6,19,14],[22,10,18,2],[14,9,4,3],[4,11,14,1],
-                [15,18,7,20],[3,17,11,21],[7,16,15,22],[11,19,3,23],[10,5,0,15],[8,15,2,5],
+                [[19,4,21,12],[18,8,22,0],[17,12,23,4],[16,0,20,8],[6,1,12,11],[12,3,6,10]],
+                [[5,22,13,16],[9,23,1,19],[13,20,5,18],[1,21,9,17],[2,13,8,7],[0,7,10,13]],
+                [[23,14,17,6],[20,2,16,10],[21,6,19,14],[22,10,18,2],[14,9,4,3],[4,11,14,1]],
+                [[15,18,7,20],[3,17,11,21],[7,16,15,22],[11,19,3,23],[10,5,0,15],[8,15,2,5]],
                 ]
             def __init__(self,inx, faces, **kwargs):
                 self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
@@ -67,8 +67,8 @@ class Cubos:
                              for face_index, face in enumerate(self.faces)].index(True)
                 self.faces[self.face].orient(self.orient)
             def go(self,inx):
-                go_face_roll = self.ROLL[self.orient][self.face][inx]
-                Cubo.CUBOS.write(f"inx: {inx} face: {self.face} gfr: {go_face_roll}")
+                go_face_roll = Cubo.ROLL[self.orient][self.face][inx]
+                Cubo.CUBOS.write(f"inx: {inx} face: {self.face} ori: {self.orient} gfr: {go_face_roll}")
                 self.roll(go_face_roll)
         cena = Cena(IMGUR.format(FUNDO)).vai()
         Cubo.CUBOS = self
