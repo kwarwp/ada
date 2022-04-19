@@ -46,7 +46,7 @@ class Cubos:
                 y = evt.clientY - dim.top
                 e, n, h  = x-y, x+y , self.dh
                 self.quad = 0
-                self.quad = 0 if (e > 0) and ( n <h) else 1 if (e > 0) and ( n >h) else 3 if (e < 0) and ( n >h) else 2
+                self.quad = 0 if (e > 0) and ( n <h) else 1 if (e > 0) and ( n >h) else 2 if (e < 0) and ( n >h) else 3
                 #self.quad += 1 if  > self.h else -1
                 Cubo.CUBOS.write(f"x: {x} y: {y} qd: {self.quad}")
                 #self.cubo.roll(randint(0,5))
