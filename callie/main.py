@@ -81,10 +81,10 @@ class Cubos:
         self.el = Elemento(IMGUR.format(FUNDO),w=300, cena=cena, style={"color": "white"})
         self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
         [cube.roll(randint(0,23)) for cube in cubos]
-        #[cube.roll(0) for cube in cubos]
+        # [cube.roll(0) for cube in cubos]
     def complete(self):
-        self.CUBOS.write(set(cubo.inx for cubo in self.cubos))
-        return len(set(cubo.inx for cubo in self.cubos)) = 1
+        # self.write(set(cubo.inx for cubo in self.cubos))
+        return len(set(cubo.inx for cubo in self.cubos)) == 1
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
