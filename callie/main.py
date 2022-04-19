@@ -54,6 +54,7 @@ class Cubos:
                 facer, self.orient = inx//4, inx % 4
                 self.face = [face.show() if facer == face_index else face.hide()
                              for face_index, face in enumerate(self.faces)].index(True)
+                self.faces[self.face].orient(self.orient)
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
