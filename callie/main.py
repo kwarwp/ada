@@ -48,7 +48,7 @@ class Cubos:
                 self.quad = 0
                 self.quad = 0 if (e > 0) and ( n <h) else 1 if (e > 0) and ( n >h) else 2 if (e < 0) and ( n >h) else 3
                 #self.quad += 1 if  > self.h else -1
-                Cubo.CUBOS.write(f"x: {x} y: {y} qd: {self.quad}")
+                #Cubo.CUBOS.write(f"x: {x} y: {y} qd: {self.quad}")
                 #self.cubo.roll(randint(0,5))
                 self.cubo.go(self.quad)
         class Cubo:
@@ -75,7 +75,7 @@ class Cubos:
                 fc0, ot0 = self.face, self.orient
                 self.roll(go_face_roll)
                 fc1, ot1 = self.face, self.orient
-                Cubo.CUBOS.write(f"inx: {inx} face: {fc0} ori: {ot0} gfr: {go_face_roll} face: {fc1} ori: {ot1} ")
+                #Cubo.CUBOS.write(f"inx: {inx} face: {fc0} ori: {ot0} gfr: {go_face_roll} face: {fc1} ori: {ot1} ")
         cena = Cena(IMGUR.format(FUNDO)).vai()
         Cubo.CUBOS = self
         self.el = Elemento(IMGUR.format(FUNDO),w=300, cena=cena, style={"color": "white"})
@@ -83,6 +83,7 @@ class Cubos:
         [cube.roll(randint(0,23)) for cube in cubos]
         #[cube.roll(0) for cube in cubos]
     def complete(self):
+        self.CUBOS.write(set(cubo.inx for cubo in self.cubos))
         return len(set(cubo.inx for cubo in self.cubos)) = 1
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
