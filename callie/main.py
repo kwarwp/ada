@@ -51,7 +51,7 @@ class Cubos:
                 self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
                 self.face, self.orient = 0, 0
             def roll(self,inx):
-                facer, orient = inx//4, inx % 4
+                facer, self.orient = inx//4, inx % 4
                 self.face = [face.show() if facer == face_index else face.hide()
                              for face_index, face in enumerate(self.faces)].index(True)
         cena = Cena(IMGUR.format(FUNDO)).vai()
