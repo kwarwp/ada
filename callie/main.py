@@ -19,7 +19,7 @@ class Cubos:
     def write(self, text):
         self.el.elt.html = text
         
-    def __init__(self, cenas, tw=600//3*4, th=600, nx=4, ny=3):
+    def __init__(self, cenas, tw=None, th=600, nx=4, ny=3):
         class Face(Elemento):
             def __init__(self,cubo, inx, face, **kwargs):
                 self.cubo = cubo
@@ -77,9 +77,10 @@ class Cubos:
                 fc1, ot1 = self.face, self.orient
                 #Cubo.CUBOS.write(f"inx: {inx} face: {fc0} ori: {ot0} gfr: {go_face_roll} face: {fc1} ori: {ot1} ")
         cena = Cena(IMGUR.format(FUNDO)).vai()
+        tw, th = (tw, tw//nx*ty) if tw else (th//ny*nx, th)
         Cubo.CUBOS = self
         self.el = Elemento(IMGUR.format(FUNDO),w=300, cena=cena, style={"color": "white"})
-        self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
+        self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(nx*ny)]
         [cube.roll(randint(0,23)) for cube in cubos]
         # [cube.roll(0) for cube in cubos]
     def complete(self):
@@ -88,7 +89,7 @@ class Cubos:
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
-    Cubos(CENAS)
+    Cubos(CENAS, tw=700, nx=3)
 
 
 
