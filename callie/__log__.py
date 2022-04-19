@@ -212,3 +212,25 @@ AttributeError: 'Face' object has no attribute 'elt'
     self.face.orient(self.orient)
 AttributeError: 'int' object has no attribute 'orient'
 '''},
+{'date': 'Tue Apr 19 2022 12:11:41.546 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 91
+    Cubos(CENAS)
+  module <module> line 83
+    [cube.roll(randint(0,23)) for cube in cubos]
+  module <module> line 69
+    Cubo.CUBOS.write("completou com sucesso") if Cubo.CUBOS.complete() else None
+  module <module> line 86
+    self.CUBOS.write(set(cubo.inx for cubo in self.cubos))
+AttributeError: 'NoneType' object has no attribute 'write'
+'''},
