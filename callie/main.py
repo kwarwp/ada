@@ -31,6 +31,9 @@ class Cubos:
             def hide(self):
                 self.y -= OFF if self.y > 10  else 0
                 return False
+            def orient(self, ori):
+                self.elt.style.transform="rotate({ori*90}deg)"
+                return False
             def vai(self, evt):
                 e = evt.target;
                 dim = e.getBoundingClientRect()
@@ -43,15 +46,18 @@ class Cubos:
                 alert(f"x: {x} y: {y} qd: {self.quad}")
                 self.cubo.roll(randint(0,5))
         class Cubo:
+            ROLL = [[16,4,20,12],[18,8,22,0],[17,12,23,4],[16,0,20,8],[6,1,12,11],[12,3,6,10]]
             def __init__(self,inx, faces, **kwargs):
                 self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
+                self.face, self.orient = 0, 0
             def roll(self,inx):
-                self.face = [face.show() if inx == face_index else face.hide()
-                for face_index, face in enumerate(self.faces)].index(True)
+                facer, orient = inx//4, inx % 4
+                self.face = [face.show() if facer == face_index else face.hide()
+                             for face_index, face in enumerate(self.faces)].index(True)
         cena = Cena(IMGUR.format(FUNDO)).vai()
         #el = Elemento(IMGUR.format(FUNDO), cena=cena)
         cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
-        [cube.roll(randint(0,5)) for cube in cubos]
+        [cube.roll(randint(0,23)) for cube in cubos]
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
