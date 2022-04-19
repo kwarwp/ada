@@ -66,6 +66,10 @@ class Cubos:
                 self.face = [face.show() if facer == face_index else face.hide()
                              for face_index, face in enumerate(self.faces)].index(True)
                 self.faces[self.face].orient(self.orient)
+                Cubo.CUBOS.write("completou com sucesso") if Cubo.CUBOS.complete() else None
+            @property
+            def inx(self):
+                return self.face *4 + self.orient
             def go(self,inx):
                 go_face_roll = Cubo.ROLL[self.orient][self.face][inx]
                 fc0, ot0 = self.face, self.orient
@@ -75,9 +79,11 @@ class Cubos:
         cena = Cena(IMGUR.format(FUNDO)).vai()
         Cubo.CUBOS = self
         self.el = Elemento(IMGUR.format(FUNDO),w=300, cena=cena, style={"color": "white"})
-        cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
-        #[cube.roll(randint(0,23)) for cube in cubos]
-        [cube.roll(0) for cube in cubos]
+        self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(12)]
+        [cube.roll(randint(0,23)) for cube in cubos]
+        #[cube.roll(0) for cube in cubos]
+    def complete(self):
+        return len(set(cubo.inx for cubo in self.cubos)) = 1
 #Drag and drops: Elemento -> na Cena; Elemento -> Elemento; Elemento para inventário
 
 if __name__ == "__main__":
