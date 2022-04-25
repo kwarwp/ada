@@ -161,3 +161,10 @@ Traceback (most recent call last):
     Cubos(jogos.CENAS)
 NameError: name 'Cubos' is not defined
 '''},
+{'date': 'Mon Apr 25 2022 15:11:17.851 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''<class 'Cubos'>
+
+Exception: bases[i].$dict is undefined
+  module '$exec_1874' line 4
+jogos.Cubos(jogos.CENAS)
+'''},
