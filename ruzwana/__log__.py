@@ -168,3 +168,9 @@ Exception: bases[i].$dict is undefined
   module '$exec_1874' line 4
 jogos.Cubos(jogos.CENAS)
 '''},
+{'date': 'Mon Apr 25 2022 15:12:50.292 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: bases[i].$dict is undefined
+  module '$exec_1876' line 4
+jogos.Cubos(jogos.CENAS)
+'''},
