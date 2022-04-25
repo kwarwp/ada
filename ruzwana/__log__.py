@@ -180,3 +180,9 @@ Exception: bases[i].$dict is undefined
   module '$exec_1878' line 4
 Cubos(CENAS)
 '''},
+{'date': 'Mon Apr 25 2022 15:14:26.716 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: bases[i].$dict is undefined
+  module '$exec_1880' line 4
+Cubos([])
+'''},
