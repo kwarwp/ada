@@ -252,3 +252,27 @@ AttributeError: 'NoneType' object has no attribute 'write'
     tw, th = (tw, tw//nx*ty) if tw else (th//ny*nx, th)
 NameError: name 'ty' is not defined
 '''},
+{'date': 'Mon Apr 25 2022 15:55:14.863 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 93
+    Cubos(CENAS, tw=500, nx=2, ny=2)
+  module <module> line 84
+    self.cubos = cubos = [Cubo(inx=inx, faces=cenas) for inx in range(nx*ny)]
+  module <module> line 63
+    self.faces = [Face(cubo=self, inx=inx, face=face) for face in faces]
+  module <module> line 29
+    self.y = y
+  module _spy.vitollino.main line 692
+    self.elt.style.top = "{}px".format(value)
+AttributeError: 'Face' object has no attribute 'elt'
+'''},
