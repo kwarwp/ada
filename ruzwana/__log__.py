@@ -229,3 +229,10 @@ SyntaxError: invalid syntax
   ^
 IndentationError: expected an indented block
 '''},
+{'date': 'Wed Apr 27 2022 18:12:36.4 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 41
+  roteiro = Roteiro([Ator(ato,nom, 100, A.e) for ato, nom in nome_ator],
+                                                                                                   ^
+SyntaxError: invalid syntax
+'''},
