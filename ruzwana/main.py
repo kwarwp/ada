@@ -9,13 +9,8 @@ IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
 yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Wetere Pakeje|Celia Xacriabá|Kerexu Yxapyry".split("|")
 nomes = [yma, maw, wet, xac, ker]
-class Fala(Texto):
-    def __init__(self, ator, fala, **kwarg):
-        self.ator, self.fala = ator, fala
-        super().__init__(cena,fala, **kwarg)
-        def foi(self, *_):
-            super().foi()
-            script.segue()
+
+
 class Roteiro:
     def __init__(self,cena, elenco, roteiro):
         self.elenco, self.roteiro = elenco, roteiro
