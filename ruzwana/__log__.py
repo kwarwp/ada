@@ -215,3 +215,10 @@ NameError: name 'coroutine' is not defined
                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 27 2022 17:29:34.264 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 21
+  ymara = Elemento(IMGUR.format(ELENCO[1]), y=400 cena=cena)
+                                                   ^
+SyntaxError: invalid syntax
+'''},
