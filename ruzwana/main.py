@@ -15,7 +15,7 @@ class Roteiro:
         script = self
         for ator in elenco:
             ator.ator.vai = self.nada
-            ator.tit = ator.nome
+            ator.ator.tit = ator.nome
         elenco.pop(0).vai = self.segue
         class Fala(Texto):
             def __init__(self, ator, fala, **kwarg):
