@@ -16,7 +16,7 @@ class Roteiro:
         for ator in elenco:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
-        elenco.pop(0).vai = self.segue
+        elenco.pop(0).ator.vai = self.segue
         class Fala(Texto):
             def __init__(self, ator, fala, **kwarg):
                 self.ator, self.fala = ator, fala
@@ -29,13 +29,18 @@ class Roteiro:
         pass
         
     def segue(self, *_):
-        ator, fala, action = scripter()
+        ator, fala, action = self.scripter()
         Fala(ator, fala).vai()
         
         
     def scripter(self, *_):
-        scp = (fal for fal in self.roteiro)
-        yield scp.next()
+        '''# scp = (fal for fal in self.roteiro)
+        scp = iter([fal for fal in self.roteiro])
+        scp = [fal for fal in self.roteiro]
+        #yield next(scp)
+        a, b, c = scp.pop(0)
+        yield (a, b, c)'''
+        return self.roteiro.pop(0)
 
 
 if __name__ == "__main__":
@@ -47,5 +52,6 @@ if __name__ == "__main__":
     kerexu = Elemento(IMGUR.format(ELENCO[5]), y=400,x=800, cena=cena)
     nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
     ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
+    nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
     rot = [Fala(ato, nome, None) for ato, nom in nome_ator]
     roteiro = Roteiro(cena, ele, rot)
