@@ -250,3 +250,10 @@ SyntaxError: invalid syntax
                                                                                                                ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 27 2022 18:15:54.820 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 41
+  roteiro = Roteiro(cena, [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator],
+                                                                                                               ^
+SyntaxError: invalid syntax
+'''},
