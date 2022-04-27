@@ -208,3 +208,10 @@ Cubos(CENAS)
     @coroutine
 NameError: name 'coroutine' is not defined
 '''},
+{'date': 'Wed Apr 27 2022 17:20:19.947 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 9
+  class Roteiro
+                ^
+SyntaxError: invalid syntax
+'''},
