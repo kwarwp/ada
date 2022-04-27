@@ -222,3 +222,10 @@ SyntaxError: invalid syntax
                                                    ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 27 2022 18:12:10.786 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 32
+  if __name__ == "__main__":
+  ^
+IndentationError: expected an indented block
+'''},
