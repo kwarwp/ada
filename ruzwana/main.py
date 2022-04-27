@@ -7,7 +7,7 @@ Fala = namedtuple('Fala','ator fala age')
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
-yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Wetere Pakeje|Celia Xacriabá|Kerexu Yxapyry".split("|")
+yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Weteré ParkatêJê|Celia Xacriabá|Kerexu Yxapyry".split("|")
 nomes = [yma, maw, wet, xac, ker]
 
 
@@ -34,6 +34,8 @@ class Roteiro:
     def segue(self, *_):
         ator, fala, action = self.scripter()
         self._fala(ator, fala).vai()
+        if action:
+            action.vai = self.segue
         
         
     def scripter(self, *_):
@@ -53,8 +55,9 @@ if __name__ == "__main__":
     wetere = Elemento(IMGUR.format(ELENCO[3]), y=400,x=400, cena=cena)
     xacria = Elemento(IMGUR.format(ELENCO[4]), y=400,x=600, cena=cena)
     kerexu = Elemento(IMGUR.format(ELENCO[5]), y=400,x=800, cena=cena)
-    nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
+    atores = [ymara, mawapi, wetere, xacria, kerexu]
+    nome_ator = zip( atores, nomes)
     ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
-    nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
-    rot = [Fala(ato, nom, None) for ato, nom in nome_ator]
+    nome_ator = zip( atores, nomes, atores[1:]+[None])
+    rot = [Fala(ato, nom, prox) for ato, nom, prox in nome_ator]
     roteiro = Roteiro(cena, ele, rot)
