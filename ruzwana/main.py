@@ -24,13 +24,21 @@ class Roteiro:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
         elenco.pop(0).ator.vai = self.segue
+        class Fala(Texto):
+            def __init__(self, ator, fala, **kwarg):
+                self.ator, self.fala = ator, fala
+                super().__init__(cena,fala, **kwarg)
+                def foi(self, *_):
+                    super().foi()
+                    script.segue()
+        self._fala = Fala
         
     def nada(self, *_):
         pass
         
     def segue(self, *_):
         ator, fala, action = self.scripter()
-        Fala(ator, fala, action).vai()
+        self._fala(ator, fala, action).vai()
         
         
     def scripter(self, *_):
