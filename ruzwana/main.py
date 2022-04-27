@@ -9,6 +9,13 @@ IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
 yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Wetere Pakeje|Celia Xacriabá|Kerexu Yxapyry".split("|")
 nomes = [yma, maw, wet, xac, ker]
+class Fala(Texto):
+    def __init__(self, ator, fala, **kwarg):
+        self.ator, self.fala = ator, fala
+        super().__init__(cena,fala, **kwarg)
+        def foi(self, *_):
+            super().foi()
+            script.segue()
 class Roteiro:
     def __init__(self,cena, elenco, roteiro):
         self.elenco, self.roteiro = elenco, roteiro
@@ -17,20 +24,13 @@ class Roteiro:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
         elenco.pop(0).ator.vai = self.segue
-        class Fala(Texto):
-            def __init__(self, ator, fala, **kwarg):
-                self.ator, self.fala = ator, fala
-                super().__init__(cena,fala, **kwarg)
-            def foi(self, *_):
-                super().foi()
-                script.segue()
         
     def nada(self, *_):
         pass
         
     def segue(self, *_):
         ator, fala, action = self.scripter()
-        Fala(ator, fala).vai()
+        Fala(ator, fala, action).vai()
         
         
     def scripter(self, *_):
@@ -53,5 +53,5 @@ if __name__ == "__main__":
     nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
     ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
     nome_ator = zip( [ymara, mawapi, wetere, xacria, kerexu], nomes)
-    rot = [Fala(ato, nome, None) for ato, nom in nome_ator]
+    rot = [Fala(ato, nom, None) for ato, nom in nome_ator]
     roteiro = Roteiro(cena, ele, rot)
