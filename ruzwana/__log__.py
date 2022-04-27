@@ -334,3 +334,10 @@ AttributeError: 'list' object has no attribute 'tit'
     elenco.pop(0).vai = self.segue
 AttributeError: 'list' object has no attribute 'vai'
 '''},
+{'date': 'Wed Apr 27 2022 18:36:58.772 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 19
+  elenco.pop(0)ator.vai = self.segue
+                ^
+SyntaxError: invalid syntax
+'''},
