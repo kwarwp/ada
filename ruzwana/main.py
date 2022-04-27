@@ -24,9 +24,6 @@ class Roteiro:
             def foi(self, *_):
                 super().foi()
                 script.segue()
-        for fala in roteiro:
-            ator.ator.vai = self.nada
-            ator.tit = ator.nome
         
     def nada(self, *_):
         pass
