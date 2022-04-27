@@ -24,7 +24,7 @@ class Roteiro:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
         elenco.pop(0).ator.vai = self.segue
-        class Fala(Texto):
+        class Falar(Texto):
             def __init__(self, ator, fala, **kwarg):
                 self.ator, self.fala = ator, fala
                 super().__init__(cena,fala, **kwarg)
