@@ -257,3 +257,10 @@ SyntaxError: invalid syntax
                                                                                                                ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Apr 27 2022 18:17:15.720 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 42
+  rot = [Fala(ato, nome, None) for for ato, nom in nome_ator]
+                                    ^
+SyntaxError: invalid syntax
+'''},
