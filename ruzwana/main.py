@@ -31,14 +31,14 @@ class Roteiro:
                 def foi(self, *_):
                     super().foi()
                     script.segue()
-        self._fala = Fala
+        self._fala = Falar
         
     def nada(self, *_):
         pass
         
     def segue(self, *_):
         ator, fala, action = self.scripter()
-        self._fala(ator, fala, action).vai()
+        self._fala(ator, fala).vai()
         
         
     def scripter(self, *_):
