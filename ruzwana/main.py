@@ -15,6 +15,8 @@ class Roteiro:
         script = self
         for ator in elenco:
             ator.ator.vai = self.nada
+            ator.tit = ator.nome
+        elenco.pop(0).vai = self.segue
         class Fala(Texto):
             def __init__(self, ator, fala, **kwarg):
                 self.ator, self.fala = ator, fala
@@ -22,12 +24,21 @@ class Roteiro:
             def foi(self, *_):
                 super().foi()
                 script.segue()
+        for fala in roteiro:
+            ator.ator.vai = self.nada
+            ator.tit = ator.nome
         
     def nada(self, *_):
         pass
         
-    def segue(self):
-        ...
+    def segue(self, *_):
+        ator, fala, action = scripter()
+        Fala(ator, fala).vai()
+        
+        
+    def scripter(self, *_):
+        scp = (fal for fal in self.roteiro)
+        yield scp.next()
 
 
 if __name__ == "__main__":
