@@ -470,3 +470,10 @@ NameError: free variable 'cena' referenced before assignment in enclosing scope
     ator.elt.style.filter = "brightness(30%)"
 AttributeError: 'Elenco' object has no attribute 'elt'
 '''},
+{'date': 'Thu Apr 28 2022 11:30:49.55 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 47
+  [ato.elt.style.filter = "brightness(100%)" for ato in self.atores]
+  ^
+IndentationError: expected an indented block
+'''},
