@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, Elemento, Texto, STYLE
 from collections import namedtuple
 STYLE.update(width=600, height="80px")
 Ator = namedtuple('Elenco','ator nome mini alinha')
-Fala = namedtuple('Fala','ator fala age prox')
+Fala = namedtuple('Fala','ator fala age prox')  # , defaults=(None,)*4)
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
@@ -13,6 +13,8 @@ NOMES = [yma, maw, wet, xac, ker]
 
 class Roteiro:
     def __init__(self,cena, roteiro, elenco=[]):
+        prox = zip(roteiro, roteiro[1:]+[None])
+        roteiro = [Fala(a, f, g, p.prox) for [a, f, g,_], p in prox]
         self.elenco, self.roteiro = elenco, roteiro
         script = self
         for ator in elenco:
@@ -68,6 +70,6 @@ if __name__ == "__main__":
             nome_ator = zip( atores, nomes)
             ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
-            rot = [Fala(ato, nom, prox) for ato, nom, prox in nome_ator]
+            rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             roteiro = Roteiro(cena, rot, ele)
     Guerreiras()
