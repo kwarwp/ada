@@ -407,3 +407,10 @@ TypeError: __init__() takes 3 positional argument but more were given
     rot = [Fala(ato, nom, None) for ato, nom in nome_ator]
 TypeError: __init__() takes 3 positional argument but more were given
 '''},
+{'date': 'Thu Apr 28 2022 10:51:05.536 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 21
+  protagonista = elenco.pop(0).ator else roteiro[0].ator
+                                     ^
+SyntaxError: invalid syntax
+'''},
