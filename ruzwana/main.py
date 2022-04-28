@@ -18,8 +18,10 @@ class Roteiro:
         for ator in elenco:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
+            ator.elt.style.filter = "brightness(30%)"
         protagonista = elenco.pop(0).ator if elenco else roteiro[0].ator
-        protagonista.vai = self.segue 
+        protagonista.vai = self.segue
+        protagonista.elt.style.filter = "brightness(100%)"
         class Falar(Texto):
             def __init__(self, ator, fala, **kwarg):
                 self.ator, self.fala = ator, fala
