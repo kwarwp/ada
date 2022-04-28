@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, Elemento, Texto, STYLE
 from collections import namedtuple
 STYLE.update(width=600, height="80px")
 Ator = namedtuple('Elenco','ator nome mini alinha')
-Fala = namedtuple('Fala','ator fala age')
+Fala = namedtuple('Fala','ator fala age prox')
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
@@ -18,8 +18,9 @@ class Roteiro:
         for ator in elenco:
             ator.ator.vai = self.nada
             ator.ator.tit = ator.nome
-            ator.elt.style.filter = "brightness(30%)"
-        protagonista = elenco.pop(0).ator if elenco else roteiro[0].ator
+            ator.ator.elt.style.filter = "brightness(30%)"
+        protagonista = elenco[0].ator if elenco else roteiro[0].ator
+        self.atores = [ator.ator for ator in elenco] if elenco else [ator.ator for ator in roteiro]
         protagonista.vai = self.segue
         protagonista.elt.style.filter = "brightness(100%)"
         class Falar(Texto):
@@ -27,8 +28,9 @@ class Roteiro:
                 self.ator, self.fala = ator, fala
                 super().__init__(cena,fala, **kwarg)
             def foi(self, *_):
-                    super().foi()
-                    script.segue()
+                super().foi()
+                self.ator.elt.style.filter = "brightness(30%)"
+                script.segue()
         self._fala = Falar
         
     def nada(self, *_):
@@ -36,9 +38,15 @@ class Roteiro:
         
     def segue(self, *_):
         ator, fala, action = self.scripter()
+        #ator.elt.style.filter = "brightness(30%)"
+
         self._fala(ator, fala).vai()
         if action:
             action.vai = self.segue
+            action.elt.style.filter = "brightness(100%)"
+        else:
+            for ato in self.atores:
+                ato.elt.style.filter = "brightness(100%)"
         
     def scripter(self, *_):
         return self.roteiro.pop(0)
