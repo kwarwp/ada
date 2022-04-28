@@ -14,7 +14,7 @@ NOMES = [yma, maw, wet, xac, ker]
 class Roteiro:
     def __init__(self,cena, roteiro, elenco=[]):
         prox = zip(roteiro, roteiro[1:]+[None])
-        roteiro = [Fala(a, f, g, p.prox) for [a, f, g,_], p in prox]
+        roteiro = [Fala(a, f, g, p.ator if p else None) for [a, f, g,_], p in prox]
         self.elenco, self.roteiro = elenco, roteiro
         script = self
         for ator in elenco:
@@ -26,26 +26,42 @@ class Roteiro:
         protagonista.vai = self.segue
         protagonista.elt.style.filter = "brightness(100%)"
         class Falar(Texto):
-            def __init__(self, ator, fala, **kwarg):
-                self.ator, self.fala = ator, fala
+            def __init__(self, ator, fala, prox, **kwarg):
+                self.ator, self.fala, self.prox = ator, fala, prox
+                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="4%",margin="60px"))
                 super().__init__(cena,fala, **kwarg)
-            def foi(self, *_):
-                super().foi()
+            def esconde(self, *_):
+                super().esconde()
+                self.mini.elt.remove()
                 self.ator.elt.style.filter = "brightness(30%)"
-                script.segue()
+                script.testa(self.prox)
+                #script.segue()
+            def vai(self, *_):
+                super().vai()
+                self.ator.elt.style.filter = "brightness(5%)"
         self._fala = Falar
         
     def nada(self, *_):
         pass
         
     def segue(self, *_):
-        ator, fala, action = self.scripter()
+        ator, fala, action, prox = self.scripter()
         #ator.elt.style.filter = "brightness(30%)"
 
-        self._fala(ator, fala).vai()
-        if action:
+        self._fala(ator, fala, prox).vai()
+        '''if action:
             action.vai = self.segue
-            action.elt.style.filter = "brightness(100%)"
+            action.elt.style.filter = "brightness(100%)"'''
+        if prox:
+            prox.vai = self.segue
+            # prox.elt.style.filter = "brightness(100%)"
+        else:
+            for ato in []: # self.atores:
+                ato.elt.style.filter = "brightness(100%)"
+        
+    def testa(self, prox, *_):
+        if self.roteiro:
+            prox.elt.style.filter = "brightness(100%)"
         else:
             for ato in self.atores:
                 ato.elt.style.filter = "brightness(100%)"
