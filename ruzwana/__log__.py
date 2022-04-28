@@ -561,3 +561,10 @@ SyntaxError: invalid syntax
     roteiro = [Fala(a, f, g, p.prox) for [a, f, g,_], p in prox]
 AttributeError: 'NoneType' object has no attribute 'prox'
 '''},
+{'date': 'Thu Apr 28 2022 12:23:01.68 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 31
+  self.mini = Elemento(
+                                                                                          ^
+SyntaxError: invalid syntax
+'''},
