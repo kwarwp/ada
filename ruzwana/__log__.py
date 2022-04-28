@@ -534,3 +534,10 @@ TypeError: namedtuple() got an unexpected keyword argument 'defaults'
     Fala = namedtuple('Fala','ator fala age prox', defaults=(None,)*4)
 TypeError: namedtuple() got an unexpected keyword argument 'defaults'
 '''},
+{'date': 'Thu Apr 28 2022 12:04:12.25 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 16
+  prox = zip(roteiro, roteiro[1:]+[None]
+                                                  ^
+SyntaxError: invalid syntax
+'''},
