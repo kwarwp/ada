@@ -7,6 +7,7 @@ Fala = namedtuple('Fala','ator fala age prox')  # , defaults=(None,)*4)
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
+SMILE = "https://purepng.com/public/uploads/large/purepng.com-mouth-smilemouth-smilefacial-expressionduchenne-smile-1421526971643lbaoz.png"
 yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Weteré ParkatêJê|Celia Xacriabá|Kerexu Yxapyry".split("|")
 NOMES = [yma, maw, wet, xac, ker]
 
@@ -39,6 +40,10 @@ class Roteiro:
             def vai(self, *_):
                 super().vai()
                 self.ator.elt.style.filter = "brightness(5%)"
+                self.ator.vai = self.nada
+
+            def nada(self, *_):
+                pass
         self._fala = Falar
         
     def nada(self, *_):
@@ -83,6 +88,8 @@ if __name__ == "__main__":
             kerexu = Elemento(IMGUR.format(ELENCO[5]), y=yy, x=xx+dx*4, cena=cena)
             atores = [ymara, mawapi, wetere, xacria, kerexu]'''
             atores = self.elenco
+            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
+            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
             nome_ator = zip( atores, nomes)
             ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
