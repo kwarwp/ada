@@ -95,4 +95,16 @@ if __name__ == "__main__":
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             roteiro = Roteiro(cena, rot, ele)
-    Guerreiras()
+    class Sorrisos:
+        def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
+            cena = Cena(IMGUR.format(ELENCO[0])).vai()
+            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 5]]
+            atores = self.elenco
+            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
+            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
+            nome_ator = zip( atores, nomes)
+            ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
+            nome_ator = zip( atores, nomes, atores[1:]+[None])
+            rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
+            roteiro = Roteiro(cena, rot, ele)
+    Sorrisos()
