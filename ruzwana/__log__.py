@@ -586,3 +586,10 @@ SyntaxError: invalid syntax
     self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 5]]
 IndexError: list index out of range
 '''},
+{'date': 'Tue May 03 2022 18:27:13.54 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 18
+  self.foi = foi or lambda _*: None
+                              ^
+SyntaxError: invalid syntax
+'''},
