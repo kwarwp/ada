@@ -13,10 +13,12 @@ NOMES = [yma, maw, wet, xac, ker]
 
 
 class Roteiro:
-    def __init__(self,cena, roteiro, elenco=[]):
+    def __init__(self,cena, roteiro, elenco=[], foi=None):
         prox = zip(roteiro, roteiro[1:]+[None])
+        self.foi = foi if foi else lambda *_: None
         roteiro = [Fala(a, f, g, p.ator if p else None) for [a, f, g,_], p in prox]
         self.elenco, self.roteiro = elenco, roteiro
+        self._foi = lambda *_: None
         script = self
         for ator in elenco:
             ator.ator.vai = self.nada
@@ -32,11 +34,11 @@ class Roteiro:
                 self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="4%",margin="60px"))
                 super().__init__(cena,fala, **kwarg)
             def esconde(self, *_):
-                super().esconde()
                 self.mini.elt.remove()
                 self.ator.elt.style.filter = "brightness(30%)"
                 script.testa(self.prox)
                 #script.segue()
+                super().esconde()
             def vai(self, *_):
                 super().vai()
                 self.ator.elt.style.filter = "brightness(5%)"
@@ -52,17 +54,28 @@ class Roteiro:
     def segue(self, *_):
         ator, fala, action, prox = self.scripter()
         #ator.elt.style.filter = "brightness(30%)"
-
-        self._fala(ator, fala, prox).vai()
         '''if action:
             action.vai = self.segue
             action.elt.style.filter = "brightness(100%)"'''
+
+        fala = self._fala(ator, fala, prox) #.vai()
         if prox:
             prox.vai = self.segue
-            # prox.elt.style.filter = "brightness(100%)"
+            fala.vai()
         else:
+            self._foi = self.foi_
+            fala.foi = self.foi_
+            fala.vai()
+            # prox.elt.style.filter = "brightness(100%)"
+        
+    def gone(self, *_):
+        self._foi
+        
+    def foi_(self, *_):
+            #else:
             for ato in []: # self.atores:
                 ato.elt.style.filter = "brightness(100%)"
+            self.foi()
         
     def testa(self, prox, *_):
         if self.roteiro:
@@ -97,14 +110,16 @@ if __name__ == "__main__":
             roteiro = Roteiro(cena, rot, ele)
     class Sorrisos:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
-            cena = Cena(IMGUR.format(ELENCO[0])).vai()
-            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 5]]
+            self.cena = cena = Cena(IMGUR.format(ELENCO[0])).vai()
+            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 4]]
             atores = self.elenco
-            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
-            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
-            nome_ator = zip( atores, nomes)
+            nome_ator = zip( atores, [nomes[0],nomes[4]])
             ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
-            roteiro = Roteiro(cena, rot, ele)
+            roteiro = Roteiro(cena, rot, ele, self.foi)
+        def foi(self, *_):
+            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=self.cena)
+            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-15deg)'})
+        
     Sorrisos()
