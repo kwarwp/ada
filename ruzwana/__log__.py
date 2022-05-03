@@ -593,3 +593,10 @@ IndexError: list index out of range
                               ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue May 03 2022 18:27:48.674 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 18
+  self.foi = foi if foi else lambda _*: None
+                                       ^
+SyntaxError: invalid syntax
+'''},
