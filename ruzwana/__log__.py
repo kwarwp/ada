@@ -600,3 +600,23 @@ SyntaxError: invalid syntax
                                        ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed May 04 2022 05:01:02.101 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 127
+    Sorrisos()
+  module <module> line 122
+    roteiro = Roteiro(cena, rot, ele, self.foi)
+  module <module> line 21
+    roteiro = [Fala(a, f, g, p.ator if p else None) for [a, f, g,_], p in prox]
+TypeError: 'Fala' object is not iterable
+'''},
