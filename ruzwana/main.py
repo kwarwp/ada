@@ -16,9 +16,12 @@ class Fala_:
 
 class Roteiro:
     def __init__(self, cena, roteiro, elenco=[], foi=None):
-        prox = zip(roteiro, roteiro[1:]+[None])
+        prox = zip(roteiro, roteiro[1:]+[Fala(None,"",None,None)])
         self.foi = foi if foi else lambda *_: None
         roteiro = [Fala(a, f, g if g else p.ator, x ) for [a, f, g, x], p in prox]
+        #print(list(prox))
+        print(roteiro)
+        return
         self.elenco, self.roteiro = elenco, roteiro
         self._foi = lambda *_: None
         script = self
@@ -103,7 +106,7 @@ class Roteiro:
 if __name__ == "__main__":
     class Guerreiras:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
-            cena = Cena(IMGUR.format(ELENCO[0])).vai()
+            cena = Cena(IMGUR.format(ELENCO[0]))#.vai()
             self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in range(5)]
             '''
             ymara = Elemento(IMGUR.format(ELENCO[1]), y=yy, x=xx+dx*0, cena=cena)
@@ -115,10 +118,15 @@ if __name__ == "__main__":
             atores = self.elenco
             sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
             sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
-            nome_ator = zip( atores, nomes)
+            nome_ator = zip( atores, NOMES)
             ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
-            nome_ator = zip( atores, nomes, atores[1:]+[None])
-            rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
+            #nome_ator = zip( atores, nomes, atores[1:]+[None])
+            #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
+            nome_ator = zip( atores, NOMES)
+            #print([(ato, nom) for ato, nom in nome_ator], NOMES, atores)
+            rot = [Fala(ato, nom, None, None) for ato, nom in nome_ator]
+            #print(rot)
+            #return
             roteiro = Roteiro(cena, rot, ele)
     class Sorrisos:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
@@ -157,5 +165,5 @@ if __name__ == "__main__":
             self.sm_ym.y += 1000 if yy < 0 else 0
             self.sm_ke.y += 1000 if yk < 0 else 0
         
-    #Sorrisos()
-    Guerreiras()
+    Sorrisos()
+    #Guerreiras()
