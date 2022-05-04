@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, Elemento, Texto, STYLE
 from collections import namedtuple
 STYLE.update(width=600, height="80px")
 Ator = namedtuple('Elenco','ator nome mini alinha')
-Fala = namedtuple('Fala','ator fala age prox')  # , defaults=(None,)*4)
+Fala = namedtuple('Fala','ator fala prox age')  # , defaults=(None,)*4)
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
@@ -18,7 +18,7 @@ class Roteiro:
     def __init__(self, cena, roteiro, elenco=[], foi=None):
         prox = zip(roteiro, roteiro[1:]+[None])
         self.foi = foi if foi else lambda *_: None
-        roteiro = [Fala(a, f, g, p.ator if p else None) for [a, f, g,_], p in prox]
+        roteiro = [Fala(a, f, g if g else p.ator, x ) for [a, f, g, x], p in prox]
         self.elenco, self.roteiro = elenco, roteiro
         self._foi = lambda *_: None
         script = self
@@ -31,9 +31,9 @@ class Roteiro:
         protagonista.vai = self.segue
         protagonista.elt.style.filter = "brightness(100%)"
         class Falar(Texto):
-            def __init__(self, ator, fala, prox, **kwarg):
+            def __init__(self, ator, fala, prox, act=None, **kwarg):
                 self.ator, self.fala, self.prox = ator, fala, prox
-                self._foi = self.nada
+                self._foi = act or self.nada
                 self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="4%",margin="60px"))
                 super().__init__(cena,fala, **kwarg)
             def esconde(self, *_):
@@ -64,13 +64,13 @@ class Roteiro:
         pass
         
     def segue(self, *_):
-        ator, fala, action, prox = self.scripter()
+        ator, fala, prox, action = self.scripter()
         #ator.elt.style.filter = "brightness(30%)"
         '''if action:
             action.vai = self.segue
             action.elt.style.filter = "brightness(100%)"'''
 
-        fala = self._fala(ator, fala, prox) #.vai()
+        fala = self._fala(ator, fala, prox, action) #.vai()
         if prox:
             prox.vai = self.segue
             fala.vai()
@@ -133,7 +133,7 @@ if __name__ == "__main__":
             Fala(ymara, "Eu e a Kerexu gostamos de caçar. Muitas vezes nos divertimos muito!", kerexu, None),
             Fala(kerexu, "Mas as vezes caçar é um assunto sério. Se nós duas estamos sérias, estamos preparadas para caçar", ymara, None),
             Fala(ymara, "Mas também se nós duas estamos sorrindo é que vamos caçar", kerexu, None),
-            Fala(kerexu, "As meninas_guerreiras retornam verdadeio (True) se nós vamos caçar", ymara, None),
+            Fala(kerexu, "As meninas_guerreiras retornam verdadeiro (True) se nós vamos caçar", ymara, self.foi),
             ]
             roteiro = Roteiro(cena, rot, ele, self.foi)
         def foi(self, *_):
