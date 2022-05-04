@@ -34,7 +34,7 @@ class Roteiro:
             def __init__(self, ator, fala, prox, act=None, **kwarg):
                 self.ator, self.fala, self.prox = ator, fala, prox
                 self._foi = act or self.nada
-                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="4%",margin="60px"))
+                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="20%",margin="-10px 60px"))
                 super().__init__(cena,fala, **kwarg)
             def esconde(self, *_):
                 self.mini.elt.remove()
@@ -157,4 +157,5 @@ if __name__ == "__main__":
             self.sm_ym.y += 1000 if yy < 0 else 0
             self.sm_ke.y += 1000 if yk < 0 else 0
         
-    Sorrisos()
+    #Sorrisos()
+    Guerreiras()
