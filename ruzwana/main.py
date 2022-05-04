@@ -18,7 +18,7 @@ class Roteiro:
     def __init__(self, cena, roteiro, elenco=[], foi=None):
         prox = zip(roteiro, roteiro[1:]+[Fala(None,"",None,None)])
         self.foi = foi if foi else lambda *_: None
-        roteiro = [Fala(a, f, g if g else p.ator, x ) for [a, f, g, x], p in prox]
+        roteiro = [Fala(a, f, g if g else (p.ator if p else None), x ) for [a, f, g, x], p in prox]
         #print(list(prox))
         print(roteiro)
         return
