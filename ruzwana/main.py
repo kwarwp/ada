@@ -124,11 +124,17 @@ if __name__ == "__main__":
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
             self.cena = cena = Cena(IMGUR.format(ELENCO[0])).vai()
             self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 4]]
-            atores = self.elenco
+            ymara, kerexu = atores = self.elenco
             nome_ator = zip( atores, [nomes[0],nomes[4]])
             ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
-            rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
+            #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
+            rot = [
+            Fala(ymara, "Eu e a Kerexu gostamos de caçar. Muitas vezes nos divertimos muito!", kerexu, None),
+            Fala(kerexu, "Mas as vezes caçar é um assunto sério. Se nós duas estamos sérias, estamos preparadas para caçar", ymara, None),
+            Fala(ymara, "Mas também se nós duas estamos sorrindo é que vamos caçar", kerexu, None),
+            Fala(kerexu, "As meninas_guerreiras retornam verdadeio (True) se nós vamos caçar", ymara, None),
+            ]
             roteiro = Roteiro(cena, rot, ele, self.foi)
         def foi(self, *_):
             sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=self.cena)
