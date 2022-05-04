@@ -130,14 +130,31 @@ if __name__ == "__main__":
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             rot = [
-            Fala(ymara, "Eu e a Kerexu gostamos de caçar. Muitas vezes nos divertimos muito!", kerexu, None),
-            Fala(kerexu, "Mas as vezes caçar é um assunto sério. Se nós duas estamos sérias, estamos preparadas para caçar", ymara, None),
-            Fala(ymara, "Mas também se nós duas estamos sorrindo é que vamos caçar", kerexu, None),
+            Fala(ymara, "Eu e a Kerexu gostamos de caçar. Muitas vezes nos divertimos muito!", kerexu, self.ri_ke),
+            Fala(kerexu, "Mas as vezes caçar é um assunto sério. Se nós duas estamos sérias, estamos preparadas para caçar", ymara, self.ri_ym),
+            Fala(ymara, "Mas também se nós duas estamos sorrindo é que vamos caçar", kerexu, self.ri_no),
             Fala(kerexu, "As meninas_guerreiras retornam verdadeiro (True) se nós vamos caçar", ymara, self.foi),
             ]
             roteiro = Roteiro(cena, rot, ele, self.foi)
+            self.sm_ym = Elemento(SMILE, x=50, y=-1000+60, w=40, h=30, cena=self.cena)
+            self.sm_ke = Elemento(SMILE, x=463, y=-1000+92, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-15deg)'})
+        def ri_ke(self, *_):
+            yy, yk = self.sm_ym.y, self.sm_ke.y
+            yy += 1000 if yy < 0 else 0
+            yk -= 1000 if yk > 0 else 0
+            self.sm_ym.y = yy
+            self.sm_ke.y = yk
+        def ri_ym(self, *_):
+            yy, yk = self.sm_ym.y, self.sm_ke.y
+            self.sm_ym.y -= 1000 if yy > 0 else 0
+            self.sm_ke.y += 1000 if yk < 0 else 0
+        def ri_no(self, *_):
+            yy, yk = self.sm_ym.y, self.sm_ke.y
+            self.sm_ym.y -= 1000 if yy > 0 else 0
+            self.sm_ke.y -= 1000 if yk > 0 else 0
         def foi(self, *_):
-            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=self.cena)
-            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-15deg)'})
+            yy, yk = self.sm_ym.y, self.sm_ke.y
+            self.sm_ym.y += 1000 if yy < 0 else 0
+            self.sm_ke.y += 1000 if yk < 0 else 0
         
     Sorrisos()
