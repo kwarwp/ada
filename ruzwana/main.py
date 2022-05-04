@@ -3,14 +3,16 @@ from _spy.vitollino.main import Cena, Elemento, Texto, STYLE
 from collections import namedtuple
 STYLE.update(width=600, height="80px")
 Ator = namedtuple('Elenco','ator nome mini alinha')
-Fala = namedtuple('Fala','ator fala age prox')  # , defaults=(None,)*4)
+#Fala = namedtuple('Fala','ator fala age prox')  # , defaults=(None,)*4)
 A = namedtuple('Ali','e m d')(-1, 0, 1)
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
 SMILE = "https://purepng.com/public/uploads/large/purepng.com-mouth-smilemouth-smilefacial-expressionduchenne-smile-1421526971643lbaoz.png"
 yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Weteré ParkatêJê|Celia Xacriabá|Kerexu Yxapyry".split("|")
 NOMES = [yma, maw, wet, xac, ker]
-
+class Fala:
+    def __init__(self, ator, fala, age=None, prox=None):
+        self.ator, self.fala, self.age, self.prox = ator, fala, age, prox
 
 class Roteiro:
     def __init__(self,cena, roteiro, elenco=[], foi=None):
