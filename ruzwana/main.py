@@ -136,10 +136,10 @@ if __name__ == "__main__":
             self.cena = cena = Cena(IMGUR.format(ELENCO[0])).vai()
             self.elenco = [Elemento(IMGUR.format(ELENCO[1]), y=yy, x=xx, cena=cena),
                            Elemento(IMGUR.format(ELENCO[3]), y=yy, x=xx+dx*3, w=80, h=240, cena=cena)]
-            ymara, kerexu = atores = self.elenco
+            ymara, wetere = atores = self.elenco
             nome_ator = zip( atores, [nomes[0],nomes[2]])
-            ele = [Ator(ato,nom, 1, A.e),
-                   Ator(ato,nom, 0.2, A.e)]
+            ele = [Ator(ymara,nomes[0], 1, A.e),
+                   Ator(wetere,nomes[2], 0.2, A.e)]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             rot = [
