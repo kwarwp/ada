@@ -14,93 +14,94 @@ class Fala_:
     def __init__(self, ator, fala, age=None, prox=None):
         self.ator, self.fala, self.age, self.prox = ator, fala, age, prox
 
+
 class Roteiro:
-    def __init__(self, cena, roteiro, elenco=[], foi=None):
-        dic_ator = {a.ator: a for a in elenco}
-        prox = zip(roteiro, roteiro[1:]+[Fala(None,"",None,None)])
+    def __init__(self, cena, roteiro, elenco=(), foi=None):
+        self.dic_ator = {a.ator: a for a in elenco}
+        _prox = zip(roteiro, roteiro[1:] + [Fala(None, "", None, None)])
         self.foi = foi if foi else lambda *_: None
-        roteiro = [Fala(a, f, g if g else (p.ator if p else None), x, mini=dic_ator[a].mini) for [a, f, g, x], p in prox]
-        #print(list(prox))
-        #print(roteiro)
-        #return
+        roteiro = [Fala(a, f, g if g else (p.ator if p else None), x) for [a, f, g, x], p in _prox]
+        # print(list(prox))
+        # print(roteiro)
+        # return
         self.elenco, self.roteiro = elenco, roteiro
         self._foi = lambda *_: None
         script = self
-        for ator in elenco:
-            ator.ator.vai = self.nada
-            ator.ator.tit = ator.nome
-            ator.ator.elt.style.filter = "brightness(30%)"
+        for _ator in elenco:
+            _ator.ator.vai = self.nada
+            _ator.ator.tit = _ator.nome
+            _ator.ator.elt.style.filter = "brightness(30%)"
         protagonista = elenco[0].ator if elenco else roteiro[0].ator
         self.atores = [ator.ator for ator in elenco] if elenco else [ator.ator for ator in roteiro]
         protagonista.vai = self.segue
         protagonista.elt.style.filter = "brightness(100%)"
+
         class Falar(Texto):
             def __init__(self, ator, fala, prox, act=None, mini=1, **kwarg):
                 self.ator, self.fala, self.prox = ator, fala, prox
                 self._foi = act or self.nada
-                minih=80/mini
-                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, tipo=f"80px {minih}px", style=dict(top="20%",margin="-10px 10%"))
-                super().__init__(cena,fala, **kwarg)
+                minih = 80 / mini
+                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, tipo=f"80px {minih}px",
+                                     style=dict(top="20%", margin="-10px 10%"))
+                super().__init__(cena, fala, **kwarg)
+
             def esconde(self, *_):
                 self.mini.elt.remove()
                 self.ator.elt.style.filter = "brightness(30%)"
                 script.testa(self.prox)
-                #script.segue()
-                #super().esconde()
+                # script.segue()
+                # super().esconde()
                 self._foi()
+
             def vai(self, *_):
                 super().vai()
                 self.ator.elt.style.filter = "brightness(5%)"
                 self.ator.vai = self.nada
 
-            @property  
+            @property
             def foi(self):
                 return self._foi
 
-            @foi.setter  
+            @foi.setter
             def foi(self, value):
                 self._foi = value
 
             def nada(self, *_):
                 pass
+
         self._fala = Falar
-        
+
     def nada(self, *_):
         pass
-        
+
     def segue(self, *_):
         ator, fala, prox, action = self.scripter()
-        #ator.elt.style.filter = "brightness(30%)"
-        '''if action:
-            action.vai = self.segue
-            action.elt.style.filter = "brightness(100%)"'''
-
-        fala = self._fala(ator, fala, prox, action) #.vai()
+        # ator.elt.style.filter = "brightness(30%)"
+        fala = self._fala(ator, fala, prox, action, mini=self.dic_ator[ator].mini)  # .vai()
         if prox:
             prox.vai = self.segue
             fala.vai()
+        '''
         else:
             self._foi = self.foi_
             fala.foi = self.foi_
             fala.vai()
             # prox.elt.style.filter = "brightness(100%)"
-        
-    def gone(self, *_):
-        self._foi
-        
-    def foi_(self, *_):
-            #else:
-            for ato in []: # self.atores:
-                ato.elt.style.filter = "brightness(100%)"
-            self.foi()
-        
+        '''
+
+    def _foi_(self, *_):
+        # else:
+        for ato in []:  # self.atores:
+            ato.elt.style.filter = "brightness(100%)"
+        self.foi()
+
     def testa(self, prox, *_):
         if self.roteiro:
             prox.elt.style.filter = "brightness(100%)"
         else:
             for ato in self.atores:
                 ato.elt.style.filter = "brightness(100%)"
-        
+
     def scripter(self, *_):
         return self.roteiro.pop(0)
 
@@ -133,10 +134,12 @@ if __name__ == "__main__":
     class Sorrisos:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
             self.cena = cena = Cena(IMGUR.format(ELENCO[0])).vai()
-            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 2]]
+            self.elenco = [Elemento(IMGUR.format(ELENCO[1]), y=yy, x=xx, cena=cena),
+                           Elemento(IMGUR.format(ELENCO[3]), y=yy, x=xx+dx*3, w=80, h=240, cena=cena)]
             ymara, kerexu = atores = self.elenco
-            nome_ator = zip( atores, [nomes[0],nomes[4]])
-            ele = [Ator(ato,nom, 0.2 if nome_ator == 'kerexu' else 1, A.e) for ato, nom in nome_ator]
+            nome_ator = zip( atores, [nomes[0],nomes[2]])
+            ele = [Ator(ato,nom, 1, A.e),
+                   Ator(ato,nom, 0.2, A.e)]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             rot = [
