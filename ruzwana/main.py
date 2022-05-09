@@ -138,19 +138,19 @@ if __name__ == "__main__":
                            Elemento(IMGUR.format(ELENCO[3]), y=yy, x=xx+dx*3, w=80, h=240, cena=cena)]
             ymara, wetere = atores = self.elenco
             nome_ator = zip( atores, [nomes[0],nomes[2]])
-            ele = [Ator(ymara,nomes[0], 1, A.e),
+            ele = [Ator(ymara,nomes[0], 0.6, A.e),
                    Ator(wetere,nomes[2], 0.2, A.e)]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             rot = [
-            Fala(ymara, "Eu e a Kerexu gostamos de caçar. Muitas vezes nos divertimos muito!", kerexu, self.ri_ke),
-            Fala(kerexu, "Mas as vezes caçar é um assunto sério. Se nós duas estamos sérias, estamos preparadas para caçar", ymara, self.ri_ym),
-            Fala(ymara, "Mas também se nós duas estamos sorrindo é que vamos caçar", kerexu, self.ri_no),
-            Fala(kerexu, "As meninas_guerreiras retornam verdadeiro (True) se nós vamos caçar", ymara, self.foi),
+            Fala(ymara, "Eu e a Wetere gostamos celebrar nossa cultura. Muitas vezes nos divertimos muito!", wetere, self.ri_ke),
+            Fala(wetere, "Mas as vezes as ameaças à nossa cultura é um assunto sério. Se nós duas estamos sérias, estamos preparadas para defender nossa cultura", ymara, self.ri_ym),
+            Fala(ymara, "Mas também se nós duas estamos sorrindo é porque gostamos de defender nossa cultura", wetere, self.ri_no),
+            Fala(wetere, "As meninas_guerreiras retornam verdadeiro (True) quando vamos defender nossa cultura", ymara, self.foi),
             ]
             roteiro = Roteiro(cena, rot, ele, self.foi)
             self.sm_ym = Elemento(SMILE, x=50, y=-1000+60, w=40, h=30, cena=self.cena)
-            self.sm_ke = Elemento(SMILE, x=463, y=-1000+92, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-15deg)'})
+            self.sm_ke = Elemento(SMILE, x=347, y=-1000+58, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-25deg)'})
         def ri_ke(self, *_):
             yy, yk = self.sm_ym.y, self.sm_ke.y
             yy += 1000 if yy < 0 else 0
