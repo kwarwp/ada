@@ -16,12 +16,13 @@ class Fala_:
 
 class Roteiro:
     def __init__(self, cena, roteiro, elenco=[], foi=None):
+        dic_ator = {a.ator: a for a in elenco}
         prox = zip(roteiro, roteiro[1:]+[Fala(None,"",None,None)])
         self.foi = foi if foi else lambda *_: None
-        roteiro = [Fala(a, f, g if g else (p.ator if p else None), x ) for [a, f, g, x], p in prox]
+        roteiro = [Fala(a, f, g if g else (p.ator if p else None), x, mini=dic_ator[a].mini) for [a, f, g, x], p in prox]
         #print(list(prox))
-        print(roteiro)
-        return
+        #print(roteiro)
+        #return
         self.elenco, self.roteiro = elenco, roteiro
         self._foi = lambda *_: None
         script = self
@@ -34,10 +35,11 @@ class Roteiro:
         protagonista.vai = self.segue
         protagonista.elt.style.filter = "brightness(100%)"
         class Falar(Texto):
-            def __init__(self, ator, fala, prox, act=None, **kwarg):
+            def __init__(self, ator, fala, prox, act=None, mini=1, **kwarg):
                 self.ator, self.fala, self.prox = ator, fala, prox
                 self._foi = act or self.nada
-                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, style=dict(top="20%",margin="-10px 60px"))
+                minih=80/mini
+                self.mini = Elemento(ator.img, cena=cena, w=80, h=80, tipo=f"80px {minih}px", style=dict(top="20%",margin="-10px 10%"))
                 super().__init__(cena,fala, **kwarg)
             def esconde(self, *_):
                 self.mini.elt.remove()
@@ -131,10 +133,10 @@ if __name__ == "__main__":
     class Sorrisos:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
             self.cena = cena = Cena(IMGUR.format(ELENCO[0])).vai()
-            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 4]]
+            self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in [0, 2]]
             ymara, kerexu = atores = self.elenco
             nome_ator = zip( atores, [nomes[0],nomes[4]])
-            ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
+            ele = [Ator(ato,nom, 0.2 if nome_ator == 'kerexu' else 1, A.e) for ato, nom in nome_ator]
             nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             rot = [
