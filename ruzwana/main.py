@@ -81,19 +81,6 @@ class Roteiro:
         if prox:
             prox.vai = self.segue
             fala.vai()
-        '''
-        else:
-            self._foi = self.foi_
-            fala.foi = self.foi_
-            fala.vai()
-            # prox.elt.style.filter = "brightness(100%)"
-        '''
-
-    def _foi_(self, *_):
-        # else:
-        for ato in []:  # self.atores:
-            ato.elt.style.filter = "brightness(100%)"
-        self.foi()
 
     def testa(self, prox, *_):
         if self.roteiro:
@@ -122,7 +109,7 @@ if __name__ == "__main__":
             sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
             sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
             nome_ator = zip( atores, NOMES)
-            ele = [Ator(ato,nom, 100, A.e) for ato, nom in nome_ator]
+            ele = [Ator(ato,nom, 1, A.e) for ato, nom in nome_ator]
             #nome_ator = zip( atores, nomes, atores[1:]+[None])
             #rot = [Fala(ato, nom, prox, None) for ato, nom, prox in nome_ator]
             nome_ator = zip( atores, NOMES)
@@ -170,5 +157,5 @@ if __name__ == "__main__":
             self.sm_ym.y += 1000 if yy < 0 else 0
             self.sm_ke.y += 1000 if yk < 0 else 0
         
-    Sorrisos()
-    #Guerreiras()
+    #Sorrisos()
+    Guerreiras()
