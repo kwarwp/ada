@@ -80,7 +80,7 @@ class Roteiro:
         fala = self._fala(ator, fala, prox, action, mini=self.dic_ator[ator].mini)  # .vai()
         if prox:
             prox.vai = self.segue
-            fala.vai()
+        fala.vai()
 
     def testa(self, prox, *_):
         if self.roteiro:
@@ -96,7 +96,7 @@ class Roteiro:
 if __name__ == "__main__":
     class Guerreiras:
         def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
-            cena = Cena(IMGUR.format(ELENCO[0]))#.vai()
+            cena = Cena(IMGUR.format(ELENCO[0])).vai()
             self.elenco = [Elemento(IMGUR.format(ELENCO[conta+1]), y=yy, x=xx+dx*conta, cena=cena) for conta in range(5)]
             '''
             ymara = Elemento(IMGUR.format(ELENCO[1]), y=yy, x=xx+dx*0, cena=cena)
@@ -106,8 +106,8 @@ if __name__ == "__main__":
             kerexu = Elemento(IMGUR.format(ELENCO[5]), y=yy, x=xx+dx*4, cena=cena)
             atores = [ymara, mawapi, wetere, xacria, kerexu]'''
             atores = self.elenco
-            sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
-            sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
+            #sm1 = Elemento(SMILE, x=50, y=60, w=40, h=30, cena=cena)
+            #sm2 = Elemento(SMILE, x=463, y=92, w=25, h=18, cena=cena, style={'transform': 'rotate(-15deg)'})
             nome_ator = zip( atores, NOMES)
             ele = [Ator(ato,nom, 1, A.e) for ato, nom in nome_ator]
             #nome_ator = zip( atores, nomes, atores[1:]+[None])
