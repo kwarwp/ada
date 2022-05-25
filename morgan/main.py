@@ -6,8 +6,10 @@ imagem_terra = "https://i.imgur.com/x1iprjI.jpg"
 imagem_fogo  = "https://i.imgur.com/bNAPjf9.jpg"
 imagem_ar    = "https://i.imgur.com/KCpS1wS.jpg"
 
-peixe = "https://i.imgur.com/fdz6m5h.jpg" 
-
+peixe      = "https://i.imgur.com/fdz6m5h.jpg"
+formiga    = ""
+batataDoce = ""
+passaro    = ""
 
 cenaAgua = Cena(imagem_agua)
 cenaTerra = Cena(imagem_terra)
