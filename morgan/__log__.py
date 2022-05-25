@@ -237,3 +237,10 @@ KeyError: img
 'error': '''
 Exception: <TypeError: Cannot read properties of undefined (reading 'charAt')>
 '''},
+{'date': 'Wed May 25 2022 08:24:41.803 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 5
+  pegarpoli=Cena.(flor)
+                  ^
+SyntaxError: invalid syntax
+'''},
