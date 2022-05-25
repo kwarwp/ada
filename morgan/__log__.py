@@ -233,3 +233,7 @@ AttributeError: 'int' object has no attribute '__getitem__'
     imagem, kwargs = (imagem, {}) if isinstance(imagem, str) \
 KeyError: img
 '''},
+{'date': 'Wed May 25 2022 03:01:58.615 GMt-0300 (Hora padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: <TypeError: Cannot read properties of undefined (reading 'charAt')>
+'''},
