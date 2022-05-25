@@ -1,5 +1,5 @@
 # ada.morgan.main.py
-from _spy.vitollino.main import Cena, Sala, Elemento, Texto
+from _spy.vitollino.main import Cena, Sala, Elemento
 
 imagem_agua  = "https://i.imgur.com/1dk9Wlv.jpg"
 imagem_terra = "https://i.imgur.com/x1iprjI.jpg"
