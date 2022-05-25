@@ -8,4 +8,5 @@ class jogador():
     cr7=Elemento(img=CR7)
     cr7.entra(star)
     star.vai()
+    cr7.direita(img=cr7)
 jogador()    
