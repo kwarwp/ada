@@ -1,5 +1,5 @@
 # ada.stacy.main.py
-from _spy.vitollino.main import Cena, Elemento, Texto, JOGO as J
+from _spy.vitollino.main import Cena, Elemento, Texto, JOGO as J, Roteiro
 
 NEWTON = "http://4.bp.blogspot.com/-5gZeG2PCX-0/ViRIc3iUP_I/AAAAAAAACn4/IWvXueCewjU/s1600/fg_3456011-1024x576.jpg"
 GALILEU = "https://pbs.twimg.com/profile_images/666413287639269377/-Yw4RtjG_400x400.png"
@@ -29,7 +29,7 @@ def teorias():
 # teorias()
 
 from _spy.vitollino.jogos import Ator, Fala, A #, Roteiro
-from ruzwana.main import Roteiro
+#from ruzwana.main import Roteiro
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
 SMILE = "https://purepng.com/public/uploads/large/purepng.com-mouth-smilemouth-smilefacial-expressionduchenne-smile-1421526971643lbaoz.png"
@@ -53,8 +53,8 @@ class Sorrisos:
                Fala(ymara, "Mas também se nós duas estamos sorrindo é porque gostamos de defender nossa cultura", wetere, self.ri_no),
                Fala(wetere, "As meninas_guerreiras retornam verdadeiro (True) quando vamos defender nossa cultura", ymara, self.foi),
                ]
-        roteiro = J.rt(cena, rot, ele, self.foi)
-        # roteiro = Roteiro(cena, rot, ele, self.foi)
+        #roteiro = J.rt(cena, rot, ele, self.foi)
+        roteiro = Roteiro(cena, rot, ele, self.foi)
         self.sm_ym = Elemento(SMILE, x=50, y=-1000+60, w=40, h=30, cena=self.cena)
         self.sm_ke = Elemento(SMILE, x=347, y=-1000+58, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-25deg)'})
     def ri_ke(self, *_):
