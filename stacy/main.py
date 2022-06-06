@@ -29,6 +29,11 @@ def teorias():
 # teorias()
 
 from _spy.vitollino.jogos import Ator, Fala, A
+IMGUR = "https://i.imgur.com/{}.png"
+ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
+SMILE = "https://purepng.com/public/uploads/large/purepng.com-mouth-smilemouth-smilefacial-expressionduchenne-smile-1421526971643lbaoz.png"
+yma, maw, wet, xac, ker = "Ymara Guajajara|Maria Wapichana|Weteré ParkatêJê|Celia Xacriabá|Kerexu Yxapyry".split("|")
+NOMES = [yma, maw, wet, xac, ker]
 
 class Sorrisos:
     def __init__(self,nomes=NOMES, yy=40, xx=20, dx=100):
@@ -69,5 +74,5 @@ class Sorrisos:
                         self.sm_ym.y += 1000 if yy < 0 else 0
                         self.sm_ke.y += 1000 if yk < 0 else 0
 
-                        #Sorrisos()
-                        Guerreiras()
+Sorrisos()
+                        #Guerreiras()
