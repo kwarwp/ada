@@ -28,7 +28,8 @@ def teorias():
     
 # teorias()
 
-from _spy.vitollino.jogos import Ator, Fala, A, Roteiro
+from _spy.vitollino.jogos import Ator, Fala, A #, Roteiro
+from ruzwana.main import Roteiro
 IMGUR = "https://i.imgur.com/{}.png"
 ELENCO = "z7zIJHV iJqmT9V ehoPNb1 WJ1QdZ9 yqrocJa NShlUFP".split()
 SMILE = "https://purepng.com/public/uploads/large/purepng.com-mouth-smilemouth-smilefacial-expressionduchenne-smile-1421526971643lbaoz.png"
