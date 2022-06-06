@@ -35,3 +35,9 @@ NameError: name 'NOMES' is not defined
     rot = [
 AttributeError: 'Sorrisos' object has no attribute 'ri_ke'
 '''},
+{'date': 'Mon Jun 06 2022 13:05:56.376 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: bases[i].$dict is undefined
+  module '$exec_320' line 77
+Sorrisos()
+'''},
