@@ -41,3 +41,9 @@ Exception: bases[i].$dict is undefined
   module '$exec_320' line 77
 Sorrisos()
 '''},
+{'date': 'Mon Jun 06 2022 13:08:02.673 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: bases[i].$dict is undefined
+  module '$exec_320' line 78
+Sorrisos()
+'''},
