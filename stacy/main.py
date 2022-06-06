@@ -55,21 +55,21 @@ class Sorrisos:
         roteiro = J.rt(cena, rot, ele, self.foi)
         self.sm_ym = Elemento(SMILE, x=50, y=-1000+60, w=40, h=30, cena=self.cena)
         self.sm_ke = Elemento(SMILE, x=347, y=-1000+58, w=25, h=18, cena=self.cena, style={'transform': 'rotate(-25deg)'})
-        def ri_ke(self, *_):
+    def ri_ke(self, *_):
             yy, yk = self.sm_ym.y, self.sm_ke.y
             yy += 1000 if yy < 0 else 0
             yk -= 1000 if yk > 0 else 0
             self.sm_ym.y = yy
             self.sm_ke.y = yk
-            def ri_ym(self, *_):
+    def ri_ym(self, *_):
                 yy, yk = self.sm_ym.y, self.sm_ke.y
                 self.sm_ym.y -= 1000 if yy > 0 else 0
                 self.sm_ke.y += 1000 if yk < 0 else 0
-                def ri_no(self, *_):
+    def ri_no(self, *_):
                     yy, yk = self.sm_ym.y, self.sm_ke.y
                     self.sm_ym.y -= 1000 if yy > 0 else 0
                     self.sm_ke.y -= 1000 if yk > 0 else 0
-                    def foi(self, *_):
+    def foi(self, *_):
                         yy, yk = self.sm_ym.y, self.sm_ke.y
                         self.sm_ym.y += 1000 if yy < 0 else 0
                         self.sm_ke.y += 1000 if yk < 0 else 0
