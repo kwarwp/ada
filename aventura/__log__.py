@@ -49,3 +49,10 @@ NameError: name 'ADV' is not defined
     i = "\n".join( ini for kind, ini in self.roteiro if kind == "I")
 ValueError: need more than 1 value to unpack
 '''},
+{'date': 'Mon Jun 27 2022 18:14:27.910 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 34
+  if kind == "L"
+                 ^
+SyntaxError: invalid syntax
+'''},
