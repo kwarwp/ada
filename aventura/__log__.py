@@ -92,3 +92,21 @@ IndexError: list assignment index out of range
     locais[umlocal].append(cmd)
 IndexError: list index out of range
 '''},
+{'date': 'Mon Jun 27 2022 18:38:23.831 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 344
+    Aventura().main(ADV)
+  module <module> line 34
+    print([lc[o] for lc in locais])
+NameError: name 'o' is not defined
+'''},
