@@ -24,10 +24,22 @@ class Personagem:
 
 class Aventura:
     def main(self, adv):
-        self.roteiro = [cmd.split("=") for cmd in adv.split("\n")]
+        self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
         i = "\n".join( ini for kind, ini in self.roteiro if kind == "I")
-        input(i)
-        # print(self.roteiro[:8])
+        
+        #input(i)
+        lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
+        locais = [rot[ini:fim] for ini,fim in zip(lro, lro[1:]+[len(rot)])]
+        umlocal = -1
+        print([lc[0] for lc in locais])
+        return
+        for kind, cmd in self.roteiro:
+            if kind == "L":
+                umlocal += 1
+                locais[umlocal] = [cmd]
+            else:
+                locais[umlocal].append(cmd)
+        print(locais[:8])
 
 ADV="""I=
 I=VENICE GARDEN SOFT APRESENTA:
