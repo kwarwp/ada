@@ -15,7 +15,12 @@ __version__ = "22.06"
 
 
 class Cenario:
-    ...
+    CENAS = {}
+    def __ninit__(self, adv):
+        _, cmd = adv[0]]
+        loc, desc = cmd.split(":)
+        Cenario.CENA[loc] = self
+        self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
     
 
 class Personagem:
