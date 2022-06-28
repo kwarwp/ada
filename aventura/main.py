@@ -79,7 +79,7 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        self.acao = [acoes[kind](suplement) for kind, suplement in adv[::-1]]
+        self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
     def vai(self, fala):
         verbo, substantivo = self.verbo, self.descreve or fala.descreve
