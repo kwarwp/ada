@@ -12,54 +12,86 @@ Changelog
     Leitura dos dados.
 """
 __version__ = "22.06"
-
+from browser import alert
 
 class Cenario:
     CENA = {}
     OBJ = {}
     VERBO = {}
-    def __init__(self, adv):
+    def __init__(self, adv, hero):
+        self.hero = hero
         _, cmd = adv[0]
         loc, desc = cmd.split(":")
         Cenario.CENA[loc] = self
         self.verbo = {"OLHA": self.__repr__}
         self.descreve = desc + " ".join(frase.replace(":", " ") for tipo, frase in adv[::-1] if tipo == "D")
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "O"]
-        self.objeto = [Objeto(adv[ini:fim],self) for ini,fim in zip(lro, lro[1:]+[len(adv)])]
+        self.obj = [Objeto(adv[ini:fim],self) for ini,fim in zip(lro, lro[1:]+[len(adv)])]
+        self.objeto = {obj.nome[:4]: obj for obj in self.obj}
         # self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
+    def vai(self):
+        texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values())
+        fala = input(texto).upper().split()
+        fala = [termo[:4] for termo in fala]
+        self.interpreta(fala+ ["", ""])
+        #input(fala)
+    def nop(self, fala, obj=""):
+        verbo, substantivo = fala[:2]
+        input(f"{obj}: Não deu certo essa de '{verbo} {substantivo}'")
+    def interpreta(self, fala):
+        verbo, substantivo = [termo[:4] for termo in fala[:2]]
+        self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
     def __repr__(self):
-        return self.descreve
+        #return f"@{self.descreve} <{[ob.nome for ob in self.obj]}>"
+        return f"@{self.descreve} <{list(self.objeto.keys())}>"
     
 
 class Objeto:
     def __init__(self, adv, cenario):
         _, cmd = adv[0]
         self.cenario = cenario
-        loc, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        Cenario.OBJ[loc] = self
+        self.nome, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        Cenario.OBJ[self.nome] = self
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
         #self.verbo = {adv[ini].split(":")[-2]if ":" in adv[ini] else adv[ini][-1]:
         #Verbo(adv[ini:fim], cenario) for ini,fim in zip(lro, lro[1:]+[len(adv)])}
         verbos = [Verbo(adv[ini:fim], cenario).itens()
          for ini,fim in zip(lro, lro[1:]+[len(adv)])]
-        self.verbo = {verbo: obj for verbo, obj in verbos}
+        self.verbo = {verbo[:4]: obj for verbo, obj in verbos}
+    def vai(self, fala):
+        verbo, substantivo = [termo[:4] for termo in fala[:2]]
+        self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+    def mostra(self):
+        return f"{self.descreve}>"
     def __repr__(self):
         return f"@{self.descreve} <{list(self.verbo.keys())}>"
     
 
 class Verbo:
     def __init__(self, adv, cenario):
+        def nop(*_):
+            self.cenario.nop("açao:", self.verbo)
         self.cenario = cenario
+        acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
-        acoes = dict(M=lambda loc: lambda:move(loc))
-        _, cmd = adv[0]
+        acoes.update(M=lambda loc: lambda:move(loc), P=lambda loc: lambda:pega(loc))
+        _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        self.acao = [acoes[kind](suplement) for kind, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
+    def vai(self, fala):
+        verbo, substantivo = self.verbo, self.descreve or fala.descreve
+        [action() for action in self.acao]
+        #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
+        pass
     def move(self, local):
         local.vai()
     def nega(self):
         return self.verbo
-    def testa(self):
+    def pega(self, cmd):
+        substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        input(f"Pegando: {descreve}\nObjeto {substantivo} guardado")# if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
+        
         return self.descreve
     def itens(self):
         return self.verbo, self
@@ -68,24 +100,18 @@ class Verbo:
     
 
 class Aventura:
+    def __init__(self):
+        self.inventario = {}
     def main(self, adv):
         self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
         i = "\n".join( ini for kind, ini in self.roteiro if kind == "I")
-        
-        #input(i)
+        input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
-        locais = [Cenario(rot[ini:fim]) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
-        umlocal = -1
-        print([lc for lc in locais])
-        print(Cenario.OBJ)
+        locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
+        locais.pop().vai()
+        #print([lc for lc in locais])
+        #print(Cenario.OBJ)
         return
-        for kind, cmd in self.roteiro:
-            if kind == "L":
-                umlocal += 1
-                locais[umlocal] = [cmd]
-            else:
-                locais[umlocal].append(cmd)
-        print(locais[:8])
 
 ADV="""I=
 I=VENICE GARDEN SOFT APRESENTA:
