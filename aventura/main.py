@@ -32,7 +32,7 @@ class Cenario:
     def vai(self):
         texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values())
         fala = input(texto).upper().split()
-        fala = [termo[:4] for termo in fala]
+        #fala = [termo[:4] for termo in fala]
         self.interpreta(fala+ ["", ""])
         #input(fala)
     def nop(self, fala, obj=""):
@@ -70,7 +70,7 @@ class Objeto:
 class Verbo:
     def __init__(self, adv, cenario):
         def prep(go, arg):
-            return lambda: go(arg)
+            return go(arg)
         def nop(*_):
             self.cenario.nop(["tentar", self.verbo], "Falhou")
         self.cenario = cenario
