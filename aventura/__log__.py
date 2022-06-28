@@ -374,3 +374,10 @@ SyntaxError: invalid syntax
     verbo, substantivo = [termo[:5] for termo in fala[:2]]
 AttributeError: 'Objeto' object has no attribute '__getitem__'
 '''},
+{'date': 'Tue Jun 28 2022 11:43:22.681 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 74
+  acoes = dict(M=lambda loc: lambda:move(loc), M=lambda loc: lambda:move(loc))
+                                                ^
+SyntaxError: keyword argument repeated
+'''},
