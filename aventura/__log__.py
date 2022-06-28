@@ -117,3 +117,10 @@ NameError: name 'o' is not defined
                  ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Mon Jun 27 2022 21:52:36.135 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 21
+  loc, desc = cmd.split(":)
+                           ^
+SyntaxError: EOL while scanning string literal
+'''},
