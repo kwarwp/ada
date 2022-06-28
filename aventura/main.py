@@ -69,12 +69,14 @@ class Objeto:
 
 class Verbo:
     def __init__(self, adv, cenario):
+        def prep(go, arg):
+            return lambda: go(arg)
         def nop(*_):
             self.cenario.nop("açao:", self.verbo)
         self.cenario = cenario
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
-        acoes.update(M=lambda loc: lambda:move(loc), P=lambda loc: lambda:pega(loc))
+        acoes.update(M=lambda loc: prep(move, loc), P=lambda loc: prep(pega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.acao = [acoes[kind](suplement) for kind, suplement in adv[::-1]]
