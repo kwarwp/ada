@@ -213,3 +213,10 @@ AttributeError: 'list' object has no attribute 'split'
                         ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Mon Jun 27 2022 23:14:36.945 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 43
+  self.verbo = {(verbo:=Verbo(adv[ini:fim], cenario)).descreve:verbo
+                        ^
+SyntaxError: invalid syntax
+'''},
