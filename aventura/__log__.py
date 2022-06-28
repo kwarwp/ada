@@ -110,3 +110,10 @@ IndexError: list index out of range
     print([lc[o] for lc in locais])
 NameError: name 'o' is not defined
 '''},
+{'date': 'Mon Jun 27 2022 21:52:25.84 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 20
+  _, cmd = adv[0]]
+                 ^
+SyntaxError: invalid syntax
+'''},
