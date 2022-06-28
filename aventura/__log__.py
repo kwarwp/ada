@@ -341,3 +341,10 @@ AttributeError: 'str' object has no attribute 'mostra'
     self.objeto[substantivo].vai(verbo) if substantivo in self.objeto else self.nop(fala)
 NameError: name 'substantivo' is not defined
 '''},
+{'date': 'Tue Jun 28 2022 11:24:43.710 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 42
+  verbo, substantivo = [termo[:5] for termo in fala[:2]
+                                                                 ^
+SyntaxError: invalid syntax
+'''},
