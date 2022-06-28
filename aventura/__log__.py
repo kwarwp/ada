@@ -283,3 +283,19 @@ TypeError: sequence item 0: expected str instance, Objeto found
     texto = self.descreve + "\nVocê pode ver" + "\n".join(ob for ob in self.objeto)
 TypeError: sequence item 0: expected str instance, Objeto found
 '''},
+{'date': 'Tue Jun 28 2022 10:00:55.24 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 391
+    Aventura().main(ADV)
+TypeError: __init__() missing 2 positional arguments: adv,cenario
+'''},
