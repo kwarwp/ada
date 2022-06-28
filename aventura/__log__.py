@@ -263,3 +263,23 @@ AttributeError: 'list' object has no attribute 'keys'
     texto = self.descreve + "\nVocê pode ver" + "\n".join(ob for ob in self.objeto)
 TypeError: sequence item 0: expected str instance, Objeto found
 '''},
+{'date': 'Tue Jun 28 2022 09:43:02.829 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 386
+    Aventura().main(ADV)
+  module <module> line 81
+    locais.pop().vai()
+  module <module> line 31
+    texto = self.descreve + "\nVocê pode ver" + "\n".join(ob for ob in self.objeto)
+TypeError: sequence item 0: expected str instance, Objeto found
+'''},
