@@ -72,11 +72,11 @@ class Verbo:
         def prep(go, arg):
             return lambda: go(arg)
         def nop(*_):
-            self.cenario.nop("açao:", self.verbo)
+            self.cenario.nop(["tentar", self.verbo], "Falhou")
         self.cenario = cenario
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
-        acoes.update(M=lambda loc: prep(move, loc), P=lambda loc: prep(pega,loc))
+        acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.acao = [acoes[kind](suplement) for kind, suplement in adv[::-1]]
