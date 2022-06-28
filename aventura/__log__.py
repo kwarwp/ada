@@ -220,3 +220,26 @@ SyntaxError: invalid syntax
                         ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Mon Jun 27 2022 23:17:00.936 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''[VOCE ESTA NA COZINHA DA VOVO AQUI VOCE VAI PREPARAR A SALADA, VOCE ESTA NA SALA DE JANTAR. COM UMA MESA E MOVEIS DE VIME, O SAGUAO DA VOVO E GRANDE, OS ARCOS LEVAM A SALA DE JANTAR E A  ESCADA AO SEGUNDO ANDAR, ESTE E O TERRENO DA TIA LOURDES, VOCE SE EQUILIBRA NO MURO ETA MURO ALTO SO! MELHOR EU ME  AGARRAR EM ALGUMA COISA!  PARECE FIRME PARA SE AGARRAR  E TEM UM MAMAO AMARELINHO NELE, VOCE ESTA NA ORLA DA PISCINA, VOCE ESTA EM FRENTE DA CASA DO SEU ZE, O CASEIRO, VOCE ESTA NA RAMPA QUE LEVA DO PATIO ATE A PISCINA, NO PATIO HA UMA JAQUEIRA,A CASA DA VO E BEM EM FRENTE, UMA RAMPA  LEVA 'A PISCINA 'A DIREITA, VOCE ESTA NA RUA SAPHIRO ARAUJO,A NO SITIO DA VOVO..., VOCE ESTA EM SEU APARTAMENTO NA CIDADE, LOUCA PARA IR AO SITIO]
+Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 389
+    Aventura().main(ADV)
+  module <module> line 79
+    print(Cenario.OBJ)
+  module <module> line 46
+    return f"@{self.descreve} <{list(self.verbo.keys())}>"
+  module <module> line 1
+    (list(self.verbo.keys()))
+AttributeError: 'list' object has no attribute 'keys'
+'''},
