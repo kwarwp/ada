@@ -206,3 +206,10 @@ ValueError: need more than 1 value to unpack
     self.verbo = {adv[ini].split(":")[-2]:Verbo(adv[ini:fim], cenario) for ini,fim in zip(lro, lro[1:]+[len(adv)])}
 AttributeError: 'list' object has no attribute 'split'
 '''},
+{'date': 'Mon Jun 27 2022 23:14:09.27 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 43
+  self.verbo = {(verbo:=Verbo(adv[ini:fim], cenario)).dercreve:verbo
+                        ^
+SyntaxError: invalid syntax
+'''},
