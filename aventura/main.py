@@ -15,16 +15,56 @@ __version__ = "22.06"
 
 
 class Cenario:
-    CENAS = {}
-    def __ninit__(self, adv):
-        _, cmd = adv[0]]
-        loc, desc = cmd.split(":)
+    CENA = {}
+    OBJ = {}
+    VERBO = {}
+    def __init__(self, adv):
+        _, cmd = adv[0]
+        loc, desc = cmd.split(":")
         Cenario.CENA[loc] = self
-        self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
+        self.verbo = {"OLHA": self.__repr__}
+        self.descreve = desc + " ".join(frase.replace(":", " ") for tipo, frase in adv[::-1] if tipo == "D")
+        lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "O"]
+        self.objeto = [Objeto(adv[ini:fim],self) for ini,fim in zip(lro, lro[1:]+[len(adv)])]
+        # self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
+    def __repr__(self):
+        return self.descreve
     
 
-class Personagem:
-    ...
+class Objeto:
+    def __init__(self, adv, cenario):
+        _, cmd = adv[0]
+        self.cenario = cenario
+        loc, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        Cenario.OBJ[loc] = self
+        lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
+        #self.verbo = {adv[ini].split(":")[-2]if ":" in adv[ini] else adv[ini][-1]:
+        #Verbo(adv[ini:fim], cenario) for ini,fim in zip(lro, lro[1:]+[len(adv)])}
+        verbos = [Verbo(adv[ini:fim], cenario).itens()
+         for ini,fim in zip(lro, lro[1:]+[len(adv)])]
+        self.verbo = {verbo: obj for verbo, obj in verbos}
+    def __repr__(self):
+        return f"@{self.descreve} <{list(self.verbo.keys())}>"
+    
+
+class Verbo:
+    def __init__(self, adv, cenario):
+        self.cenario = cenario
+        
+        acoes = dict(M=lambda loc: lambda:move(loc))
+        _, cmd = adv[0]
+        self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        Cenario.VERBO[loc] = self
+    def move(self, local):
+        local.vai()
+    def nega(self):
+        return self.verbo
+    def testa(self):
+        return self.descreve
+    def itens(self):
+        return self.verbo, self
+    def __repr__(self):
+        return self.descreve
     
 
 class Aventura:
@@ -34,9 +74,10 @@ class Aventura:
         
         #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
-        locais = [rot[ini:fim] for ini,fim in zip(lro, lro[1:]+[len(rot)])]
+        locais = [Cenario(rot[ini:fim]) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
         umlocal = -1
-        print([lc[0] for lc in locais])
+        print([lc for lc in locais])
+        print(Cenario.OBJ)
         return
         for kind, cmd in self.roteiro:
             if kind == "L":
