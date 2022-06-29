@@ -93,7 +93,7 @@ class Verbo:
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
-        U=lambda loc: prep(self.noper,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
+        U=lambda loc: prep(self.atualiza,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -112,7 +112,7 @@ class Verbo:
         pass
     def atualiza(self, local):
         objeto, descreve = local.split(":")
-        Cenario.OBJ[obj].descreve = descreve
+        Cenario.OBJ[objeto].descreve = descreve
         alert(objeto, descreve)
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
