@@ -59,6 +59,7 @@ class Cenario:
             inv = self.hero.mostra()
             texto = self.descreve + "\nVocê tem:\n" + "\n".join(ob.mostra() for ob in inv.values() if ob.mostra())
             fala = input(texto)#.upper().split()
+            self.interpreta(fala)
             return
         self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
     def __repr__(self):
@@ -106,7 +107,7 @@ class Verbo:
         U=lambda loc: prep(self.atualiza,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
+        self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
         foi = False
         for ix,(kind,cmd) in enumerate(adv):
             if kind == "B":
@@ -125,7 +126,7 @@ class Verbo:
     def vai(self, fala):
         verbo, descreve = self.verbo, self.descreve or fala.descreve
         self.cenario.interpreta(input(f"vb:{self.descreve}")) if self.descreve else None
-        alert(self.adv)
+        #alert(self.adv)
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
@@ -133,12 +134,12 @@ class Verbo:
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
         self.cenario.objeto[objeto].descreve = descreve
-        alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
+        #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
         local.ativa() if ativa else local.desativa()
-        lro = descreve # self.lro if self.lro else descreve
+        lro = self.lro if self.lro else descreve
         #alert(f"mos: {objeto}, {descreve} - {lro}")
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
