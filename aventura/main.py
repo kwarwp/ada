@@ -38,9 +38,10 @@ class Cenario:
         self.interpreta(fala)
         #input(fala)
     def pega(self, nome):
-        self.hero.bota(nome, self.objeto[nome])
+        self.hero.bota(nome, self.objeto[nome]) if nome in self.objeto else None
     def remove(self, objeto):
-        del self.objeto[objeto]
+        if objeto in self.objeto:
+            del self.objeto[objeto] 
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
         texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala[0] else "Repete, não entendi"
@@ -101,7 +102,7 @@ class Verbo:
         def nop(*_):
             self.cenario.nop(["tentar", self.verbo], "Falhou")
         self.cenario = cenario
-        self.message = "Não funcionou"
+        self.message = "" #"Não funcionou"
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
@@ -134,6 +135,8 @@ class Verbo:
         #alert(self.adv)
         try:
             [action() for action in self.acao]
+            self.cenario.interpreta(input(self.message))
+
         except StopIteration as e:
             self.cenario.interpreta(input(self.message))
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
@@ -149,7 +152,8 @@ class Verbo:
         local.ativa() if ativa else local.desativa()
         lro = self.lro if self.lro else descreve
         #alert(f"mos: {objeto}, {descreve} - {lro}")
-        self.cenario.interpreta(input(lro)) if lro else None
+        self.message += lro
+        #self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
@@ -158,7 +162,7 @@ class Verbo:
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
         if ativo:
-            self.message = descreve
+            self.message += descreve
             raise StopIteration(descreve)
     def nega(self, x):
         alert(x)
@@ -167,7 +171,8 @@ class Verbo:
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.pega(substantivo)
         self.cenario.remove(substantivo)
-        self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
+        #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
+        self.message += f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"
         
         return self.descreve
     def noper(self, _):
