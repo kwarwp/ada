@@ -155,8 +155,9 @@ class Verbo:
         self.message += lro
         #self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
-        objeto, descreve = local.split(":")
-        local = Cenario.OBJ[objeto]
+        local += ["", ""]
+        objeto, *_ = local.split(":")
+        local = Cenario.CENA[objeto]
         local.vai()
     def testa(self, local):
         objeto, descreve = local.split(":")
