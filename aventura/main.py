@@ -89,7 +89,7 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc), B=lambda loc: prep(self.mostra,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        self.lro = "\n".join([cmd for ix,(kind,cmd) in enumerate(adv) if kind == "B"])
+        self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
         
 
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
