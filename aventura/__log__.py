@@ -763,3 +763,10 @@ AttributeError: 'Objeto' object has no attribute 'deastiva'
     verbos = [Verbo(adv[ini:fim], cenario).itens()
 TypeError: itens() missing 1 positional argument: it
 '''},
+{'date': 'Wed Jun 29 2022 11:04:58.614 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 133
+  def noper(self):
+  ^
+IndentationError: expected an indented block
+'''},
