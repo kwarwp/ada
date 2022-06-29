@@ -10,6 +10,7 @@ Changelog
 .. versionadded::    22.06
 
     Leitura dos dados.
+    verbo olha e pega
 """
 __version__ = "22.06"
 from browser import alert
