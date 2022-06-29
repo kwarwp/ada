@@ -863,3 +863,10 @@ NameError: name 'obj' is not defined
              ^
 SyntaxError: can't delete expr
 '''},
+{'date': 'Wed Jun 29 2022 11:53:47.208 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 103
+  (del adv[ix]) if foi else adv[ix] = ["B", self.lro]
+               ^
+SyntaxError: invalid syntax
+'''},
