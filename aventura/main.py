@@ -100,6 +100,7 @@ class Verbo:
         for ix,(kind,cmd) in enumerate(adv):
             if kind == "B":
                 del adv[ix]
+        adv.append(["B", self.lro])
         
 
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
