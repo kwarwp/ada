@@ -89,7 +89,7 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc), B=lambda loc: prep(self.mostra,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        lro = "\n".join([cmd for ix,(kind,cmd) in enumerate(adv) if kind == "B"])
+        self.lro = "\n".join([cmd for ix,(kind,cmd) in enumerate(adv) if kind == "B"])
         self.cenario.interpreta(input(lro)) if lro else None
         
 
@@ -101,6 +101,9 @@ class Verbo:
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
+    def mostra(self, local):
+        lro = self.lro
+        self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         local.vai()
     def nega(self):
