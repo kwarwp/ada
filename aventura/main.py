@@ -92,7 +92,7 @@ class Verbo:
         return self.verbo
     def pega(self, cmd):
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        input(f"Pegando: {descreve}\nObjeto {substantivo} guardado")# if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
+        input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado")
         
         return self.descreve
     def itens(self):
