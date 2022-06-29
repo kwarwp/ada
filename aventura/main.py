@@ -43,7 +43,7 @@ class Cenario:
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
-        if "DESISTE" in verbo+substantivo:
+        if "DESI" in verbo+substantivo:
             alert("Você desistiu da Aventura!")
             self.exit = True
             return
