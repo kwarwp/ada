@@ -550,3 +550,29 @@ TypeError: exceptions must derive from BaseException
     self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
 AttributeError: 'Cenario' object has no attribute 'objeto'
 '''},
+{'date': 'Wed Jun 29 2022 10:11:48.998 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 437
+    Aventura().main(ADV)
+  module <module> line 130
+    locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
+  module <module> line 30
+    self.obj = [Objeto(adv[ini:fim],self) for ini,fim in zip(lro, lro[1:]+[len(adv)])]
+  module <module> line 68
+    verbos = [Verbo(adv[ini:fim], cenario).itens()
+  module <module> line 93
+    self.cenario.interpreta(input(lro)) if lro else None
+  module <module> line 53
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+AttributeError: 'Cenario' object has no attribute 'objeto'
+'''},
