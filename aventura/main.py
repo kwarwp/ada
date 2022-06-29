@@ -37,7 +37,8 @@ class Cenario:
         #input(fala)
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
-        input(f"{obj}: Não deu certo essa de '{verbo} {substantivo}'")
+        texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
+        self.interpreta(input(texto))
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
