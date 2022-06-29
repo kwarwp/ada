@@ -92,7 +92,8 @@ class Verbo:
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
-        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False))
+        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
+        U=lambda loc: prep(self.atualiza,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -109,6 +110,9 @@ class Verbo:
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
+    def atualiza(self, local):
+        objeto, descreve = local.split(":")
+        Cenario.OBJ[obj].descreve = descreve
     def mostra(self, local, ativa=True):
         local = Cenario.OBJ[local.split(":")[0]]
         local.ativa() if ativa else local.deastiva()
