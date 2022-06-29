@@ -20,6 +20,7 @@ class Cenario:
     VERBO = {}
     def __init__(self, adv, hero):
         self.hero = hero
+        self.exit = False
         _, cmd = adv[0]
         loc, desc = cmd.split(":")
         Cenario.CENA[loc] = self
@@ -38,12 +39,13 @@ class Cenario:
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
         texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
-        self.interpreta(input(texto))
+        self.interpreta(input(texto)) if not self.exit else None
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
         if "DESI" in verbo+substantivo:
             alert("Você desistiu da Aventura!")
+            self.exit = True
             return
         if "OLH" in verbo and not substantivo:
             self.vai()
@@ -84,9 +86,13 @@ class Verbo:
         self.cenario = cenario
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
-        acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc))
+        acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc), B=lambda loc: prep(self.mostra,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        lro = "\n".join([cmd for ix,(kind,cmd) in enumerate(adv) if kind == "B"])
+        self.cenario.interpreta(input(lro)) if lro else None
+        
+
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
     def vai(self, fala):
