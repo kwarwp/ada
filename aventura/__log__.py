@@ -1378,3 +1378,175 @@ ValueError: need more than 1 value to unpack
     local += ["", ""]
 TypeError: Can't convert list to str implicitely
 '''},
+{'date': 'Wed Jun 29 2022 18:00:50.217 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 507
+    Aventura().main(ADV)
+  module <module> line 201
+    locais.pop().vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 48
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 58
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 161
+    local.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 48
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 48
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 58
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 58
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 66
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 87
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 140
+    except StopIteration as e:
+  module <module> line 101
+    return go(arg, **kwarg)
+  module <module> line 147
+    self.cenario.objeto[objeto].descreve = descreve
+KeyError: MAMA
+'''},
