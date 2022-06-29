@@ -90,7 +90,6 @@ class Verbo:
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd for ix,(kind,cmd) in enumerate(adv) if kind == "B"])
-        self.cenario.interpreta(input(lro)) if lro else None
         
 
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
