@@ -40,7 +40,7 @@ class Cenario:
         del self.objeto[objeto]
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
-        texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
+        texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala[0] else "Repete, não entendi"
         self.interpreta(input(texto)) if not self.exit else None
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
@@ -48,6 +48,7 @@ class Cenario:
         if "DESI" in verbo+substantivo:
             alert("Você desistiu da Aventura!")
             self.exit = True
+            raise SystemExit
             return
         if "OLH" in verbo and not substantivo:
             self.vai()
@@ -122,6 +123,7 @@ class Verbo:
     def atualiza(self, local):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
+        self.cenario.objeto[objeto].descreve = descreve
         alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
