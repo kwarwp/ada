@@ -105,7 +105,8 @@ class Verbo:
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
-        U=lambda loc: prep(self.atualiza,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
+        U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
+        M=lambda loc: prep(self.move,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -120,10 +121,14 @@ class Verbo:
                     foi = True
         #adv.append()
         self.adv=adv
+        try:
+            self.acao = [lambda kind=kinder, supl=suplement:acoes[kind](supl) for kinder, suplement in adv[::-1]]
+        except StopIteration as e:
+            pass
         
 
-        self.acao = [lambda kind=kinder, supl=suplement:acoes[kind](supl) for kinder, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
+    def verbos(self, fala):
     def vai(self, fala):
         verbo, descreve = self.verbo, self.descreve or fala.descreve
         self.cenario.interpreta(input(f"vb:{self.descreve}")) if self.descreve else None
@@ -144,7 +149,15 @@ class Verbo:
         #alert(f"mos: {objeto}, {descreve} - {lro}")
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
+        objeto, descreve = local.split(":")
+        local = Cenario.OBJ[objeto]
         local.vai()
+    def testa(self, local):
+        objeto, descreve = local.split(":")
+        ativo = Cenario.OBJ[objeto].ativo
+        if ativo:
+            self.cenario.interpreta(input(descreve))
+            raise StopIteration
     def nega(self):
         return self.verbo
     def pega(self, cmd):
