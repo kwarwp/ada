@@ -576,3 +576,10 @@ AttributeError: 'Cenario' object has no attribute 'objeto'
     self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
 AttributeError: 'Cenario' object has no attribute 'objeto'
 '''},
+{'date': 'Wed Jun 29 2022 10:22:14.928 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 93
+  [del adv[ix] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"]
+                ^
+SyntaxError: invalid syntax
+'''},
