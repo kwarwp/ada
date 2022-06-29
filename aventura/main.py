@@ -125,8 +125,8 @@ class Verbo:
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
         local.ativa() if ativa else local.desativa()
-        lro = self.lro if self.lro else descreve
-        alert(f"mos: {objeto}, {descreve} - {lro}")
+        lro = descreve # self.lro if self.lro else descreve
+        #alert(f"mos: {objeto}, {descreve} - {lro}")
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         local.vai()
