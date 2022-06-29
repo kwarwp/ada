@@ -980,3 +980,9 @@ ValueError: need more than 1 value to unpack
     objeto, descreve = local.split(":")
 ValueError: too many values to unpack (expected 2)
 '''},
+{'date': 'Wed Jun 29 2022 12:03:13.431 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+RuntimeError: too much recursion
+  module '$exec_1456' line 41
+        texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
+'''},
