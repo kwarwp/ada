@@ -590,3 +590,10 @@ SyntaxError: invalid syntax
                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Jun 29 2022 10:23:52.817 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 2
+  # SPDX-License-Identifier: GPL-3.0-or-later
+                                           ^
+SyntaxError: can't delete expr
+'''},
