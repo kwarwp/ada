@@ -438,3 +438,35 @@ AttributeError: 'Verbo' object has no attribute 'decreve'
     self.acao = [acoes[kind](suplement) for kind, suplement in adv[::-1]]
 NameError: name 'move' is not defined
 '''},
+{'date': 'Wed Jun 29 2022 09:05:29.71 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 418
+    Aventura().main(ADV)
+  module <module> line 113
+    locais.pop().vai()
+  module <module> line 36
+    self.interpreta(fala+ ["", ""])
+  module <module> line 43
+    self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+  module <module> line 63
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 86
+    [action() for action in self.acao]
+  module <module> line 73
+    return go(arg)
+  module <module> line 95
+    input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[self.nome].descricao} guardado")
+  module <module> line 1
+    (Cenario.OBJ[self.nome].descricao)
+AttributeError: 'Verbo' object has no attribute 'nome'
+'''},
