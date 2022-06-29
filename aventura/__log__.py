@@ -999,3 +999,10 @@ RuntimeError: too much recursion
    ^
 SyntaxError: keyword argument repeated
 '''},
+{'date': 'Wed Jun 29 2022 16:51:46.821 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 133
+  def vai(self, fala):
+  ^
+IndentationError: expected an indented block
+'''},
