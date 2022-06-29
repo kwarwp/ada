@@ -31,14 +31,15 @@ class Cenario:
         # self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
     def vai(self):
         texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values() if ob.mostra())
-        fala = input(texto).upper().split()
+        fala = input(texto)#.upper().split()
         #fala = [termo[:4] for termo in fala]
-        self.interpreta(fala+ ["", ""])
+        self.interpreta(fala)
         #input(fala)
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
         input(f"{obj}: Não deu certo essa de '{verbo} {substantivo}'")
     def interpreta(self, fala):
+        fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
         self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
     def __repr__(self):
@@ -82,7 +83,9 @@ class Verbo:
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
     def vai(self, fala):
-        verbo, substantivo = self.verbo, self.descreve or fala.descreve
+        verbo, descreve = self.verbo, self.descreve or fala.descreve
+        self.cenario.interpreta(input(f"{descreve}") if descreve else None)
+        self.cenario.interpreta(input(f"{descreve}")) if descreve else None
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
@@ -110,7 +113,7 @@ class Aventura:
         #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
         locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
-        locais.pop()
+        #locais.pop()
         locais.pop().vai()
         #print([lc for lc in locais])
         #print(Cenario.OBJ)
