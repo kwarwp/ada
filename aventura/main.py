@@ -45,7 +45,7 @@ class Cenario:
         if "DESI" in verbo+substantivo:
             alert("Você desistiu da Aventura!")
             return
-        if "OLH" in verbo:
+        if "OLH" in verbo and not substantivo:
             self.vai()
             return
         self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
