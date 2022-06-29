@@ -120,7 +120,7 @@ class Verbo:
     def atualiza(self, local):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
-        alert(f"atu: {objeto}, {descreve}")
+        alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
