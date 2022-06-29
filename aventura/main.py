@@ -108,7 +108,7 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
-        N=lambda loc: prep(self.nega,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
+        N=lambda loc: prep(self.nega,loc), E=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
