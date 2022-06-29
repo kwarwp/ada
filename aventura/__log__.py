@@ -583,3 +583,10 @@ AttributeError: 'Cenario' object has no attribute 'objeto'
                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Jun 29 2022 10:22:15.72 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 93
+  [del adv[ix] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"]
+                ^
+SyntaxError: invalid syntax
+'''},
