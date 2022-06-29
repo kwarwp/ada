@@ -30,7 +30,7 @@ class Cenario:
         self.objeto = {obj.nome[:4]: obj for obj in self.obj}
         # self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
     def vai(self):
-        texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values())
+        texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values() if ob.mostra())
         fala = input(texto).upper().split()
         #fala = [termo[:4] for termo in fala]
         self.interpreta(fala+ ["", ""])
@@ -62,7 +62,7 @@ class Objeto:
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
         self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
     def mostra(self):
-        return f"{self.descreve}>"
+        return f"{self.descreve}"
     def __repr__(self):
         return f"@{self.descreve} <{list(self.verbo.keys())}>"
     
@@ -107,9 +107,10 @@ class Aventura:
     def main(self, adv):
         self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
         i = "\n".join( ini for kind, ini in self.roteiro if kind == "I")
-        input(i)
+        #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
         locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
+        locais.pop()
         locais.pop().vai()
         #print([lc for lc in locais])
         #print(Cenario.OBJ)
