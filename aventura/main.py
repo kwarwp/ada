@@ -43,7 +43,7 @@ class Cenario:
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
-        if "DESI" in verbo+substantivo:
+        if "DESISTE" in verbo+substantivo:
             alert("Você desistiu da Aventura!")
             self.exit = True
             return
@@ -84,8 +84,8 @@ class Objeto:
 
 class Verbo:
     def __init__(self, adv, cenario):
-        def prep(go, arg):
-            return go(arg)
+        def prep(go, arg, **kwarg):
+            return go(arg, **kwarg)
         def nop(*_):
             self.cenario.nop(["tentar", self.verbo], "Falhou")
         self.cenario = cenario
@@ -93,7 +93,7 @@ class Verbo:
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
-        U=lambda loc: prep(self.atualiza,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
+        U=lambda loc: prep(self.noper,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -113,10 +113,12 @@ class Verbo:
     def atualiza(self, local):
         objeto, descreve = local.split(":")
         Cenario.OBJ[obj].descreve = descreve
+        alert(objeto, descreve)
     def mostra(self, local, ativa=True):
-        local = Cenario.OBJ[local.split(":")[0]]
-        local.ativa() if ativa else local.deastiva()
-        lro = self.lro
+        objeto, descreve = local.split(":")
+        local = Cenario.OBJ[objeto]
+        local.ativa() if ativa else local.desativa()
+        lro = self.lro if self.lro else descreve
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         local.vai()
@@ -127,6 +129,8 @@ class Verbo:
         self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         
         return self.descreve
+    def noper(self, _):
+        pass
     def itens(self):
         return self.verbo, self
     def __repr__(self):
