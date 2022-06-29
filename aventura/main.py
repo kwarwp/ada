@@ -36,6 +36,8 @@ class Cenario:
         #fala = [termo[:4] for termo in fala]
         self.interpreta(fala)
         #input(fala)
+    def pega(self, nome):
+        self.hero.bota(nome, self.objeto[nome])
     def remove(self, objeto):
         del self.objeto[objeto]
     def nop(self, fala, obj=""):
@@ -52,6 +54,11 @@ class Cenario:
             return
         if "OLH" in verbo and not substantivo:
             self.vai()
+            return
+        if "INVE" in verbo and not substantivo:
+            inv = self.hero.mostra()
+            texto = self.descreve + "\nVocê tem:\n" + "\n".join(ob.mostra() for ob in inv.values() if ob.mostra())
+            fala = input(texto)#.upper().split()
             return
         self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
     def __repr__(self):
@@ -110,13 +117,15 @@ class Verbo:
                     adv[ix] = ["B", f"{obj}:{self.lro}"]
                     foi = True
         #adv.append()
+        self.adv=adv
         
 
-        self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
+        self.acao = [lambda kind=kinder, supl=suplement:acoes[kind](supl) for kinder, suplement in adv[::-1]]
         Cenario.VERBO[loc] = self
     def vai(self, fala):
         verbo, descreve = self.verbo, self.descreve or fala.descreve
         self.cenario.interpreta(input(f"vb:{self.descreve}")) if self.descreve else None
+        alert(self.adv)
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
@@ -138,6 +147,7 @@ class Verbo:
         return self.verbo
     def pega(self, cmd):
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        self.cenario.pega(substantivo)
         self.cenario.remove(substantivo)
         self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         
@@ -153,6 +163,10 @@ class Verbo:
 class Aventura:
     def __init__(self):
         self.inventario = {}
+    def bota(self, nome, objeto):
+        self.inventario[nome] = objeto
+    def mostra(self):
+        return self.inventario
     def main(self, adv):
         self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
         i = "\n".join( ini for kind, ini in self.roteiro if kind == "I")
