@@ -986,3 +986,9 @@ RuntimeError: too much recursion
   module '$exec_1456' line 41
         texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
 '''},
+{'date': 'Wed Jun 29 2022 12:04:16.930 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+RuntimeError: too much recursion
+  module '$exec_320' line 41
+        texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
+'''},
