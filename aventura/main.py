@@ -155,7 +155,7 @@ class Verbo:
         self.message += lro
         #self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
-        local += ["", ""]
+        local += ":"
         objeto, *_ = local.split(":")
         local = Cenario.CENA[objeto]
         local.vai()
@@ -173,7 +173,7 @@ class Verbo:
         self.cenario.pega(substantivo)
         self.cenario.remove(substantivo)
         #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
-        self.message += f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"
+        self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
         
         return self.descreve
     def noper(self, _):
