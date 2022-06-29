@@ -100,7 +100,7 @@ class Verbo:
         for ix,(kind,cmd) in enumerate(adv):
             if kind == "B":
                 del adv[ix]
-        adv.append(["B", self.lro])
+        #adv.append(["B", self.lro])
         
 
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
@@ -114,12 +114,13 @@ class Verbo:
     def atualiza(self, local):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
-        alert(objeto, descreve)
+        alert(f"atu: {objeto}, {descreve}")
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
         local.ativa() if ativa else local.desativa()
         lro = self.lro if self.lro else descreve
+        alert(f"mos: {objeto}, {descreve} - {lro}")
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         local.vai()
