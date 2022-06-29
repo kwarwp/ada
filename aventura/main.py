@@ -84,7 +84,6 @@ class Verbo:
         Cenario.VERBO[loc] = self
     def vai(self, fala):
         verbo, descreve = self.verbo, self.descreve or fala.descreve
-        self.cenario.interpreta(input(f"{descreve}") if descreve else None)
         self.cenario.interpreta(input(f"{descreve}")) if descreve else None
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
