@@ -60,6 +60,7 @@ class Objeto:
     def __init__(self, adv, cenario):
         _, cmd = adv[0]
         self.cenario = cenario
+        self.ativo = True
         self.nome, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         Cenario.OBJ[self.nome] = self
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
@@ -71,6 +72,10 @@ class Objeto:
     def vai(self, fala):
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
         self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+    def ativa(self):
+        self.ativo = True
+    def desativa(self):
+        self.ativo = False
     def mostra(self):
         return f"{self.descreve}"
     def __repr__(self):
@@ -86,7 +91,8 @@ class Verbo:
         self.cenario = cenario
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
-        acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc), B=lambda loc: prep(self.mostra,loc))
+        acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
+        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -103,7 +109,9 @@ class Verbo:
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
-    def mostra(self, local):
+    def mostra(self, local, ativa=True):
+        local = Cenario.OBJ[local.split(":")[0]]
+        local.ativa() if ativa else local.deastiva()
         lro = self.lro
         self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
@@ -402,6 +410,7 @@ A=CASE:SEU ZE, O CASEIRO, ABRE O PORTAO
 L=APAR:VOCE ESTA EM SEU APARTAMENTO NA
 D=:CIDADE, LOUCA PARA IR AO SITIO
 O=TEVE:UM APARELHO DE TEVE
+V=OLHE:UM ANTIGO APARELHO DE TEVE
 V=DESL
 A=TEVE:A TEVE DESLIGA
 U=PAI:SEU PAI ABOBALHADO
