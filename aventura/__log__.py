@@ -992,3 +992,10 @@ RuntimeError: too much recursion
   module '$exec_320' line 41
         texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
 '''},
+{'date': 'Wed Jun 29 2022 16:50:42.3 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 109
+  M=lambda loc: prep(self.move,loc), Z=lambda loc: prep(self.mostra,loc,ativa = False))
+   ^
+SyntaxError: keyword argument repeated
+'''},
