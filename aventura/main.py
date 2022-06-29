@@ -41,6 +41,12 @@ class Cenario:
     def interpreta(self, fala):
         fala = fala.upper().split()+ ["", ""]
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
+        if "DESI" in verbo+substantivo:
+            alert("Você desistiu da Aventura!")
+            return
+        if "OLH" in verbo:
+            self.vai()
+            return
         self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
     def __repr__(self):
         #return f"@{self.descreve} <{[ob.nome for ob in self.obj]}>"
@@ -84,7 +90,7 @@ class Verbo:
         Cenario.VERBO[loc] = self
     def vai(self, fala):
         verbo, descreve = self.verbo, self.descreve or fala.descreve
-        self.cenario.interpreta(input(f"{descreve}")) if descreve else None
+        self.cenario.interpreta(input(f"vb:{self.descreve}")) if self.descreve else None
         [action() for action in self.acao]
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
@@ -94,7 +100,7 @@ class Verbo:
         return self.verbo
     def pega(self, cmd):
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado")
+        self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         
         return self.descreve
     def itens(self):
