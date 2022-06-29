@@ -97,10 +97,16 @@ class Verbo:
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = "\n".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
+        foi = False
         for ix,(kind,cmd) in enumerate(adv):
             if kind == "B":
-                del adv[ix]
-        #adv.append(["B", self.lro])
+                if foi:
+                    del adv[ix]
+                else:
+                    obj = cmd.split(":")[0]
+                    adv[ix] = ["B", f"{obj}:{self.lro}"]
+                    foi = True
+        #adv.append()
         
 
         self.acao = [lambda:acoes[kind](suplement) for kind, suplement in adv[::-1]]
@@ -441,7 +447,7 @@ S=TEVE:SEU PAI ESTA LIGADAO NA TEVE...
 O=QUAD:UM QUADRO DE AVISO
 V=OLHE:TEM ALGO ESCRITO NELE!
 V=LEIA
-B=QUAD: PECA AO SEU PAI ASS:JOSANE.
+B=QUAD: PECA AO SEU PAI ASS-JOSANE.
 B=QUAD: VOLTO JA, SE VOCE QUISER ALGO,
 B=QUAD:CIBELE, FUI COMPRAR REVISTINHAS
 O=CHAV:UM MOLHO DE CHAVES
