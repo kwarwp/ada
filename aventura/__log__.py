@@ -856,3 +856,10 @@ TypeError: noper() takes 1 positional arguments but more were given
     Cenario.OBJ[obj].descreve = descreve
 NameError: name 'obj' is not defined
 '''},
+{'date': 'Wed Jun 29 2022 11:53:14.257 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 3
+  """ Engenho de aventuras textuais.
+             ^
+SyntaxError: can't delete expr
+'''},
