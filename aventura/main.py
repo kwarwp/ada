@@ -36,6 +36,8 @@ class Cenario:
         #fala = [termo[:4] for termo in fala]
         self.interpreta(fala)
         #input(fala)
+    def remove(self, objeto):
+        del self.objeto[objeto]
     def nop(self, fala, obj=""):
         verbo, substantivo = fala[:2]
         texto = f"{obj}: Não deu certo essa de '{verbo} {substantivo}'" if fala else "Repete, não entendi"
@@ -134,6 +136,7 @@ class Verbo:
         return self.verbo
     def pega(self, cmd):
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        self.cenario.remove(substantivo)
         self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         
         return self.descreve
