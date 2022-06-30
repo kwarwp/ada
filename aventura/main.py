@@ -68,7 +68,9 @@ class Cenario:
             fala = input(texto)#.upper().split()
             self.interpreta(fala)
             return
-        self.objeto[substantivo].vai(fala) if substantivo in self.objeto else self.nop(fala)
+        obj = self.objeto[substantivo] if substantivo in self.objeto
+        else self.hero.inventario[substantivo] if substantivo in self.hero.inventario else None
+        obj.vai(fala) if obj else  self.nop(fala)
     def __repr__(self):
         #return f"@{self.descreve} <{[ob.nome for ob in self.obj]}>"
         return f"@{self.descreve} <{list(self.objeto.keys())}>"
@@ -182,11 +184,12 @@ class Verbo:
         #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
     def larga(self, cmd):
+        alert(cmd)
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.bota(substantivo)
         self.cenario.tira(substantivo)
         #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
-        self.message += f"{Cenario.OBJ[substantivo].descreve} largado.\Largando: {descreve}"
+        self.message += f"{Cenario.OBJ[substantivo].descreve} largado.\nLargando: {descreve}"
         
         return self.descreve
     def noper(self, _):
@@ -202,7 +205,7 @@ class Aventura:
         self.inventario = {}
     def bota(self, nome, objeto):
         self.inventario[nome] = objeto
-    def tira(self, nome, objeto):
+    def tira(self, nome):
         if nome in self.inventario:
             del self.inventario[nome]
     def mostra(self):
