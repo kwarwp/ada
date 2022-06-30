@@ -39,6 +39,11 @@ class Cenario:
         #input(fala)
     def pega(self, nome):
         self.hero.bota(nome, self.objeto[nome]) if nome in self.objeto else None
+    def bota(self, objeto):
+        if objeto in Cenario.OBJ:
+            self.objeto[objeto] = Cenario.OBJ[objeto]
+    def tira(self, nome):
+        self.hero.tira(nome)
     def remove(self, objeto):
         if objeto in self.objeto:
             del self.objeto[objeto] 
@@ -108,7 +113,8 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
-        N=lambda loc: prep(self.nega,loc), E=lambda loc: prep(self.nega,loc))
+        N=lambda loc: prep(self.nega,loc), E=lambda loc: prep(self.nega,loc)
+        T=lambda loc: prep(self.larga,loc), Z=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -130,6 +136,7 @@ class Verbo:
         Cenario.VERBO[loc] = self
     #def verbos(self, fala):
     def vai(self, fala):
+        self.message = ""
         verbo, descreve = self.verbo, self.descreve or fala.descreve
         self.cenario.interpreta(input(f"vb:{self.descreve}")) if self.descreve else None
         #alert(self.adv)
@@ -174,6 +181,12 @@ class Verbo:
         self.cenario.remove(substantivo)
         #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
+    def larga(self, cmd):
+        substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
+        self.cenario.bota(substantivo)
+        self.cenario.tira(substantivo)
+        #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
+        self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
         
         return self.descreve
     def noper(self, _):
@@ -189,6 +202,9 @@ class Aventura:
         self.inventario = {}
     def bota(self, nome, objeto):
         self.inventario[nome] = objeto
+    def tira(self, nome, objeto):
+        if nome in self.inventario:
+            del self.inventario[nome]
     def mostra(self):
         return self.inventario
     def main(self, adv):
