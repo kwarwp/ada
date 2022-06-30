@@ -153,7 +153,7 @@ class Verbo:
     def atualiza(self, local, diz=False):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
-        self.cenario.objeto[objeto].descreve = descreve
+        #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
         self.message += descreve if diz else ""
     def mostra(self, local, ativa=True):
@@ -172,9 +172,10 @@ class Verbo:
     def testa(self, local, nega=False):
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
-        ativo = not ativo if nega else ativo
+        ativo = (not ativo) if nega else ativo
+        self.message += descreve
+
         if ativo:
-            self.message += descreve
             raise StopIteration(descreve)
     def nega(self, x):
         alert(x)
