@@ -1589,3 +1589,10 @@ SyntaxError: invalid syntax
     self.hero.tira(nome)
 TypeError: tira() missing 1 positional argument: objeto
 '''},
+{'date': 'Thu Jun 30 2022 10:54:35.261 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 72
+  else self.hero.inventario[substantivo] if substantivo in self.hero.inventario else None
+   ^
+SyntaxError: invalid syntax
+'''},
