@@ -68,8 +68,8 @@ class Cenario:
             fala = input(texto)#.upper().split()
             self.interpreta(fala)
             return
-        obj = self.objeto[substantivo] if substantivo in self.objeto
-        else self.hero.inventario[substantivo] if substantivo in self.hero.inventario else None
+        obj = (self.objeto[substantivo] if substantivo in self.objeto 
+               else self.hero.inventario[substantivo] if substantivo in self.hero.inventario else None)
         obj.vai(fala) if obj else  self.nop(fala)
     def __repr__(self):
         #return f"@{self.descreve} <{[ob.nome for ob in self.obj]}>"
@@ -184,7 +184,7 @@ class Verbo:
         #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
         self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
     def larga(self, cmd):
-        alert(cmd)
+        #alert(cmd)
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.bota(substantivo)
         self.cenario.tira(substantivo)
