@@ -115,7 +115,7 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
-        N=lambda loc: prep(self.nega,loc), E=lambda loc: prep(self.nega,loc),
+        N=lambda loc: prep(self.testa,loc, nega=True), E=lambda loc: prep(self.atualiza,loc, diz=True),
         T=lambda loc: prep(self.larga,loc), Z=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
@@ -150,11 +150,12 @@ class Verbo:
             self.cenario.interpreta(input(self.message))
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
-    def atualiza(self, local):
+    def atualiza(self, local, diz=False):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
         self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
+        self.message += descreve if diz else ""
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
@@ -168,9 +169,10 @@ class Verbo:
         objeto, *_ = local.split(":")
         local = Cenario.CENA[objeto]
         local.vai()
-    def testa(self, local):
+    def testa(self, local, nega=False):
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
+        ativo = not ativo if nega else ativo
         if ativo:
             self.message += descreve
             raise StopIteration(descreve)
