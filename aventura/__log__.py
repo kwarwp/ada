@@ -1550,3 +1550,10 @@ TypeError: Can't convert list to str implicitely
     self.cenario.objeto[objeto].descreve = descreve
 KeyError: MAMA
 '''},
+{'date': 'Thu Jun 30 2022 10:32:45.252 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 113
+  acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
+                                                                                                                                                                                                                                                                                                                                                               ^
+SyntaxError: invalid syntax
+'''},
