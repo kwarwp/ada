@@ -31,8 +31,8 @@ class Cenario:
         self.obj = [Objeto(adv[ini:fim],self) for ini,fim in zip(lro, lro[1:]+[len(adv)])]
         self.objeto = {obj.nome[:4]: obj for obj in self.obj}
         # self.roteiro = rot = [cmd.split("=") for cmd in adv.split("\n")]
-    def vai(self):
-        texto = self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values() if ob.mostra())
+    def vai(self, msg=""):
+        texto = msg+self.descreve + "\nVocê pode ver:\n" + "\n".join(ob.mostra() for ob in self.objeto.values() if ob.mostra())
         fala = input(texto)#.upper().split()
         #fala = [termo[:4] for termo in fala]
         self.interpreta(fala)
@@ -150,30 +150,33 @@ class Verbo:
             self.cenario.interpreta(input(self.message))
         #input(f"Pegando: {substantivo}") if verbo == "PEGU" else self.cenario.nop(fala, self.verbo)
         pass
+    def escreve(self, msg):
+        self.message += "\n" + msg
     def atualiza(self, local, diz=False):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
-        self.message += descreve if diz else ""
+        #self.escreve( descreve if diz else "")
     def mostra(self, local, ativa=True):
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
         local.ativa() if ativa else local.desativa()
         lro = self.lro if self.lro else descreve
         #alert(f"mos: {objeto}, {descreve} - {lro}")
-        self.message += lro
+        self.escreve(lro)
         #self.cenario.interpreta(input(lro)) if lro else None
     def move(self, local):
         local += ":"
-        objeto, *_ = local.split(":")
+        objeto, descreve, *_ = local.split(":")
+        self.escreve(descreve)
         local = Cenario.CENA[objeto]
-        local.vai()
+        local.vai(self.message+"\n------------------\n")
     def testa(self, local, nega=False):
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
         ativo = (not ativo) if nega else ativo
-        self.message += descreve
+        self.escreve(descreve) if not ativo else None
 
         if ativo:
             raise StopIteration(descreve)
@@ -184,15 +187,15 @@ class Verbo:
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.pega(substantivo)
         self.cenario.remove(substantivo)
-        #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
-        self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
+        self.escreve(f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}") if descreve else None
+        #self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
     def larga(self, cmd):
         #alert(cmd)
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.bota(substantivo)
         self.cenario.tira(substantivo)
-        #self.cenario.interpreta(input(f"Pegando: {descreve}\nObjeto {Cenario.OBJ[substantivo].descreve} guardado"))
-        self.message += f"{Cenario.OBJ[substantivo].descreve} largado.\nLargando: {descreve}"
+        self.escreve(f"{Cenario.OBJ[substantivo].descreve} largado.\Largando: {descreve}")
+        #self.message += f"{Cenario.OBJ[substantivo].descreve} largado.\nLargando: {descreve}"
         
         return self.descreve
     def noper(self, _):
