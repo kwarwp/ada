@@ -113,7 +113,7 @@ class Verbo:
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
-        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = True),
+        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
         N=lambda loc: prep(self.testa,loc, nega=True), E=lambda loc: prep(self.atualiza,loc, diz=True),
         T=lambda loc: prep(self.larga,loc), F=lambda loc: prep(self.nega,loc))
@@ -158,7 +158,7 @@ class Verbo:
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
         #self.escreve( descreve if diz else "")
-    def mostra(self, local, ativa=False):
+    def mostra(self, local, ativa=True):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
