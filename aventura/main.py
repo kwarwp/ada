@@ -159,6 +159,7 @@ class Verbo:
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
         #self.escreve( descreve if diz else "")
     def mostra(self, local, ativa=True):
+        local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
         local.ativa() if ativa else local.desativa()
@@ -176,7 +177,7 @@ class Verbo:
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
         ativo = (not ativo) if nega else ativo
-        self.escreve(descreve) if not ativo else None
+        self.escreve(descreve) if ativo else None
 
         if ativo:
             raise StopIteration(descreve)
