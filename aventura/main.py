@@ -113,10 +113,10 @@ class Verbo:
         acoes = {act: nop for act in "QWERTYUIOPASDFGHJKLZXCVBNM"}
         
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
-        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = False),
+        B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = True),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
         N=lambda loc: prep(self.testa,loc, nega=True), E=lambda loc: prep(self.atualiza,loc, diz=True),
-        T=lambda loc: prep(self.larga,loc), Z=lambda loc: prep(self.nega,loc))
+        T=lambda loc: prep(self.larga,loc), F=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
@@ -158,7 +158,7 @@ class Verbo:
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
         #self.escreve( descreve if diz else "")
-    def mostra(self, local, ativa=True):
+    def mostra(self, local, ativa=False):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
@@ -181,9 +181,12 @@ class Verbo:
 
         if ativo:
             raise StopIteration(descreve)
-    def nega(self, x):
-        alert(x)
-        return self.verbo
+    def nega(self, local):
+        local += ":"
+        objeto, descreve, *_ = local.split(":")
+        self.escreve(descreve)
+        local = Cenario.CENA['FINI']
+        local.vai(self.message+"\n------------------\n")
     def pega(self, cmd):
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.pega(substantivo)
@@ -223,7 +226,7 @@ class Aventura:
         #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
         locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
-        #locais.pop()
+        locais.pop()
         locais.pop().vai()
         #print([lc for lc in locais])
         #print(Cenario.OBJ)
@@ -245,6 +248,7 @@ I=PARA NAO SE MACHUCAR FAZENDO
 I=AS SUAS MOLECAGENS..
 I=
 I=APERTE <ENTER> P/COMECAR
+L=FINI:ESTE É O FIM DA AVENTURA
 L=COZI:VOCE ESTA NA COZINHA DA VOVO
 D=:AQUI VOCE VAI PREPARAR A SALADA
 O=GELA:A GELADEIRA
