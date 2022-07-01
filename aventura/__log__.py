@@ -1740,3 +1740,365 @@ ValueError: too many values to unpack (expected 2)
     self.message += descreve if diz else ""
 NameError: name 'diz' is not defined
 '''},
+{'date': 'Fri Jul 01 2022 09:37:47.590 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 533
+    Aventura().main(ADV)
+  module <module> line 226
+    locais.pop().vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 63
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 53
+    self.interpreta(input(texto)) if not self.exit else None
+  module <module> line 63
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 63
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 69
+    self.interpreta(fala)
+  module <module> line 63
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 174
+    local.vai(self.message+"\n------------------\n")
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 150
+    self.cenario.interpreta(input(self.message))
+  module <module> line 63
+    self.vai()
+  module <module> line 38
+    self.interpreta(fala)
+  module <module> line 73
+    obj.vai(fala) if obj else  self.nop(fala)
+  module <module> line 94
+    self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
+  module <module> line 149
+    except StopIteration as e:
+  module <module> line 108
+    return go(arg, **kwarg)
+  module <module> line 162
+    objeto, descreve = local.split(":")
+ValueError: need more than 1 value to unpack
+'''},
