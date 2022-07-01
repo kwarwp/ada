@@ -226,7 +226,7 @@ class Aventura:
         #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
         locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
-        locais.pop()
+        [locais.pop() for _ in range(2)]
         locais.pop().vai()
         #print([lc for lc in locais])
         #print(Cenario.OBJ)
