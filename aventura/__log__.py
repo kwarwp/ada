@@ -2217,3 +2217,10 @@ SyntaxError: EOL while scanning string literal
     local.ativa() if ativa else local.desativa()
 TypeError: 'bool' object is not callable
 '''},
+{'date': 'Sat Jul 02 2022 11:10:03.164 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 161
+  self.escreve(f"{diz}{objeto}" = (descreve if diz else ""))
+                                ^
+SyntaxError: keyword can't be an expression
+'''},
