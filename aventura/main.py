@@ -158,7 +158,7 @@ class Verbo:
         Cenario.OBJ[objeto].ativa = diz
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
-        self.escreve( descreve+f"{diz}{objeto}" if diz else "")
+        self.escreve(f"{diz}{objeto}" = (descreve if diz else ""))
     def mostra(self, local, ativa=True):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
