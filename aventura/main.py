@@ -157,7 +157,7 @@ class Verbo:
         Cenario.OBJ[objeto].descreve = descreve
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
-        #self.escreve( descreve if diz else "")
+        self.escreve( descreve if diz else "")
     def mostra(self, local, ativa=True):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
@@ -191,14 +191,14 @@ class Verbo:
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.pega(substantivo)
         self.cenario.remove(substantivo)
-        self.escreve(f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}") if descreve else None
+        self.escreve(f"{Cenario.OBJ[substantivo].descreve}.\n{descreve}") if descreve else None
         #self.message += f"{Cenario.OBJ[substantivo].descreve} guardado.\nPegando: {descreve}"
     def larga(self, cmd):
         #alert(cmd)
         substantivo, descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         self.cenario.bota(substantivo)
         self.cenario.tira(substantivo)
-        self.escreve(f"{Cenario.OBJ[substantivo].descreve} largado.\Largando: {descreve}")
+        self.escreve(f"{Cenario.OBJ[substantivo].descreve}.\n{descreve}")
         #self.message += f"{Cenario.OBJ[substantivo].descreve} largado.\nLargando: {descreve}"
         
         return self.descreve
