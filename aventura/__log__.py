@@ -2102,3 +2102,10 @@ NameError: name 'diz' is not defined
     objeto, descreve = local.split(":")
 ValueError: need more than 1 value to unpack
 '''},
+{'date': 'Sat Jul 02 2022 10:57:35.427 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 181
+  self.escreve(descrevef"{ativo}{objeto}) if ativo else None
+                                                            ^
+SyntaxError: EOL while scanning string literal
+'''},
