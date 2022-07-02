@@ -92,9 +92,9 @@ class Objeto:
     def vai(self, fala):
         verbo, substantivo = [termo[:4] for termo in fala[:2]]
         self.verbo[verbo].vai(self) if verbo in self.verbo else self.cenario.nop(fala, self.nome)
-    def ativa(self):
+    def ativar(self):
         self.ativo = True
-    def desativa(self):
+    def desativar(self):
         self.ativo = False
     def mostra(self):
         return f"{self.descreve}"
@@ -158,12 +158,12 @@ class Verbo:
         Cenario.OBJ[objeto].ativa = diz
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
-        self.escreve( descreve if diz else "")
+        self.escreve( descreve+f"{diz}{objeto}" if diz else "")
     def mostra(self, local, ativa=True):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
         local = Cenario.OBJ[objeto]
-        local.ativa() if ativa else local.desativa()
+        local.ativar() if ativa else local.desativar()
         lro = self.lro if self.lro else descreve
         #alert(f"mos: {objeto}, {descreve} - {lro}")
         self.escreve(lro)
@@ -178,7 +178,7 @@ class Verbo:
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
         ativo = (not ativo) if nega else ativo
-        self.escreve(descreve) if ativo else None
+        self.escreve(descreve+f"{ativo}{objeto}") if ativo else None
 
         if ativo:
             raise StopIteration(descreve)
