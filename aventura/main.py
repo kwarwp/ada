@@ -155,6 +155,7 @@ class Verbo:
     def atualiza(self, local, diz=False):
         objeto, descreve = local.split(":")
         Cenario.OBJ[objeto].descreve = descreve
+        Cenario.OBJ[objeto].ativa = diz
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
         self.escreve( descreve if diz else "")
