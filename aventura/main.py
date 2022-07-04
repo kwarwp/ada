@@ -84,7 +84,7 @@ class Objeto:
     def __init__(self, adv, cenario):
         _, cmd = adv[0]
         self.cenario = cenario
-        self.ativo = True
+        self.ativo = False
         self.nome, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         Cenario.OBJ[self.nome] = self
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
@@ -123,9 +123,10 @@ class Verbo:
         T=lambda loc: prep(self.larga,loc), F=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
-        self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
+        #self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
+        self.lro = ""
         foi = False
-        for ix,(kind,cmd) in enumerate(adv):
+        for ix,(kind,cmd) in (): # enumerate(adv):
             if kind == "B":
                 if foi:
                     del adv[ix]
@@ -181,10 +182,11 @@ class Verbo:
     def testa(self, local, nega=False):
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
-        ativo = (not ativo) if nega else ativo
-        self.escreve(descreve+f"{ativo}{objeto}") if ativo else None
+        ativou = (not ativo) if nega else ativo
+        alert(f"objeto: {objeto} ativo: {ativo} ativou: {ativou}")
+        self.escreve(descreve+f"{ativo}{objeto}") if ativou else None
 
-        if ativo:
+        if ativou:
             raise StopIteration(descreve)
     def nega(self, local):
         local += ":"
