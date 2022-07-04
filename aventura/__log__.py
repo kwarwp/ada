@@ -2224,3 +2224,10 @@ TypeError: 'bool' object is not callable
                                 ^
 SyntaxError: keyword can't be an expression
 '''},
+{'date': 'Mon Jul 04 2022 11:39:56.132 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 165
+  self.escreve(f"{diz}{objeto}" = (descreve if diz else ""))
+                                ^
+SyntaxError: keyword can't be an expression
+'''},
