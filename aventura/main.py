@@ -7,12 +7,16 @@
 Changelog
 ---------
 
+.. versionadded::    22.07
+
+    Aventura completa.
+
 .. versionadded::    22.06
 
     Leitura dos dados.
     verbo olha e pega
 """
-__version__ = "22.06"
+__version__ = "22.07"
 from browser import alert
 
 class Cenario:
@@ -158,7 +162,7 @@ class Verbo:
         Cenario.OBJ[objeto].ativa = diz
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
-        self.escreve(f"{diz}{objeto}" = (descreve if diz else ""))
+        self.escreve(f"{diz}{objeto}" if diz else "")
     def mostra(self, local, ativa=True):
         local = f"{local}:" if ":" not in local else local
         objeto, descreve = local.split(":")
@@ -227,7 +231,7 @@ class Aventura:
         #input(i)
         lro = [ix for ix,(kind,cmd) in enumerate(rot) if kind == "L"]
         locais = [Cenario(rot[ini:fim], self) for ini,fim in zip(lro, lro[1:]+[len(rot)])]
-        [locais.pop() for _ in range(2)]
+        [locais.pop() for _ in range(0)]
         locais.pop().vai()
         #print([lc for lc in locais])
         #print(Cenario.OBJ)
