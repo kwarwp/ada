@@ -63,9 +63,13 @@ class Cenario:
             self.exit = True
             raise SystemExit
             return
-        if "OLH" in verbo and not substantivo:
-            self.vai()
-            return
+        if "OLH" in verbo:
+            if not substantivo:
+                self.vai()
+                return
+            if (substantivo in Cenario.OBJ.keys()) and ("OLH" not in " ".join(Cenario.OBJ[substantivo].verbo.keys())):
+                self.interpreta(input("Não vejo nada de interessante"))
+                return
         if "INVE" in verbo and not substantivo:
             inv = self.hero.mostra()
             texto = self.descreve + "\nVocê tem:\n" + "\n".join(ob.mostra() for ob in inv.values() if ob.mostra())
@@ -84,7 +88,7 @@ class Objeto:
     def __init__(self, adv, cenario):
         _, cmd = adv[0]
         self.cenario = cenario
-        self.ativo = False
+        self.ativo = True
         self.nome, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         Cenario.OBJ[self.nome] = self
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
@@ -119,27 +123,14 @@ class Verbo:
         acoes.update(M=lambda loc: prep(self.move, loc), P=lambda loc: prep(self.pega,loc),
         B=lambda loc: prep(self.mostra,loc), A=lambda loc: prep(self.mostra,loc,ativa = True),
         U=lambda loc: prep(self.atualiza,loc), S=lambda loc: prep(self.testa,loc),
-        N=lambda loc: prep(self.testa,loc, nega=True), E=lambda loc: prep(self.atualiza,loc, diz=True),
+        N=lambda loc: prep(self.testa,loc, nega="N"), E=lambda loc: prep(self.atualiza,loc, diz=True),
         T=lambda loc: prep(self.larga,loc), F=lambda loc: prep(self.nega,loc))
         _, cmd = adv.pop(0)
         self.verbo, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         #self.lro = " ".join([cmd[5:] for ix,(kind,cmd) in enumerate(adv[::-1]) if kind == "B"])
         self.lro = ""
-        foi = False
-        for ix,(kind,cmd) in (): # enumerate(adv):
-            if kind == "B":
-                if foi:
-                    del adv[ix]
-                else:
-                    obj = cmd.split(":")[0]
-                    adv[ix] = ["B", f"{obj}:{self.lro}"]
-                    foi = True
-        #adv.append()
         self.adv=adv
         self.acao = [lambda kind=kinder, supl=suplement:acoes[kind](supl) for kinder, suplement in adv[::-1]]
-
-        
-
         Cenario.VERBO[loc] = self
     #def verbos(self, fala):
     def vai(self, fala):
@@ -179,10 +170,20 @@ class Verbo:
         self.escreve(descreve)
         local = Cenario.CENA[objeto]
         local.vai(self.message+"\n------------------\n")
-    def testa(self, local, nega=False):
+    def testa_(self, local, nega=False):
         objeto, descreve = local.split(":")
         ativo = Cenario.OBJ[objeto].ativo
         ativou = (not ativo) if nega else ativo
+        alert(f"objeto: {objeto} ativo: {ativo} ativou: {ativou}")
+        self.escreve(descreve+f"{ativo}{objeto}") if ativou else None
+
+        if ativou:
+            raise StopIteration(descreve)
+    def testa(self, local, nega="S"):
+        objeto, descreve = local.split(":")
+        ativo = nega == "S"
+        ativou = Cenario.OBJ[objeto].ativo == ativo
+        #ativou = (not ativo) if nega else ativo
         alert(f"objeto: {objeto} ativo: {ativo} ativou: {ativou}")
         self.escreve(descreve+f"{ativo}{objeto}") if ativou else None
 
@@ -537,7 +538,7 @@ P=CHAV:OK PEGUEI AS CHAVES!
 V=OLHE:XI! SAO DA MAMAE!
 V=MOSTR
 M=APAR:SUA MAE FICOU DE FORA.. VAMOS!
-N=PAI:NINGUEM SE INTERESSOU POR ELAS"""
+S=PAI:NINGUEM SE INTERESSOU POR ELAS"""
 
     
     
