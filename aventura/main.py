@@ -88,7 +88,7 @@ class Objeto:
     def __init__(self, adv, cenario):
         _, cmd = adv[0]
         self.cenario = cenario
-        self.ativo = True
+        self.ativo = False
         self.nome, self.descreve = cmd.split(":") if ":" in cmd else (cmd,"")
         Cenario.OBJ[self.nome] = self
         lro = [ix for ix,(kind,cmd) in enumerate(adv) if kind == "V"]
@@ -154,6 +154,7 @@ class Verbo:
         Cenario.OBJ[objeto].ativa = diz
         #self.cenario.objeto[objeto].descreve = descreve
         #alert(f"atu: {Cenario.OBJ[objeto].nome}, {Cenario.OBJ[objeto].descreve}")
+        alert(f"atualiza -> objeto: {objeto} obativo: {Cenario.OBJ[objeto].ativa} diz: {diz}")
         self.escreve(f"{diz}{objeto}" if diz else "")
     def mostra(self, local, ativa=False):
         local = f"{local}:" if ":" not in local else local
@@ -184,10 +185,10 @@ class Verbo:
         ativo = nega == "S"
         ativou = Cenario.OBJ[objeto].ativo == ativo
         #ativou = (not ativo) if nega else ativo
-        alert(f"objeto: {objeto} ativo: {ativo} ativou: {ativou}")
-        self.escreve(descreve+f"{ativo}{objeto}") if ativou else None
+        alert(f"objeto: {objeto} ativo: {ativo} objativo: {Cenario.OBJ[objeto].ativo} ativou: {ativou}")
+        self.escreve(descreve+f"{ativo}{objeto}") if not ativou else None
 
-        if ativou:
+        if not ativou:
             raise StopIteration(descreve)
     def nega(self, local):
         local += ":"
