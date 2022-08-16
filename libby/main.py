@@ -31,9 +31,9 @@ class SvgPainter:
         self.fill = "red"
         self.opacity = 0.5
     def paint(self, shape="b", f=None, **kwargs):
+        self.fill = f if f else self.fill
         shp = self.shape[shape](**kwargs)
         self.canvas <= shp
-        self.fill = f if f else None
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
         self.fill = color
