@@ -24,8 +24,9 @@ class SvgPainter:
         root.html = ""
         self.fill = "red"
         self.opacity = 0.6
-        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fillOpacity=it.opacity))
+        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.canvas = svg.svg(viewBox="0 0 1200 650", width=1200, height=650)
+        root <= self.canvas
     def paint(self, shape="b", **kwargs):
         self.canvas <= self.shape[shape](**kwargs)
         
