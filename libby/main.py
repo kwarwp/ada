@@ -20,15 +20,20 @@ class Box:
 
 class SvgPainter:
     def __init__(self):
+        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         root = document["pydiv"]
         root.html = ""
-        self.fill = "red"
-        self.opacity = 0.6
-        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.canvas = svg.svg(viewBox="0 0 1200 650", width=1200, height=650)
         root <= self.canvas
+        self.fill = "white"
+        self.opacity = 1
+        self.paint("b", x=0, y=0, w=1200, h=650)
+        self.fill = "red"
+        self.opacity = 0.5
     def paint(self, shape="b", **kwargs):
-        self.canvas <= self.shape[shape](**kwargs)
+        shp = self.shape[shape](**kwargs)
+        self.canvas <= shp
+        #shp.setAttribute("fill-opacity", self.opacity)
         
 SvgPainter().paint("b", x=10, y=10, w=200, h=100)
         
