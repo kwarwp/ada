@@ -18,7 +18,7 @@ class Box:
         self.box = box
 
 
-class Svg Painter:
+class SvgPainter:
     def __init__(self):
         root = document["pydiv"]
         self.fill = "red"
