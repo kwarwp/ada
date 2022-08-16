@@ -38,9 +38,30 @@ class SvgPainter:
     def fill(self, color="red", op=0.5):
         self.fill = color
         self.opacity = op
+
+
+class SvgMarquee:
+    def __init__(self, canvas, stroke="grey", dash="-."):
+        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
+        self.canvas = canvas
+        self.fill = None
+        self.stroke, self.dash = stroke, dash
+        self.opacity = 0.6
+    def paint(self, shape="b", f=None, **kwargs):
+        self.fill = f if f else self.fill
+        shp = svg.rect(
+        x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
+        stroke=it.stroke, stroke_dasharray=it.dash)
+        self.canvas <= shp
+        #shp.setAttribute("fill-opacity", self.opacity)
+    def fill(self, color="red", op=0.5):
+        self.fill = color
+        self.opacity = op
         
 s = SvgPainter()
+m = SvgMarquee(s)
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
 s.paint("b", f="green", x=60, y=20, w=80, h=60)
 s.paint("b", f="red", x=40, y=40, w=120, h=20)
+m.paint(x=40, y=40, w=120, h=20)
         
