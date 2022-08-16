@@ -41,13 +41,14 @@ class SvgPainter:
 
 
 class SvgMarquee:
-    def __init__(self, canvas, stroke="grey", dash="-."):
+    def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas.canvas
         self.fill = None
         self.stroke, self.dash = stroke, dash
-        self.opacity = 0.6
+        self.opacity = 0.8
         self.shape = lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
-        stroke=it.stroke, stroke_dasharray=it.dash)
+        stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
+        #stroke=it.stroke, stroke_width=2)
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
         shp = self.shape(**kwargs)
