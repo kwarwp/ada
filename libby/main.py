@@ -42,7 +42,7 @@ class SvgPainter:
 
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="-."):
-        self.canvas = canvas
+        self.canvas = canvas.canvas
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.6
