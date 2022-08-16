@@ -20,3 +20,10 @@ IndentationError: expected an indented block
   ^
 IndentationError: expected an indented block
 '''},
+{'date': 'Tue Aug 16 2022 14:16:56.17 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 21
+  class Svg Painter:
+             ^
+SyntaxError: invalid syntax
+'''},
