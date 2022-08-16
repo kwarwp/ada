@@ -30,10 +30,17 @@ class SvgPainter:
         self.paint("b", x=0, y=0, w=1200, h=650)
         self.fill = "red"
         self.opacity = 0.5
-    def paint(self, shape="b", **kwargs):
+    def paint(self, shape="b", f=None, **kwargs):
         shp = self.shape[shape](**kwargs)
         self.canvas <= shp
+        self.fill = f if f else None
         #shp.setAttribute("fill-opacity", self.opacity)
+    def fill(self, color="red", op=0.5):
+        self.fill = color
+        self.opacity = op
         
-SvgPainter().paint("b", x=10, y=10, w=200, h=100)
+s = SvgPainter()
+s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
+s.paint("b", f="green", x=60, y=20, w=80, h=60)
+s.paint("b", f="red", x=40, y=40, w=120, h=20)
         
