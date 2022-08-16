@@ -9,7 +9,7 @@ class sempai():
     flash= Elemento(img=FLASH)
     flash.entra(cdd)
     cdd.vai()
-sempai()
+#sempai()
 
 class Box:
     def __init__(self, box):
@@ -21,6 +21,7 @@ class Box:
 class SvgPainter:
     def __init__(self):
         root = document["pydiv"]
+        root.html = ""
         self.fill = "red"
         self.opacity = 0.6
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fillOpacity=it.opacity))
