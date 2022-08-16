@@ -29,5 +29,5 @@ class SvgPainter:
     def paint(self, shape="b", **kwargs):
         self.canvas <= self.shape[shape](**kwargs)
         
-SvgPainter().paint("b", 10, 10, 200, 100)
+SvgPainter().paint("b", x=10, y=10, w=200, h=100)
         
