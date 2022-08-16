@@ -59,3 +59,10 @@ TypeError: paint() takes 2 positional argument but more were given
     SvgPainter().paint("b", 10, 10, 200, 100)
 TypeError: paint() takes 2 positional argument but more were given
 '''},
+{'date': 'Tue Aug 16 2022 14:28:21.164 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 30
+  self.paint("b", x=0, y=0, w=1200, h=650)        self.fill = "red"
+                                                   ^
+SyntaxError: invalid syntax
+'''},
