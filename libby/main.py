@@ -42,16 +42,15 @@ class SvgPainter:
 
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="-."):
-        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.canvas = canvas
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.6
-    def paint(self, shape="b", f=None, **kwargs):
-        self.fill = f if f else self.fill
-        shp = svg.rect(
-        x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
+        self.shape = lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
         stroke=it.stroke, stroke_dasharray=it.dash)
+    def paint(self, f=None, **kwargs):
+        self.fill = f if f else self.fill
+        shp = self.shape(**kwargs)
         self.canvas <= shp
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
