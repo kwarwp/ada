@@ -66,3 +66,10 @@ TypeError: paint() takes 2 positional argument but more were given
                                                    ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Tue Aug 16 2022 14:51:16.711 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 48
+  self.stroke, self.dash = , stroke, dash
+                            ^
+SyntaxError: invalid syntax
+'''},
