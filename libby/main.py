@@ -45,6 +45,7 @@ class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
+        self.go_move = self.no_move
         #document.bind("click", self.click)
         rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
@@ -72,12 +73,18 @@ class SvgMarquee:
         #self.paint(x=x, y=y, w=20, h=20)
     def down(self, ev):
         self.origin = ev.clientX- self.ox, ev.clientY- self.oy
+        self.go_move = self.do_move
         #self.paint(x=x, y=y, w=20, h=20)
+    def no_move(self, ev):
+        pass
     def move(self, ev):
+        self.go_move
+    def do_move(self, ev):
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
         self.marquee.remove()
         self.paint(x=x, y=y, w=w, h=h)
+        self.go_move = self.no_move
     def up(self, ev):
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
