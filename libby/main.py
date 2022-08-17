@@ -36,7 +36,7 @@ class SvgPainter:
         self.canvas <= shp
         return shp
         #shp.setAttribute("fill-opacity", self.opacity)
-    def fill(self, color="red", op=0.5):
+    def filler(self, color="red", op=0.5):
         self.fill = color
         self.opacity = op
 
@@ -46,7 +46,7 @@ class SvgMarquee:
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
         self.go_move = self.no_move
-        #document.bind("click", self.click)
+        document.bind("click", self.click)
         rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
         self.fill = None
@@ -70,6 +70,8 @@ class SvgMarquee:
         self.opacity = op
     def click(self, ev):
         x, y = ev.clientX- self.ox, ev.clientY- self.oy
+        rect = ev.target
+        self.canvas.filler(color=rect.getAttribute("fill"))
         #self.paint(x=x, y=y, w=20, h=20)
     def down(self, ev):
         self.origin = ev.clientX- self.ox, ev.clientY- self.oy
@@ -78,17 +80,19 @@ class SvgMarquee:
     def no_move(self, ev):
         pass
     def move(self, ev):
-        self.go_move
+        self.go_move(ev)
     def do_move(self, ev):
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
         self.marquee.remove()
-        self.paint(x=x, y=y, w=w, h=h)
-        self.go_move = self.no_move
+        self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
+        self.go_move = self.no_move
         self.canvas.paint(x=x, y=y, w=w, h=h)
+        self.marquee.remove()
+        self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
 s = SvgPainter()
 m = SvgMarquee(s)
