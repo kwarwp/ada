@@ -17,14 +17,15 @@ class Box:
     def paint(self, box):
         self.box = box
 CW, CH = 1200, 650
-Z = 10
+Z = 5
+PX, PY = 20, 20
 
 class SvgPainter:
     def __init__(self):
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
-        self.canvas = svg.svg(viewBox=f"0 0 {CW/Z} {Ch/Z}", width=1200, height=650)
+        self.canvas = svg.svg(viewBox=f"{PX/Z} {PY/Z} {CW/Z} {CH/Z}", width=1200, height=650)
         root <= self.canvas
         self.fill = "white"
         self.opacity = 1
@@ -45,6 +46,7 @@ class SvgPainter:
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.zoom = Z
+        self.px, self.py = PX, PY
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
         self.go_move = self.no_move
@@ -75,7 +77,7 @@ class SvgMarquee:
         pass #self go_click(ev)
     def down(self, ev):
         #self.origin = ev.clientX- self.ox, ev.clientY- self.oy
-        self.origin = (ev.clientX- self.ox)/self.zoom, (ev.clientY- self.oy)/self.zoom
+        self.origin = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oyy)/self.zoom-self.p
         self.go_move = self.do_move
         #self.paint(x=x, y=y, w=20, h=20)
     def no_move(self, ev):
@@ -84,12 +86,12 @@ class SvgMarquee:
         self.go_move(ev)
     def do_move(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x, (ev.clientY- self.oy)/self.zoom-y
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y-self.py
         self.marquee.remove()
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x, (ev.clientY- self.oy)/self.zoom-y
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y-self.py
         self.go_move = self.no_move
         if w < 2 or h < 2:
             self.canvas.filler(color=ev.target.getAttribute("fill"))
