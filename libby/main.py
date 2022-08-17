@@ -95,9 +95,10 @@ class SvgMarquee:
         
 class Main:
     def __init__(self, painter):
-        def lay(ev):
-            painter.filler(color=ev.target.getAttribute("fill"))
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
+        def lay(ev):
+            painter.filler(color=ev.target.getAttribute("background"))
+            self.menu <= html.DIV(str(ev.target.getAttribute("background")))
         colors = "yellow green red blue grey peru".split()
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background':bg}
@@ -105,7 +106,7 @@ class Main:
         document <= self.menu
         for col in self.colors:
             self.menu <= col
-            col.bind("click")
+            col.bind("click", lay)
         
 s = SvgPainter()
 m = SvgMarquee(s)
