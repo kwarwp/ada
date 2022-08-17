@@ -23,7 +23,7 @@ class SvgPainter:
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
-        self.canvas = svg.svg(viewBox="0 0 1200 650", width=1200, height=650)
+        self.canvas = svg.svg(viewBox="0 0 240 170", width=1200, height=650)
         root <= self.canvas
         self.fill = "white"
         self.opacity = 1
