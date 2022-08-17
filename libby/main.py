@@ -98,8 +98,8 @@ class Main:
         self.menu = html.DIV(style={'position':"absolute", 'left':'0px', 'top':'0px', 'z-index': 10})
         colors = "yellow green red blue grey peru"
         self.colors = [html.DIV(
-        style={'position':"absolute", 'left':'0px', f'top':'{tp}px', 'min-height':"30px", 'background'=bg})
-        for tp, bg in zip(list(range(40, 6*40, 40), colors)
+        style={'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background'=bg})
+        for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
         document <= self.menu
         for col in self.colors:
             self.menu <= col
