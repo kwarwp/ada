@@ -43,7 +43,7 @@ class SvgPainter:
 
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
-        self.canvas = canvas.canvas
+        self.canvas = canvas
         #document.bind("click", self.click)
         document.bind("mousedown", self.down)
         document.bind("mouseup", self.up)
@@ -59,7 +59,7 @@ class SvgMarquee:
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
         shp = self.shape(**kwargs)
-        self.canvas <= shp
+        self.canvas.canvas <= shp
         return shp
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
