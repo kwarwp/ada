@@ -106,6 +106,7 @@ class Main:
         
 s = SvgPainter()
 m = SvgMarquee(s)
+main = Main()
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
 s.paint("b", f="green", x=60, y=20, w=80, h=60)
 s.paint("b", f="red", x=40, y=40, w=120, h=20)
