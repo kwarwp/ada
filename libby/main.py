@@ -44,17 +44,17 @@ class SvgPainter:
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas
+        self.origin, self.size = (0,0), (0,0)
         #document.bind("click", self.click)
-        document.bind("mousedown", self.down)
-        document.bind("mouseup", self.up)
         rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
-        self.origin, self.size = (0,0), (0,0)
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.8
         self.shape = lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
         stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
+        document.bind("mousedown", self.down)
+        document.bind("mouseup", self.up)
         #stroke=it.stroke, stroke_width=2)
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
