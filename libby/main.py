@@ -69,12 +69,7 @@ class SvgMarquee:
         self.fill = color
         self.opacity = op
     def click(self, ev):
-        self go_click(ev)
-    def do_click(self, ev):
-        x, y = ev.clientX- self.ox, ev.clientY- self.oy
-        rect = ev.target
-        self.canvas.filler(color=rect.getAttribute("fill"))
-        #self.paint(x=x, y=y, w=20, h=20)
+        pass #self go_click(ev)
     def down(self, ev):
         self.origin = ev.clientX- self.ox, ev.clientY- self.oy
         self.go_move = self.do_move
