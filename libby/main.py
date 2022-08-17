@@ -46,7 +46,7 @@ class SvgMarquee:
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
         self.go_move = self.no_move
-        document.bind("click", self.click)
+        #document.bind("click", self.click)
         rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
         self.fill = None
@@ -69,6 +69,8 @@ class SvgMarquee:
         self.fill = color
         self.opacity = op
     def click(self, ev):
+        self go_click(ev)
+    def do_click(self, ev):
         x, y = ev.clientX- self.ox, ev.clientY- self.oy
         rect = ev.target
         self.canvas.filler(color=rect.getAttribute("fill"))
@@ -90,6 +92,8 @@ class SvgMarquee:
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
         self.go_move = self.no_move
+        if w < 2 or h < 2:
+            self.canvas.filler(color=ev.target.getAttribute("fill"))
         self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
