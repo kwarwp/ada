@@ -74,7 +74,7 @@ class SvgMarquee:
     def up(self, ev):
         x, y = self.origin
         w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
-        self.canvas.paint(x=x, y=y, w=20, h=20)
+        self.canvas.paint(x=x, y=y, w=w, h=h)
         
 s = SvgPainter()
 m = SvgMarquee(s)
