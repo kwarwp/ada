@@ -180,3 +180,10 @@ SyntaxError: invalid syntax
                                                                                                                                       ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Aug 17 2022 13:59:46.815 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 100
+  style={'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background'=bg}
+                                                                                                     ^
+SyntaxError: invalid syntax
+'''},
