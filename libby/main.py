@@ -27,13 +27,14 @@ class SvgPainter:
         root <= self.canvas
         self.fill = "white"
         self.opacity = 1
-        self.paint("b", x=0, y=0, w=1200, h=650)
+        self.screen = self.paint("b", x=0, y=0, w=1200, h=650)
         self.fill = "red"
         self.opacity = 0.5
     def paint(self, shape="b", f=None, **kwargs):
         self.fill = f if f else self.fill
         shp = self.shape[shape](**kwargs)
         self.canvas <= shp
+        return shp
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
         self.fill = color
@@ -44,7 +45,7 @@ class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas.canvas
         document.bind("click", self.click)
-        rect = canvas.getBoundingClientRect()
+        rect = self.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
         self.fill = None
         self.stroke, self.dash = stroke, dash
@@ -56,6 +57,7 @@ class SvgMarquee:
         self.fill = f if f else self.fill
         shp = self.shape(**kwargs)
         self.canvas <= shp
+        return shp
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
         self.fill = color
