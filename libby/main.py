@@ -93,6 +93,17 @@ class SvgMarquee:
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
+class Main:
+    def __init__(self):
+        self.menu = html.DIV(style={'position':"absolute", 'left':'0px', 'top':'0px', 'z-index': 10})
+        colors = "yellow green red blue grey peru"
+        self.colors = [html.DIV(
+        style={'position':"absolute", 'left':'0px', f'top':'{tp}px', 'min-height':"30px", 'background'=bg})
+        for tp, bg in zip(list(range(40, 6*40, 40), colors)
+        document <= self.menu
+        for col in self.colors:
+            self.menu <= col
+        
 s = SvgPainter()
 m = SvgMarquee(s)
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
