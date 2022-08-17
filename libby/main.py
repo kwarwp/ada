@@ -25,7 +25,7 @@ class SvgPainter:
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
-        self.canvas = svg.svg(viewBox=f"{PX/Z} {PY/Z} {CW/Z} {CH/Z}", width=1200, height=650)
+        self.canvas = svg.svg(viewBox=f"{PX} {PY} {CW/Z} {CH/Z}", width=1200, height=650)
         root <= self.canvas
         self.fill = "white"
         self.opacity = 1
@@ -77,7 +77,7 @@ class SvgMarquee:
         pass #self go_click(ev)
     def down(self, ev):
         #self.origin = ev.clientX- self.ox, ev.clientY- self.oy
-        self.origin = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oyy)/self.zoom-self.p
+        self.origin = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oy)/self.zoom+self.py
         self.go_move = self.do_move
         #self.paint(x=x, y=y, w=20, h=20)
     def no_move(self, ev):
@@ -86,12 +86,12 @@ class SvgMarquee:
         self.go_move(ev)
     def do_move(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y-self.py
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y+self.py
         self.marquee.remove()
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y-self.py
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y+self.py
         self.go_move = self.no_move
         if w < 2 or h < 2:
             self.canvas.filler(color=ev.target.getAttribute("fill"))
@@ -105,10 +105,11 @@ class Main:
         def lay(ev):
             cor = ev.target.style.backgroundColor
             painter.filler(color=cor)
-        colors = "yellow green red blue grey peru".split()
+        colors = "yellow green red blue black peru cyan".split()
+        ncol = len(colors)+1
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
-        ) for tp, bg in zip(list(range(40, 7*40, 40)), colors)]
+        ) for tp, bg in zip(list(range(40, ncol*40, 40)), colors)]
         document <= self.menu
         for col in self.colors:
             self.menu <= col
