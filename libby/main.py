@@ -83,12 +83,12 @@ class SvgMarquee:
         self.go_move(ev)
     def do_move(self, ev):
         x, y = self.origin
-        w, h = self.size  = ev.clientX- self.ox -x, ev.clientY- self.oy-y
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x, (ev.clientY- self.oy)/self.zoom-y
         self.marquee.remove()
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox -x)/self.zoom, (ev.clientY- self.oy-y)/self.zoom
+        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x, (ev.clientY- self.oy)/self.zoom-y
         self.go_move = self.no_move
         if w < 2 or h < 2:
             self.canvas.filler(color=ev.target.getAttribute("fill"))
