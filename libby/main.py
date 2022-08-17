@@ -95,11 +95,11 @@ class SvgMarquee:
         
 class Main:
     def __init__(self):
-        self.menu = html.DIV(style={'position':"absolute", 'left':'100px', 'top':'100px', 'z-index': 10})
+        self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         colors = "yellow green red blue grey peru".split()
         self.colors = [html.DIV(style=
-        {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background':bg}
-        ) for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
+        {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background':bg}
+        ) for tp, bg in zip(list(range(40, 7*40, 40)), colors)]
         document <= self.menu
         for col in self.colors:
             self.menu <= col
