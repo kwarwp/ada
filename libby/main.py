@@ -50,7 +50,7 @@ class SvgMarquee:
         #document.bind("click", self.click)
         rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
-        self.vbox = self.canvas.canvas.viewBox.baseVal
+        self.vbox = self.canvas.canvas.viewBox
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.8
