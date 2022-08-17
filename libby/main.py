@@ -1,7 +1,7 @@
 # ada.libby.main.py
 from _spy.vitollino.main  import Cena,Elemento
 from _spy.vitollino.main import INVENTARIO as inv
-from browser import svg, document
+from browser import svg, document, html
 CDD="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cidade_de_Deus.jpg"
 FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-For-Designing-Projects.png"
 class sempai():
@@ -96,10 +96,10 @@ class SvgMarquee:
 class Main:
     def __init__(self):
         self.menu = html.DIV(style={'position':"absolute", 'left':'0px', 'top':'0px', 'z-index': 10})
-        colors = "yellow green red blue grey peru"
-        self.colors = [html.DIV(
-        style={'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background'=bg})
-        for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
+        colors = "yellow green red blue grey peru".split()
+        style={'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background'=bg}
+
+        self.colors = [html.DIV(style=style) for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
         document <= self.menu
         for col in self.colors:
             self.menu <= col
