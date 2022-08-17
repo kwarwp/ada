@@ -97,12 +97,10 @@ class Main:
     def __init__(self, painter):
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def lay(ev):
-            painter.filler(color=ev.target.text)
-            #self.menu <= html.DIV(str(ev.target.getAttribute("text")))
-            #self.menu.text = ''
-            #self.menu.text = str(ev.target.text)
+            cor = ev.target.style.backgroundColor
+            painter.filler(color=cor)
         colors = "yellow green red blue grey peru".split()
-        self.colors = [html.DIV(bg,style=
+        self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
         ) for tp, bg in zip(list(range(40, 7*40, 40)), colors)]
         document <= self.menu
