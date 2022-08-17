@@ -225,3 +225,10 @@ NameError: name 'tp' is not defined
     style={'position':"absolute", 'left':'0px', 'top': '{tp}px', 'min-height':"30px", 'background':{bg}}
 UnboundLocalError: local variable 'bg' referenced before assignment
 '''},
+{'date': 'Wed Aug 17 2022 14:32:15.511 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 100
+  self.menu <= html.SPAN(ev.target.getAttribute("background")
+                                                                       ^
+SyntaxError: invalid syntax
+'''},
