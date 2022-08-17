@@ -17,13 +17,14 @@ class Box:
     def paint(self, box):
         self.box = box
 CW, CH = 1200, 650
+Z = 10
 
 class SvgPainter:
     def __init__(self):
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
-        self.canvas = svg.svg(viewBox="0 0 600 325", width=1200, height=650)
+        self.canvas = svg.svg(viewBox=f"0 0 {CW/Z} {Ch/Z}", width=1200, height=650)
         root <= self.canvas
         self.fill = "white"
         self.opacity = 1
@@ -43,7 +44,7 @@ class SvgPainter:
 
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
-        self.zoom = 2
+        self.zoom = Z
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
         self.go_move = self.no_move
