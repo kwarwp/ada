@@ -47,7 +47,7 @@ class SvgMarquee:
         #document.bind("click", self.click)
         document.bind("mousedown", self.down)
         document.bind("mouseup", self.up)
-        rect = self.canvas.getBoundingClientRect()
+        rect = self.canvas.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
         self.origin, self.size = (0,0), (0,0)
         self.fill = None
@@ -72,7 +72,8 @@ class SvgMarquee:
         self.origin = ev.clientX- self.ox, ev.clientY- self.oy
         #self.paint(x=x, y=y, w=20, h=20)
     def up(self, ev):
-        self.size  = ev.clientX- self.ox -self.origin[0], ev.clientY- self.oy-self.origin[0]
+        x, y = self.origin
+        w, h = self.size  = ev.clientX- self.ox -self.origin[0], ev.clientY- self.oy-self.origin[0]
         self.canvas.paint(x=x, y=y, w=20, h=20)
         
 s = SvgPainter()
