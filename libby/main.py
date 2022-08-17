@@ -21,7 +21,7 @@ class Box:
 class SvgPainter:
     def __init__(self):
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
-        root = document["pydiv"]
+        self.root = root = document["pydiv"]
         root.html = ""
         self.canvas = svg.svg(viewBox="0 0 1200 650", width=1200, height=650)
         root <= self.canvas
@@ -43,6 +43,9 @@ class SvgPainter:
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas.canvas
+        document.bind("click", self.click)
+        rect = canvas.getBoundingClientRect()
+        self.ox, self.oy = rect.left, rect.top
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.8
@@ -57,6 +60,9 @@ class SvgMarquee:
     def fill(self, color="red", op=0.5):
         self.fill = color
         self.opacity = op
+    def click(self, ev):
+        x, y = ev.clientX- self.ox, ev.clientY- self.oy
+        self.paint(x=x, y=y, w=20, h=20)
         
 s = SvgPainter()
 m = SvgMarquee(s)
