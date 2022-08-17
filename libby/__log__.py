@@ -145,3 +145,10 @@ AttributeError: 'SvgPainter' object has no attribute 'getBoundingClientRect'
     rect = self.canvas.getBoundingClientRect()
 AttributeError: 'SvgPainter' object has no attribute 'getBoundingClientRect'
 '''},
+{'date': 'Wed Aug 17 2022 10:00:27.798 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 72
+  self go_click(ev)
+        ^
+SyntaxError: invalid syntax
+'''},
