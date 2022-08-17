@@ -44,9 +44,12 @@ class SvgPainter:
 class SvgMarquee:
     def __init__(self, canvas, stroke="grey", dash="4 1"):
         self.canvas = canvas.canvas
-        document.bind("click", self.click)
+        #document.bind("click", self.click)
+        document.bind("mousedown", self.down)
+        document.bind("mouseup", self.up)
         rect = self.canvas.getBoundingClientRect()
         self.ox, self.oy = rect.left, rect.top
+        self.origin, self.size = (0,0), (0,0)
         self.fill = None
         self.stroke, self.dash = stroke, dash
         self.opacity = 0.8
@@ -64,7 +67,13 @@ class SvgMarquee:
         self.opacity = op
     def click(self, ev):
         x, y = ev.clientX- self.ox, ev.clientY- self.oy
-        self.paint(x=x, y=y, w=20, h=20)
+        #self.paint(x=x, y=y, w=20, h=20)
+    def down(self, ev):
+        self.origin = ev.clientX- self.ox, ev.clientY- self.oy
+        #self.paint(x=x, y=y, w=20, h=20)
+    def up(self, ev):
+        self.size  = ev.clientX- self.ox -self.origin[0], ev.clientY- self.oy-self.origin[0]
+        self.canvas.paint(x=x, y=y, w=20, h=20)
         
 s = SvgPainter()
 m = SvgMarquee(s)
