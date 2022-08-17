@@ -97,9 +97,9 @@ class Main:
     def __init__(self):
         self.menu = html.DIV(style={'position':"absolute", 'left':'0px', 'top':'0px', 'z-index': 10})
         colors = "yellow green red blue grey peru".split()
-        style={'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'background':bg}
+        style={'position':"absolute", 'left':'0px', 'top': '{tp}px', 'min-height':"30px", 'background':{bg}}
 
-        self.colors = [html.DIV(style=style) for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
+        self.colors = [html.DIV(style=style.format(tp=tp, bg=bg)) for tp, bg in zip(list(range(40, 6*40, 40)), colors)]
         document <= self.menu
         for col in self.colors:
             self.menu <= col
