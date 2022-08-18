@@ -384,3 +384,10 @@ NameError: name 's' is not defined
     for col, tool in zip(self.colors[-3:], (edit, select, zoom)):
 NameError: name 'zoom' is not defined
 '''},
+{'date': 'Thu Aug 18 2022 12:33:48.989 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 157
+  tol = tool or 
+                 ^
+SyntaxError: invalid syntax
+'''},
