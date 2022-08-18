@@ -101,8 +101,8 @@ class SvgMarquee:
         w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y+self.py
         self.go_move = self.no_move
         if w < 2 or h < 2:
-            color = ev.target.getAttribute("fill"
-            self.canvas.filler(color=color))
+            color = ev.target.getAttribute("fill")
+            self.canvas.filler(color=color)
             self.main.filler(color=color)
         self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
