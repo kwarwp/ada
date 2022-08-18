@@ -147,6 +147,7 @@ class Main:
         #self.filling.setAttribute("color", color)
         self.filling.style.color = color
     def tooler(self, div, tool):
+        div.html = ""
         div <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
 
         self.tool.setAttribute("class", tool)
