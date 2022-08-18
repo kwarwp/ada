@@ -50,8 +50,9 @@ class SvgPainter:
 
 
 class SvgMarquee:
-    def __init__(self, canvas, stroke="grey", dash="4 1"):
+    def __init__(self, main, canvas, stroke="grey", dash="4 1"):
         self.zoom = Z
+        self.main = main
         self.px, self.py = PX, PY
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
@@ -100,16 +101,19 @@ class SvgMarquee:
         w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y+self.py
         self.go_move = self.no_move
         if w < 2 or h < 2:
-            self.canvas.filler(color=ev.target.getAttribute("fill"))
+            color = ev.target.getAttribute("fill"
+            self.canvas.filler(color=color))
+            self.main.filler(color=color)
         self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
 class Main:
-    def __init__(self, painter):
+    def __init__(self, marker=None, painter=None):
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def lay(ev):
             cor = ev.target.style.backgroundColor
+            self.filler(color=cor)
             painter.filler(color=cor)
         colors = "white yellow green red blue black peru cyan".split()
         ncol = len(colors)+1
@@ -121,13 +125,18 @@ class Main:
         self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'black'})
         #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
-        self.menu <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'white'})
+        self.filling <= html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
+        self.menu <= self.filling
         for col in self.colors:
             self.menu <= col
             col.bind("click", lay)
+        self.painter = painter or SvgPainter(s)
+        self.marquee = marker or SvgMarquee(self, self.painter)
+    def filler(self, color):
+        self.filling.setAttribute("color", color)
         
-s = SvgPainter()
-m = SvgMarquee(s)
+#s = SvgPainter()
+#m = SvgMarquee(s)
 main = Main(s)
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
 s.paint("b", f="green", x=60, y=20, w=80, h=60)
