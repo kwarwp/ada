@@ -118,7 +118,7 @@ class Main:
         ) for tp, bg in zip(list(range(40, ncol*40, 40)), colors)]
         document <= self.menu
         #self.colors[0].html = '<i class="fa-solid fa-magnifying-glass"></i>'
-        self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass")
+        self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'black'})
         #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
         self.menu <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'white'})
