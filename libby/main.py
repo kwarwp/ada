@@ -115,7 +115,7 @@ class Main:
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru transparent transparent transparent".split()
+        colors = "transparent yellow green red blue black peru transparent transparent transparent transparent".split()
         ncol = len(colors)+1
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
@@ -136,11 +136,11 @@ class Main:
         self.menu <= self.tool
         self.tooler(tool=edit)
         #self.tool <= tool
-        for col in self.colors[1:-2]:
+        for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
         off = 40*ncol - 40
-        for _col, _tool in zip(self.colors[-2:], (edit, select, zoom)):
+        for _col, _tool in zip(self.colors[-3:], (edit, select, zoom)):
             _col.style.top = f"{off}px"
             off+=40
             self.menu <= _col
