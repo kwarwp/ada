@@ -277,3 +277,10 @@ NameError: name 'Ch' is not defined
                                     ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Aug 18 2022 09:42:06.45 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 119
+  self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px';'color':'blue'"})
+                                                                                   ^
+SyntaxError: invalid syntax
+'''},
