@@ -129,11 +129,12 @@ class Main:
         select = "fa-solid fa-object-group"
         zoom = "fa-solid fa-magnifying-glass"
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
-        self.tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
+        tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
+        self.tool = self.colors[0]
         self.menu <= self.filling
         #self.menu <= self.tool
         self.menu <= self.colors[0]
-        self.colors[0] <= self.tool
+        self.tool <= tool
         for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
@@ -147,10 +148,10 @@ class Main:
         #self.filling.setAttribute("color", color)
         self.filling.style.color = color
     def tooler(self, div, tool):
-        div.html = ""
-        div <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
+        self.tool.html = ""
+        self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
 
-        self.tool.setAttribute("class", tool)
+        #self.tool.setAttribute("class", tool)
         #self.tool.Class = tool
         
 #s = SvgPainter()
