@@ -140,13 +140,15 @@ class Main:
         for col, tool in zip(self.colors[-3:], (edit, select, zoom)):
             self.menu <= col
             col <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
-            col.bind("click", lambda tool=tool, it=self: it.tooler(tool))
+            col.bind("click", lambda tool=tool, div=col, it=self: it.tooler(div,tool))
         self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
     def filler(self, color):
         #self.filling.setAttribute("color", color)
         self.filling.style.color = color
-    def tooler(self, tool):
+    def tooler(self, div, tool):
+        div <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
+
         self.tool.setAttribute("class", tool)
         #self.tool.Class = tool
         
