@@ -139,7 +139,7 @@ class Main:
         for col in self.colors[1:-2]:
             self.menu <= col
             col.bind("click", lay)
-        off = 40*ncol - 80
+        off = 40*ncol - 40
         for _col, _tool in zip(self.colors[-2:], (edit, select, zoom)):
             _col.style.top = f"{off}px"
             off+=40
