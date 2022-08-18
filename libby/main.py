@@ -127,6 +127,7 @@ class Main:
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
         edit = "fa-solid fa-paintbrush"
         select = "fa-solid fa-object-group"
+        zoom = "fa-solid fa-magnifying-glass"
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
         self.tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
         self.menu <= self.filling
