@@ -133,8 +133,9 @@ class Main:
         self.tool = self.colors[0]
         self.menu <= self.filling
         #self.menu <= self.tool
-        self.menu <= self.colors[0]
-        self.tool <= tool
+        self.menu <= self.tool
+        self.tooler(tool)
+        #self.tool <= tool
         for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
