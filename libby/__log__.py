@@ -291,3 +291,10 @@ SyntaxError: invalid syntax
                                                                                                            ^
 SyntaxError: EOL while scanning string literal
 '''},
+{'date': 'Thu Aug 18 2022 10:29:25.411 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 104
+  color = ev.target.getAttribute("fill"
+                                                     ^
+SyntaxError: invalid syntax
+'''},
