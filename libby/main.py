@@ -119,10 +119,10 @@ class Main:
             self.filler(color=cor)
             self.painter.filler(color=cor)
         colors = "transparent yellow green red blue black peru".split()
-        tools = ["transparent"] * 3
+        tools = ["transparent"] * 4
         ncol = len(colors)+1
         style = {}
-        off = 40*ncol - 40
+        off = 40*ncol + 40
         self.colors = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
         self.tools = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(off, ncol*40, 40)), tools)]
         document <= self.menu
@@ -138,7 +138,7 @@ class Main:
         for col in self.colors:
             self.menu <= col
             col.bind("click", lay)
-        off = 40*ncol - 40
+        #off = 40*ncol - 40
         for _col, _tool in zip(self.tools, (edit, select, zoom)):
             _col.style.top = f"{off}px"
             off+=40
