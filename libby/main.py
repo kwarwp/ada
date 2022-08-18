@@ -130,7 +130,7 @@ class Main:
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
         self.tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
         self.menu <= self.filling
-        self.menu <= self.tool
+        #self.menu <= self.tool
         self.colors[0] <= self.tool
         for col in self.colors[1:]:
             self.menu <= col
