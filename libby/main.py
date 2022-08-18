@@ -125,7 +125,7 @@ class Main:
         self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'black'})
         #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
-        self.filling <= html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
+        self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
         self.menu <= self.filling
         for col in self.colors:
             self.menu <= col
