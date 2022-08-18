@@ -134,7 +134,7 @@ class Main:
         self.menu <= self.filling
         #self.menu <= self.tool
         self.menu <= self.tool
-        self.tooler(tool)
+        self.tooler(edit)
         #self.tool <= tool
         for col in self.colors[1:-3]:
             self.menu <= col
