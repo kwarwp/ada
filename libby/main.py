@@ -115,7 +115,7 @@ class Main:
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru cyan transparent transparent transparent".split()
+        colors = "transparent yellow green red blue black peru transparent transparent transparent".split()
         ncol = len(colors)+1
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
@@ -147,8 +147,8 @@ class Main:
         #self.filling.setAttribute("color", color)
         self.filling.style.color = color
     def tooler(self, tool):
-        #self.filling.setAttribute("color", color)
-        self.tool.Class = tool
+        self.tool.setAttribute("class", tool)
+        #self.tool.Class = tool
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
