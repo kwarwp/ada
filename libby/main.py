@@ -7,7 +7,7 @@ FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-Fo
 AWESOME = "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
 FAW = html.LINK(rel="stylesheet", href=AWESOME, Type="text/css")
 FAW.setAttribute("type", "text/css")
-document.head <= FAW
+#document.head <= FAW
 class sempai():
     cdd= Cena(img=CDD)
     flash= Elemento(img=FLASH)
