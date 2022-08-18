@@ -130,7 +130,7 @@ class Main:
         for col in self.colors:
             self.menu <= col
             col.bind("click", lay)
-        self.painter = painter or SvgPainter(s)
+        self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
     def filler(self, color):
         self.filling.setAttribute("color", color)
