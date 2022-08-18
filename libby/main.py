@@ -139,7 +139,7 @@ class Main:
         for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
-        for col, tool in zip(self.colors[-3:], (edit, select, zoom)):
+        for col, tool in zip(self.colors[-2:], (edit, select, zoom)):
             self.menu <= col
             col <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
             col.bind("click", lambda tol=tool, it=self: it.tooler(tol))
