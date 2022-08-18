@@ -135,7 +135,7 @@ class Main:
         self.menu <= self.filling
         self.menu <= self.tool
         self.tooler(tool=edit)
-        for col in self.colors[1:-3]:
+        for col in self.colors:
             self.menu <= col
             col.bind("click", lay)
         off = 40*ncol - 40
