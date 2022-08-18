@@ -114,7 +114,7 @@ class Main:
         def lay(ev):
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
-            painter.filler(color=cor)
+            self.painter.filler(color=cor)
         colors = "white yellow green red blue black peru cyan".split()
         ncol = len(colors)+1
         self.colors = [html.DIV(style=
@@ -133,13 +133,16 @@ class Main:
         self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
     def filler(self, color):
-        self.filling.setAttribute("color", color)
+        #self.filling.setAttribute("color", color)
+        self.filling.style.color = color
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
 main = Main()
+'''
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
 s.paint("b", f="green", x=60, y=20, w=80, h=60)
 s.paint("b", f="red", x=40, y=40, w=120, h=20)
 m.paint(x=40, y=40, w=120, h=20)
+'''
         
