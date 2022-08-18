@@ -115,7 +115,7 @@ class Main:
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru cyan".split()
+        colors = "transparent yellow green red blue black peru cyan transparent transparent transparent".split()
         ncol = len(colors)+1
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
@@ -131,15 +131,23 @@ class Main:
         self.tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
         self.menu <= self.filling
         #self.menu <= self.tool
+        self.menu <= self.colors[0]
         self.colors[0] <= self.tool
-        for col in self.colors[1:]:
+        for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
+        for col, tool in zip(self.colors[-3:], (edit, select, zoom)):
+            self.menu <= col
+            col <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
+            col.bind("click", lambda tool=tool, it=self: it.tooler(tool))
         self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
     def filler(self, color):
         #self.filling.setAttribute("color", color)
         self.filling.style.color = color
+    def tooler(self, tool):
+        #self.filling.setAttribute("color", color)
+        self.tool.Class = tool
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
