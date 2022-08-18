@@ -111,31 +111,29 @@ class SvgMarquee:
 class Main:
     def __init__(self, marker=None, painter=None):
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
+        def sty(tp, bg):
+            return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
+            'min-height':"30px", 'width':"30px", 'background-color':bg}
         def lay(ev):
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
         colors = "transparent yellow green red blue black peru transparent transparent transparent transparent".split()
+        tools = ["transparent"] * 3
         ncol = len(colors)+1
-        self.colors = [html.DIV(style=
-        {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
+        style = {}
+        self.colors = [html.DIV(style=sty(tp, bg)
         ) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
         document <= self.menu
-        #self.colors[0].html = '<i class="fa-solid fa-magnifying-glass"></i>'
-        #self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'black'})
-        #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
-        #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
         edit = "fa-solid fa-paintbrush"
         select = "fa-solid fa-object-group"
         zoom = "fa-solid fa-magnifying-glass"
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
-        tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
+        #tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
         self.tool = self.colors[0]
         self.menu <= self.filling
-        #self.menu <= self.tool
         self.menu <= self.tool
         self.tooler(tool=edit)
-        #self.tool <= tool
         for col in self.colors[1:-3]:
             self.menu <= col
             col.bind("click", lay)
@@ -146,18 +144,13 @@ class Main:
             self.menu <= _col
             _col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
             _col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
-            #col.bind("click", self.tooler)
         self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
     def filler(self, color):
-        #self.filling.setAttribute("color", color)
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
         self.tool.html = ""
         self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
-
-        #self.tool.setAttribute("class", tool)
-        #self.tool.Class = tool
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
