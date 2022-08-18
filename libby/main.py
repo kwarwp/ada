@@ -115,7 +115,7 @@ class Main:
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "grey yellow green red blue black peru cyan".split()
+        colors = "transparent yellow green red blue black peru cyan".split()
         ncol = len(colors)+1
         self.colors = [html.DIV(style=
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
@@ -125,13 +125,14 @@ class Main:
         #self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'black'})
         #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
-        edit = "fa-regular fa-paintbrush-pencil"
-        select = "fa-regular fa-square-dashed"
+        edit = "fa-solid fa-paintbrush"
+        select = "fa-solid fa-object-group"
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
         self.tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
         self.menu <= self.filling
         self.menu <= self.tool
-        for col in self.colors:
+        self.colors[0] <= self.tool
+        for col in self.colors[1:]:
             self.menu <= col
             col.bind("click", lay)
         self.painter = painter or SvgPainter()
