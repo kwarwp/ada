@@ -119,7 +119,7 @@ class Main:
         document <= self.menu
         #self.colors[0].html = '<i class="fa-solid fa-magnifying-glass"></i>'
         self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass")
-        self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
+        #self.colors[0] <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'black'})
         #self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'white'})
         self.menu <= html.SPAN(Class="fa-solid fa-user", style={'font-size':'30px', 'color':'white'})
         for col in self.colors:
