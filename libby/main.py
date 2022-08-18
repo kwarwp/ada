@@ -5,7 +5,9 @@ from browser import svg, document, html
 CDD="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cidade_de_Deus.jpg"
 FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-For-Designing-Projects.png"
 AWESOME = "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
-document.head <= html.LINK(rel="stylesheet", href=AWESOME)
+FAW = html.LINK(rel="stylesheet", href=AWESOME, Type="text/css")
+FAW.setAttribute("type", "text/css")
+document.head <= FAW
 class sempai():
     cdd= Cena(img=CDD)
     flash= Elemento(img=FLASH)
@@ -113,7 +115,10 @@ class Main:
         {'position':"absolute", 'left':'0px', 'top': f'{tp}px', 'min-height':"30px", 'width':"30px", 'background-color':bg}
         ) for tp, bg in zip(list(range(40, ncol*40, 40)), colors)]
         document <= self.menu
-        self.colors[0].html = '<i class="fa-solid fa-magnifying-glass"></i>'
+        #self.colors[0].html = '<i class="fa-solid fa-magnifying-glass"></i>'
+        self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass")
+        self.colors[0] <= html.SPAN(Class="fa-solid fa-magnifying-glass")
+        self.menu <= html.SPAN(Class="fa-solid fa-magnifying-glass", style={'font-size':'30px', 'color':'blue'})
         for col in self.colors:
             self.menu <= col
             col.bind("click", lay)
