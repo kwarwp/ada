@@ -270,3 +270,10 @@ AttributeError: 'str' object has no attribute 'baseVal'
     (Ch/Z)
 NameError: name 'Ch' is not defined
 '''},
+{'date': 'Thu Aug 18 2022 09:33:59.245 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 117
+  self.colors[0] <= html.SPAN(class="fa-solid fa-magnifying-glass")
+                                    ^
+SyntaxError: invalid syntax
+'''},
