@@ -145,7 +145,7 @@ class Main:
             off+=40
             self.menu <= col
             col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
-            col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev, tol))
+            col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
             #col.bind("click", self.tooler)
         self.painter = painter or SvgPainter()
         self.marquee = marker or SvgMarquee(self, self.painter)
@@ -154,8 +154,7 @@ class Main:
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
         self.tool.html = ""
-        tol = tool or 
-        self.tool <= html.SPAN(Class=, style={'font-size':'30px', 'color':'black'})
+        self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
 
         #self.tool.setAttribute("class", tool)
         #self.tool.Class = tool
