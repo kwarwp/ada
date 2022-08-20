@@ -100,6 +100,7 @@ class SvgMarquee:
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
         shp = self.shape(**kwargs)
+        self.marquee = shp
         self.canvas.canvas <= shp
         return shp
         #shp.setAttribute("fill-opacity", self.opacity)
@@ -200,7 +201,7 @@ class Main:
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
-        #alert(bbox)
+        alert(bbox)
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
         self.marquee.paint(**bbox) if box else None
         
