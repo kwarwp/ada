@@ -61,6 +61,7 @@ class SvgPainter:
         self.fill = "white"
         self.opacity = 1
         self.screen = self.paint("b", x=0, y=0, w=1200, h=650)
+        Box.BOX = []
         self.fill = "red"
         self.opacity = 0.5
     def paint(self, shape="b", f=None, **kwargs):
@@ -203,6 +204,8 @@ class Main:
         self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
     def paint(self, f=None, **kwargs):
         self.model.paint(f=f, **kwargs)
+    def remove(self, box):
+        self.model.remove(box)
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
