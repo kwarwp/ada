@@ -94,9 +94,10 @@ class SvgMarquee:
         stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
         #stroke=it.stroke, stroke_width=2)
     def main(self):
-        document.bind("mousedown", self.down)
-        document.bind("mouseup", self.up)
-        document.bind("mousemove", self.move)
+        canvas = self.canvas.canvas
+        canvas.bind("mousedown", self.down)
+        canvas.bind("mouseup", self.up)
+        canvas.bind("mousemove", self.move)
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
@@ -139,7 +140,6 @@ class SvgMarquee:
             self._main.select(x=dx, y=dy)
         else:
             self.canvas.paint(x=x, y=y, w=w, h=h)
-            self._main.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
