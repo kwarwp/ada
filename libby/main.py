@@ -197,7 +197,7 @@ class Main:
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
-        self.marquee.paint(**box.box) if box else None
+        self.marquee.paint(**(box.box)) if box else None
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
