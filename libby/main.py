@@ -128,6 +128,10 @@ class SvgMarquee:
         
 class Main:
     def __init__(self, marker=None, painter=None):
+        self.painter = painter or SvgPainter(self)
+        self.marquee = marker or SvgMarquee(self, self.painter)
+        self.model = Box()
+    def main(self):
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
@@ -163,10 +167,6 @@ class Main:
             self.menu <= _col
             _col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
             _col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
-        self.painter = painter or SvgPainter(self)
-        self.marquee = marker or SvgMarquee(self, self.painter)
-        self.mark = self.marquee.paint
-        self.model = Box()
     def filler(self, color):
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
