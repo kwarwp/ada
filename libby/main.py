@@ -196,7 +196,7 @@ class Main:
         self.model.paint(f=f, **kwargs)
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
-        bbox = box.box if box else None
+        bbox = box.box._asdict() if box else None
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
         self.marquee.paint(**bbox) if box else None
         
