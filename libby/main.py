@@ -135,6 +135,8 @@ class SvgMarquee:
         dx, dy = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oy)/self.zoom+self.py
         w, h = self.size  =  dx-x, dy-y
         self.go_move = self.no_move
+        self.marquee.remove()
+        self.marquee = self.paint(x=0, y=0, w=0, h=0)
         if w < 2 or h < 2:
             color = ev.target.getAttribute("fill")
             box = Boxer(f=color, x=x, y=y, w=w, h=h)
@@ -142,8 +144,6 @@ class SvgMarquee:
             self._main.select(x=dx, y=dy)
         else:
             self.canvas.paint(x=x, y=y, w=w, h=h)
-        self.marquee.remove()
-        self.marquee = self.paint(x=0, y=0, w=0, h=0)
         return True
         
 class Main:
