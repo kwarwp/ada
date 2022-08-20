@@ -145,7 +145,7 @@ class Main:
         root <= self.splash
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
-        self.marquee = self.marker or SvgMarquee(self, self.painter)
+        self.marquee = self.marquee or SvgMarquee(self, self.painter)
         self.marquee.main()
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def sty(tp, bg):
