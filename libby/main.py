@@ -14,6 +14,7 @@ FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-Fo
 AWESOME = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
 FAW = html.LINK(rel="stylesheet", href=AWESOME, Type="text/css")
 FAW.setAttribute("type", "text/css")
+JEPPETO = "https://i.imgur.com/eI50beC.png"
 document.head <= FAW
 class sempai():
     cdd= Cena(img=CDD)
@@ -29,11 +30,11 @@ class Box:
         
     def paint(self, f=None, **kwargs):
         self.box = Boxer(f=f, **kwargs)
-        BOX.append(self)
+        Box.BOX.append(self)
     def remove(self, box):
-        BOX.remove(box)
+        Box.BOX.remove(box)
     def find(self, x, y):
-        for box in BOX:
+        for box in Box.BOX:
             if (box.x < x < box.x+w) and (box.y < y < box.y+h) :
                 return box
         return None
@@ -84,11 +85,12 @@ class SvgMarquee:
         self.opacity = 0.8
         self.shape = lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity,
         stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
+        #stroke=it.stroke, stroke_width=2)
+    def main(self):
         document.bind("mousedown", self.down)
         document.bind("mouseup", self.up)
         document.bind("mousemove", self.move)
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
-        #stroke=it.stroke, stroke_width=2)
     def paint(self, f=None, **kwargs):
         self.fill = f if f else self.fill
         shp = self.shape(**kwargs)
@@ -131,7 +133,10 @@ class Main:
         self.model = Box()
         self.painter = painter or SvgPainter(self)
         self.marquee = marker or SvgMarquee(self, self.painter)
-    def main(self):
+        vai = Cena(vai=self.main)
+        Cena(JEPPETO, esquerda=vai, meio=vai, direita=vai).vai()
+    def main(self, _=0):
+        self.marquee.main()
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
