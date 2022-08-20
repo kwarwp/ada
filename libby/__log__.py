@@ -501,3 +501,9 @@ NameError: name 'BOX' is not defined
     self.marquee.main()
 TypeError: 'Main' object is not callable
 '''},
+{'date': 'Sat Aug 20 2022 10:42:35.723 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: function statement requires a name
+  module '$exec_320' line 186
+main = Main().main()
+'''},
