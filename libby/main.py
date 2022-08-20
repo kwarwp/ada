@@ -39,7 +39,7 @@ class Box:
         for bbox in Box.BOX:
             box = bbox.box
             if (box.x < x < box.x+box.w) and (box.y < y < box.y+box.h) :
-                return box
+                return bbox
         return None
 CW, CH = 1200, 650
 Z = 5
@@ -196,8 +196,9 @@ class Main:
         self.model.paint(f=f, **kwargs)
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
+        bbox = box.box if box else None
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
-        self.marquee.paint(**(box.box)) if box else None
+        self.marquee.paint(**bbox) if box else None
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
