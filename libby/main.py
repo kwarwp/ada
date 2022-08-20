@@ -36,8 +36,9 @@ class Box:
     def remove(self, box):
         Box.BOX.remove(box)
     def find(self, x, y):
-        for box in Box.BOX:
-            if (box.x < x < box.x+w) and (box.y < y < box.y+h) :
+        for bbox in Box.BOX:
+            box = bbox.box
+            if (box.x < x < box.x+box.w) and (box.y < y < box.y+box.h) :
                 return box
         return None
 CW, CH = 1200, 650
