@@ -44,7 +44,7 @@ PX, PY = 20, 20
 
 class SvgPainter:
     def __init__(self, main):
-        self.main= main
+        self._main= main
         self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(
             x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
@@ -58,7 +58,7 @@ class SvgPainter:
         self.opacity = 0.5
     def paint(self, shape="b", f=None, **kwargs):
         self.fill = f if f else self.fill
-        self.main.paint(f=f, **kwargs)
+        self._main.paint(f=f, **kwargs)
         shp = self.shape[shape](**kwargs)
         self.canvas <= shp
         return shp
@@ -71,7 +71,7 @@ class SvgPainter:
 class SvgMarquee:
     def __init__(self, main, canvas, stroke="grey", dash="4 1"):
         self.zoom = Z
-        self.main = main
+        self._main = main
         self.px, self.py = PX, PY
         self.canvas = canvas
         self.origin, self.size = (0,0), (0,0)
@@ -123,7 +123,7 @@ class SvgMarquee:
         if w < 2 or h < 2:
             color = ev.target.getAttribute("fill")
             self.canvas.filler(color=color)
-            self.main.filler(color=color)
+            self._main.filler(color=color)
         self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
