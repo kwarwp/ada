@@ -125,6 +125,9 @@ class SvgMarquee:
         self.marquee.remove()
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
+        ev.preventDefault()
+        ev.stopImmediatePropagation()
+
         x, y = self.origin
         dx, dy = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oy)/self.zoom+self.py
         w, h = self.size  =  dx-x, dy-y
