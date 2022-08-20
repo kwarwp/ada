@@ -35,6 +35,9 @@ class Box:
         Box.BOX.append(self)
     def remove(self, box):
         Box.BOX.remove(box)
+    def as_dict(self):
+        b = self.box
+        return dict(f=b.f, x=b.x, y=b.y, w=b.w, h=b.h)
     def find(self, x, y):
         for bbox in Box.BOX:
             box = bbox.box
@@ -196,7 +199,7 @@ class Main:
         self.model.paint(f=f, **kwargs)
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
-        bbox = box.box._asdict() if box else None
+        bbox = box.as_dict() if box else None
         #alert(bbox)
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
         self.marquee.paint(**bbox) if box else None
