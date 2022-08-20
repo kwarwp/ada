@@ -28,6 +28,7 @@ class sempai():
 class Box:
     BOX = []
     def __init__(self, box=None):
+        Box.BOX = []
         self.box = box
         
     def paint(self, f=None, **kwargs):
@@ -201,7 +202,7 @@ class Main:
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
-        print(box, bbox)
+        print(box, bbox,">>>", [(b.box.x, b.box.y) for b in Box.BOX])
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
         self.marquee.paint(**bbox) if box else None
         
