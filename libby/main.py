@@ -133,8 +133,9 @@ class Main:
         self.model = Box()
         self.painter = painter or SvgPainter(self)
         self.marquee = marker or SvgMarquee(self, self.painter)
-        self.splash = html.DIV(onclick=self.main, style={
-        'position':"absolute", 'left':'auto', 'top':'100px', 'background-image': f'url({JEPPETO})'})
+        self.splash = html.DIV(style={
+        'position':"absolute", 'left':'200px', 'top':'100px', 'width':"400px",'background-image': f'url({JEPPETO})'})
+        # self.splash.onclick=self.main 
         document["pydiv"] <= self.splash
     def main(self, _=0):
         self.marquee.main()
@@ -183,7 +184,7 @@ class Main:
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
-main = Main().main()
+main = Main()#.main()
 '''
 s.paint("b", f="yellow", x=10, y=10, w=400, h=200)
 s.paint("b", f="green", x=60, y=20, w=80, h=60)
