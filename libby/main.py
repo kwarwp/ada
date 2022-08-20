@@ -138,7 +138,8 @@ class Main:
         root = document["pydiv"]
         root.html = ""
         self.splash = html.DIV(style={
-        'position':"absolute", 'left':'200px', 'top':'100px', 'width':"400px",'background-image': f'url({JEPPETO})'})
+            'position':"absolute", 'left':'200px', 'top':'100px',
+            'min-height':"500px", 'width':"400px",'background-image': f'url({JEPPETO})'})
         # self.splash.onclick=self.main 
         root <= self.splash
     def main(self, _=0):
