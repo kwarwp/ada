@@ -127,9 +127,10 @@ class SvgMarquee:
             color = ev.target.getAttribute("fill")
             box = Boxer(f=color, x=x, y=y, w=w, h=h)
             self.canvas.filler(color=color)
-            self._main.select(dx, dy)
+            self._main.select(x=dx, y=dy)
         else:
             self.canvas.paint(x=x, y=y, w=w, h=h)
+            self._main.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
@@ -193,7 +194,9 @@ class Main:
     def paint(self, f=None, **kwargs):
         self.model.paint(f=f, **kwargs)
     def select(self, f=None, x=-1, y=-1, **kwargs):
-        self.marquee.paint(x=x, y=y, w=40, h=40) # self.model.find(x, y)
+        box = self.model.find(x, y)
+        #self.marquee.paint(x=x, y=y, w=40, h=40) if box
+        self.marquee.paint(**box.box) if box else None
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
