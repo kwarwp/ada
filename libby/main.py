@@ -28,12 +28,12 @@ class sempai():
 class Box:
     BOX = []
     def __init__(self, box=None):
-        Box.BOX = []
+        #Box.BOX = []
         self.box = box
         
     def paint(self, f=None, **kwargs):
-        self.box = Boxer(f=f, **kwargs)
-        Box.BOX.append(self)
+        box = Box(Boxer(f=f, **kwargs))
+        Box.BOX.append(box)
     def remove(self, box):
         Box.BOX.remove(box)
     def as_dict(self):
@@ -94,7 +94,7 @@ class SvgMarquee:
         stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
         #stroke=it.stroke, stroke_width=2)
     def main(self):
-        canvas = self.canvas.canvas
+        canvas = document #self.canvas.canvas
         canvas.bind("mousedown", self.down)
         canvas.bind("mouseup", self.up)
         canvas.bind("mousemove", self.move)
@@ -126,7 +126,7 @@ class SvgMarquee:
         self.marquee.remove()
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
-        ev.preventDefault()
+        #ev.preventDefault()
         ev.stopImmediatePropagation()
 
         x, y = self.origin
@@ -142,6 +142,7 @@ class SvgMarquee:
             self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
+        return True
         
 class Main:
     def __init__(self, marker=None, painter=None):
