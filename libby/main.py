@@ -120,12 +120,14 @@ class SvgMarquee:
         self.marquee = self.paint(x=x, y=y, w=w, h=h)
     def up(self, ev):
         x, y = self.origin
-        w, h = self.size  = (ev.clientX- self.ox)/self.zoom -x+self.px, (ev.clientY- self.oy)/self.zoom-y+self.py
+        dx, dy = (ev.clientX- self.ox)/self.zoom+self.px, (ev.clientY- self.oy)/self.zoom+self.py
+        w, h = self.size  =  dx-x, dy-y
         self.go_move = self.no_move
         if w < 2 or h < 2:
             color = ev.target.getAttribute("fill")
+            box = Boxer(f=color, x=x, y=y, w=w, h=h)
             self.canvas.filler(color=color)
-            self._main.filler(color=color)
+            self._main.select(dx, dy)
         self.canvas.paint(x=x, y=y, w=w, h=h)
         self.marquee.remove()
         self.marquee = self.paint(x=0, y=0, w=0, h=0)
@@ -189,6 +191,8 @@ class Main:
         self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
     def paint(self, f=None, **kwargs):
         self.model.paint(f=f, **kwargs)
+    def select(self, f=None, x=-1, y=-1, **kwargs):
+        self.paint(x=x, y=y, w=40, h=40) # self.model.find(x, y)
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
