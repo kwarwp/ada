@@ -1,7 +1,7 @@
 # ada.libby.main.py
 from _spy.vitollino.main  import Cena,Elemento
 from _spy.vitollino.main import INVENTARIO as inv
-from browser import svg, document, html
+from browser import svg, document, html, alert
 CDD="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cidade_de_Deus.jpg"
 FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-For-Designing-Projects.png"
 #AWESOME = "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
@@ -27,8 +27,10 @@ Z = 5
 PX, PY = 20, 20
 
 class SvgPainter:
-    def __init__(self):
-        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
+    def __init__(self, main):
+        self.main= main
+        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(onclick=self.click,
+            x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
         self.canvas = svg.svg(viewBox=f"{PX} {PY} {CW/Z} {CH/Z}", width=1200, height=650)
@@ -47,6 +49,11 @@ class SvgPainter:
     def filler(self, color="red", op=0.5):
         self.fill = color
         self.opacity = op
+    def click(self, event):
+        svgnode = event.target
+        rect = svgnode.getBoundingClientRect()
+        x, y , w, h = [rect[par] for par in "x y width height".split()]
+        alert("{} {} {} {}".format(x, y , w, h))
 
 
 class SvgMarquee:
@@ -145,8 +152,9 @@ class Main:
             self.menu <= _col
             _col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
             _col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
-        self.painter = painter or SvgPainter()
+        self.painter = painter or SvgPainter(self)
         self.marquee = marker or SvgMarquee(self, self.painter)
+        self.mark = self.marquee.paint
     def filler(self, color):
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
