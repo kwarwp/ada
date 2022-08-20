@@ -192,7 +192,7 @@ class Main:
     def paint(self, f=None, **kwargs):
         self.model.paint(f=f, **kwargs)
     def select(self, f=None, x=-1, y=-1, **kwargs):
-        self.paint(x=x, y=y, w=40, h=40) # self.model.find(x, y)
+        self.marquee.paint(x=x, y=y, w=40, h=40) # self.model.find(x, y)
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
