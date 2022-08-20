@@ -2,6 +2,11 @@
 from _spy.vitollino.main  import Cena,Elemento
 from _spy.vitollino.main import INVENTARIO as inv
 from browser import svg, document, html, alert
+from collections import namedtuple
+#import collections as col
+#create employee NamedTuple
+Boxer = namedtuple('Boxer', ['f','x', 'y', 'w', 'h'])
+
 CDD="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cidade_de_Deus.jpg"
 FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-For-Designing-Projects.png"
 #AWESOME = "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
@@ -18,10 +23,20 @@ class sempai():
 #sempai()
 
 class Box:
-    def __init__(self, box):
+    BOX = []
+    def __init__(self, box=None):
         self.box = box
-    def paint(self, box):
-        self.box = box
+        
+    def paint(self, f=None, **kwargs):
+        self.box = Boxer(f=f, **kwargs)
+        BOX.append(self)
+    def remove(self, box):
+        BOX.remove(box)
+    def find(self, x, y):
+        for box in BOX:
+            if (box.x < x < box.x+w) and (box.y < y < box.y+h) :
+                return box
+        return None
 CW, CH = 1200, 650
 Z = 5
 PX, PY = 20, 20
@@ -29,7 +44,7 @@ PX, PY = 20, 20
 class SvgPainter:
     def __init__(self, main):
         self.main= main
-        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(onclick=self.click,
+        self.shape = dict(b=lambda x, y, w, h, it=self: svg.rect(
             x=x, y=y, width=w, height=h, fill=it.fill, fill_opacity=it.opacity))
         self.root = root = document["pydiv"]
         root.html = ""
@@ -42,6 +57,7 @@ class SvgPainter:
         self.opacity = 0.5
     def paint(self, shape="b", f=None, **kwargs):
         self.fill = f if f else self.fill
+        self.main.paint(f=f, **kwargs)
         shp = self.shape[shape](**kwargs)
         self.canvas <= shp
         return shp
@@ -49,11 +65,6 @@ class SvgPainter:
     def filler(self, color="red", op=0.5):
         self.fill = color
         self.opacity = op
-    def click(self, event):
-        svgnode = event.target
-        rect = svgnode.getBoundingClientRect()
-        x, y , w, h = [rect[par] for par in "x y width height".split()]
-        alert("{} {} {} {}".format(x, y , w, h))
 
 
 class SvgMarquee:
@@ -155,11 +166,14 @@ class Main:
         self.painter = painter or SvgPainter(self)
         self.marquee = marker or SvgMarquee(self, self.painter)
         self.mark = self.marquee.paint
+        self.model = Box()
     def filler(self, color):
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
         self.tool.html = ""
         self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
+    def paint(self, f=None, **kwargs):
+        self.model.paint(f=f, **kwargs)
         
 #s = SvgPainter()
 #m = SvgMarquee(s)
