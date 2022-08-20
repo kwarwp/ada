@@ -133,8 +133,9 @@ class Main:
         self.model = Box()
         self.painter = painter or SvgPainter(self)
         self.marquee = marker or SvgMarquee(self, self.painter)
-        vai = Cena(vai=self.main)
-        Cena(JEPPETO, esquerda=vai, meio=vai, direita=vai).vai()
+        self.splash = html.DIV(onclick=self.main, style={
+        'position':"absolute", 'left':'auto', 'top':'100px', 'background-image': f'url({JEPPETO})'})
+        document["pydiv"] <= self.splash
     def main(self, _=0):
         self.marquee.main()
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
