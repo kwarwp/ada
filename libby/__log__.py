@@ -403,3 +403,9 @@ Exception: function statement requires a name
   module '$exec_320' line 166
 main = Main()
 '''},
+{'date': 'Sat Aug 20 2022 09:25:40.875 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+Exception: function statement requires a name
+  module '$exec_320' line 166
+main = Main()
+'''},
