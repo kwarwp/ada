@@ -105,6 +105,7 @@ class SvgMarquee:
         shp = self.shape(**kwargs)
         self.marquee = shp
         self.canvas.canvas <= shp
+        print(str(kwargs), shp)
         return shp
         #shp.setAttribute("fill-opacity", self.opacity)
     def fill(self, color="red", op=0.5):
@@ -209,7 +210,7 @@ class Main:
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
-        print(box, bbox,">>>", [(b.box.x, b.box.y) for b in Box.BOX])
+        #print(box, bbox,">>>", [(b.box.x, b.box.y) for b in Box.BOX])
         #self.marquee.paint(x=x, y=y, w=40, h=40) if box
         self.marquee.paint(**bbox) if box else None
         
