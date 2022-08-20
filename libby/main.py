@@ -95,7 +95,7 @@ class SvgMarquee:
         stroke=it.stroke, stroke_dasharray=it.dash, stroke_width=2)
         #stroke=it.stroke, stroke_width=2)
     def main(self):
-        canvas = document #self.canvas.canvas
+        canvas = self.canvas.canvas
         canvas.bind("mousedown", self.down)
         canvas.bind("mouseup", self.up)
         canvas.bind("mousemove", self.move)
