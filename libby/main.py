@@ -16,12 +16,14 @@ FAW = html.LINK(rel="stylesheet", href=AWESOME, Type="text/css")
 FAW.setAttribute("type", "text/css")
 JEPPETO = "https://i.imgur.com/eI50beC.png"
 document.head <= FAW
+'''
 class sempai():
     cdd= Cena(img=CDD)
     flash= Elemento(img=FLASH)
     flash.entra(cdd)
     cdd.vai()
 #sempai()
+'''
 
 class Box:
     BOX = []
