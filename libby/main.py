@@ -131,8 +131,8 @@ class SvgMarquee:
 class Main:
     def __init__(self, marker=None, painter=None):
         self.model = Box()
-        self.painter = painter or SvgPainter(self)
-        self.marquee = marker or SvgMarquee(self, self.painter)
+        #self.painter = painter or SvgPainter(self)
+        #self.marquee = marker or SvgMarquee(self, self.painter)
         self.splash = html.DIV(style={
         'position':"absolute", 'left':'200px', 'top':'100px', 'width':"400px",'background-image': f'url({JEPPETO})'})
         # self.splash.onclick=self.main 
