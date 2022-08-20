@@ -130,8 +130,8 @@ class SvgMarquee:
             self._main.select(dx, dy)
         else:
             self.canvas.paint(x=x, y=y, w=w, h=h)
-            self.marquee = self.paint(x=0, y=0, w=0, h=0)
         self.marquee.remove()
+        self.marquee = self.paint(x=0, y=0, w=0, h=0)
         
 class Main:
     def __init__(self, marker=None, painter=None):
