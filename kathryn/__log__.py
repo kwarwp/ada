@@ -71,3 +71,10 @@ Traceback (most recent call last):
     with urlopen(link) as f:
 AttributeError: 'FileIO' object has no attribute '__exit__'
 '''},
+{'date': 'Mon Sep 05 2022 17:38:02.522 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''1
+
+Exception: A network error occurred.
+  module '$exec_336' line 5
+f = urlopen(link)
+'''},
