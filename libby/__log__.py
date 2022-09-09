@@ -32,3 +32,10 @@ main = Main().main()
           ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Fri Sep 09 2022 08:25:22.482 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 258
+  sala = 
+          ^
+SyntaxError: invalid syntax
+'''},
