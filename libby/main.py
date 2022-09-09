@@ -198,29 +198,31 @@ class ToolBox:
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
             'min-height':"30px", 'width':"30px", 'background-color':bg}
-        def lay(ev):
-            cor = ev.target.style.backgroundColor
+        def lay(ev, cor):
+            # cor = ev.target.style.backgroundColor
+            cor = ev.target.title
+            #cor = "orange"
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru purple".split()
+        colors = "transparent yellow green orange red blue cyan magenta purple".split()
         tools = ["transparent"] * 4
         ncol = len(colors)+1
         style = {}
         off = 40*ncol + 40
-        self.colors = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
+        self.colors = [html.DIV(title=bg, style=sty(tp, bg)) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
         self.tools = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(off, off+4*40, 40)), tools)]
         # document <= self.menu
         edit = "fa-solid fa-paintbrush"
         select = "fa-solid fa-object-group"
         zoom = "fa-solid fa-magnifying-glass"
         turnoff = "fa-solid fa-power-off"
-        cena = "fa-solid fa-image-landscape"
-        people = "fa-solid fa-people"
+        cena = "fa-solid fa-image"
+        people = "fa-solid fa-person"
         roteiro = "fa-sharp fa-solid fa-scroll"
-        texto ="fa-solid fa-comment-text"
-        coisa = "fa-solid fa-nesting-dolls"
-        sala = "fa-regular fa-block-brick"
-        labirinto = "fa-regular fa-castle"
+        texto ="fa-solid fa-comment"
+        coisa = "fa-solid fa-screwdriver-wrench"
+        sala = "fa-solid fa-building"
+        labirinto = "fa-solid fa-castle"
         puzzle = "fa-solid fa-puzzle-piece"
         self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
         #tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
@@ -228,9 +230,10 @@ class ToolBox:
         self.menu <= self.filling
         self.menu <= self.tool
         self.tooler(tool=edit)
-        for col in self.colors:
+        for col, tol_ in zip(self.colors,(cena, cena, people, roteiro, texto, coisa, sala, puzzle)):
             self.menu <= col
-            col.bind("click", lay)
+            col <= html.SPAN(Class=tol_, style={'font-size':'30px', 'pointer-events':'none', 'color':'black','opacity':0.4})
+            col.bind("click", lambda ev, color=col:lay(ev, color))
         #off = 40*ncol - 40
         actions = (self.tool_edit, self.tool_select, self.tool_zoom, self.tool_turnoff)
         for _col, _tool, _act in zip(self.tools, (edit, select, zoom, turnoff), actions):
