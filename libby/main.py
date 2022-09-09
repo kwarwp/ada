@@ -191,7 +191,7 @@ class ToolBox:
         self.app = app
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
-        self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
+        self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px'}) #, 'z-index': 10})
         self.app.root <= self.menu
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
