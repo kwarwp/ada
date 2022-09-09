@@ -207,7 +207,7 @@ class ToolBox:
         off = 40*ncol + 40
         self.colors = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
         self.tools = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(off, off+4*40, 40)), tools)]
-        document <= self.menu
+        # document <= self.menu
         edit = "fa-solid fa-paintbrush"
         select = "fa-solid fa-object-group"
         zoom = "fa-solid fa-magnifying-glass"
