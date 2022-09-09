@@ -152,8 +152,8 @@ class Main:
         self.painter = painter
         self.marquee = marker
         self.tool = tool
-        root = document["pydiv"]
-        root.html = ""
+        self.root = document["pydiv"]
+        self.root.html = ""
         self.splash = html.DIV(style={
             'position':"absolute", 'left':'200px', 'top':'100px',
             'background-size': 'cover',    'background-repeat': 'no-repeat',
@@ -161,6 +161,7 @@ class Main:
         self.splash.onclick=self.main 
         root <= self.splash
     def main(self, _=0):
+        self.root.html = ""
         self.painter = self.painter or SvgPainter(self)
         self.marquee = self.marquee or SvgMarquee(self, self.painter)
         self.tool = self.tool or ToolBox(self, self.painter)
