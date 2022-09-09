@@ -24,3 +24,11 @@ Exception: function statement requires a name
   module '$exec_320' line 186
 main = Main().main()
 '''},
+
+{'date': 'Fri Sep 09 2022 08:23:54.907 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 190
+  sala = 
+          ^
+SyntaxError: invalid syntax
+'''},
