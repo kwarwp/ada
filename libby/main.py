@@ -147,10 +147,11 @@ class SvgMarquee:
         return True
         
 class Main:
-    def __init__(self, marker=None, painter=None):
+    def __init__(self, marker=None, painter=None, tool=None):
         self.model = Box()
         self.painter = painter
         self.marquee = marker
+        self.tool = tool
         root = document["pydiv"]
         root.html = ""
         self.splash = html.DIV(style={
@@ -162,7 +163,9 @@ class Main:
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
         self.marquee = self.marquee or SvgMarquee(self, self.painter)
+        self.tool = self.tool or ToolBox(self, self.painter)
         self.marquee.main()
+        return
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
@@ -229,8 +232,6 @@ class ToolBox:
         self.main = main
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
-        self.marquee = self.marquee or SvgMarquee(self, self.painter)
-        self.marquee.main()
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
@@ -239,7 +240,7 @@ class ToolBox:
             cor = ev.target.style.backgroundColor
             self.filler(color=cor)
             self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru".split()
+        colors = "transparent yellow green red blue black peru purple".split()
         tools = ["transparent"] * 4
         ncol = len(colors)+1
         style = {}
