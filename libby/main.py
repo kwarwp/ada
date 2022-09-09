@@ -189,9 +189,11 @@ class ToolBox:
         self.model = Box()
         self.painter = painter
         self.app = app
+        self.tool_action = {}
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
-        self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px'}) #, 'z-index': 10})
+        # self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px'}) #, 'z-index': 10})
+        self.menu = html.DIV(style={'position':"absolute", 'left':'-100px', 'top':'-60px'}) #, 'z-index': 10})
         self.app.root <= self.menu
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
@@ -230,7 +232,8 @@ class ToolBox:
             self.menu <= col
             col.bind("click", lay)
         #off = 40*ncol - 40
-        for _col, _tool in zip(self.tools, (edit, select, zoom)):
+        actions = (self.tool_edit, self.tool_select, self.tool_zoom, self.tool_turnoff)
+        for _col, _tool in zip(self.tools, (edit, select, zoom, turnoff)):
             _col.style.top = f"{off}px"
             off+=40
             self.menu <= _col
@@ -245,6 +248,14 @@ class ToolBox:
         self.model.paint(f=f, **kwargs)
     def remove(self, box):
         self.model.remove(box)
+    def tool_edit(self, ev):
+        pass
+    def tool_select(self, ev):
+        pass
+    def tool_zoom(self, ev):
+        pass
+    def tool_turnoff(self, ev):
+        pass
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
