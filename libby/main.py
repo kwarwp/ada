@@ -168,49 +168,6 @@ class Main:
         self.tool.main()
         self.marquee.main()
         return
-        self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
-        def sty(tp, bg):
-            return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
-            'min-height':"30px", 'width':"30px", 'background-color':bg}
-        def lay(ev):
-            cor = ev.target.style.backgroundColor
-            self.filler(color=cor)
-            self.painter.filler(color=cor)
-        colors = "transparent yellow green red blue black peru".split()
-        tools = ["transparent"] * 4
-        ncol = len(colors)+1
-        style = {}
-        off = 40*ncol + 40
-        self.colors = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(80, ncol*40, 40)), colors)]
-        self.tools = [html.DIV(style=sty(tp, bg)) for tp, bg in zip(list(range(off, off+4*40, 40)), tools)]
-        document <= self.menu
-        edit = "fa-solid fa-paintbrush"
-        select = "fa-solid fa-object-group"
-        zoom = "fa-solid fa-magnifying-glass"
-        cena = "fa-solid fa-image-landscape"
-        people = "fa-solid fa-people"
-        roteiro = "fa-sharp fa-solid fa-scroll"
-        texto ="fa-solid fa-comment-text"
-        coisa = "fa-solid fa-nesting-dolls"
-        sala = "fa-regular fa-block-brick"
-        labirinto = "fa-regular fa-castle"
-        puzzle = "fa-solid fa-puzzle-piece"
-        self.filling = html.SPAN(Class="fa-solid fa-fill", style={'font-size':'30px', 'color':'white'})
-        #tool = html.SPAN(Class=edit, style={'font-size':'30px', 'color':'black'})
-        self.tool = self.colors[0]
-        self.menu <= self.filling
-        self.menu <= self.tool
-        self.tooler(tool=edit)
-        for col in self.colors:
-            self.menu <= col
-            col.bind("click", lay)
-        #off = 40*ncol - 40
-        for _col, _tool in zip(self.tools, (edit, select, zoom)):
-            _col.style.top = f"{off}px"
-            off+=40
-            self.menu <= _col
-            _col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
-            _col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
     def filler(self, color):
         self.filling.style.color = color
     def tooler(self, ev=0, tool=0):
@@ -235,6 +192,7 @@ class ToolBox:
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
+        self.app.root <= self.menu
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
             'min-height':"30px", 'width':"30px", 'background-color':bg}
@@ -253,6 +211,7 @@ class ToolBox:
         edit = "fa-solid fa-paintbrush"
         select = "fa-solid fa-object-group"
         zoom = "fa-solid fa-magnifying-glass"
+        turnoff = "fa-solid fa-power-off"
         cena = "fa-solid fa-image-landscape"
         people = "fa-solid fa-people"
         roteiro = "fa-sharp fa-solid fa-scroll"
