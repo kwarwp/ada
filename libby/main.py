@@ -159,7 +159,7 @@ class Main:
             'background-size': 'cover',    'background-repeat': 'no-repeat',
             'min-height':"500px", 'width':"400px",'background-image': f'url({JEPPETO})'})
         self.splash.onclick=self.main 
-        root <= self.splash
+        self.root <= self.splash
     def main(self, _=0):
         self.root.html = ""
         self.painter = self.painter or SvgPainter(self)
