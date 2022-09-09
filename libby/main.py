@@ -193,7 +193,7 @@ class ToolBox:
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
         # self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px'}) #, 'z-index': 10})
-        self.menu = html.DIV(style={'position':"absolute", 'left':'-100px', 'top':'-60px'}) #, 'z-index': 10})
+        self.menu = html.DIV(style={'position':"absolute", 'left':'-120px', 'top':'-30px'}) #, 'z-index': 10})
         self.app.root <= self.menu
         def sty(tp, bg):
             return {'position':"absolute", 'left':'0px', 'top': f'{tp}px',
@@ -233,17 +233,18 @@ class ToolBox:
             col.bind("click", lay)
         #off = 40*ncol - 40
         actions = (self.tool_edit, self.tool_select, self.tool_zoom, self.tool_turnoff)
-        for _col, _tool in zip(self.tools, (edit, select, zoom, turnoff)):
+        for _col, _tool, _act in zip(self.tools, (edit, select, zoom, turnoff), actions):
             _col.style.top = f"{off}px"
             off+=40
             self.menu <= _col
             _col <= html.SPAN(Class=_tool, style={'font-size':'30px', 'color':'black'})
-            _col.bind("click", lambda ev, tol=_tool, it=self: it.tooler(ev=ev, tool=tol))
+            _col.bind("click", lambda ev, tol=_tool, act=_act, it=self: it.tooler(ev=ev, tool=tol, action=act))
     def filler(self, color):
         self.filling.style.color = color
-    def tooler(self, ev=0, tool=0):
+    def tooler(self, ev=0, tool=0, action=lambda *_: None):
         self.tool.html = ""
         self.tool <= html.SPAN(Class=tool, style={'font-size':'30px', 'color':'black'})
+        action(ev)
     def paint(self, f=None, **kwargs):
         self.model.paint(f=f, **kwargs)
     def remove(self, box):
@@ -255,7 +256,7 @@ class ToolBox:
     def tool_zoom(self, ev):
         pass
     def tool_turnoff(self, ev):
-        pass
+        self.app.root.html = ""
     def select(self, f=None, x=-1, y=-1, **kwargs):
         box = self.model.find(x, y)
         bbox = box.as_dict() if box else None
