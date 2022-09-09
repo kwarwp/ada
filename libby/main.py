@@ -164,6 +164,7 @@ class Main:
         self.painter = self.painter or SvgPainter(self)
         self.marquee = self.marquee or SvgMarquee(self, self.painter)
         self.tool = self.tool or ToolBox(self, self.painter)
+        self.tool.main()
         self.marquee.main()
         return
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
@@ -226,10 +227,10 @@ class Main:
         self.marquee.paint(**bbox) if box else None
         
 class ToolBox:
-    def __init__(self, main=None, painter=None):
+    def __init__(self, app=None, painter=None):
         self.model = Box()
         self.painter = painter
-        self.main = main
+        self.app = app
     def main(self, _=0):
         self.painter = self.painter or SvgPainter(self)
         self.menu = html.DIV(style={'position':"absolute", 'left':'10px', 'top':'100px', 'z-index': 10})
