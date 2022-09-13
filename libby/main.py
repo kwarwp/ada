@@ -24,8 +24,6 @@ class sempai():
     cdd.vai()
 #sempai()
 '''
-class Tomada(Cena):
-    def __init__(self, img='', boxer=Boxer(0, 0, 0, 100,60)):
 
 class Box:
     BOX = []
@@ -47,6 +45,12 @@ class Box:
             if (box.x < x < box.x+box.w) and (box.y < y < box.y+box.h) :
                 return bbox
         return None
+
+class Tomada(Cena, Box):
+    def __init__(self, img='', box=Boxer(0, 0, 0, 100,60)):
+        Cena.__init__(self, img)
+        Box.__init__(self, box)
+
 CW, CH = 1200, 650
 Z = 5
 PX, PY = 20, 20
