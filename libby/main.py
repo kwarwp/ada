@@ -1,11 +1,12 @@
 # ada.libby.main.py
-from _spy.vitollino.main  import Cena,Elemento
+from _spy.vitollino.main  import Cena,Elemento, Texto, Sala, Labirinto
 from _spy.vitollino.main import INVENTARIO as inv
 from browser import svg, document, html, alert
 from collections import namedtuple
 #import collections as col
 #create employee NamedTuple
 Boxer = namedtuple('Boxer', ['f','x', 'y', 'w', 'h'])
+NOBOX = Boxer(0, 0, 0, 100,60)
 
 CDD="https://upload.wikimedia.org/wikipedia/commons/e/e9/Cidade_de_Deus.jpg"
 FLASH="https://pngriver.com/wp-content/uploads/2018/03/Download-Flash-PNG-Pic-For-Designing-Projects.png"
@@ -27,7 +28,7 @@ class sempai():
 
 class Box:
     BOX = []
-    def __init__(self, box=None):
+    def __init__(self, box=NOBOX):
         #Box.BOX = []
         self.box = box
         
@@ -47,9 +48,55 @@ class Box:
         return None
 
 class Tomada(Cena, Box):
-    def __init__(self, img='', box=Boxer(0, 0, 0, 100,60)):
+    def __init__(self, img='', box=NOBOX):
         Cena.__init__(self, img)
         Box.__init__(self, box)
+
+class Ator(Elemento, Box):
+    def __init__(self, img='', cena='', box=NOBOX):
+        Elemento.__init__(self, img, cena=cena)
+        Box.__init__(self, box)
+
+class Objeto(Elemento, Box):
+    def __init__(self, img='', cena='', box=NOBOX):
+        Elemento.__init__(self, img, cena=cena)
+        Box.__init__(self, box)
+
+class Fala(Texto, Box):
+    def __init__(self, cena='', fala='', box=NOBOX):
+        Texto.__init__(self, cena, fala)
+        Box.__init__(self, box)
+
+class Quarto(Sala, Box):
+    def __init__(self, img='', box=NOBOX):
+        Sala.__init__(self, img)
+        Box.__init__(self, box)
+        
+class ModelMake:
+    def __init__(self):
+        self.parts = dict(tomada=self.tomada, ator=self.ator, objeto=self.objeto, texto=self.texto, sala=self.sala)
+        
+    def paint(self, box=NOBOX, **kwargs):
+        if box.f not in self.parts:
+            return
+        box = self.parts[box.f](box=box, **kwargs)
+        Box.BOX.append(box)
+        
+    def tomada(self, img='', box=NOBOX):
+        return Tomada(img=img, box=box)
+        
+    def ator(self, img='', box=NOBOX):
+        return Ator(img=img, box=box)
+        
+    def objeto(self, img='', box=NOBOX):
+        return Objeto(img=img, box=box)
+        
+    def texto(self, img='', box=NOBOX):
+        return Fala(img=img, box=box)
+        
+    def sala(self, img='', box=NOBOX):
+        return Quarto(img=img, box=box)
+
 
 CW, CH = 1200, 650
 Z = 5
@@ -153,8 +200,8 @@ class SvgMarquee:
         return True
         
 class Main:
-    def __init__(self, marker=None, painter=None, tool=None):
-        self.model = Box()
+    def __init__(self, marker=None, painter=None, tool=None, make=None):
+        self.modelmodel = make
         self.painter = painter
         self.marquee = marker
         self.tool = tool
@@ -171,6 +218,7 @@ class Main:
         self.painter = self.painter or SvgPainter(self)
         self.marquee = self.marquee or SvgMarquee(self, self.painter)
         self.tool = self.tool or ToolBox(self, self.painter)
+        self.modelmodel = self.model or ModelMake(self)
         self.tool.main()
         self.marquee.main()
         return
@@ -192,6 +240,9 @@ class Main:
         
 class ToolBox:
     def __init__(self, app=None, painter=None):
+        nomes = "tomada ator papel texto coisa sala castelo enigma".split()
+        cores = "yellow green orange red blue cyan magenta purple".split()
+        self.parts = {nome: cor for zip(nomes, cores)}
         self.model = Box()
         self.painter = painter
         self.app = app
