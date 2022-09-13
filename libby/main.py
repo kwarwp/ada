@@ -24,6 +24,8 @@ class sempai():
     cdd.vai()
 #sempai()
 '''
+class Tomada(Cena):
+    def __init__(self, img='', boxer=Boxer(0, 0, 0, 100,60)):
 
 class Box:
     BOX = []
