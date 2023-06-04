@@ -57,3 +57,10 @@ SyntaxError: invalid syntax
     root <= self.splash
 NameError: name 'root' is not defined
 '''},
+{'date': 'Sun Jun 04 2023 15:28:07.690 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 245
+  self.parts = {nome: cor for zip(nomes, cores)}
+                                                ^
+SyntaxError: invalid syntax
+'''},
