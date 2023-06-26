@@ -1,11 +1,20 @@
-# ada.soraya.main.py
-from _spy.vitollino.main import Cena,Elemento
-from _spy.vitollino.main import INVENTARIO as inv
-CIDADE="http://4.bp.blogspot.com/-rcUdRcSt1J4/UwPgVCvTHBI/AAAAAAAAALc/wyg_Gb2FPHs/s1600/Autumn-Town.jpg"
-JG="https://img2.gratispng.com/20180407/syq/kisspng-roblox-deviantart-digital-art-rendering-cartoon-character-5ac8e863845911.7926442315231161315421.jpg"
-class metropolis():
-    cidade= Cena(img=CIDADE)
-    jg= Elemento(img=JG)
-    jg.entra(cidade)
-    cidade.vai()
-metropolis()
+# ada.remedios.main.py
+# SPDX-License-Identifier: GPL-3.0-or-later
+""" Garrafas de remedio.
+
+Changelog
+---------
+
+.. versionadded::    23.06
+
+    |br| Spike das garrafinhas (26)
+
+|   **Open Source Notification:** This file is part of open source program **Alite**
+|   **Copyright © 2023  Carlo Oliveira** <carlo@nce.ufrj.br>,
+|   **SPDX-License-Identifier:** `GNU General Public License v3.0 or later <http://is.gd/3Udt>`_.
+|   `Labase <http://labase.selfip.org/>`_ - `NCE <http://portal.nce.ufrj.br>`_ - `UFRJ <https://ufrj.br/>`_.
+
+.. codeauthor:: Carlo Oliveira <carlo@nce.ufrj.br>
+
+"""
+
