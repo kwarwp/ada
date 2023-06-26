@@ -44,3 +44,10 @@ SyntaxError: invalid syntax
     self.style.update(**style)
 TypeError: string indices must be integers
 '''},
+{'date': 'Mon Jun 26 2023 13:33:45.96 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 36
+  style = dict(display="table-cell", verticalAlign="bottom"}
+                                                    ^
+SyntaxError: invalid syntax
+'''},
