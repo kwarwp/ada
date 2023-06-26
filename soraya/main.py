@@ -34,11 +34,11 @@ class Remedios:
         # style = "position:relative; min-width:600px; top:{}px; left:{}px;"
         # style = dict(position="relative", minWidth="600px", top="0px", left="0px", overflow="hidden")
         style = dict(position="absolute", bottom="0px", marginLeft="50px", marginBottom="110px", color="white")
-        self.remedio = Elemento(REMEDIOA, x=100, y=100, w=200, h=400, texto="HIPERTENSÃO", cena=self.cena)
+        self.remedio = Elemento(REMEDIOA, x=100, y=100, w=200, h=400, texto="HIPERTENSÃO ARTERIAL", cena=self.cena)
         self.remedio.elt <= html.DIV("HIPERTENSÃO", style=style)
-        self.remedio = Elemento(REMEDIOB, x=350, y=100, w=200, h=400, cena=self.cena)
+        self.remedio = Elemento(REMEDIOB, x=350, y=100, w=200, h=400, texto="ANEMIA FALCIFORME", cena=self.cena)
         self.remedio.elt <= html.DIV(r"ANEMIA", style=style)
-        self.remedio = Elemento(REMEDIOC, x=600, y=100, w=200, h=400, cena=self.cena)
+        self.remedio = Elemento(REMEDIOC, x=600, y=100, w=200, h=400, texto="DIABETES GESTACIONAL", cena=self.cena)
         self.remedio.elt <= html.DIV("DIABETES", style=style)
         self.cena.vai()
 
