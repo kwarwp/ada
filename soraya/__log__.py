@@ -17,3 +17,10 @@
     self.remedio = Elemento(REMEDIOS, x==100, y=100, w=300, h=400, cena=self.cena)
 NameError: name 'x' is not defined
 '''},
+{'date': 'Mon Jun 26 2023 13:06:44.337 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  self.remedio = Elemento(REMEDIOS, x=100, y=100, w=100, h=300, style=style.format(0, 0) cena=self.cena)
+                                                                                          ^
+SyntaxError: invalid syntax
+'''},
