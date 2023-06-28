@@ -220,3 +220,10 @@ NameError: name 'Labirinto' is not defined
                                         ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Jun 28 2023 19:26:06.720 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 29
+  SUICONS "https://i.imgur.com/cM95ybG.jpg"
+           ^
+SyntaxError: invalid syntax
+'''},
