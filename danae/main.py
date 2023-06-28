@@ -17,7 +17,7 @@ Changelog
 
 """
 from browser import document, alert, html
-from _spy.vitollino.main import Cena, STYLE, Elemento, Sala
+from _spy.vitollino.main import Cena, STYLE, Elemento, Sala, NADA
 STYLE['width'] = 1350
 W, H = 1350, 650
 IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
