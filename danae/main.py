@@ -17,7 +17,7 @@ Changelog
 
 """
 from browser import document, alert, html
-from _spy.vitollino.main import Cena, STYLE, Elemento, Sala, NADA
+from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto
 STYLE['width'] = 1350
 W, H = 1350, 650
 IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
@@ -38,7 +38,7 @@ class CenaSprite(Cena):
         self.elt <= self.img
         self._cria_divs(W)
         
-class SpriteSala(Sala):
+class SpriteSala(Salao):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
         self.cenas = [n, l, s, o]
         self.nome = nome
