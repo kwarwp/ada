@@ -281,3 +281,10 @@ NameError: name 'NDCT' is not defined
     def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
 NameError: name 'INVENTARIO' is not defined
 '''},
+{'date': 'Wed Jun 28 2023 20:03:09.104 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 46
+  self.elt.style.update({"background-position": "-64 -64"}
+                                                                    ^
+SyntaxError: invalid syntax
+'''},
