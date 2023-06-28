@@ -227,3 +227,10 @@ SyntaxError: invalid syntax
            ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Jun 28 2023 19:26:25.711 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
+                                                                                                                                                                                     ^
+SyntaxError: invalid syntax
+'''},
