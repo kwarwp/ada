@@ -17,7 +17,7 @@ Changelog
 
 """
 from browser import document, alert, html
-from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto, NDCT, INVENTARIO
+from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto, NDCT #, INVENTARIO
 STYLE['width'] = 1350
 W, H = 1350, 650
 IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
@@ -31,19 +31,19 @@ ANICONS = "https://i.imgur.com/bmUoCIb.png"
 
 class Sprite(Elemento):
     def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
-                 x=0, y=0, w=100, h=100, o=1, texto='', foi=None, index=0, sw=100, sh=100, cx=1,
-                 cena=INVENTARIO, score=NDCT, drag=False, drop={}, tipo="100% 100%", **kwargs):
-        style=dict(left=x, top=x, width=f"{w}px", height=f"{h}px", overflow="hidden"),
-        style.update({"max-width": f"{sw}px", "max-height": f"{sh}px", "background-position": "-64px -64px"})
+                 x=0, y=0, w=100, h=100, o=1, texto='', foi=None, index=0, sw=100, sh=100, cx=1, b=0,
+                 cena="", score=NDCT, drag=False, drop={}, tipo="100% 100%", **kwargs):
+        style=dict(left=x, top=x, width=f"{w}px", height=f"{h}px", overflow="hidden", filter= f"blur({b}px)")
+        position = f"-{index % cx * w}px -{index // cx * w}px"
+        style.update({"max-width": f"{sw}px", "max-height": f"{sh}px", "background-position": position})
 
         super().__init__(img=img, vai=vai, tit=tit, alt=alt,
                  x=x, y=y, w=w, h=h, o=o, texto=texto, foi=foi,
                  cena=cena, score=NDCT, drag=drag, drop=drop, tipo=f"{sw}px {sh}px", 
                  style=style,
                  **kwargs)
-        self.style.update(style)
-        print(self.style)
-        self.elt = html.DIV(Id=tit, title=tit, style=self.style)
+        #self.style.update(style)
+        #self.elt = html.DIV(Id=tit, title=tit, style=self.style)
         # self.elt.style.backgroundPosition=  "-64px -64px"
         # self.elt.style.backgroundPosition=  "-64p -64"
         # self.elt.style.update({"background-position": "-64 -64"})
@@ -83,6 +83,8 @@ lb = [Labirinto(**salas) for salas in LABS]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
 #Elemento(BSNOW, w=W, h=H, o=0.7, cena=sl[0].norte)
-a = Elemento(ANICONS, w=64, h=64, o=0.7, index=2, sw=320, sh=256, cx=5, cena=sl[0].norte, tipo="320px 256px")
+a = Sprite(ANICONS, w=64, h=64, o=0.3, index=4, sw=320, sh=256, cx=5, cena=sl[0].norte, b=2, tipo="320px 256px")
 
-#sl[0].norte.vai()
+
+sl[0].norte.vai()
+#print(a.style)
