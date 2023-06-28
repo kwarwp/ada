@@ -36,7 +36,8 @@ class CenaSprite(Cena):
         self.elt = html.DIV(style=divsty)
         self.img = html.IMG(src=image, width=W, height=H, style=style)
         self.elt <= self.img
-
+        self._cria_divs(W)
+        
 class SpriteSala(Sala):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
         self.cenas = [n, l, s, o]
@@ -49,6 +50,8 @@ MAPA = [{k:CenaSprite(LAND, index=v) for k, v in zip("nlso", range(l,l+4))} for 
 #MAPA = [{k:v for k, v in zip("nlso", range(l,l+4))} for l in range(0,16,4)]
 # print(MAPA)
 sl = [SpriteSala(**sl) for sl in MAPA]
+LABS = [{k: v for k, v in zip("cnlso", [sl[int(s)] for s in cruz])} for cruz in "03131 12020 21313 30202".split()]
+lb = [Labirinto(**salas) for salas in LABS]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
 sl[0].norte.vai()
