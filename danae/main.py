@@ -17,12 +17,31 @@ Changelog
 
 """
 from browser import document, alert, html
-from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto
+from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto, NDCT, INVENTARIO
 STYLE['width'] = 1350
 W, H = 1350, 650
 IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
+ANICONS = "https://i.imgur.com/A2pPOED.png"
+SNOWY = "https://i.imgur.com/KxcqKpJ.gif"
+SNOW = "https://i.imgur.com/mpOU7Ca.gif"
+HSNOW = "https://i.imgur.com/i5dLK8G.gif"
+BSNOW = "https://i.imgur.com/4B1xuMw.gif"
+SUICONS = "https://i.imgur.com/cM95ybG.jpg"
 
 
+class Sprite(Elemento):
+    def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
+                 x=0, y=0, w=100, h=100, o=1, texto='', foi=None, index=0, sw=100, sh=100, cx=1,
+                 cena=INVENTARIO, score=NDCT, drag=False, drop={}, tipo="100% 100%", **kwargs):
+        super().__init__(img=img, vai=vai, tit=tit, alt=alt,
+                 x=x, y=y, w=w, h=h, o=o, texto=texto, foi=foi,
+                 cena=cena, score=NDCT, drag=drag, drop=drop, tipo=tipo, 
+                 style=dict(left=x, top=x, width=f"{w}px", height=f"{h}px", overflow="hidden"),
+                 **kwargs)
+        style = dict(position="relative", left=f"-{index % cx * w}px", top=f"-{index // cx * w}px", width=sw,
+                     height=sh)
+        style.update({"max-width": sw, "max-height": sh})
+        self.img.style = style
 
 class CenaSprite(Cena):
     def __init__(self,image, index, **kwargs):
@@ -54,4 +73,6 @@ LABS = [{k: v for k, v in zip("cnlso", [sl[int(s)] for s in cruz])} for cruz in 
 lb = [Labirinto(**salas) for salas in LABS]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
+#Elemento(BSNOW, w=W, h=H, o=0.7, cena=sl[0].norte)
+Elemento(ANICONS, w=64, h=64, o=0.7, index=0, sw=320, sh=256, cx=5, cena=sl[0].norte)
 sl[0].norte.vai()
