@@ -18,25 +18,28 @@ Changelog
 """
 from browser import document, alert, html
 from _spy.vitollino.main import Cena, STYLE, Elemento
-STYLE['width'] = 1000
-IMGSIZE = "3400px"
-W, H = 800, 600
+STYLE['width'] = 1350
+W, H = 1350, 650
+IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
+
 
 
 class CenaSprite(Cena):
-    def __init__(self,image, **kwargs):
-        super().__init__(image, index,  **kwargs)
+    def __init__(self,image, index, **kwargs):
+        super().__init__(image,  **kwargs)
         # style=dict(left=x, top=x, width="80px", height="80px", overflow="hidden")
-        style = dict(position="relative", left=f"-{index % 4 * W}px", top=f"-{index // 4 * H}px", width=IMGSIZE,
-                     height=IMGSIZE)
-        style.update({"max-width": IMGSIZE, "max-height": IMGSIZE})
-        self.elt = html.DIV(style=STYLE)
-        self.img = html.IMG(src=self.img, width=width, style=style, title=nome)
+        style = dict(position="relative", left=f"-{index % 4 * W}px", top=f"-{index // 4 * H}px", width=f"{W}px",
+                     height=f"{H}px", overflow="hidden")
+        style.update({"min-width": IMGSIZE, "min-height": IMGHEIGHT})
+        divsty = dict(STYLE)
+        divsty.update({"max-width": f"{W}px", "max-height": f"{H}px", "overflow": "hidden"})
+        self.elt = html.DIV(style=divsty)
+        self.img = html.IMG(src=image, width=W, height=H, style=style)
         self.elt <= self.img
 
 #STYLE['height'] = "100%"
 LAND = "https://i.imgur.com/Cmyq9vd.jpg"
-c=Cena(LAND, index=6)
+c=CenaSprite(LAND, index=6)
 #c.elt.width="800px"
 #c.elt.style=dict(left="-800px", width="800px", minWidth="6400px")
 c.vai()
