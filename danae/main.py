@@ -41,12 +41,13 @@ class SpriteSala(Sala):
     def __init__(self, n=NADA, l=NADA, s=NADA, o=NADA, nome='', **kwargs):
         self.cenas = [n, l, s, o]
         self.nome = nome
-        Sala.c(**kwargs)
+        # Sala.c(**kwargs)
         self.p()
 
 LAND = "https://i.imgur.com/Cmyq9vd.jpg"
-MAPA = [{k:CenaSprite(LAND, index=v) for k, v in zip("nlso", range(l,l+4))} for l in range(0,17,4)]
-print(MAPA)
+MAPA = [{k:CenaSprite(LAND, index=v) for k, v in zip("nlso", range(l,l+4))} for l in range(0,16,4)]
+#MAPA = [{k:v for k, v in zip("nlso", range(l,l+4))} for l in range(0,16,4)]
+# print(MAPA)
 sl = [SpriteSala(**sl) for sl in MAPA]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
