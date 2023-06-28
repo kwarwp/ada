@@ -213,3 +213,10 @@ NameError: name 'width' is not defined
     lb = [Labirinto(**salas) for salas in LABS]
 NameError: name 'Labirinto' is not defined
 '''},
+{'date': 'Wed Jun 28 2023 17:44:54.154 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 57
+  Elemento[SNOWY, w=W, h=H, cena=sl[0].norte)
+                                        ^
+SyntaxError: invalid syntax
+'''},
