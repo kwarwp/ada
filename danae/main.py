@@ -27,21 +27,30 @@ SNOW = "https://i.imgur.com/mpOU7Ca.gif"
 HSNOW = "https://i.imgur.com/i5dLK8G.gif"
 BSNOW = "https://i.imgur.com/4B1xuMw.gif"
 SUICONS = "https://i.imgur.com/cM95ybG.jpg"
-
+ANICONS = "https://i.imgur.com/bmUoCIb.png"
 
 class Sprite(Elemento):
     def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
                  x=0, y=0, w=100, h=100, o=1, texto='', foi=None, index=0, sw=100, sh=100, cx=1,
                  cena=INVENTARIO, score=NDCT, drag=False, drop={}, tipo="100% 100%", **kwargs):
+        style=dict(left=x, top=x, width=f"{w}px", height=f"{h}px", overflow="hidden"),
+        style.update({"max-width": f"{sw}px", "max-height": f"{sh}px", "background-position": "-64px -64px"})
+
         super().__init__(img=img, vai=vai, tit=tit, alt=alt,
                  x=x, y=y, w=w, h=h, o=o, texto=texto, foi=foi,
-                 cena=cena, score=NDCT, drag=drag, drop=drop, tipo=tipo, 
-                 style=dict(left=x, top=x, width=f"{w}px", height=f"{h}px", overflow="hidden"),
+                 cena=cena, score=NDCT, drag=drag, drop=drop, tipo=f"{sw}px {sh}px", 
+                 style=style,
                  **kwargs)
-        style = dict(position="relative", left=f"-{index % cx * w}px", top=f"-{index // cx * w}px", width=sw,
-                     height=sh)
-        style.update({"max-width": sw, "max-height": sh})
-        self.img.style = style
+        self.style.update(style)
+        print(self.style)
+        self.elt = html.DIV(Id=tit, title=tit, style=self.style)
+        # self.elt.style.backgroundPosition=  "-64px -64px"
+        # self.elt.style.backgroundPosition=  "-64p -64"
+        # self.elt.style.update({"background-position": "-64 -64"})
+        #style = dict(position="relative", left=f"-{index % cx * w}px", top=f"-{index // cx * w}px", width=f"{w}px",
+        #             height=f"{h}px")
+        #style.update({"min-width": f"{sw}px", "min-height": f"{sh}px"})
+        # self.img.style = style
 
 class CenaSprite(Cena):
     def __init__(self,image, index, **kwargs):
@@ -74,5 +83,6 @@ lb = [Labirinto(**salas) for salas in LABS]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
 #Elemento(BSNOW, w=W, h=H, o=0.7, cena=sl[0].norte)
-Elemento(ANICONS, w=64, h=64, o=0.7, index=0, sw=320, sh=256, cx=5, cena=sl[0].norte)
-sl[0].norte.vai()
+a = Elemento(ANICONS, w=64, h=64, o=0.7, index=2, sw=320, sh=256, cx=5, cena=sl[0].norte, tipo="320px 256px")
+
+#sl[0].norte.vai()
