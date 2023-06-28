@@ -20,5 +20,7 @@ from browser import document, alert, html
 from _spy.vitollino.main import Cena, STYLE, Elemento
 STYLE['width'] = 1000
 #STYLE['height'] = "100%"
-LAND = "https://imgur.com/a/rVULspA.jpg"
-Cena(LAND).vai()
+LAND = "https://i.imgur.com/Cmyq9vd.jpg"
+c=Cena(LAND)
+c.elt.style=dict(backgroundPosition="right 100px bottom 100px")
+c.vai()
