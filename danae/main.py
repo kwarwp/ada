@@ -39,7 +39,8 @@ class CenaSprite(Cena):
 
 LAND = "https://i.imgur.com/Cmyq9vd.jpg"
 MAPA = [{k:CenaSprite(LAND, index=v) for k, v in zip("nlso", range(l,l+4))} for l in range(0,17,4)]
+print(MAPA)
 sl = [ Sala(**sl) for sl in MAPA]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
-sl[0].nort.vai()
+sl[0].norte.vai()
