@@ -17,7 +17,7 @@ Changelog
 
 """
 from browser import document, alert, html
-from _spy.vitollino.main import Cena, STYLE, Elemento
+from _spy.vitollino.main import Cena, STYLE, Elemento, Sala
 STYLE['width'] = 1350
 W, H = 1350, 650
 IMGSIZE, IMGHEIGHT = f"{4*W}px", f"{4*H}px"
@@ -37,9 +37,9 @@ class CenaSprite(Cena):
         self.img = html.IMG(src=image, width=W, height=H, style=style)
         self.elt <= self.img
 
-#STYLE['height'] = "100%"
 LAND = "https://i.imgur.com/Cmyq9vd.jpg"
-c=CenaSprite(LAND, index=6)
-#c.elt.width="800px"
-#c.elt.style=dict(left="-800px", width="800px", minWidth="6400px")
-c.vai()
+MAPA = [{k:CenaSprite(LAND, index=v) for k, v in zip("nlso", range(l,l+4))} for l in range(0,17,4)]
+sl = [ Sala(**sl) for sl in MAPA]
+#c=CenaSprite(LAND, index=6)
+#c.vai()
+sl[0].nort.vai()
