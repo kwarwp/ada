@@ -36,7 +36,7 @@ class CenaSprite(Cena):
 
 #STYLE['height'] = "100%"
 LAND = "https://i.imgur.com/Cmyq9vd.jpg"
-c=Cena(LAND)
-c.elt.width="800px"
-c.elt.style=dict(left="-800px", width="800px", minWidth="6400px")
+c=Cena(LAND, index=6)
+#c.elt.width="800px"
+#c.elt.style=dict(left="-800px", width="800px", minWidth="6400px")
 c.vai()
