@@ -138,3 +138,10 @@ NameError: name 'width' is not defined
     self.img = html.IMG(src=self.img, width=W, style=style, title=nome)
 NameError: name 'nome' is not defined
 '''},
+{'date': 'Wed Jun 28 2023 16:13:05.151 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 36
+  self.img = html.IMG(src=image, width=W, height=H style=style)
+                                                    ^
+SyntaxError: invalid syntax
+'''},
