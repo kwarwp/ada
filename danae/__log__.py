@@ -326,3 +326,10 @@ AttributeError: 'tuple' object has no attribute 'update'
     (index % cx * w)
 ZeroDivisionError: integer division or modulo by zero
 '''},
+{'date': 'Thu Jun 29 2023 08:46:08.548 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 40
+  super().__init__(img=img, vai=vai, tit=tit, alt=alt,
+                                                                                                                                                                                                                                     ^
+SyntaxError: invalid syntax
+'''},
