@@ -461,3 +461,10 @@ TypeError: 'int' object is not callable
                                                                                                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Jun 29 2023 11:28:45.881 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 75
+  LA = [(j, (j +7) if j//8 else (j-1)), (j+64+8)%64, (j+1)%(((j)//8+1)*8),  (j+56)%64) for  j in range(0,64)]
+                                                                                    ^
+SyntaxError: invalid syntax
+'''},
