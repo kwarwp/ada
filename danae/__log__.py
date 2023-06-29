@@ -454,3 +454,10 @@ IndexError: list index out of range
     LA = [(j, (j(+7 if j//8 else -1))%(((j)//8+1)*8), (j+64+8)%64, (j+1)%(((j)//8+1)*8),  (j+56)%64) for  j in range(0,64)]
 TypeError: 'int' object is not callable
 '''},
+{'date': 'Thu Jun 29 2023 11:20:52.952 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 73
+  LA = [(j, (j +7 if j//8 else -1))%(((j)//8+1)*8), (j+64+8)%64, (j+1)%(((j)//8+1)*8),  (j+56)%64) for  j in range(0,64)]
+                                                                                                ^
+SyntaxError: invalid syntax
+'''},
