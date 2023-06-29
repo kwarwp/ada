@@ -306,3 +306,23 @@ SyntaxError: invalid syntax
     style.update({"max-width": f"{sw}px", "max-height": f"{sh}px", "background-position": "-64px -64px"})
 AttributeError: 'tuple' object has no attribute 'update'
 '''},
+{'date': 'Thu Jun 29 2023 08:44:58.536 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 87
+    a = Sprite(ANICONS, w=s, h=s, o=0.9, index=4, sw=320, sh=256, cx=0, cena=sl[0].norte, b=0)  #, tipo="320px 256px")
+  module <module> line 37
+    position = f"-{index % cx * w}px -{index // cx * w}px"
+  module <module> line 1
+    (index % cx * w)
+ZeroDivisionError: integer division or modulo by zero
+'''},
