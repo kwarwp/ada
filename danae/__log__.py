@@ -333,3 +333,10 @@ ZeroDivisionError: integer division or modulo by zero
                                                                                                                                                                                                                                      ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Jun 29 2023 09:20:48.891 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 51
+  style = dict(position="relative", left=f"-{index % 4 * W}px", top=f"-{index // 4 * H}px", width=f"{W}px",
+                                                                                                                                                                                                   ^
+SyntaxError: invalid syntax
+'''},
