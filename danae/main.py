@@ -21,7 +21,7 @@ from _spy.vitollino.main import Cena, STYLE, Elemento, Salao, NADA, Labirinto, N
 STYLE['width'] = 1350
 W, H = 1350, 650
 # IMGSIZE, IMGHEIGHT = f"{8*W}px", f"{4*H}px"
-IMGSIZE, IMGHEIGHT = f"{16*W}px", f"{8*H}px"
+IMGSIZE, IMGHEIGHT = f"{32*W}px", f"{4*H}px"
 ANICONS = "https://i.imgur.com/A2pPOED.png"
 SNOWY = "https://i.imgur.com/KxcqKpJ.gif"
 SNOW = "https://i.imgur.com/mpOU7Ca.gif"
@@ -30,7 +30,8 @@ BSNOW = "https://i.imgur.com/4B1xuMw.gif"
 SUICONS = "https://i.imgur.com/cM95ybG.jpg"
 ANICONS = "https://i.imgur.com/bmUoCIb.png"
 SUPPLY = "https://i.imgur.com/zWiteqC.gif"
-
+SUPPLY = "https://i.imgur.com/PWreEK2.gif"
+PARADRP = "https://i.imgur.com/ShQMIoU.png"
 class Sprite(Elemento):
     def __init__(self, img="", vai=None, style=NDCT, tit="", alt="",
                  x=0, y=0, w=100, h=100, o=1, texto='', foi=None, index=0, sw=100, sh=100, cx=1, b=0, s=1,
@@ -85,6 +86,7 @@ s = 64
 i = sl[0].norte
 a = Sprite(ANICONS, x=500, y=200, w=s, h=s, o=0.9, index=0, sw=320, sh=256, cx=5, cena=i, b=1, s=2)  #, tipo="320px 256px")
 s = Elemento(SUPPLY, w=200, cena=i)
+p = Elemento(PARADRP, x=888, w=100, h=50, y=500, cena=i)
 i.vai()
 # i.elt.text=LABS
 #print(a.style)
