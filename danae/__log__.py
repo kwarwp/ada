@@ -523,3 +523,10 @@ IndexError: list index out of range
                                             ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Sun Jul 02 2023 09:48:26.671 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 89
+  p = Elemento(PARADRP, x=888, w=100, h=50. y=500, cena=i)
+                                             ^
+SyntaxError: invalid syntax
+'''},
