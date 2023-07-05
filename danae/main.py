@@ -81,10 +81,10 @@ LABS = [{k: v for k, v in zip("cnlso", [sl[int(s)] for s in cruz])} for cruz in 
 lb = [Labirinto(**salas) for salas in LABS]
 #c=CenaSprite(LAND, index=6)
 #c.vai()
-#Elemento(BSNOW, w=W, h=H, o=0.7, cena=sl[0].norte)
+Elemento(BSNOW, w=W, h=H, o=0.8, cena=sl[0].norte, style={'pointer-events': 'none'})
 s = 64
 i = sl[0].norte
-a = Sprite(ANICONS, x=500, y=200, w=s, h=s, o=0.9, index=0, sw=320, sh=256, cx=5, cena=i, b=1, s=2)  #, tipo="320px 256px")
+a = Sprite(ANICONS, x=700, y=300, w=s, h=s, o=0.4, index=0, sw=320, sh=256, cx=5, cena=i, b=4, s=1)  #, tipo="320px 256px")
 s = Elemento(SUPPLY, w=200, cena=i)
 p = Elemento(PARADRP, x=888, w=100, h=50, y=500, cena=i)
 i.vai()
