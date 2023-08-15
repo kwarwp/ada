@@ -12,19 +12,22 @@ Changelog
 """
 from browser import document, html, svg
 
-ray = 100
-values = [20,10,30,15,25]
 
-colors = ["C8E0A2", "A6BED1", "E4CC85", "D7D7D7", "90AF97", "698EA8",
-        "BFA166", "A8ADB0", "FF6600"]
-
-panel = document["pydiv"]
+class Icon:
+    def __init__(self):        
+        dc = document["pydiv"]
+        self.panel = panel = svg.svg(200,200)
+        bk = svg.rect(x=0, y=0, width="200", height="200", style=dict(fill="white"))
+        dc.html=""
+        dc <= panel
+    def r(x, y, width, height, fill, border)
 legend = None
-print(svg.text)
-title = svg.text("", x=150, y=25,
+#print(svg.text)
+title = svg.text("alo", x=150, y=25,
     font_size=22, text_anchor="middle",
     style={"stroke": "black"})
 panel <= title
+panel <=bk
 
 paths = {}
 
