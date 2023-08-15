@@ -17,17 +17,14 @@ class Icon:
     def __init__(self):        
         dc = document["pydiv"]
         self.panel = panel = svg.svg(200,200)
-        bk = svg.rect(x=0, y=0, width="200", height="200", style=dict(fill="white"))
         dc.html=""
         dc <= panel
-    def r(x, y, width, height, fill, border)
-legend = None
-#print(svg.text)
-title = svg.text("alo", x=150, y=25,
-    font_size=22, text_anchor="middle",
-    style={"stroke": "black"})
-panel <= title
-panel <=bk
+        self.r("0", "0", "200", "200", "white")
+    def r(self, x, y, width, height, fill="black", border=0):
+        self.panel <= svg.rect(x=x, y=y, width=width, height=height, style=dict(fill=fill, stroke=border))
+    def t(self, text, x, y, size, fill="black", text_anchor="middle",border=1):
+        self.panel <= svg.text(text, x=x, y=y, font_size=size, text_anchor=text_anchor, style=dict(fill=fill, stroke=border))
 
-paths = {}
+i = Icon()
+i.r(0,0, 10, 10, 'red')
 
