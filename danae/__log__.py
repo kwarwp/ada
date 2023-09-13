@@ -543,3 +543,10 @@ Exception: DOMTokenList.add: The token can not contain whitespace.
   module '$exec_8603' line 91
 w.elt.classList.add("fa fa-envelope fa-5x")
 '''},
+{'date': 'Wed Sep 13 2023 10:12:12.528 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 91
+  fa = html.I(Class="fa fa-envelope fa-5x" style={"position":"relative","color":"grey"})
+                                            ^
+SyntaxError: invalid syntax
+'''},
