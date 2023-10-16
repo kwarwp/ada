@@ -602,3 +602,21 @@ NameError: name 'LIXAO' is not defined
     self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
 NameError: name 'RUBISH' is not defined
 '''},
+{'date': 'Mon Oct 16 2023 09:12:14.524 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''Traceback (most recent call last):
+  module _core.main line 180
+    dialog.action(lambda *_: self.start()
+  module _core.supygirls_factory line 135
+    self.act(self, lambda *_: self.hide() or extra()) if self.act else None
+  module _core.supygirls_factory line 310
+    return self._first_response(lambda: self._executa_acao(), self.extra, self.error)
+  module _core.supygirls_factory line 282
+    traceback.print_exc(file=sys.stderr)
+  module _core.supygirls_factory line 299
+    exec(self.code, glob)  # dict(__name__="__main__"))
+  module <module> line 213
+    t = Thrash().dump(j)
+  module <module> line 77
+    self.remaining_shuffle_count = 20 + 2*h.pers + h.levl//5
+NameError: name 'h' is not defined
+'''},
