@@ -4,6 +4,10 @@
 Changelog
 ---------
 
+.. versionadded::    23.10
+
+    |br|   Incluir trash game (16)
+
 .. versionadded::    23.06
 
     |br| Spike da Antartica (28)
@@ -39,8 +43,6 @@ PARADRP = "https://i.imgur.com/ShQMIoU.png"
 LIXAO = "https://raw.githubusercontent.com/kwarwp/ada/master/gatil/trink/lixocenter.svg"
 GATEIRA = "https://i.imgur.com/Ey0W3TR.png"
 DESISTO = "https://i.imgur.com/OwMSTHC.png"
-#RUBISH = "https://i.imgur.com/4cZQRvF.png"
-RUBISH = "https://i.imgur.com/MSJw5kB.png"
 RUBISH = "https://i.imgur.com/fCEvaqu.png"
 ROFFX, ROFFY, TOFF, SCAL =625, 430, 10, 2.5
 #HALO = "https://imgur.com/FiS2X97.gif"
@@ -72,7 +74,7 @@ class Thrash:
         self.comida = ['carpa', 'bacalhau', 'atum', 'robalo', 'dourado']
         self.resposta = self.limpa = lambda *_: None
     def dump(self, cena, sorte=4):
-        h =  Hero(1, 2,10)#TheHero()
+        h =  Hero(1, 2,10) # TheHero()
         self.cena = cena
         self.fundo = Elemento(RUBISH, x=0, y=0, w=1350, h=800, cena=cena)
         self.desiste = Elemento(DESISTO, y=100, cena = cena, vai=self.quit)
@@ -96,7 +98,6 @@ class Thrash:
             self.rubish <= obj
             obj.bind('click', self._vai)
             obj.setAttribute("data-didit", "_no_")
-            #obj.click(self._vai)
             
     def _vai_(self, ev):
         self.__vai(ev)
@@ -117,7 +118,6 @@ class Thrash:
         dx, dy = randint(-300,300) , 100  - randint(-100,100)
         dy = abs(300 -dx)//3
         dx, dy = 200 - dx , 100  - randint(-dy,dy)
-        #alert (ev.target.id)
         obj = document[ev.target.id]
         obj_name = ev.target.id[4:]
         if obj.getAttribute("data-didit") == "_did_":
@@ -126,12 +126,10 @@ class Thrash:
             food = Elemento('', x=0, y=50, w=200, h=200, tit=f"{ev.target.id}_", cena=self.cena)
             stag = svg.svg(version="1.1", width="200", height="200")
             food.elt <= stag
-            #food.tit = f"{ev.target.id}_"
             stag <= obj
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-220}) scale(0.60 1.35)")
             INV.bota(food)
-            #self.__vai = lambda *_: None
             obj.setAttribute("data-didit", "_did_")
             if obj_name == "gato":
                 obj.setAttribute('transform',f"translate(-{ROFFX-485} -{ROFFY-345}) scale(0.60 0.6)")
@@ -142,10 +140,6 @@ class Thrash:
         else:
             obj.setAttribute('transform',f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
 
-        # obj.transform = f"translate({dx} {dy})  rotate({7*randint(0,70)} {ROFFX} {ROFFY}) scale(2.5)")
-        #obj.setTranslate(dx, dy)
-        #obj.setRotate(7*randint(0,70), ROFFX, ROFFY)
-        # self.c.cx =100
 
     def create_script_tag(self, src):
         import urllib.request
@@ -154,7 +148,6 @@ class Thrash:
         _data = _fp.read()
 
         _tag = document.createElement('div')
-        #_tag.type = "image/svg+xml"
         _tag.html = _data
         return _tag
 
