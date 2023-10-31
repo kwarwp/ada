@@ -98,3 +98,10 @@ NameError: name 'star' is not defined
     oceano.vai()
 AttributeError: 'str' object has no attribute 'vai'
 '''},
+{'date': 'Tue Oct 31 2023 10:34:56.237 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 86
+  return abs(origem.posx - destino.posx) <= 1 xor abs(origem.posy - destino.posy) <= 1
+                                               ^
+SyntaxError: invalid syntax
+'''},
