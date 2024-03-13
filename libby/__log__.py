@@ -64,3 +64,10 @@ NameError: name 'root' is not defined
                                                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Wed Mar 13 2024 17:57:01.877 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 245
+  self.parts = {nome: cor for zip(nomes, cores)}
+                                                ^
+SyntaxError: invalid syntax
+'''},
