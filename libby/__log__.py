@@ -71,3 +71,10 @@ SyntaxError: invalid syntax
                                                 ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Apr 04 2024 08:34:36.434 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 245
+  self.parts = {nome: cor for zip(nomes, cores)}
+                                                ^
+SyntaxError: invalid syntax
+'''},
