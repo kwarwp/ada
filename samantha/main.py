@@ -2,7 +2,7 @@ from _spy.vitollino.main import Cena, Texto, Elemento, STYLE
 
 ################################################TAKE1##########################################################
 
-STYLE['width'] = 1200
+STYLE['width'] = 800
 STYLE['height'] = "100px"
 
 entrada = "https://media-cdn.tripadvisor.com/media/photo-s/07/94/9a/9a/primeiro-portao-instalado.jpg"
