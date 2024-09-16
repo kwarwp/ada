@@ -3,7 +3,7 @@ from _spy.vitollino.main import Cena, Texto, Elemento, STYLE
 ################################################TAKE1##########################################################
 
 STYLE['width'] = 1200
-STYLE['height'] = "800px"
+STYLE['height'] = "500px"
 
 entrada = "https://media-cdn.tripadvisor.com/media/photo-s/07/94/9a/9a/primeiro-portao-instalado.jpg"
 pixacao = "https://interartive.org/wp-content/uploads/pixo1.jpg"
