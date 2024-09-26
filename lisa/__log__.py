@@ -134,3 +134,10 @@ AttributeError: 'Veiculo' object has no attribute 'outro'
                              ^
 SyntaxError: invalid syntax
 '''},
+{'date': 'Thu Sep 26 2024 14:28:58.375 GMt-0300 (Horário Padrão de Brasília) -X- SuPyGirls -X-',
+'error': '''
+ module <string> line 33
+  def move(self,evento=None)
+                             ^
+SyntaxError: invalid syntax
+'''},
